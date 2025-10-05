@@ -21,6 +21,7 @@ header {
 h1 {
   font-size: 2rem;
   margin-bottom: 10px;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 
 nav a {
