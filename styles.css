@@ -58,3 +58,57 @@ button {
 button:hover {
   background: #1f6feb;
 }
+.referral-footer {
+  background: #0d0d0d;
+  border-top: 1px solid #1f1f1f;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #e0e0e0;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+.referral-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.referral-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #d9d9d9;
+}
+
+.referral-text span {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.referral-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #0d0d0d;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.referral-btn:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+}
+
+.referral-logo {
+  height: 20px;
+  width: auto;
+}
+
+.referral-disclaimer {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #999;
+}
