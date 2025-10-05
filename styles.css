@@ -1,11 +1,12 @@
-/* Reset defaults */
+/* ===========================
+   RESET & BASE STYLES
+=========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Page styling */
 body {
   font-family: "DM Sans", system-ui, -apple-system, sans-serif;
   background-color: #0e1117;
@@ -14,18 +15,31 @@ body {
   padding: 40px;
 }
 
+/* ===========================
+   HEADER & LOGO
+=========================== */
 header {
   font-family: "DM Sans", system-ui, -apple-system, sans-serif;
   margin-bottom: 30px;
-  text-align: center;
 }
 
-/* --- Logo --- */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .gem-logo {
-  height: 28px;
+  height: 30px;
   width: auto;
-  vertical-align: middle;
-  margin-right: 6px;
   transition: transform 0.2s ease;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
@@ -34,11 +48,25 @@ header {
 .gem-logo:hover {
   transform: scale(1.05);
 }
+/* ===========================
+Make the logo clickable with a clean hover feel 
+=========================== */
+.logo-link {
+  display: inline-block;
+}
 
-/* --- Typography --- */
+.logo-link:hover .gem-logo {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ===========================
+   TYPOGRAPHY & NAV
+=========================== */
 h1 {
   font-size: 2rem;
   margin-bottom: 10px;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 
 nav a {
@@ -52,7 +80,9 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* --- Intro Section --- */
+/* ===========================
+   INTRO SECTION
+=========================== */
 .intro {
   margin: 50px auto;
   max-width: 600px;
@@ -78,7 +108,9 @@ button:hover {
   background: #1f6feb;
 }
 
-/* --- Referral Footer --- */
+/* ===========================
+   REFERRAL FOOTER
+=========================== */
 .referral-footer {
   background: #0d0d0d;
   border-top: 1px solid #1f1f1f;
@@ -136,7 +168,9 @@ button:hover {
   color: #999;
 }
 
-/* --- Light Mode --- */
+/* ===========================
+   LIGHT MODE OVERRIDES
+=========================== */
 @media (prefers-color-scheme: light) {
   body {
     background-color: #f9f9f9;
@@ -175,5 +209,18 @@ button:hover {
 
   .referral-disclaimer {
     color: #555;
+  }
+}
+
+/* ===========================
+   MOBILE OPTIMIZATION
+=========================== */
+@media (max-width: 600px) {
+  .gem-logo {
+    height: 26px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
   }
 }
