@@ -19,6 +19,35 @@ header {
   margin-bottom: 30px;
   text-align: left;
 }
+.gem-logo {
+  height: 28px;              /* consistent logo size */
+  width: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+  transition: filter 0.3s ease, transform 0.2s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* --- Dark Theme --- */
+@media (prefers-color-scheme: dark) {
+  .gem-logo {
+    filter: invert(100%) brightness(110%);  /* makes it white on dark backgrounds */
+  }
+}
+
+/* --- Light Theme --- */
+@media (prefers-color-scheme: light) {
+  .gem-logo {
+    filter: invert(0%) brightness(100%);   /* keeps it dark on light backgrounds */
+  }
+}
+
+/* --- Hover Animation --- */
+.gem-logo:hover {
+  transform: scale(1.05);
+}
+
 
 h1 {
   font-size: 2rem;
