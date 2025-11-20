@@ -25,7 +25,7 @@ rsync -avz \
   --exclude "deploy.sh" \
   --exclude "deploy.php" \
   ./ \
-  u3102-burdgyn0i9k2@giowm1219.siteground.biz:~/www/jdaitken.ca/public_html/
+  u3102-burdgyn0i9k2@ssh.jdaitken.ca:~/www/jdaitken.ca/public_html/
 
 ###############################################
 # 3) Cache-bust CSS/JS live on server
@@ -33,7 +33,7 @@ rsync -avz \
 
 echo "🔧 Cache-busting CSS/JS..."
 
-ssh -p 18765 u3102-burdgyn0i9k2@giowm1219.siteground.biz '
+ssh -p 18765 u3102-burdgyn0i9k2@ssh.jdaitken.ca '
   set -e
   cd ~/www/jdaitken.ca/public_html
 
