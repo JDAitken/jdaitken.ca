@@ -27,17 +27,12 @@ rsync -avz \
   ./ \
   u3102-burdgyn0i9k2@giowm1219.siteground.biz:~/www/jdaitken.ca/public_html/
 
-###############################################
-# 3) Cache-bust CSS/JS live on server
-###############################################
-
 echo "🔧 Cache-busting CSS/JS..."
 
 ssh -p 18765 u3102-burdgyn0i9k2@giowm1219.siteground.biz '
   set -e
   cd ~/www/jdaitken.ca/public_html
 
-  # version = unix timestamp
   REV=$(date +%s)
 
   sed -i.bak -E "s/(styles\.css)(\?v=[0-9]+)?/\1?v=${REV}/" index.html && rm -f index.html.bak
@@ -45,5 +40,3 @@ ssh -p 18765 u3102-burdgyn0i9k2@giowm1219.siteground.biz '
 
   echo "✅ Updated version to $REV"
 '
-
-echo "🎉 Deploy complete! https://jdaitken.ca"
