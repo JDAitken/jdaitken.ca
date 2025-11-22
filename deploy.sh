@@ -1,36 +1,41 @@
 #!/bin/bash
 set -e
 
-echo "🔄 Pulling latest local changes..."
+echo "🚀 Simple Pro Deploy Starting..."
+
+# Automatically clean up local changes
+echo "📦 Stashing changes..."
+git stash push --include-untracked || true
+
+echo "🔄 Pulling latest from GitHub..."
 git pull origin main --rebase || true
 
-echo "🧠 Committing your changes..."
-git add .
-git commit -m "update site" || true
+echo "📥 Restoring changes..."
+git stash pop || true
 
-echo "🚀 Pushing to GitHub..."
+echo "🧹 Minifying files (simple & optional)..."
+
+# MINIFY HTML
+npx html-minifier index.html \
+  --collapse-whitespace \
+  --remove-comments \
+  --minify-css true \
+  --minify-js true \
+  -o index.html
+
+# MINIFY CSS
+npx cleancss -o styles.css styles.css
+
+# MINIFY JS
+npx terser script.js -o script.js --compress --mangle || true
+
+echo "📝 Committing & pushing..."
+git add .
+git commit -m "simple deploy" || true
 git push origin main
 
 echo "🌐 Deploying to SiteGround..."
+ssh -i ~/.ssh/YOURKEYNAME u3102-burdgyn0i9k2@ssh.jdaitken.ca -p 18765 \
+"cd ~/www/jdaitken_ca/public_html && git pull origin main"
 
-# Update these:
-USER="u3102-burdgyn0i9k2"
-HOST="35.206.121.157"
-PORT="18765"
-REMOTE_DIR="/home/customer/www/jdaitken.ca/public_html/"
-
-# Upload all site files
-rsync -avz --delete \
-  -e "ssh -p $PORT" \
-  . $USER@$HOST:$REMOTE_DIR
-
-echo "🧹 Clearing Remote CSS/JS cache-busting..."
-ssh -p $PORT $USER@$HOST << 'EOF'
-cd /home/customer/www/jdaitken.ca/public_html
-REV=$(date +%s)
-sed -i.bak -E "s/styles\.css\?[0-9]+/styles.css?\$REV/" index.html
-sed -i.bak -E "s/script\.js\?[0-9]+/script.js?\$REV/" index.html
-rm -f index.html.bak
-EOF
-
-echo "✅ Deploy complete! Visit: https://jdaitken.ca"
+echo "🎉 DEPLOY COMPLETE!"
