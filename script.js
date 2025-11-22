@@ -1,1 +1,0 @@
-document.getElementById("actionBtn").addEventListener("click",()=>{const e=document.createElement("p");e.textContent="🎉 You clicked the button!",document.querySelector(".intro").appendChild(e)});

@@ -1,19 +1,31 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Super Simple Deploy Starting..."
+echo "🧠 Starting deploy..."
 
-# ALWAYS stage everything
-git add -A
+# 1) Sync with GitHub
+echo "🔄 Pulling latest local changes..."
+git pull origin main --rebase || true
 
-# ALWAYS commit (even if nothing changed)
-git commit -m "deploy" || true
+# 2) Stage + commit everything
+echo "📦 Staging changes..."
+git add .
 
-# ALWAYS push
+echo "📝 Committing..."
+git commit -m "Deploy update" || true
+
+# 3) Push to GitHub
+echo "🚀 Pushing to GitHub..."
 git push origin main
 
-# ALWAYS deploy to server
-ssh -i ~/.ssh/id_ed25519 u3102-burdgyn0i9k2@35.206.121.157 -p 18765 \
-"cd ~/www/jdaitken.ca && git pull origin main"
+# 4) Deploy to SiteGround via SSH + rsync
+echo "🌐 Deploying to SiteGround..."
 
-echo "🎉 DEPLOY COMPLETE!"
+rsync -avz \
+  --exclude ".git" \
+  --exclude "node_modules" \
+  -e "ssh -i ~/.ssh/id_ed25519 -p 18765" \
+  ./ \
+  u3102-burdgyn0i9k2@ssh.jdaitken.ca:/home/u3102-burdgyn0i9k2/public_html/
+
+echo "✨ Deploy complete!"
