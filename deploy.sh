@@ -1,49 +1,36 @@
 #!/bin/bash
 set -e
 
-echo "🧠 Starting deploy..."
+echo "🔄 Pulling latest local changes..."
+git pull origin main --rebase || true
 
-###############################################
-# 1) Commit & push changes to GitHub (local)
-###############################################
-
-echo "🔄 Committing and pushing to GitHub..."
+echo "🧠 Committing your changes..."
 git add .
 git commit -m "update site" || true
+
+echo "🚀 Pushing to GitHub..."
 git push origin main
 
-###############################################
-# 2) Upload files to SiteGround via SSH/rsync
-#    (uses 1Password SSH agent automatically)
-###############################################
+echo "🌐 Deploying to SiteGround..."
 
-echo "🌐 Uploading to SiteGround..."
+# Update these:
+USER="u3102-burdgyn0i9k2"
+HOST="35.206.121.157"
+PORT="18765"
+REMOTE_DIR="/home/customer/www/jdaitken.ca/public_html/"
 
-rsync -avz \
-  -e "ssh -p 18765" \
-  --exclude ".git/" \
-  --exclude "deploy.sh" \
-  --exclude "deploy.php" \
-  ./ \
-  u3102-burdgyn0i9k2@ssh.jdaitken.ca:~/www/jdaitken.ca/public_html/
+# Upload all site files
+rsync -avz --delete \
+  -e "ssh -p $PORT" \
+  . $USER@$HOST:$REMOTE_DIR
 
-###############################################
-# 3) Cache-bust CSS/JS live on server
-###############################################
+echo "🧹 Clearing Remote CSS/JS cache-busting..."
+ssh -p $PORT $USER@$HOST << 'EOF'
+cd /home/customer/www/jdaitken.ca/public_html
+REV=$(date +%s)
+sed -i.bak -E "s/styles\.css\?[0-9]+/styles.css?\$REV/" index.html
+sed -i.bak -E "s/script\.js\?[0-9]+/script.js?\$REV/" index.html
+rm -f index.html.bak
+EOF
 
-echo "🔧 Cache-busting CSS/JS..."
-
-ssh -p 18765 u3102-burdgyn0i9k2@ssh.jdaitken.ca '
-  set -e
-  cd ~/www/jdaitken.ca/public_html
-
-  # version = unix timestamp
-  REV=$(date +%s)
-
-  sed -i.bak -E "s/(styles\.css)(\?v=[0-9]+)?/\1?v=${REV}/" index.html && rm -f index.html.bak
-  sed -i.bak -E "s/(script\.js)(\?v=[0-9]+)?/\1?v=${REV}/" index.html && rm -f index.html.bak
-
-  echo "✅ Updated version to $REV"
-'
-
-echo "🎉 Deploy complete! https://jdaitken.ca"
+echo "✅ Deploy complete! Visit: https://jdaitken.ca"
