@@ -29,6 +29,6 @@ rsync -avz \
   --exclude "node_modules" \
   -e "ssh -i ~/.ssh/id_ed25519 -p 18765" \
   ./ \
-  u3102-burdgyn0i9k2@35.206.121.157:/home/jdaitken.ca/public_html/
+  u3102-burdgyn0i9k2@35.206.121.157:/home/customer/www/jdaitken.ca/public_html/
 
 echo "✨ Deploy complete!"
