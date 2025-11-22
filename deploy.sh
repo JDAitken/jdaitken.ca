@@ -1,26 +1,18 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Simple Deploy Starting..."
+echo "🚀 Super Simple Deploy Starting..."
 
-echo "🧩 Adding all changes first..."
-git add . || true
+# ALWAYS stage everything
+git add -A
 
-echo "📦 Stashing changes..."
-git stash push --include-untracked || true
+# ALWAYS commit (even if nothing changed)
+git commit -m "deploy" || true
 
-echo "🔄 Pulling latest from GitHub..."
-git pull origin main --rebase || true
-
-echo "📥 Restoring changes..."
-git stash pop || true
-
-echo "📝 Committing & pushing..."
-git add .
-git commit -m "simple deploy" || true
+# ALWAYS push
 git push origin main
 
-echo "🌐 Deploying to SiteGround..."
+# ALWAYS deploy to server
 ssh -i ~/.ssh/id_ed25519 u3102-burdgyn0i9k2@35.206.121.157 -p 18765 \
 "cd ~/www/jdaitken.ca && git pull origin main"
 
