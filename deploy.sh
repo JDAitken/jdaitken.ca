@@ -3,7 +3,6 @@ set -e
 
 echo "🚀 Simple Deploy Starting..."
 
-# Automatically clean up local changes
 echo "📦 Stashing changes..."
 git stash push --include-untracked || true
 
@@ -19,7 +18,7 @@ git commit -m "simple deploy" || true
 git push origin main
 
 echo "🌐 Deploying to SiteGround..."
-ssh -i ~/.ssh/id_ed25519 u3102-burdgyn0i9k2@ssh.jdaitken.ca -p 18765 \
+ssh -i ~/.ssh/id_ed25519 u3102-burdgyn0i9k2@35.206.121.157 -p 18765 \
 "cd ~/www/jdaitken_ca/public_html && git pull origin main"
 
 echo "🎉 DEPLOY COMPLETE!"
