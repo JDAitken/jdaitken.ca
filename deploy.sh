@@ -3,6 +3,9 @@ set -e
 
 echo "🚀 Simple Deploy Starting..."
 
+echo "🧩 Adding all changes first..."
+git add . || true
+
 echo "📦 Stashing changes..."
 git stash push --include-untracked || true
 
