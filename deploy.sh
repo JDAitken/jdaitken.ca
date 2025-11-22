@@ -29,3 +29,4 @@ rsync -avz \
   u3102-burdgyn0i9k2@35.206.121.157:/home/u3102-burdgyn0i9k2/public_html/
 
 echo "✨ Deploy complete!"
+
