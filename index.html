@@ -1,67 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JD Aitken | Web Designer</title>
-  <link rel="stylesheet" href="styles.css" />
-  <h1 style="color:red;">THIS IS A TEST DEPLOY</h1>
-  <h1 style="color: blue;">JD NEW MACBOOK TEST</h1>
-
-
-<!-- Favicon setup -->
-<link rel="icon" type="image/svg+xml" href="/favicon.ico" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-<!-- Optional fallbacks for older browsers -->
-<link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/svg+xml" href="/favicon.ico" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg?v=3" media="(prefers-color-scheme: dark)">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
 <body>
-<header>
-  <div class="header-container">
-    <div class="logo-left">
-      <a href="/" class="logo-link" aria-label="Go to homepage">
-        <picture>
-          <source srcset="favicon-light.svg" media="(prefers-color-scheme: light)">
-          <source srcset="favicon-dark.svg" media="(prefers-color-scheme: dark)">
-          <img src="favicon-light.svg" alt="Gem Logo" class="gem-logo">
-        </picture>
-      </a>
-    </div>
-    <h1>JD Aitken 🚀</h1>
-  </div>
-</header>
-  <main>
-    <section class="intro">
-      <h2>Hello World</h2>
-      <p>This is a mock website built using HTML, CSS, and JavaScript.</p>
-      <button id="actionBtn">Click Me</button>
+  <main class="container">
+    <header class="hero">
+      <p class="hero-kicker">JD Aitken</p>
+      <h1>Simple starter websites & small automations for real people.</h1>
+      <p class="hero-subtitle">
+        I’m learning web development and using what I know right now to help people get online with clean, fast, no-drama websites.
+      </p>
+      <button class="btn-primary">See what I can build</button>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m JD, a web developer-in-training based in Canada. I’m currently working through FreeCodeCamp, building small projects,
+        and experimenting with HTML, CSS, and a bit of JavaScript.
+      </p>
+      <p>
+        This site is part portfolio, part learning lab. I’m sharing what I can build right now — simple, clean starter sites and
+        landing pages for personal projects and small businesses.
+      </p>
+      <p>
+        My goal is to keep things minimal, fast, and easy to understand. No buzzwords, no overcomplication — just straightforward
+        web pages that work.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>What I Can Build Right Now</h2>
+      <p>I’m still learning, but here are the kinds of pages I’m comfortable building today:</p>
+      <ul>
+        <li><strong>One-page personal sites</strong> – a simple homepage with your name, photo, bio, and contact link.</li>
+        <li><strong>Basic 2–3 page small business sites</strong> – Home, Services, and Contact pages for things like dog walkers, barbers, trainers, or freelancers.</li>
+        <li><strong>Landing pages</strong> – a focused page for a product, referral link, or promotion.</li>
+        <li><strong>Starter portfolio pages</strong> – simple layouts to showcase a few projects or photos.</li>
+      </ul>
+      <p>As I learn more, I’ll expand this list and upgrade the projects you see here.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Practice Projects</h2>
+      <p>These are practice projects I’m building as I learn. Some are simple, some are a bit experimental, but all of them are steps in getting better.</p>
+      <ul>
+        <li><strong>Dog Walker Landing Page</strong> – a clean one-page site for a local dog walker with services, pricing, and a contact button.</li>
+        <li><strong>Barber Shop 3-Page Site</strong> – Home, Services, and Contact pages for a modern neighbourhood barbershop.</li>
+        <li><strong>Fitness Coach Landing Page</strong> – a focused page with a hero section, transformation story, and “Book a Call” CTA.</li>
+      </ul>
+      <p>As I finish these, I’ll link live demos and code so you can see exactly what I’m working on.</p>
+    </section>
+
+    <section id="wealthsimple">
+      <h2>Wealthsimple Referral</h2>
+      <p>
+        I use Wealthsimple for my own investing. If you’re interested in getting started, you can use my referral link below —
+        we both get a bonus when you fund your account.
+      </p>
+      <p>
+        <a href="YOUR_REFERRAL_LINK_HERE" target="_blank" rel="noopener noreferrer">
+          Claim a $25 Wealthsimple bonus
+        </a>
+      </p>
+      <p><small>This is a referral link, which means I may receive a bonus if you sign up and fund your account.</small></p>
+    </section>
+
+    <section id="contact">
+      <h2>Get in Touch</h2>
+      <p>
+        Want a simple starter website or landing page, or just want to say hi? I’m always open to feedback, practice projects, or
+        small collaborations while I keep learning.
+      </p>
+      <p>
+        You can reach me at:
+        <a href="mailto:your.email@jdaitken.ca">your.email@jdaitken.ca</a>
+      </p>
     </section>
   </main>
-  <script src="script.js"></script>
 </body>
-<footer class="referral-footer">
-  <div class="referral-content">
-    <p class="referral-text">
-      Get <strong>$25</strong> when you join <span>Wealthsimple</span> with my referral link 🎁
-    </p>
-    <a href="https://wealthsimple.com/invite/U57KKW"
-       class="referral-btn"
-       target="_blank"
-       rel="noopener noreferrer nofollow">
-       <img src="wealthsimple-logo.svg"
-            alt="Wealthsimple"
-            class="referral-logo">
-       Claim $25 Bonus
-    </a>
-    <small class="referral-disclaimer">
-      This is a referral link — I may receive a bonus.
-    </small>
-  </div>
-</footer>
-</html>
