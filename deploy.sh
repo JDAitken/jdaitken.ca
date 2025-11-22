@@ -19,6 +19,6 @@ git push origin main
 
 echo "🌐 Deploying to SiteGround..."
 ssh -i ~/.ssh/id_ed25519 u3102-burdgyn0i9k2@35.206.121.157 -p 18765 \
-"cd ~/www/jdaitken_ca/public_html && git pull origin main"
+"cd ~/www/jdaitken.ca && git pull origin main"
 
 echo "🎉 DEPLOY COMPLETE!"
