@@ -18,7 +18,7 @@ git commit -m "Deploy update" || true
 echo "🚀 Pushing to GitHub..."
 git push origin main
 
-# 4) Deploy to SiteGround via SSH + rsync
+# 4) Deploy via SSH + rsync
 echo "🌐 Deploying to SiteGround..."
 
 rsync -avz \
@@ -26,6 +26,6 @@ rsync -avz \
   --exclude "node_modules" \
   -e "ssh -i ~/.ssh/id_ed25519 -p 18765" \
   ./ \
-  u3102-burdgyn0i9k2@ssh.jdaitken.ca:/home/u3102-burdgyn0i9k2/public_html/
+  u3102-burdgyn0i9k2@35.206.121.157:/home/u3102-burdgyn0i9k2/public_html/
 
 echo "✨ Deploy complete!"
