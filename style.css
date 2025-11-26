@@ -29,6 +29,7 @@ a {
   align-items: center;
   padding: 24px 48px;
   border-bottom: 1px solid #eee;
+  position: sticky;
 }
 
 .logo {
