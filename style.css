@@ -30,6 +30,9 @@ a {
   padding: 24px 48px;
   border-bottom: 1px solid #eee;
   position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
 }
 
 .logo {
