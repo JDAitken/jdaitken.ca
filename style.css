@@ -212,3 +212,56 @@ footer {
   opacity: 1;
 }
 
+/* Contact Section */
+.contact {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.contact p {
+  margin-bottom: 24px;
+}
+
+/* Primary Button */
+.btn {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin: 6px;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* Outline Button (Copy Email) */
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #111;
+  border: 1px solid #111;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin: 6px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Plain text fallback */
+.contact-email {
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.7;
+}

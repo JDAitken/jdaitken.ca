@@ -95,8 +95,30 @@
   <h2>Contact</h2>
   <p>Interested in working together?</p>
 
-  <a href="mailto:jd@jdaitken.ca" class="btn">Email Me</a>
+  <!-- Main Email Button -->
+  <a href="mailto:jd@jdaitken.ca?subject=Website%20Inquiry" class="btn">
+    Email Me
+  </a>
+
+  <!-- Copy Email Button -->
+  <button id="copyEmail" class="btn-outline">
+    Copy Email
+  </button>
+
+  <!-- Plain-text fallback -->
+  <p class="contact-email">
+    Or reach me directly: <strong>jd@jdaitken.ca</strong>
+  </p>
 </section>
+
+<script>
+  // Copy email to clipboard
+  document.getElementById("copyEmail").onclick = () => {
+    navigator.clipboard.writeText("jd@jdaitken.ca");
+    alert("Email copied to clipboard!");
+  };
+</script>
+
 
 <footer>
   <p>© 2025 JD Media</p>
