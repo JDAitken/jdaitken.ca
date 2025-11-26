@@ -211,3 +211,23 @@ footer {
 .project-link:hover {
   opacity: 1;
 }
+
+/* LOGO */
+.logo img {
+  height: 32px;
+  width: auto;
+}
+
+/* Dark/Light Mode Auto Switch */
+.logo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: inline;
+  }
+}
