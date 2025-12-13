@@ -1,5 +1,5 @@
 (() => {
-  const CHAT_ENABLED = false; // Feature flag: set true to enable UI/API calls.
+  const CHAT_ENABLED = true; // Feature flag: set true to enable UI/API calls.
   const API_URL = '/api/chat.php';
 
   if (!CHAT_ENABLED) return;
