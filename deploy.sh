@@ -3,7 +3,7 @@ set -e
 
 # ========= CHANGE THESE TWO LINES PER PROJECT =========
 SITE_NAME="jdaitken.ca"
-DEST="u3102-burdgyn0i9k2@jdaitken.ca:~/public_html/"
+DEST="u3102-burdgyn0i9k2@jdaitken.ca:~/www/jdaitken.ca/public_html/"
 # =====================================================
 
 echo "🚀 Deploying $SITE_NAME..."
