@@ -43,6 +43,9 @@ $tmpDir = __DIR__ . '/../../openai-tmp';
 if (!is_dir($tmpDir)) {
     mkdir($tmpDir, 0700, true);
 }
+if (!is_dir($tmpDir)) {
+    $respond(500, ['error' => 'Server storage configuration error']);
+}
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $ipKey = preg_replace('/[^a-zA-Z0-9:_-]/', '_', $ip);
 $limitFile = $tmpDir . '/' . $ipKey . '.json';
@@ -52,7 +55,15 @@ $now = time();
 $record = ['count' => 0, 'reset' => $now + $window];
 
 if (file_exists($limitFile)) {
-    $stored = json_decode((string) file_get_contents($limitFile), true);
+    $stored = null;
+    $fh = fopen($limitFile, 'rb');
+    if ($fh) {
+        if (flock($fh, LOCK_SH)) {
+            $stored = json_decode((string) stream_get_contents($fh), true);
+            flock($fh, LOCK_UN);
+        }
+        fclose($fh);
+    }
     if (is_array($stored) && isset($stored['count'], $stored['reset'])) {
         $record = $stored;
     }
