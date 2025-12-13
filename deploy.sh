@@ -1,51 +1,40 @@
 #!/bin/zsh
-set -eu
+set -e
 
-# =========================
-# SITE CONFIG
-# =========================
+# ========= CHANGE THESE TWO LINES PER PROJECT =========
 SITE_NAME="jdaitken.ca"
-EXPECTED_DIR="/Users/jdaitken/code/jdaitken.ca"
-EXPECTED_REMOTE="jdaitken.ca.git"
+DEST="u3102-burdgyn0i9k2@jdaitken.ca:~/public_html/"
+# =====================================================
 
-SSH_HOST="jdaitken.ca"
-SSH_PORT="18765"
-SSH_USER="u3102-burdgyn0i9k2"
-REMOTE_PATH="~/public_html/"
-SSH_KEY="$HOME/.ssh/id_ed25519"
+echo "🚀 Deploying $SITE_NAME..."
 
-# =========================
-# SAFETY CHECKS
-# =========================
-echo ""
-echo "🚀 Deploying $SITE_NAME"
-echo "📂 Local:  $(pwd)"
-echo "🎯 Remote: $SSH_USER@$SSH_HOST:$REMOTE_PATH"
-echo ""
+# Optional micro-safety: makes sure you're in the right folder name
+EXPECTED_DIR="$SITE_NAME"
+CURRENT_DIR="$(basename "$(pwd)")"
+if [[ "$CURRENT_DIR" != "$EXPECTED_DIR" ]]; then
+  echo "❌ Wrong folder. Expected: $EXPECTED_DIR | Current: $CURRENT_DIR"
+  exit 1
+fi
 
-[[ "$(pwd)" == "$EXPECTED_DIR" ]] || { echo "🛑 Wrong folder"; exit 1; }
-
-REMOTE_URL="$(git remote get-url origin 2>/dev/null || true)"
-[[ -n "$REMOTE_URL" ]] || { echo "🛑 No git remote 'origin'"; exit 1; }
-[[ "$REMOTE_URL" == *"$EXPECTED_REMOTE"* ]] || { echo "🛑 Wrong repo: $REMOTE_URL"; exit 1; }
-
-read "CONFIRM?Type '$SITE_NAME' to deploy: "
-[[ "$CONFIRM" == "$SITE_NAME" ]] || { echo "❌ Cancelled"; exit 1; }
-
-# =========================
-# DEPLOY
-# =========================
+# 1) Commit changes
 git add .
-git commit -m "Deploy update" || true
-git pull origin main --rebase || true
+git commit -m "Auto-deploy: $SITE_NAME" || true
+
+# 2) Pull from GitHub
+git pull origin main --rebase
+
+# 3) Push new changes to GitHub
 git push origin main
 
-rsync -avz \
-  --exclude='/.git/' \
-  --exclude='/.vscode/' \
-  --exclude='.DS_Store' \
-  -e "ssh -i $SSH_KEY -p $SSH_PORT" \
+# 4) Sync to SiteGround
+rsync -avz --delete \
+  --exclude ".git" \
+  --exclude ".DS_Store" \
+  --exclude "node_modules" \
+  --exclude ".vscode" \
+  --exclude "deploy.sh" \
+  -e "ssh -p 18765" \
   ./ \
-  "$SSH_USER@$SSH_HOST:$REMOTE_PATH"
+  "$DEST"
 
-echo "✅ Deploy complete: $SITE_NAME"
+echo "✅ Deployment complete: $SITE_NAME"
