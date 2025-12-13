@@ -14,14 +14,15 @@
   position: fixed;
   bottom: 24px;
   right: 24px;
-  padding: 12px 18px;
+  padding: 13px 20px;
   border-radius: 999px;
   background: var(--chat-accent);
   color: var(--chat-accent-contrast);
   font-weight: 700;
+  font-size: 15px;
   letter-spacing: -0.1px;
   border: 1px solid var(--chat-accent);
-  box-shadow: var(--chat-shadow);
+  box-shadow: var(--chat-shadow), 0 0 0 1px color-mix(in srgb, var(--chat-accent) 18%, transparent);
   cursor: pointer;
   z-index: 1200;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

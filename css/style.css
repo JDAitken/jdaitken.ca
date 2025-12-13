@@ -434,3 +434,18 @@ footer {
     padding: 80px 24px;
   }
 }
+
+/* Hover underlines for nav links and buttons */
+.nav a,
+.nav-cta,
+.btn {
+  text-decoration: none;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.nav a:hover,
+.nav-cta:hover,
+.btn:hover {
+  text-decoration: underline;
+}
