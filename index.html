@@ -41,23 +41,29 @@
     })();
   </script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chat.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="nav">
-  <div class="logo" aria-label="JD Media logo">JD</div>
-  <nav aria-label="Main Navigation">
-    <a href="#work">Work</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact" class="nav-cta">Contact</a>
+<header class="nav" data-nav>
+  <a class="logo" aria-label="JD Media home" href="/">JD</a>
+  <nav id="primary-navigation" aria-label="Main Navigation" class="nav-links" data-nav-links>
+    <a href="/work.html">Work</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html" class="nav-cta">Contact</a>
   </nav>
-  <button type="button" class="theme-toggle" aria-label="Toggle color theme" data-theme-toggle>
-    <span class="theme-toggle__icon" aria-hidden="true">☀</span>
-    <span class="theme-toggle__label" data-theme-toggle-label>Light</span>
-  </button>
+  <div class="nav-actions">
+    <button type="button" class="theme-toggle" aria-label="Toggle color theme" data-theme-toggle>
+      <span class="theme-toggle__icon" aria-hidden="true">☀</span>
+      <span class="theme-toggle__label" data-theme-toggle-label>Light</span>
+    </button>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+      Menu
+    </button>
+  </div>
 </header>
 
 <section class="hero">
@@ -154,10 +160,13 @@
   </div>
 </section>
 
+<div id="chat-widget-root" aria-live="polite"></div>
+
 <footer>
   <p>© 2025 JD Media — Minimal Web Design</p>
 </footer>
 
 <script src="js/main.js" defer></script>
+<script src="js/chat.js" defer></script>
 </body>
 </html>
