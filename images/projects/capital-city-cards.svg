@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Capital City Cards website hero preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1018"/>
+      <stop offset="100%" stop-color="#1b1c2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="120" y="180" width="360" height="56" rx="16" fill="#11121c" stroke="#2c2d3d" opacity="0.6"/>
+  <text x="160" y="216" fill="#c8ab66" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" letter-spacing="1.2">GREAT VIBES · UNPARALLELED VALUE</text>
+  <text x="120" y="340" fill="#f5f5f7" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="68" font-weight="700" letter-spacing="-1.5">Premium football hobby</text>
+  <text x="120" y="410" fill="#f5f5f7" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="68" font-weight="700" letter-spacing="-1.5">breaks, built for rewards.</text>
+  <text x="120" y="470" fill="#c6c7d5" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">Hobby in every break, buyer giveaways, and crazy reward tiers—live</text>
+  <text x="120" y="505" fill="#c6c7d5" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">Fridays or Saturdays.</text>
+  <rect x="120" y="560" width="200" height="64" rx="14" fill="#c8ab66" />
+  <text x="160" y="601" fill="#0f1018" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="700">Shop products</text>
+  <rect x="340" y="560" width="200" height="64" rx="14" fill="none" stroke="#c8ab66" stroke-width="2"/>
+  <text x="382" y="601" fill="#f5f5f7" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="700">About 613</text>
+  <rect x="880" y="300" width="520" height="260" rx="26" fill="#11121c" stroke="#2c2d3d" opacity="0.9"/>
+  <text x="920" y="350" fill="#a9aac0" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">This week</text>
+  <text x="920" y="410" fill="#f5f5f7" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="34" font-weight="700">Breaks built for rewards.</text>
+  <text x="920" y="455" fill="#c6c7d5" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="20" font-weight="400">Hobby in every break, buyer giveaways every stream.</text>
+  <rect x="920" y="490" width="210" height="58" rx="12" fill="none" stroke="#c8ab66" stroke-width="2"/>
+  <text x="950" y="528" fill="#c8ab66" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Follow on Whatnot</text>
+  <text x="120" y="710" fill="#c6c7d5" font-family="DM Sans, 'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="500">Capital City Cards · Ottawa · Built by JD Media</text>
+</svg>
