@@ -1,86 +1,61 @@
 #!/bin/zsh
-set -euo pipefail
+set -e
 
 # =========================
-# ✅ SITE CONFIG (EDIT THIS)
+# SITE CONFIG (ONLY EDIT THESE)
 # =========================
-SITE_NAME="JD Aitken (jdaitken.ca)"
-
-# IMPORTANT: set this to the EXACT local folder for this repo
+SITE_NAME="jdaitken.ca"
 EXPECTED_DIR="/Users/jdaitken/code/jdaitken.ca"
+EXPECTED_REMOTE="jdaitken.ca.git"
 
-# A unique keyword that MUST appear in your git remote URL for this repo
-# Example: "jdaitken" or "jdaitken-ca" or the repo name on GitHub
-EXPECTED_REMOTE_KEYWORD="jdaitken"
-
-# SSH + rsync destination (EDIT THESE)
-SSH_HOST="ssh.YOUR-SITEGROUND-HOST.com"      # e.g. ssh.johna123.sg-host.com
-SSH_PORT="18765"                             # e.g. 18765
-SSH_USER="uXXXX-XXXXXXXXXXXX"                # e.g. u2826-exegcos33idr
-REMOTE_PATH="~/www/jdaitken.ca/public_html/"  # your exact SiteGround path
-
-# Optional: custom SSH key (leave blank to use default key)
-SSH_KEY="${HOME}/.ssh/id_ed25519"
+SSH_HOST="jdaitken.ca"
+SSH_PORT="18765"
+SSH_USER="u3102-burdgyn0i9k2"
+REMOTE_PATH="~/public_html/"
+SSH_KEY="$HOME/.ssh/id_ed25519"
 
 # =========================
-# 🔒 SAFETY CHECKS
+# SAFETY CHECKS
 # =========================
-echo "=================================="
-echo "🚀 DEPLOYING: ${SITE_NAME}"
-echo "📂 Current folder: $(pwd)"
-echo "=================================="
-
-if [[ "$(pwd)" != "$EXPECTED_DIR" ]]; then
-  echo "🛑 WRONG FOLDER"
-  echo "You are in: $(pwd)"
-  echo "Expected:  $EXPECTED_DIR"
-  exit 1
-fi
-
-echo "🔎 Checking git remote..."
-REMOTE_URL="$(git remote get-url origin 2>/dev/null || true)"
-if [[ -z "$REMOTE_URL" ]]; then
-  echo "🛑 No 'origin' remote found. Are you in a git repo?"
-  exit 1
-fi
-echo "origin -> $REMOTE_URL"
-
-if ! echo "$REMOTE_URL" | grep -qi "$EXPECTED_REMOTE_KEYWORD"; then
-  echo "🛑 WRONG REPO (remote URL didn't match keyword: $EXPECTED_REMOTE_KEYWORD)"
-  exit 1
-fi
-
 echo ""
-read -p "🚨 Confirm deploy to ${SITE_NAME}? Type 'deploy' to continue: " CONFIRM
-if [[ "$CONFIRM" != "deploy" ]]; then
-  echo "❌ Cancelled."
+echo "🚀 Deploying $SITE_NAME"
+echo "📂 Local folder: $(pwd)"
+echo "🎯 Remote: $SSH_USER@$SSH_HOST:$REMOTE_PATH"
+echo ""
+
+# Folder check
+if [[ "$(pwd)" != "$EXPECTED_DIR" ]]; then
+  echo "🛑 Wrong folder"
   exit 1
 fi
 
+# Repo check
+REMOTE_URL=$(git remote get-url origin)
+if [[ "$REMOTE_URL" != *"$EXPECTED_REMOTE"* ]]; then
+  echo "🛑 Wrong git repo"
+  echo "Found: $REMOTE_URL"
+  exit 1
+fi
+
+# Confirm
+read -p "Type '$SITE_NAME' to deploy: " CONFIRM
+[[ "$CONFIRM" == "$SITE_NAME" ]] || exit 1
+
 # =========================
-# ✅ DEPLOY STEPS
+# DEPLOY
 # =========================
-echo "📦 Staging changes..."
 git add .
-
-echo "📝 Committing (if needed)..."
 git commit -m "Deploy update" || true
-
-echo "🔄 Pulling latest (rebase)..."
 git pull origin main --rebase || true
-
-echo "🚀 Pushing to GitHub..."
 git push origin main
 
-echo "🌐 Deploying via rsync to SiteGround..."
-rsync -avz --delete \
+rsync -avz --delete --dry-run \
   --exclude ".git" \
   --exclude ".vscode" \
   --exclude ".DS_Store" \
-  --exclude "node_modules" \
-  --exclude "*.log" \
   -e "ssh -i $SSH_KEY -p $SSH_PORT" \
   ./ \
-  "${SSH_USER}@${SSH_HOST}:${REMOTE_PATH}"
+  "$SSH_USER@$SSH_HOST:$REMOTE_PATH"
 
-echo "✅ Deployment complete: ${SITE_NAME}"
+
+echo "✅ Deploy complete"
