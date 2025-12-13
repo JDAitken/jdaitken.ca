@@ -1,6 +1,7 @@
 <?php
 // Lightweight PHP proxy for OpenAI Responses API with basic abuse controls.
 declare(strict_types=1);
+const CHAT_API_ENABLED = true;
 
 // Security headers
 header('Content-Type: application/json; charset=utf-8');
@@ -16,6 +17,10 @@ $respond = static function (int $status, array $payload): void {
     echo json_encode($payload);
     exit;
 };
+
+if (CHAT_API_ENABLED === false) {
+    $respond(503, ['error' => 'Chat is temporarily disabled']);
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $respond(405, ['error' => 'Method not allowed']);
@@ -49,10 +54,14 @@ if (!is_dir($tmpDir)) {
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $ipKey = preg_replace('/[^a-zA-Z0-9:_-]/', '_', $ip);
 $limitFile = $tmpDir . '/' . $ipKey . '.json';
+$dailyLimitFile = $tmpDir . '/' . $ipKey . '.daily.json';
 $limit = 10; // max requests
 $window = 60; // in seconds
 $now = time();
 $record = ['count' => 0, 'reset' => $now + $window];
+$dailyWindow = 86400; // 24 hours
+$dailyLimit = 200;
+$dailyRecord = ['count' => 0, 'reset' => $now + $dailyWindow];
 
 if (file_exists($limitFile)) {
     $stored = null;
@@ -77,8 +86,33 @@ if ($record['count'] >= $limit) {
     $respond(429, ['error' => 'Rate limit exceeded. Please wait a moment.']);
 }
 
+if (file_exists($dailyLimitFile)) {
+    $storedDaily = null;
+    $fhDaily = fopen($dailyLimitFile, 'rb');
+    if ($fhDaily) {
+        if (flock($fhDaily, LOCK_SH)) {
+            $storedDaily = json_decode((string) stream_get_contents($fhDaily), true);
+            flock($fhDaily, LOCK_UN);
+        }
+        fclose($fhDaily);
+    }
+    if (is_array($storedDaily) && isset($storedDaily['count'], $storedDaily['reset'])) {
+        $dailyRecord = $storedDaily;
+    }
+}
+
+if ($now > ($dailyRecord['reset'] ?? 0)) {
+    $dailyRecord = ['count' => 0, 'reset' => $now + $dailyWindow];
+}
+
+if ($dailyRecord['count'] >= $dailyLimit) {
+    $respond(429, ['error' => 'Daily limit reached. Try again tomorrow.']);
+}
+
 $record['count']++;
+$dailyRecord['count']++;
 file_put_contents($limitFile, json_encode($record), LOCK_EX);
+file_put_contents($dailyLimitFile, json_encode($dailyRecord), LOCK_EX);
 
 require_once __DIR__ . '/../../openai-config.php';
 if (!defined('OPENAI_API_KEY') || !OPENAI_API_KEY) {

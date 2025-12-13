@@ -7,7 +7,7 @@
   --chat-accent: var(--accent, #0f1115);
   --chat-accent-contrast: var(--accent-contrast, #ffffff);
   --chat-radius: 14px;
-  --chat-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.1));
+  --chat-shadow: var(--shadow, 0 8px 22px rgba(0,0,0,0.12));
 }
 
 .chat-launch {
@@ -48,6 +48,7 @@
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease;
   z-index: 1199;
+  max-height: min(70vh, 520px);
 }
 
 .chat-widget.is-open {
@@ -74,7 +75,7 @@
 }
 
 .chat-body {
-  max-height: 320px;
+  max-height: calc(70vh - 150px);
   overflow-y: auto;
   padding: 12px;
   display: flex;
@@ -119,6 +120,13 @@
   border: 1px solid var(--chat-border);
   background: var(--chat-bg);
   color: var(--chat-text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chat-input:focus {
+  border-color: var(--chat-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--chat-accent) 20%, transparent);
 }
 
 .chat-send {
