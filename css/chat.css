@@ -1,11 +1,12 @@
 /* Minimal chat widget styles; inherits palette from main theme tokens. */
 :root {
-  --chat-bg: var(--card, #ffffff);
-  --chat-text: var(--text, #0f1115);
-  --chat-muted: var(--muted, #60636c);
-  --chat-border: var(--border, #e2e5ec);
-  --chat-accent: var(--accent, #0f1115);
-  --chat-accent-contrast: var(--accent-contrast, #ffffff);
+  --chat-bg: var(--surface);
+  --chat-surface-2: var(--surface-2);
+  --chat-text: var(--text);
+  --chat-muted: var(--muted);
+  --chat-border: var(--border);
+  --chat-accent: var(--accent);
+  --chat-accent-contrast: var(--accent-contrast);
   --chat-radius: 14px;
   --chat-shadow: var(--shadow, 0 8px 22px rgba(0,0,0,0.12));
 }
@@ -14,14 +15,14 @@
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   padding: 0;
   border-radius: 999px;
   background: var(--chat-bg);
   color: var(--chat-accent);
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.2px;
   border: 1px solid var(--chat-border);
   box-shadow: var(--chat-shadow);
@@ -39,6 +40,31 @@
 .chat-launch:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--chat-accent) 30%, transparent);
   outline-offset: 3px;
+}
+
+.chat-launch::after {
+  content: 'Ask JD';
+  position: absolute;
+  right: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.chat-launch:hover::after,
+.chat-launch:focus-visible::after {
+  opacity: 1;
+  transform: translate(-2px, -50%);
 }
 
 .chat-widget {
@@ -73,6 +99,7 @@
   padding: 12px 14px;
   border-bottom: 1px solid var(--chat-border);
   font-weight: 700;
+  background: var(--chat-bg);
 }
 
 .chat-close {
@@ -90,13 +117,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: var(--chat-bg);
 }
 
 .chat-message {
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid var(--chat-border);
-  background: var(--subtle, #f1f2f7);
+  background: var(--chat-surface-2, var(--subtle));
   color: var(--chat-text);
   line-height: 1.4;
   font-size: 14px;

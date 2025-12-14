@@ -95,6 +95,7 @@
     launch.type = 'button';
     launch.className = 'chat-launch';
     launch.setAttribute('aria-label', 'Open AI chat assistant');
+    launch.setAttribute('data-tooltip', 'Ask JD');
     launch.innerHTML = `<span aria-hidden="true">💬</span>`;
     launch.setAttribute('aria-expanded', 'false');
     launch.addEventListener('click', () => toggleWidget());
@@ -107,10 +108,11 @@
 
     const header = document.createElement('div');
     header.className = 'chat-header';
-    header.innerHTML = '<span>Chat</span>';
+    header.innerHTML = '<span>JD Media Assistant</span>';
     const close = document.createElement('button');
     close.type = 'button';
     close.className = 'chat-close';
+    close.setAttribute('aria-label', 'Close chat');
     close.textContent = '×';
     close.addEventListener('click', () => toggleWidget(false));
     header.appendChild(close);
