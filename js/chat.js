@@ -82,6 +82,7 @@
     }
     if (el.launch) {
       el.launch.setAttribute('aria-pressed', state.open ? 'true' : 'false');
+      el.launch.setAttribute('aria-expanded', state.open ? 'true' : 'false');
     }
     if (state.open) {
       el.input?.focus();
@@ -93,7 +94,14 @@
     const launch = document.createElement('button');
     launch.type = 'button';
     launch.className = 'chat-launch';
-    launch.textContent = 'Chat';
+    launch.setAttribute('aria-label', 'Open AI chat assistant');
+    launch.innerHTML = `
+      <span class="chat-launch__pulse" aria-hidden="true"></span>
+      <span class="chat-launch__copy">
+        <span class="chat-launch__label">AI Chat</span>
+        <span class="chat-launch__hint">Ask anything about the site</span>
+      </span>
+    `;
     launch.setAttribute('aria-expanded', 'false');
     launch.addEventListener('click', () => toggleWidget());
 
