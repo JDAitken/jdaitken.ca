@@ -44,7 +44,7 @@
 
   const applyTheme = (theme, { persist = true } = {}) => {
     if (!isValidTheme(theme)) return;
-    root.setAttribute('data-theme', theme);
+    root.dataset.theme = theme;
     applyToggleState(theme);
     if (persist) {
       storage.set(theme);
@@ -76,7 +76,7 @@
       prefersDark.addListener(handleSystemChange);
     }
     toggle?.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
     });

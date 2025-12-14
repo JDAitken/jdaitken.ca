@@ -1,32 +1,35 @@
 :root {
   color-scheme: light;
-  --bg: #f7f8fb;
-  --card: #ffffff;
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #eceff5;
   --text: #0f1115;
-  --muted: #60636c;
-  --border: #e2e5ec;
+  --muted: #5f6270;
+  --border: #dfe3ec;
   --shadow: 0 12px 30px rgba(0,0,0,0.06);
   --shadow-hover: 0 18px 40px rgba(0,0,0,0.08);
-  --subtle: #f1f2f7;
   --accent: #0f1115;
   --accent-contrast: #ffffff;
   --pill: #eef0f5;
-  --nav-backdrop: rgba(247, 248, 251, 0.9);
+  --nav-backdrop: color-mix(in srgb, var(--bg) 88%, transparent);
   --radius-card: 16px;
   --radius-pill: 12px;
   --transition: 0.22s ease;
+  --card: var(--surface);
+  --subtle: var(--surface-2);
+  --border-strong: color-mix(in srgb, var(--border) 90%, transparent);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
   --bg: #0b0c12;
-  --card: #11131c;
+  --surface: #11131c;
+  --surface-2: #161827;
   --text: #f1f3f5;
   --muted: #b0b3c0;
-  --border: #1d1f2a;
+  --border: #1e2230;
   --shadow: 0 12px 32px rgba(0,0,0,0.35);
   --shadow-hover: 0 18px 46px rgba(0,0,0,0.45);
-  --subtle: #161827;
   --accent: #c8ab66;
   --accent-contrast: #0b0c12;
   --pill: #151725;
@@ -322,6 +325,84 @@ a {
   opacity: 0.85;
 }
 
+.packages {
+  padding: 100px 48px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.packages h2 {
+  font-size: 32px;
+  margin-bottom: 28px;
+}
+
+.packages-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.package-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  box-shadow: none;
+}
+
+.package-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.package-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.package-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.package-price strong {
+  font-weight: 800;
+}
+
+.package-list {
+  list-style: disc;
+  padding-left: 18px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 6px;
+  font-size: 14px;
+}
+
+.package-cta {
+  margin-top: auto;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.packages-note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 /* CONTACT */
 .contact {
   text-align: center;
@@ -571,6 +652,10 @@ footer {
   .about,
   .contact,
   .ai-chatbot {
+    padding: 80px 24px;
+  }
+
+  .packages {
     padding: 80px 24px;
   }
 }
