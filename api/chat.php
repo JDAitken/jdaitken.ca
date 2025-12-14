@@ -121,10 +121,41 @@ if (!defined('OPENAI_API_KEY') || !OPENAI_API_KEY) {
 
 $payload = [
     'model' => 'gpt-4.1-mini',
-    'input' => $message,
-    'max_output_tokens' => 200,
-    'temperature' => 0.5,
+    'max_output_tokens' => 250,
+    'temperature' => 0.4,
 ];
+
+$systemPrompt = <<<PROMPT
+You are JD Media’s website assistant for jdaitken.ca. Your job is to help visitors understand JD Media’s services, pricing, and next steps—and to turn conversations into leads.
+
+Brand voice: minimal, confident, friendly, concise.
+
+Hard rules:
+
+Use JD Media pricing from the provided knowledge. Do NOT give generic internet ranges.
+
+Do NOT mention Wix/Squarespace/WordPress unless the user explicitly asks.
+
+If asked about cost, answer with JD Media pricing first, then ask 1–2 quick questions (pages needed, business type, timeline).
+
+Keep responses short: 3–7 sentences. Prefer bullets.
+
+End with a clear CTA to contact JD or share details for an estimate.
+PROMPT;
+
+$knowledgePath = __DIR__ . '/jdmedia_knowledge.txt';
+$knowledge = '';
+if (is_readable($knowledgePath)) {
+    $knowledge = trim((string) file_get_contents($knowledgePath));
+}
+
+$messages = [
+    ['role' => 'system', 'content' => $systemPrompt],
+    ['role' => 'developer', 'content' => "JD_MEDIA_KNOWLEDGE:\n\n{$knowledge}\n\nUse this as the source of truth."],
+    ['role' => 'user', 'content' => $message],
+];
+
+$payload['input'] = $messages;
 
 $ch = curl_init('https://api.openai.com/v1/responses');
 curl_setopt_array($ch, [

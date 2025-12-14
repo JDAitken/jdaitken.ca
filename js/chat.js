@@ -118,7 +118,7 @@
     header.appendChild(close);
 
     const list = document.createElement('div');
-    list.className = 'chat-body';
+    list.className = 'chat-messages';
 
     const footer = document.createElement('div');
     footer.className = 'chat-footer';
@@ -164,5 +164,10 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     buildUI();
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && state.open) {
+        toggleWidget(false);
+      }
+    });
   });
 })();

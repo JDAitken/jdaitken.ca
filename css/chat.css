@@ -7,7 +7,7 @@
   --chat-border: var(--border);
   --chat-accent: var(--accent);
   --chat-accent-contrast: var(--accent-contrast);
-  --chat-radius: 14px;
+  --chat-radius: var(--radius-card, 14px);
   --chat-shadow: var(--shadow, 0 8px 22px rgba(0,0,0,0.12));
 }
 
@@ -15,14 +15,14 @@
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   padding: 0;
-  border-radius: 999px;
+  border-radius: 14px;
   background: var(--chat-bg);
   color: var(--chat-accent);
   font-weight: 800;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: -0.2px;
   border: 1px solid var(--chat-border);
   box-shadow: var(--chat-shadow);
@@ -78,6 +78,8 @@
   border-radius: var(--chat-radius);
   box-shadow: var(--chat-shadow);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
@@ -100,6 +102,9 @@
   border-bottom: 1px solid var(--chat-border);
   font-weight: 700;
   background: var(--chat-bg);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .chat-close {
@@ -108,16 +113,19 @@
   color: var(--chat-muted);
   cursor: pointer;
   font-weight: 700;
+  font-size: 16px;
 }
 
-.chat-body {
-  max-height: calc(70vh - 150px);
+.chat-body,
+.chat-messages {
+  flex: 1;
   overflow-y: auto;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   background: var(--chat-bg);
+  scroll-behavior: smooth;
 }
 
 .chat-message {
@@ -128,12 +136,16 @@
   color: var(--chat-text);
   line-height: 1.4;
   font-size: 14px;
+  align-self: flex-start;
+  border-radius: 12px 12px 12px 4px;
 }
 
 .chat-message.user {
-  background: var(--chat-accent);
-  color: var(--chat-accent-contrast);
-  border-color: var(--chat-accent);
+  background: color-mix(in srgb, var(--chat-accent) 12%, var(--chat-bg));
+  color: var(--chat-text);
+  border-color: color-mix(in srgb, var(--chat-accent) 20%, var(--chat-border));
+  align-self: flex-end;
+  border-radius: 12px 12px 4px 12px;
 }
 
 .chat-message.error {
@@ -148,6 +160,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
+  background: var(--chat-bg);
 }
 
 .chat-input {
@@ -185,8 +198,8 @@
   .chat-launch {
     bottom: 16px;
     right: 16px;
-    width: 52px;
-    height: 52px;
+    width: 46px;
+    height: 46px;
   }
 
   .chat-widget {
