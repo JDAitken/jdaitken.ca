@@ -48,7 +48,24 @@
 
   <div class="projects-grid" style="margin-top:32px">
     <div class="project-card">
-      <img src="images/projects/capital-city-cards.png" alt="Capital City Cards website preview">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            /images/projects/capital-city-cards-1200.webp 1200w,
+            /images/projects/capital-city-cards-1900.webp 1900w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="/images/projects/capital-city-cards-1200.png"
+          srcset="/images/projects/capital-city-cards-1200.png 1200w, /images/projects/capital-city-cards-1900.png 1900w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Capital City Cards website preview"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Capital City Cards</h3>
         <p>A bold, dark-mode ecommerce experience for premium football hobby breaks.</p>
@@ -57,7 +74,24 @@
       </div>
     </div>
     <div class="project-card">
-      <img src="images/projects/legendary-landscaping.png" alt="Legendary Landscaping homepage hero">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            /images/projects/legendary-landscaping-1200.webp 1200w,
+            /images/projects/legendary-landscaping-1900.webp 1900w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="/images/projects/legendary-landscaping-1200.png"
+          srcset="/images/projects/legendary-landscaping-1200.png 1200w, /images/projects/legendary-landscaping-1900.png 1900w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Legendary Landscaping homepage hero"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Legendary Landscaping</h3>
         <p>Image-led one-pager to showcase services and capture leads fast.</p>
@@ -66,7 +100,24 @@
       </div>
     </div>
     <div class="project-card">
-      <img src="https://via.placeholder.com/800x500?text=Coming+Soon" alt="Coming soon preview">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            https://via.placeholder.com/1200x750.webp?text=Coming+Soon 1200w,
+            https://via.placeholder.com/1600x1000.webp?text=Coming+Soon 1600w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="https://via.placeholder.com/1200x750.png?text=Coming+Soon"
+          srcset="https://via.placeholder.com/1200x750.png?text=Coming+Soon 1200w, https://via.placeholder.com/1600x1000.png?text=Coming+Soon 1600w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Coming soon preview"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Future Client Project</h3>
         <p>New minimal, high-performance build in progress.</p>

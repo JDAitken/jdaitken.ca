@@ -104,7 +104,24 @@
 
     <!-- PROJECT 1 — Landscaping Business -->
     <div class="project-card">
-      <img src="images/projects/legendary-landscaping.png" alt="Legendary Landscaping homepage hero">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            /images/projects/legendary-landscaping-1200.webp 1200w,
+            /images/projects/legendary-landscaping-1900.webp 1900w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="/images/projects/legendary-landscaping-1200.png"
+          srcset="/images/projects/legendary-landscaping-1200.png 1200w, /images/projects/legendary-landscaping-1900.png 1900w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Legendary Landscaping homepage hero"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Legendary Landscaping</h3>
         <p>A minimal, image-focused one-page website built for a local landscaping company to highlight services and drive inquiries.</p>
@@ -115,7 +132,24 @@
 
     <!-- PROJECT 2 — Capital City Cards -->
     <div class="project-card">
-      <img src="images/projects/capital-city-cards.png" alt="Screenshot of the Capital City Cards website home page">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            /images/projects/capital-city-cards-1200.webp 1200w,
+            /images/projects/capital-city-cards-1900.webp 1900w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="/images/projects/capital-city-cards-1200.png"
+          srcset="/images/projects/capital-city-cards-1200.png 1200w, /images/projects/capital-city-cards-1900.png 1900w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Screenshot of the Capital City Cards website home page"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Capital City Cards</h3>
         <p>A bold, dark-mode site for premium football hobby breaks with weekly stream promos, clear CTAs, and Whatnot integration.</p>
@@ -126,7 +160,24 @@
 
     <!-- PROJECT 3 — Placeholder -->
     <div class="project-card">
-      <img src="https://via.placeholder.com/800x500?text=Coming+Soon" alt="Placeholder for upcoming JD Media website project">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            https://via.placeholder.com/1200x750.webp?text=Coming+Soon 1200w,
+            https://via.placeholder.com/1600x1000.webp?text=Coming+Soon 1600w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="https://via.placeholder.com/1200x750.png?text=Coming+Soon"
+          srcset="https://via.placeholder.com/1200x750.png?text=Coming+Soon 1200w, https://via.placeholder.com/1600x1000.png?text=Coming+Soon 1600w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Placeholder for upcoming JD Media website project"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="project-content">
         <h3>Future Client Project</h3>
         <p>A new clean, fast website coming soon for a local business.</p>
