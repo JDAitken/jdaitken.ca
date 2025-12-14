@@ -95,13 +95,7 @@
     launch.type = 'button';
     launch.className = 'chat-launch';
     launch.setAttribute('aria-label', 'Open AI chat assistant');
-    launch.innerHTML = `
-      <span class="chat-launch__pulse" aria-hidden="true"></span>
-      <span class="chat-launch__copy">
-        <span class="chat-launch__label">AI Chat</span>
-        <span class="chat-launch__hint">Ask anything about the site</span>
-      </span>
-    `;
+    launch.innerHTML = `<span aria-hidden="true">💬</span>`;
     launch.setAttribute('aria-expanded', 'false');
     launch.addEventListener('click', () => toggleWidget());
 
