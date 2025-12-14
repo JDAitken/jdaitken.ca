@@ -285,6 +285,32 @@ a {
   line-height: 1.5;
 }
 
+.project-tags {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.project-highlights {
+  list-style: disc;
+  padding-left: 18px;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text);
+}
+
+.project-highlights strong {
+  font-weight: 700;
+}
+
+.project-testimonial {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 6px 0 12px;
+}
+
 .project-link {
   font-size: 15px;
   font-weight: 600;
