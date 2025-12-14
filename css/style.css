@@ -176,6 +176,13 @@ a {
   color: var(--muted);
 }
 
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
 /* WORK SECTION */
 .work {
   padding: 100px 48px;
@@ -293,6 +300,113 @@ a {
 .contact {
   text-align: center;
   padding: 100px 48px;
+}
+
+.contact-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 140px;
+  text-align: left;
+}
+
+.contact-page h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.contact-lead {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.1px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.form-hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.form-hint a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.form-status {
+  display: none;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  color: var(--text);
+}
+
+.form-status.is-visible {
+  display: block;
 }
 
 .contact p {
