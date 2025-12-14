@@ -1,6 +1,7 @@
 (() => {
   const CHAT_ENABLED = true; // Feature flag: set true to enable UI/API calls.
   const API_URL = '/api/chat.php';
+  const WELCOME_MESSAGE = 'Hey there! What are you looking to build or improve for your next project?';
 
   if (!CHAT_ENABLED) return;
 
@@ -8,7 +9,7 @@
   const state = {
     open: false,
     loading: false,
-    messages: [],
+    messages: [{ role: 'assistant', text: WELCOME_MESSAGE }],
   };
 
   const el = {

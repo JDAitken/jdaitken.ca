@@ -13,8 +13,8 @@
 
 .chat-launch {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  right: calc(24px + env(safe-area-inset-right, 0px));
   width: 48px;
   height: 48px;
   padding: 0;
@@ -69,9 +69,9 @@
 
 .chat-widget {
   position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: min(360px, 90vw);
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  width: min(420px, calc(100vw - 32px));
   background: var(--chat-bg);
   color: var(--chat-text);
   border: 1px solid var(--chat-border);
@@ -85,7 +85,7 @@
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease;
   z-index: 1199;
-  max-height: min(70vh, 520px);
+  max-height: min(78vh, 560px);
 }
 
 .chat-widget.is-open {
@@ -196,15 +196,27 @@
 
 @media (max-width: 520px) {
   .chat-launch {
-    bottom: 16px;
-    right: 16px;
-    width: 46px;
-    height: 46px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    right: calc(14px + env(safe-area-inset-right, 0px));
+    width: 52px;
+    height: 52px;
   }
 
   .chat-widget {
     right: 12px;
     left: 12px;
     width: auto;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    max-height: calc(86vh - env(safe-area-inset-bottom, 0px));
+    border-radius: 18px;
+  }
+
+  .chat-header,
+  .chat-footer {
+    padding: 12px;
+  }
+
+  .chat-message {
+    font-size: 15px;
   }
 }
