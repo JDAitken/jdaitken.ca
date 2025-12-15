@@ -257,6 +257,8 @@ a {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color var(--transition), background-color var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -283,6 +285,9 @@ a {
 
 .project-content {
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-content h3 {
@@ -329,6 +334,9 @@ a {
   font-weight: 600;
   color: var(--accent);
   transition: opacity var(--transition), color var(--transition);
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
 }
 
 .project-link:hover {
