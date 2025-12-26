@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Speed Test | JD Aitken</title>
+  <meta name="description" content="Run a quick speed and SEO test using Google Lighthouse data." />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 16px; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    input { flex:1; min-width:260px; padding:12px; border:1px solid #ddd; border-radius:10px; }
+    button { padding:12px 14px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; cursor:pointer; }
+    button.secondary { background:#fff; color:#111; }
+    .card { border:1px solid #e6e6e6; border-radius:14px; padding:16px; margin-top:16px; }
+    .muted { color:#666; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
+    .big { font-size: 28px; font-weight: 700; }
+    .pill { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid #e6e6e6; margin-left:8px; font-size:12px; }
+    ul { margin: 10px 0 0; padding-left: 18px; }
+  </style>
+</head>
+<body>
+
+  <h1>Speed + SEO Test</h1>
+  <p class="muted">Powered by Google Lighthouse data (PageSpeed Insights). Enter a URL to run a quick audit.</p>
+
+  <div class="row">
+    <input id="url" placeholder="https://example.com" value="https://jdaitken.ca" />
+    <button class="secondary" id="mobileBtn" data-strategy="mobile">Mobile</button>
+    <button class="secondary" id="desktopBtn" data-strategy="desktop">Desktop</button>
+    <button id="runBtn">Run test</button>
+  </div>
+
+  <div id="status" class="card muted" style="display:none;"></div>
+  <div id="results" style="display:none;"></div>
+
+<script>
+  let strategy = "mobile";
+  const statusEl = document.getElementById("status");
+  const resultsEl = document.getElementById("results");
+
+  function setStrategy(s) {
+    strategy = s;
+    document.getElementById("mobileBtn").style.borderColor = (s==="mobile") ? "#111" : "#e6e6e6";
+    document.getElementById("desktopBtn").style.borderColor = (s==="desktop") ? "#111" : "#e6e6e6";
+  }
+  document.getElementById("mobileBtn").onclick = () => setStrategy("mobile");
+  document.getElementById("desktopBtn").onclick = () => setStrategy("desktop");
+  setStrategy("mobile");
+
+  function score100(x) {
+    if (typeof x !== "number") return null;
+    return Math.round(x * 100);
+  }
+
+  function auditValue(lhr, auditId, asNumber=false) {
+    const a = lhr?.audits?.[auditId];
+    if (!a) return null;
+    if (asNumber) return a.numericValue ?? null;
+    return a.displayValue ?? a.title ?? null;
+  }
+
+  function formatMs(ms) {
+    if (typeof ms !== "number") return "—";
+    if (ms >= 1000) return (ms/1000).toFixed(2) + " s";
+    return Math.round(ms) + " ms";
+  }
+
+  function formatCls(x) {
+    if (typeof x !== "number") return "—";
+    return x.toFixed(3);
+  }
+
+  function topOpportunities(lhr, max=6) {
+    const audits = lhr?.audits || {};
+    const items = Object.values(audits)
+      .filter(a => a && a.details && a.details.type === "opportunity" && typeof a.numericValue === "number")
+      .sort((a,b) => (b.numericValue||0) - (a.numericValue||0))
+      .slice(0, max)
+      .map(a => ({
+        title: a.title,
+        // numericValue for opportunities is often "estimated savings in ms"
+        savings: a.numericValue
+      }));
+    return items;
+  }
+
+  async function run() {
+    const url = document.getElementById("url").value.trim();
+
+    resultsEl.style.display = "none";
+    statusEl.style.display = "block";
+    statusEl.textContent = "Running audit… (can take ~10–30s)";
+
+    const endpoint = `/api/psi.php?url=${encodeURIComponent(url)}&strategy=${encodeURIComponent(strategy)}`;
+
+    let data;
+    try {
+      const res = await fetch(endpoint, { cache: "no-store" });
+      data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Request failed");
+    } catch (e) {
+      statusEl.textContent = "Error: " + (e?.message || "Unknown error");
+      return;
+    }
+
+    const lhr = data?.lighthouseResult;
+    const perf = score100(lhr?.categories?.performance?.score);
+    const seo  = score100(lhr?.categories?.seo?.score);
+
+    // Core Web Vitals (Lab)
+    const lcpMs = auditValue(lhr, "largest-contentful-paint", true);
+    const inpMs = auditValue(lhr, "interaction-to-next-paint", true);
+    const cls   = auditValue(lhr, "cumulative-layout-shift", true);
+
+    const opps = topOpportunities(lhr, 6);
+
+    const oppList = opps.length
+      ? `<ul>${opps.map(o => `<li>${o.title} <span class="muted">(~${formatMs(o.savings)} savings)</span></li>`).join("")}</ul>`
+      : `<p class="muted">No major opportunities detected.</p>`;
+
+    statusEl.style.display = "none";
+    resultsEl.style.display = "block";
+    resultsEl.innerHTML = `
+      <div class="card">
+        <div class="big">${url}</div>
+        <div class="muted">Strategy: <span class="pill">${strategy}</span></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="big">${perf ?? "—"}</div>
+          <div class="muted">Performance score</div>
+        </div>
+        <div class="card">
+          <div class="big">${seo ?? "—"}</div>
+          <div class="muted">SEO score</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatMs(lcpMs)}</div>
+          <div class="muted">LCP (lab)</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatMs(inpMs)}</div>
+          <div class="muted">INP (lab)</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatCls(cls)}</div>
+          <div class="muted">CLS (lab)</div>
+        </div>
+        <div class="card">
+          <div class="muted">Next step</div>
+          <div style="margin-top:8px;">
+            Want me to fix this? <a href="/contact.html">Book a call</a>.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="big">Top opportunities</div>
+        ${oppList}
+      </div>
+    `;
+  }
+
+  document.getElementById("runBtn").onclick = run;
+</script>
+</body>
+</html>
