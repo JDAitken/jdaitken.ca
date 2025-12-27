@@ -45,7 +45,7 @@ $url = trim($data['url'] ?? '');
 $strategy = strtolower(trim($data['strategy'] ?? ''));
 $wantQuote = !empty($data['wantQuote']);
 $honeypot = trim($data['website'] ?? '');
-$report = $data['reportData'] ?? null;
+$report = $data['reportData'] ?? ($data['report'] ?? null);
 
 if ($honeypot !== '') {
   http_response_code(400);
