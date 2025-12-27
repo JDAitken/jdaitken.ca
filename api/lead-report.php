@@ -40,10 +40,11 @@ if (!is_array($data)) {
 }
 
 $email = trim($data['email'] ?? '');
-$name = trim($data['name'] ?? '');
+$firstName = trim($data['firstName'] ?? '');
+$phone = trim($data['phone'] ?? '');
+$budget = trim($data['budget'] ?? '');
 $url = trim($data['url'] ?? '');
-$strategy = strtolower(trim($data['strategy'] ?? ''));
-$wantQuote = !empty($data['wantQuote']);
+$strategy = 'mobile'; // force mobile regardless of input
 $honeypot = trim($data['website'] ?? '');
 $report = $data['reportData'] ?? ($data['report'] ?? null);
 
@@ -62,12 +63,6 @@ if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (!$url || !filter_var($url, FILTER_VALIDATE_URL)) {
   http_response_code(400);
   echo json_encode(['error' => 'Invalid url.']);
-  exit;
-}
-
-if ($strategy !== 'mobile' && $strategy !== 'desktop') {
-  http_response_code(400);
-  echo json_encode(['error' => 'Invalid strategy.']);
   exit;
 }
 
@@ -133,12 +128,21 @@ $formatCls = static function ($value) {
 
 $perfText = is_numeric($perfScore) ? $perfScore . '/100' : '—';
 $seoText = is_numeric($seoScore) ? $seoScore . '/100' : '—';
+$oppCount = count($opportunities);
+$safePhone = $cleanHeader($phone);
+$safeBudget = $cleanHeader($budget);
+$phoneLine = $safePhone !== '' ? 'Phone: ' . $safePhone : '';
+$budgetLine = $safeBudget !== '' ? 'Budget: ' . $safeBudget : '';
 
 $lines = [
-  'Hi ' . ($name !== '' ? $name : 'there') . ',',
+  'Hi ' . ($firstName !== '' ? $firstName : 'there') . ',',
   '',
   "Here's your report for: " . $url,
-  'Strategy: ' . $strategy,
+  'Strategy: mobile',
+  'Requested: ' . gmdate('c'),
+  'We found ' . ($oppCount > 0 ? $oppCount . ' opportunities' : 'a few quick wins'),
+  $phoneLine,
+  $budgetLine,
   'Performance: ' . $perfText,
   '',
   'Core Web Vitals (lab):',
@@ -161,13 +165,8 @@ if (!empty($opportunities)) {
   $lines[] = 'No major opportunities detected.';
 }
 
-if ($wantQuote) {
-  $lines[] = '';
-  $lines[] = 'They also want a quote to fix this.';
-}
-
 $lines[] = '';
-$lines[] = 'If you want, reply to this email and I can point out the 3 biggest wins and what it would take to fix them.';
+$lines[] = 'If you want help fixing these, reply to this email and I’ll send 3 quick wins.';
 $lines[] = '';
 $lines[] = '— JD (jd@jdaitken.ca)';
 
@@ -186,7 +185,7 @@ if ($bccEmail) {
   $headers[] = 'Bcc: ' . $bccEmail;
 }
 
-$subject = 'Your Speed Test Report: ' . $host . ' (' . $strategy . ')';
+$subject = 'Your Speed Test Report: ' . $host;
 
 $sent = mail($email, $subject, $body, implode("\r\n", $headers));
 if (!$sent) {
@@ -202,7 +201,7 @@ if (!is_dir($logDir)) {
 }
 $fp = fopen($logPath, 'a');
 if ($fp) {
-  fputcsv($fp, [gmdate('c'), $ip, $email, $name, $url, $strategy, $wantQuote ? 'yes' : 'no']);
+  fputcsv($fp, [gmdate('c'), $ip, $email, $firstName, $safePhone, $safeBudget, $url, 'mobile']);
   fclose($fp);
 }
 

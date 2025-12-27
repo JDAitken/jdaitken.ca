@@ -17,6 +17,7 @@
       --success: #0f9f6e;
     }
     body { font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 1100px; margin: 40px auto; padding: 0 16px 60px; color: var(--text); background: #ffffff; }
+    body.is-fullscreen { max-width: none; margin: 0; padding: 0; background: #081427; color: #EAF2FF; }
     h1 { font-size: 32px; margin-bottom: 6px; letter-spacing: -0.4px; }
     .row { display:flex; gap:12px; flex-wrap:wrap; align-items: center; margin-top: 18px; }
     input { flex:1; min-width:260px; padding:12px 14px; border:1px solid var(--border); border-radius:12px; font-size: 16px; }
@@ -43,17 +44,19 @@
     }
 
     /* Analyzing */
-    .analyzing-card { background:#0f172a; color:#e2e8f0; border-color: rgba(255,255,255,0.08); box-shadow: 0 14px 40px rgba(8,23,52,0.22); }
-    .analyzing-top { display:flex; align-items:center; gap:12px; }
-    .spinner { width:18px; height:18px; border:2px solid rgba(226,232,240,0.4); border-top-color:#e2e8f0; border-radius:50%; animation: spin 840ms linear infinite; }
+    .full-section { min-height: 100vh; display:flex; align-items:center; justify-content:center; background: radial-gradient(circle at 20% 20%, rgba(47,128,255,0.12), transparent 35%), radial-gradient(circle at 80% 60%, rgba(90,167,255,0.12), transparent 32%), linear-gradient(135deg, var(--bg1, #081427), var(--bg2, #0B1E3A)); color: #EAF2FF; padding: 48px 16px; box-sizing:border-box; }
+    .analyzing-shell { width: min(760px, 94vw); background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:18px; padding:28px; box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
+    .analyzing-title { font-size: 30px; margin:0 0 6px; }
+    .analyzing-sub { color: rgba(234,242,255,0.72); margin:0; }
+    .spinner { width:22px; height:22px; border:2px solid rgba(226,232,240,0.3); border-top-color:#EAF2FF; border-radius:50%; animation: spin 840ms linear infinite; }
     @keyframes spin { to { transform: rotate(360deg);} }
-    .progress-shell { background: rgba(255,255,255,0.06); border-radius: 12px; height: 12px; margin: 16px 0 8px; overflow:hidden; position:relative; }
-    .progress-bar { height:100%; width:0%; background: linear-gradient(90deg, #60a5fa, #a78bfa); transition: width 280ms ease; }
-    .progress-label { font-size:13px; color: rgba(226,232,240,0.8); }
-    .shimmer { position: relative; overflow: hidden; background: rgba(255,255,255,0.06); border-radius:12px; min-height: 72px; }
-    .shimmer::after { content:""; position:absolute; inset:0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); animation: shimmer 1200ms ease-in-out infinite; }
+    .progress-shell { background: rgba(255,255,255,0.08); border-radius: 14px; height: 16px; margin: 20px 0 12px; overflow:hidden; position:relative; box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 12px 30px rgba(47,128,255,0.18); }
+    .progress-bar { height:100%; width:0%; background: linear-gradient(90deg, #2F80FF, #5AA7FF); transition: width 280ms ease; }
+    .progress-label { font-size:13px; color: rgba(234,242,255,0.8); }
+    .shimmer { position: relative; overflow: hidden; background: rgba(255,255,255,0.05); border-radius:12px; min-height: 64px; }
+    .shimmer::after { content:""; position:absolute; inset:0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent); animation: shimmer 1200ms ease-in-out infinite; }
     @keyframes shimmer { 100% { transform: translateX(100%);} }
-    .skeleton-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px; }
+    .skeleton-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top: 12px; }
     .status-steps { display:flex; gap:6px; flex-wrap:wrap; margin-top: 10px; }
     .status-dot { width: 6px; height:6px; border-radius:50%; background: rgba(226,232,240,0.3); }
 
@@ -67,24 +70,19 @@
     .gate-sub { margin: 0 0 10px; color: var(--gate-muted); max-width: 680px; }
     .gate-trust { margin: 0 0 18px; color: var(--gate-muted); font-size: 14px; }
     .gate-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:16px; align-items: stretch; }
-    .gate-card { background: var(--gate-card); color: #0f172a; border:1px solid var(--gate-card-border); border-radius:18px; padding:20px; box-shadow: 0 14px 30px rgba(15,23,42,0.14); }
+    .gate-card { background: var(--gate-card); color: #0f172a; border:1px solid var(--gate-card-border); border-radius:18px; padding:24px; box-shadow: 0 14px 30px rgba(15,23,42,0.14); }
     .gate-card h3 { margin:0 0 10px; font-size: 20px; }
     .gate-form { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:12px; }
-    .gate-form input[type="email"], .gate-form input[type="text"], .gate-form select { width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border); font-size: 15px; box-sizing:border-box; }
-    .gate-form input[type="checkbox"] { width:18px; height:18px; }
+    .gate-form input[type="email"], .gate-form input[type="text"], .gate-form input[type="tel"], .gate-form select { width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border); font-size: 15px; box-sizing:border-box; }
     .gate-form .full-row { grid-column: 1 / -1; }
+    .gate-form .full-span { grid-column: 1 / -1; }
     .gate-form .hp-field { display:none; }
     .gate-button { width: 100%; height: 52px; margin-top: 4px; background: var(--gate-accent); border-color: var(--gate-accent); color: #fff; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 10px 28px rgba(47,128,255,0.32); }
     .gate-button:hover { background: var(--gate-accent2); border-color: var(--gate-accent2); }
+    .gate-button:focus-visible { outline: 3px solid rgba(47,128,255,0.45); outline-offset: 2px; }
     .gate-micro { font-size: 12px; color: var(--muted); margin-top: 6px; }
-    .gate-checkbox { display:flex; align-items:center; gap:8px; font-size: 14px; color: #0f172a; }
-    .gate-preview { background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.12); color: var(--gate-text); backdrop-filter: blur(8px); border-radius:18px; padding:18px; }
     .preview-label { font-size:12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gate-muted); margin-bottom: 8px; }
     .preview-lock { font-size: 12px; color: var(--gate-muted); margin-top: 6px; }
-    .metrics { display:grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-top: 12px; }
-    .metric { padding:12px; border-radius:12px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); }
-    .metric .label { font-size:13px; color: var(--gate-muted); }
-    .metric .value { font-size:20px; font-weight: 700; color: #fff; }
     .preview-list { margin: 10px 0 0; padding-left: 18px; color: var(--gate-text); }
     .ring { display:flex; align-items:center; gap:12px; }
     .ring svg { width: 96px; height: 96px; }
@@ -93,8 +91,9 @@
     .fade-block { animation: fadeUp 360ms ease both; }
     .cta-card { margin-top:12px; padding:12px; border-radius:12px; background: rgba(47,128,255,0.08); border:1px dashed rgba(255,255,255,0.16); color: var(--gate-text); }
     .cta-card a { color: #fff; font-weight: 700; }
+    .gate-preview { background: linear-gradient(160deg, rgba(8,20,39,0.7), rgba(12,34,68,0.55)); border:1px solid rgba(255,255,255,0.18); border-radius:16px; padding:16px; }
     .intro-wrap { transition: opacity 200ms ease; }
-    body.is-gate .intro-wrap { display:none; }
+    body.is-gate .intro-wrap, body.is-fullscreen .intro-wrap { display:none; }
 
     @media (prefers-reduced-motion: reduce) {
       .spinner { animation: none; }
@@ -112,8 +111,6 @@
 
     <div class="row">
       <input id="url" placeholder="Enter your website URL" autocomplete="url" inputmode="url" value="https://jdaitken.ca" />
-      <button class="secondary" id="mobileBtn" data-strategy="mobile">Mobile</button>
-      <button class="secondary" id="desktopBtn" data-strategy="desktop">Desktop</button>
       <button id="runBtn">Run Free Test</button>
     </div>
 
@@ -122,7 +119,7 @@
   <div id="results" style="display:none;"></div>
 
 <script>
-  let strategy = "mobile";
+  const strategy = "mobile";
   let currentReport = null;
   let progressTimer = null;
   let messageTimer = null;
@@ -146,15 +143,6 @@
       return null;
     }
   };
-
-  function setStrategy(s) {
-    strategy = s;
-    document.getElementById("mobileBtn").classList.toggle("is-active", s === "mobile");
-    document.getElementById("desktopBtn").classList.toggle("is-active", s === "desktop");
-  }
-  document.getElementById("mobileBtn").onclick = () => setStrategy("mobile");
-  document.getElementById("desktopBtn").onclick = () => setStrategy("desktop");
-  setStrategy("mobile");
 
   const score100 = (x) => (typeof x === "number" ? Math.round(x * 100) : null);
 
@@ -209,16 +197,19 @@
     };
   };
 
-  const buildReportText = (report, { name = "", wantQuote = false } = {}) => {
+  const buildReportText = (report, { name = "" } = {}) => {
     const friendlyName = name || "there";
     const perfText = typeof report.perfScore === "number" ? `${report.perfScore}/100` : "—";
     const seoText = typeof report.seoScore === "number" ? `${report.seoScore}/100` : "—";
+    const opps = report.opportunities?.slice(0, 10) || [];
+    const oppCount = opps.length;
     const lines = [
       `Hi ${friendlyName},`,
       ``,
       `Here's your report for: ${report.url}`,
-      `Strategy: ${report.strategy}`,
+      `Strategy: mobile`,
       `Performance: ${perfText}`,
+      `We found ${oppCount > 0 ? oppCount + " opportunities" : "a few quick wins"}.`,
       ``,
       `Core Web Vitals (lab):`,
       `  LCP: ${formatMs(report.lcpMs)}`,
@@ -231,7 +222,6 @@
       `Top 10 opportunities:`,
     ];
 
-    const opps = report.opportunities?.slice(0, 10) || [];
     if (opps.length) {
       opps.forEach((opp, idx) => {
         const savings = typeof opp.savingsMs === "number" ? ` (~${formatMs(opp.savingsMs)})` : "";
@@ -241,13 +231,9 @@
       lines.push("No major opportunities detected.");
     }
 
-    if (wantQuote) {
-      lines.push("", "They also want a quote to fix this.");
-    }
-
     lines.push(
       "",
-      "If you want, reply to this email and I can point out the 3 biggest wins and what it would take to fix them.",
+      "If you want help fixing these, reply to this email and I’ll send 3 quick wins.",
       "",
       "— JD (jd@jdaitken.ca)"
     );
@@ -337,6 +323,7 @@
   };
 
   const renderAnalyzing = () => {
+    document.body.classList.add("is-fullscreen");
     resultsEl.style.display = "block";
     const messages = [
       "Checking performance…",
@@ -345,25 +332,27 @@
       "Generating report…",
     ];
     resultsEl.innerHTML = `
-      <div class="card analyzing-card fade-in">
-        <div class="analyzing-top">
-          <div class="spinner" aria-hidden="true"></div>
-          <div>
-            <div class="big">Analyzing your website…</div>
-            <div class="muted" data-analyzing-msg>${messages[0]}</div>
+      <section class="full-section fade-up">
+        <div class="analyzing-shell">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="spinner" aria-hidden="true"></div>
+            <div>
+              <div class="analyzing-title">Analyzing your website…</div>
+              <div class="analyzing-sub" data-analyzing-msg>${messages[0]}</div>
+            </div>
+          </div>
+          <div class="progress-shell"><div class="progress-bar" data-progress-bar></div></div>
+          <div class="progress-label" data-progress-label>0%</div>
+          <div class="status-steps">
+            <span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span>
+          </div>
+          <div class="skeleton-grid">
+            <div class="shimmer"></div>
+            <div class="shimmer"></div>
+            <div class="shimmer"></div>
           </div>
         </div>
-        <div class="progress-shell"><div class="progress-bar" data-progress-bar></div></div>
-        <div class="progress-label" data-progress-label>0%</div>
-        <div class="status-steps">
-          <span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span>
-        </div>
-        <div class="skeleton-grid" style="margin-top:14px;">
-          <div class="shimmer"></div>
-          <div class="shimmer"></div>
-          <div class="shimmer"></div>
-        </div>
-      </div>`;
+      </section>`;
 
     const msgEl = resultsEl.querySelector('[data-analyzing-msg]');
     let msgIndex = 0;
@@ -392,24 +381,24 @@
     const oppCount = Math.min(10, report.opportunities?.length || 0);
     const oppLabel = oppCount > 0 ? `${oppCount} opportunities` : "a few quick wins";
     document.body.classList.add('is-gate');
+    document.body.classList.add('is-fullscreen');
 
     resultsEl.style.display = "block";
     resultsEl.innerHTML = `
-      <section class="report-gate fade-up" style="--gate-bg:#081427;--gate-bg2:#0B1E3A;--gate-accent:#2F80FF;--gate-accent2:#5AA7FF;--gate-text:#EAF2FF;--gate-muted:rgba(234,242,255,0.72);--gate-card:#FFFFFF;--gate-card-border:rgba(15, 23, 42, 0.10); width:100vw; margin-left:calc(50% - 50vw);">
+      <section class="report-gate fade-up" style="--gate-bg:#081427;--gate-bg2:#0B1E3A;--gate-accent:#2F80FF;--gate-accent2:#5AA7FF;--gate-text:#EAF2FF;--gate-muted:rgba(234,242,255,0.72);--gate-card:#FFFFFF;--gate-card-border:rgba(15, 23, 42, 0.10); --bg1:#081427; --bg2:#0B1E3A; width:100vw; margin-left:calc(50% - 50vw);">
         <div class="gate-inner">
           <div class="gate-label">JD Aitken • Speed Report</div>
           <h2 class="gate-headline">Your report is ready — we found <span style="color: var(--gate-accent);">${oppLabel}</span>.</h2>
-          <p class="gate-sub">Fill out the form below to receive your results by email.</p>
+          <p class="gate-sub">Enter your details to receive the full report by email.</p>
           <p class="gate-trust">No spam. One report. Reply if you want help improving your site.</p>
           <div class="gate-grid fade-block">
             <div class="gate-card" data-gate-card>
               <h3>Send the full report</h3>
               <form class="gate-form" data-full-report-form novalidate>
-                <input type="email" name="email" placeholder="Email (required)" autocomplete="email" required data-email aria-label="Email" />
-                <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel" data-phone aria-label="Phone" />
+                <input class="full-span" type="email" name="email" placeholder="Email (required)" autocomplete="email" required data-email aria-label="Email" />
                 <input type="text" name="firstName" placeholder="First name (optional)" autocomplete="given-name" data-first aria-label="First name" />
-                <input type="text" name="lastName" placeholder="Last name (optional)" autocomplete="family-name" data-last aria-label="Last name" />
-                <select name="budget" data-budget aria-label="Monthly marketing budget (optional)">
+                <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel" data-phone aria-label="Phone" />
+                <select class="full-span" name="budget" data-budget aria-label="Monthly marketing budget (optional)">
                   <option value="">Select budget (optional)</option>
                   <option value="<500"><$500/mo</option>
                   <option value="500-1500">$500–$1,500/mo</option>
@@ -481,7 +470,6 @@
     const emailInput = form.querySelector('[data-email]');
     const phoneInput = form.querySelector('[data-phone]');
     const firstInput = form.querySelector('[data-first]');
-    const lastInput = form.querySelector('[data-last]');
     const budgetSelect = form.querySelector('[data-budget]');
     const honeypotInput = form.querySelector('[data-honeypot]');
     const submitBtn = form.querySelector('[data-full-submit]');
@@ -501,7 +489,7 @@
       const emailVal = emailInput.value.trim();
       const phoneVal = (phoneInput?.value || '').trim();
       const firstVal = (firstInput?.value || '').trim();
-      const lastVal = (lastInput?.value || '').trim();
+      const lastVal = '';
       const budgetVal = (budgetSelect?.value || '').trim();
       const hp = (honeypotInput.value || '').trim();
       if (!emailVal) {
@@ -522,10 +510,9 @@
         url: report.url,
         strategy: report.strategy,
         email: emailVal,
-        name: firstVal || lastVal ? `${firstVal} ${lastVal}`.trim() : '',
+        name: firstVal,
         phone: phoneVal,
         firstName: firstVal,
-        lastName: lastVal,
         budget: budgetVal,
         website: hp,
         report: {
@@ -561,6 +548,7 @@
   const showError = (message) => {
     clearTimers();
     document.body.classList.remove('is-gate');
+    document.body.classList.remove('is-fullscreen');
     resultsEl.style.display = "block";
     resultsEl.innerHTML = `<div class="card fade-in"><div class="big" style="margin-bottom:6px;">We hit a snag.</div><p class="muted" style="margin:0 0 6px;">${message}</p><button class="secondary" id="retryBtn">Try again</button></div>`;
     const retry = document.getElementById('retryBtn');
@@ -578,6 +566,7 @@
     currentReport = null;
     clearTimers();
     document.body.classList.remove('is-gate');
+    document.body.classList.remove('is-fullscreen');
 
     if (!normalized) {
       statusEl.style.display = "block";
@@ -614,7 +603,7 @@
     const progressBar = resultsEl.querySelector('[data-progress-bar]');
     const progressLabel = resultsEl.querySelector('[data-progress-label]');
     if (progressBar) progressBar.style.width = '100%';
-    if (progressLabel) progressLabel.textContent = '100%';
+    if (progressLabel) progressLabel.textContent = '100% • Complete';
 
     readyTimer = setTimeout(() => {
       renderGate(currentReport);
@@ -632,12 +621,6 @@
 
   const params = new URLSearchParams(window.location.search);
   const urlFromQuery = params.get("url");
-  const strategyFromQuery = params.get("strategy");
-
-  if (strategyFromQuery === "desktop" || strategyFromQuery === "mobile") {
-    setStrategy(strategyFromQuery);
-  }
-
   if (urlFromQuery) {
     const normalizedParam = normalizeUrl(urlFromQuery);
     urlInput.value = normalizedParam || urlFromQuery;
