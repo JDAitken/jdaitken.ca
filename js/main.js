@@ -149,9 +149,74 @@
     return { bind };
   })();
 
+  const SpeedLead = (() => {
+    const normalizeUrl = (value) => {
+      if (!value) return null;
+      let next = value.trim();
+      if (!next) return null;
+      if (!/^https?:\/\//i.test(next)) {
+        next = `https://${next}`;
+      }
+      try {
+        return new URL(next).href;
+      } catch (err) {
+        return null;
+      }
+    };
+
+    const bind = () => {
+      const form = document.querySelector('[data-speed-form]');
+      if (!form) return;
+
+      const input = form.querySelector('[data-speed-url]');
+      const error = form.querySelector('[data-speed-error]');
+      const pills = form.querySelectorAll('[data-speed-strategy]');
+      const activePill = form.querySelector('[data-speed-strategy].is-active');
+      let strategy = activePill?.dataset.speedStrategy || 'mobile';
+
+      const setStrategy = (value) => {
+        if (!value || (value !== 'mobile' && value !== 'desktop')) return;
+        strategy = value;
+        pills.forEach((pill) => {
+          const isActive = pill.dataset.speedStrategy === value;
+          pill.classList.toggle('is-active', isActive);
+          pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      };
+
+      pills.forEach((pill) => {
+        pill.addEventListener('click', () => setStrategy(pill.dataset.speedStrategy));
+      });
+
+      const setError = (message) => {
+        if (!error) return;
+        error.textContent = message || '';
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const cleaned = normalizeUrl(input?.value);
+        if (!cleaned) {
+          setError('Enter a valid URL starting with http:// or https://');
+          input?.focus();
+          return;
+        }
+        setError('');
+        const target = `/tools/speed-test.html?url=${encodeURIComponent(cleaned)}&strategy=${encodeURIComponent(strategy)}`;
+        window.location.href = target;
+      });
+
+      input?.addEventListener('input', () => setError(''));
+      setStrategy(strategy);
+    };
+
+    return { bind };
+  })();
+
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     Navigation.bind();
+    SpeedLead.bind();
     Chatbot.init();
   });
 })();

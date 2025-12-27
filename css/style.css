@@ -186,6 +186,168 @@ a {
   margin-top: 26px;
 }
 
+.speed-lead {
+  padding: 30px 48px 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-lead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--accent) 6%, transparent) 0, transparent 32%),
+    radial-gradient(circle at 78% 30%, color-mix(in srgb, var(--accent) 8%, transparent) 0, transparent 36%),
+    radial-gradient(circle at 60% 70%, color-mix(in srgb, var(--accent) 5%, transparent) 0, transparent 34%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.speed-lead__panel {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 34px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  z-index: 1;
+}
+
+.speed-lead__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--pill);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.speed-lead h2 {
+  font-size: 44px;
+  margin-bottom: 12px;
+  letter-spacing: -0.6px;
+}
+
+.speed-lead__accent {
+  color: color-mix(in srgb, var(--accent) 24%, #d6a24a);
+}
+
+.speed-lead__sub {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.speed-lead__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.speed-lead__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.speed-lead__input {
+  flex: 1;
+  min-width: 240px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.speed-lead__input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.speed-lead__cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.speed-lead__toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  gap: 6px;
+}
+
+.speed-lead__pill {
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: border-color var(--transition), background-color var(--transition), color var(--transition);
+}
+
+.speed-lead__pill.is-active {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+.speed-lead__submit {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.speed-lead__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.speed-lead__hint,
+.speed-lead__trust {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.speed-lead__trust {
+  font-weight: 600;
+}
+
+.speed-lead__error {
+  color: #c4412a;
+  font-size: 14px;
+  min-height: 18px;
+}
+
 /* WORK SECTION */
 .work {
   padding: 100px 48px;
@@ -663,6 +825,33 @@ footer {
 
   .hero h1 {
     font-size: 44px;
+  }
+
+  .speed-lead {
+    padding: 10px 20px 70px;
+  }
+
+  .speed-lead h2 {
+    font-size: 34px;
+  }
+
+  .speed-lead__controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .speed-lead__cta {
+    justify-content: flex-start;
+  }
+
+  .speed-lead__toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .speed-lead__pill {
+    flex: 1;
+    text-align: center;
   }
 
   .work,
