@@ -14,6 +14,7 @@
       --border: #e5e7eb;
       --card: #f9fafb;
       --accent: #111827;
+      --success: #0f9f6e;
     }
     body { font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; color: var(--text); background: #ffffff; }
     h1 { font-size: 32px; margin-bottom: 6px; letter-spacing: -0.4px; }
@@ -30,6 +31,23 @@
     .big { font-size: 28px; font-weight: 700; line-height: 1.2; }
     .pill { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid var(--border); margin-left:8px; font-size:12px; background: #fff; }
     ul { margin: 10px 0 0; padding-left: 18px; }
+    .locked-card { border-style: dashed; background: linear-gradient(145deg, #f9fafb 0%, #ffffff 100%); position: relative; overflow: hidden; }
+    .locked-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:#fff; border:1px solid var(--border); font-weight:700; font-size:12px; letter-spacing:0.1px; }
+    .microcopy { font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .form-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .form-row input[type="email"],
+    .form-row input[type="text"] { flex:1; min-width:220px; }
+    .checkbox-row { align-items:center; }
+    .checkbox-row label { display:flex; align-items:center; gap:8px; font-size:14px; color: var(--text); }
+    .hp-field { position:absolute; left:-9999px; opacity:0; height:0; width:0; }
+    .full-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:12px; }
+    .full-actions .secondary { border-style:dashed; }
+    .success { color: var(--success); font-weight: 600; }
+    .fade-in { animation: fadeIn 280ms ease-out forwards; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform: translateY(0);} }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -49,9 +67,11 @@
 
 <script>
   let strategy = "mobile";
+  let currentReport = null;
   const urlInput = document.getElementById("url");
   const statusEl = document.getElementById("status");
   const resultsEl = document.getElementById("results");
+  const runBtn = document.getElementById("runBtn");
 
   const normalizeUrl = (value) => {
     if (!value) return null;
@@ -76,46 +96,298 @@
   document.getElementById("desktopBtn").onclick = () => setStrategy("desktop");
   setStrategy("mobile");
 
-  function score100(x) {
-    if (typeof x !== "number") return null;
-    return Math.round(x * 100);
-  }
+  const score100 = (x) => (typeof x === "number" ? Math.round(x * 100) : null);
 
-  function auditValue(lhr, auditId, asNumber=false) {
+  const auditValue = (lhr, auditId, asNumber = false) => {
     const a = lhr?.audits?.[auditId];
     if (!a) return null;
     if (asNumber) return a.numericValue ?? null;
     return a.displayValue ?? a.title ?? null;
-  }
+  };
 
-  function formatMs(ms) {
+  const formatMs = (ms) => {
     if (typeof ms !== "number") return "—";
-    if (ms >= 1000) return (ms/1000).toFixed(2) + " s";
+    if (ms >= 1000) return (ms / 1000).toFixed(2) + " s";
     return Math.round(ms) + " ms";
-  }
+  };
 
-  function formatCls(x) {
+  const formatCls = (x) => {
     if (typeof x !== "number") return "—";
     return x.toFixed(3);
-  }
+  };
 
-  function topOpportunities(lhr, max=6) {
+  const topOpportunities = (lhr, max = 10) => {
     const audits = lhr?.audits || {};
     const items = Object.values(audits)
-      .filter(a => a && a.details && a.details.type === "opportunity" && typeof a.numericValue === "number")
-      .sort((a,b) => (b.numericValue||0) - (a.numericValue||0))
+      .filter((a) => a && a.details && a.details.type === "opportunity" && typeof a.numericValue === "number")
+      .sort((a, b) => (b.numericValue || 0) - (a.numericValue || 0))
       .slice(0, max)
-      .map(a => ({
+      .map((a) => ({
         title: a.title,
-        // numericValue for opportunities is often "estimated savings in ms"
-        savings: a.numericValue
+        savingsMs: typeof a.numericValue === "number" ? Math.round(a.numericValue) : null,
       }));
     return items;
-  }
+  };
+
+  const buildReportObject = (lhr, urlValue, strategyValue) => {
+    const perf = score100(lhr?.categories?.performance?.score);
+    const seo = score100(lhr?.categories?.seo?.score);
+    const lcpMs = auditValue(lhr, "largest-contentful-paint", true);
+    const inpMs = auditValue(lhr, "interaction-to-next-paint", true);
+    const cls = auditValue(lhr, "cumulative-layout-shift", true);
+    const opportunities = topOpportunities(lhr, 10);
+
+    return {
+      url: urlValue,
+      strategy: strategyValue,
+      perfScore: perf,
+      seoScore: seo,
+      lcpMs,
+      inpMs,
+      cls,
+      opportunities,
+    };
+  };
+
+  const buildReportText = (report, { name = "", wantQuote = false } = {}) => {
+    const friendlyName = name || "there";
+    const perfText = typeof report.perfScore === "number" ? `${report.perfScore}/100` : "—";
+    const seoText = typeof report.seoScore === "number" ? `${report.seoScore}/100` : "—";
+    const lines = [
+      `Hi ${friendlyName},`,
+      ``,
+      `Here’s your report for: ${report.url}`,
+      `Strategy: ${report.strategy}`,
+      `Performance: ${perfText}`,
+      ``,
+      `Core Web Vitals (lab):`,
+      `  LCP: ${formatMs(report.lcpMs)}`,
+      `  INP: ${formatMs(report.inpMs)}`,
+      `  CLS: ${formatCls(report.cls)}`,
+      ``,
+      `Full report:`,
+      `SEO Score: ${seoText}`,
+      ``,
+      `Top 10 opportunities:`,
+    ];
+
+    const opps = report.opportunities?.slice(0, 10) || [];
+    if (opps.length) {
+      opps.forEach((opp, idx) => {
+        const savings = typeof opp.savingsMs === "number" ? `(~${formatMs(opp.savingsMs)})` : "";
+        lines.push(`${idx + 1}) ${opp.title} ${savings}`.trim());
+      });
+    } else {
+      lines.push("No major opportunities detected.");
+    }
+
+    if (wantQuote) {
+      lines.push("", "They also want a quote to fix this.");
+    }
+
+    lines.push(
+      "",
+      "If you want, reply to this email and I can point out the 3 biggest wins and what it would take to fix them.",
+      "",
+      "— JD (jd@jdaitken.ca)"
+    );
+
+    return lines.join("\n");
+  };
+
+  const copyToClipboard = async (text) => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+      return true;
+    } catch (err) {
+      console.error("Copy failed", err);
+      return false;
+    }
+  };
+
+  const renderResults = (report) => {
+    const oppList = (report.opportunities || []).slice(0, 3);
+    const oppHtml = oppList.length
+      ? `<ul>${oppList
+          .map((o) => `<li>${o.title} <span class="muted">(~${formatMs(o.savingsMs)} savings)</span></li>`)
+          .join("")}</ul>`
+      : `<p class="muted">No major opportunities detected.</p>`;
+
+    const fullCard = `
+      <div class="card locked-card fade-in">
+        <div class="locked-badge">🔒 Unlock SEO + full fix list</div>
+        <h3 style="margin-top:12px; margin-bottom:8px;">Get the full report (includes SEO score + top 10 fixes)</h3>
+        <p class="microcopy">No spam. I’ll send one report and you can reply if you want help fixing it.</p>
+        <form class="full-report-form" data-full-report-form novalidate>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Email (required)" autocomplete="email" required data-email />
+            <input type="text" name="name" placeholder="Name (optional)" autocomplete="name" data-name />
+          </div>
+          <div class="form-row checkbox-row">
+            <label>
+              <input type="checkbox" data-want-quote />
+              <span>I want a quote to fix this</span>
+            </label>
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" data-honeypot />
+          </div>
+          <div class="form-row">
+            <button type="submit" data-full-submit>Send me the full report</button>
+          </div>
+          <p class="microcopy" data-fallback hidden>Didn’t get it? Email JD directly: <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></p>
+          <p class="microcopy" data-full-status></p>
+          <div class="full-actions">
+            <button type="button" class="secondary" data-copy-report hidden>Copy full report</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    resultsEl.style.display = "block";
+    resultsEl.innerHTML = `
+      <div class="card fade-in">
+        <div class="big">${report.url}</div>
+        <div class="muted">Strategy: <span class="pill">${report.strategy}</span></div>
+      </div>
+
+      <div class="grid fade-in">
+        <div class="card">
+          <div class="big">${report.perfScore ?? "—"}/100</div>
+          <div class="muted">Performance score</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatMs(report.lcpMs)}</div>
+          <div class="muted">LCP (lab)</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatMs(report.inpMs)}</div>
+          <div class="muted">INP (lab)</div>
+        </div>
+        <div class="card">
+          <div class="big">${formatCls(report.cls)}</div>
+          <div class="muted">CLS (lab)</div>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="big">Top 3 opportunities</div>
+        ${oppHtml}
+      </div>
+
+      ${fullCard}
+    `;
+
+    bindFullReportForm(report);
+  };
+
+  const bindFullReportForm = (report) => {
+    const form = resultsEl.querySelector("[data-full-report-form]");
+    if (!form) return;
+    const emailInput = form.querySelector("[data-email]");
+    const nameInput = form.querySelector("[data-name]");
+    const wantQuoteInput = form.querySelector("[data-want-quote]");
+    const honeypotInput = form.querySelector("[data-honeypot]");
+    const submitBtn = form.querySelector("[data-full-submit]");
+    const status = form.querySelector("[data-full-status]");
+    const copyBtn = form.querySelector("[data-copy-report]");
+    const fallback = form.querySelector("[data-fallback]");
+    let isSubmitting = false;
+
+    const setStatus = (message, { isError = false, isSuccess = false } = {}) => {
+      status.textContent = message || "";
+      status.classList.toggle("success", isSuccess);
+      status.style.color = isError ? "#c4412a" : "";
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (isSubmitting) return;
+      const emailVal = emailInput.value.trim();
+      const nameVal = nameInput.value.trim();
+      const hp = (honeypotInput.value || "").trim();
+      if (!emailVal) {
+        setStatus("Enter your email to get the full report.", { isError: true });
+        emailInput.focus();
+        return;
+      }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailVal)) {
+        setStatus("Enter a valid email.", { isError: true });
+        emailInput.focus();
+        return;
+      }
+      isSubmitting = true;
+      submitBtn.disabled = true;
+      setStatus("Sending your report…");
+
+      const payload = {
+        url: report.url,
+        strategy: report.strategy,
+        email: emailVal,
+        name: nameVal,
+        wantQuote: !!wantQuoteInput.checked,
+        website: hp,
+        reportData: {
+          perfScore: report.perfScore,
+          seoScore: report.seoScore,
+          lcpMs: report.lcpMs,
+          inpMs: report.inpMs,
+          cls: report.cls,
+          opportunities: (report.opportunities || []).slice(0, 10),
+        },
+      };
+
+      try {
+        const res = await fetch("/api/lead-report.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data?.success !== true) {
+          throw new Error(data?.error || "Unable to send right now. Please try again.");
+        }
+        setStatus("Sent! Check your inbox.", { isSuccess: true });
+        emailInput.disabled = true;
+        nameInput.disabled = true;
+        wantQuoteInput.disabled = true;
+        submitBtn.disabled = true;
+        copyBtn.hidden = false;
+        fallback.hidden = false;
+        copyBtn.dataset.reportText = buildReportText(report, { name: nameVal, wantQuote: !!wantQuoteInput.checked });
+      } catch (err) {
+        setStatus(err?.message || "Unable to send right now.", { isError: true });
+        submitBtn.disabled = false;
+      } finally {
+        isSubmitting = false;
+      }
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      const text = copyBtn.dataset.reportText || buildReportText(report, { name: nameInput.value.trim(), wantQuote: !!wantQuoteInput.checked });
+      const ok = await copyToClipboard(text);
+      if (ok) {
+        setStatus("Report copied to clipboard.", { isSuccess: true });
+      } else {
+        setStatus("Copy failed. You can still select and copy manually.", { isError: true });
+      }
+    });
+  };
 
   async function run() {
     const normalized = normalizeUrl(urlInput.value);
     resultsEl.style.display = "none";
+    currentReport = null;
 
     if (!normalized) {
       statusEl.style.display = "block";
@@ -125,8 +397,6 @@
     }
 
     urlInput.value = normalized;
-    const url = normalized;
-
     statusEl.style.display = "block";
     statusEl.textContent = "Running audit… (can take ~10–30s)";
 
@@ -143,65 +413,13 @@
     }
 
     const lhr = data?.lighthouseResult;
-    const perf = score100(lhr?.categories?.performance?.score);
-    const seo  = score100(lhr?.categories?.seo?.score);
-
-    // Core Web Vitals (Lab)
-    const lcpMs = auditValue(lhr, "largest-contentful-paint", true);
-    const inpMs = auditValue(lhr, "interaction-to-next-paint", true);
-    const cls   = auditValue(lhr, "cumulative-layout-shift", true);
-
-    const opps = topOpportunities(lhr, 6);
-
-    const oppList = opps.length
-      ? `<ul>${opps.map(o => `<li>${o.title} <span class="muted">(~${formatMs(o.savings)} savings)</span></li>`).join("")}</ul>`
-      : `<p class="muted">No major opportunities detected.</p>`;
+    currentReport = buildReportObject(lhr, normalized, strategy);
 
     statusEl.style.display = "none";
-    resultsEl.style.display = "block";
-    resultsEl.innerHTML = `
-      <div class="card">
-        <div class="big">${url}</div>
-        <div class="muted">Strategy: <span class="pill">${strategy}</span></div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <div class="big">${perf ?? "—"}</div>
-          <div class="muted">Performance score</div>
-        </div>
-        <div class="card">
-          <div class="big">${seo ?? "—"}</div>
-          <div class="muted">SEO score</div>
-        </div>
-        <div class="card">
-          <div class="big">${formatMs(lcpMs)}</div>
-          <div class="muted">LCP (lab)</div>
-        </div>
-        <div class="card">
-          <div class="big">${formatMs(inpMs)}</div>
-          <div class="muted">INP (lab)</div>
-        </div>
-        <div class="card">
-          <div class="big">${formatCls(cls)}</div>
-          <div class="muted">CLS (lab)</div>
-        </div>
-        <div class="card">
-          <div class="muted">Next step</div>
-          <div style="margin-top:8px;">
-            Want me to fix this? <a href="/contact.html">Book a call</a>.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="big">Top opportunities</div>
-        ${oppList}
-      </div>
-    `;
+    renderResults(currentReport);
   }
 
-  document.getElementById("runBtn").onclick = run;
+  runBtn.onclick = run;
   urlInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
