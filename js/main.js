@@ -170,23 +170,7 @@
 
       const input = form.querySelector('[data-speed-url]');
       const error = form.querySelector('[data-speed-error]');
-      const pills = form.querySelectorAll('[data-speed-strategy]');
-      const activePill = form.querySelector('[data-speed-strategy].is-active');
-      let strategy = activePill?.dataset.speedStrategy || 'mobile';
-
-      const setStrategy = (value) => {
-        if (!value || (value !== 'mobile' && value !== 'desktop')) return;
-        strategy = value;
-        pills.forEach((pill) => {
-          const isActive = pill.dataset.speedStrategy === value;
-          pill.classList.toggle('is-active', isActive);
-          pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        });
-      };
-
-      pills.forEach((pill) => {
-        pill.addEventListener('click', () => setStrategy(pill.dataset.speedStrategy));
-      });
+      const strategy = 'mobile';
 
       const setError = (message) => {
         if (!error) return;
@@ -207,7 +191,6 @@
       });
 
       input?.addEventListener('input', () => setError(''));
-      setStrategy(strategy);
     };
 
     return { bind };
