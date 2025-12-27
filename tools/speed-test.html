@@ -58,9 +58,9 @@
     .status-dot { width: 6px; height:6px; border-radius:50%; background: rgba(226,232,240,0.3); }
 
     /* Gate */
-    .report-gate { position: relative; margin-top:24px; color: var(--gate-text); background: radial-gradient(circle at 20% 20%, rgba(47,128,255,0.12), transparent 35%), radial-gradient(circle at 80% 60%, rgba(90,167,255,0.12), transparent 32%), linear-gradient(135deg, var(--gate-bg), var(--gate-bg2)); overflow:hidden; }
+    .report-gate { position: relative; margin-top:0; color: var(--gate-text); background: radial-gradient(circle at 20% 20%, rgba(47,128,255,0.12), transparent 35%), radial-gradient(circle at 80% 60%, rgba(90,167,255,0.12), transparent 32%), linear-gradient(135deg, var(--gate-bg), var(--gate-bg2)); overflow:hidden; min-height:100vh; display:flex; align-items:center; }
     .report-gate::before { content:""; position:absolute; inset:0; background-image: radial-gradient(circle at 15% 10%, rgba(255,255,255,0.06), transparent 35%), radial-gradient(circle at 85% 90%, rgba(255,255,255,0.05), transparent 30%); opacity:0.8; pointer-events:none; }
-    .gate-inner { position: relative; max-width: 980px; margin: 0 auto; padding: 88px 24px; z-index:1; }
+    .gate-inner { position: relative; max-width: 980px; margin: 0 auto; padding: 88px 24px; z-index:1; width:100%; box-sizing:border-box; }
     @media (max-width: 720px){ .gate-inner { padding:56px 18px; } }
     .gate-label { text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; color: var(--gate-muted); margin-bottom: 12px; }
     .gate-headline { font-size: 30px; margin: 0 0 8px; line-height: 1.2; }
@@ -70,7 +70,7 @@
     .gate-card { background: var(--gate-card); color: #0f172a; border:1px solid var(--gate-card-border); border-radius:18px; padding:20px; box-shadow: 0 14px 30px rgba(15,23,42,0.14); }
     .gate-card h3 { margin:0 0 10px; font-size: 20px; }
     .gate-form { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:12px; }
-    .gate-form input[type="email"], .gate-form input[type="text"] { width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border); font-size: 15px; }
+    .gate-form input[type="email"], .gate-form input[type="text"], .gate-form select { width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border); font-size: 15px; box-sizing:border-box; }
     .gate-form input[type="checkbox"] { width:18px; height:18px; }
     .gate-form .full-row { grid-column: 1 / -1; }
     .gate-form .hp-field { display:none; }
@@ -93,6 +93,8 @@
     .fade-block { animation: fadeUp 360ms ease both; }
     .cta-card { margin-top:12px; padding:12px; border-radius:12px; background: rgba(47,128,255,0.08); border:1px dashed rgba(255,255,255,0.16); color: var(--gate-text); }
     .cta-card a { color: #fff; font-weight: 700; }
+    .intro-wrap { transition: opacity 200ms ease; }
+    body.is-gate .intro-wrap { display:none; }
 
     @media (prefers-reduced-motion: reduce) {
       .spinner { animation: none; }
@@ -104,17 +106,19 @@
 </head>
 <body>
 
-  <h1>Speed + SEO Test</h1>
-  <p class="muted">Powered by Google Lighthouse data (PageSpeed Insights). Enter a URL to run a quick audit.</p>
+  <div class="intro-wrap">
+    <h1>Speed + SEO Test</h1>
+    <p class="muted">Powered by Google Lighthouse data (PageSpeed Insights). Enter a URL to run a quick audit.</p>
 
-  <div class="row">
-    <input id="url" placeholder="Enter your website URL" autocomplete="url" inputmode="url" value="https://jdaitken.ca" />
-    <button class="secondary" id="mobileBtn" data-strategy="mobile">Mobile</button>
-    <button class="secondary" id="desktopBtn" data-strategy="desktop">Desktop</button>
-    <button id="runBtn">Run Free Test</button>
+    <div class="row">
+      <input id="url" placeholder="Enter your website URL" autocomplete="url" inputmode="url" value="https://jdaitken.ca" />
+      <button class="secondary" id="mobileBtn" data-strategy="mobile">Mobile</button>
+      <button class="secondary" id="desktopBtn" data-strategy="desktop">Desktop</button>
+      <button id="runBtn">Run Free Test</button>
+    </div>
+
+    <div id="status" class="card muted" style="display:none;"></div>
   </div>
-
-  <div id="status" class="card muted" style="display:none;"></div>
   <div id="results" style="display:none;"></div>
 
 <script>
@@ -387,29 +391,32 @@
     clearTimers();
     const oppCount = Math.min(10, report.opportunities?.length || 0);
     const oppLabel = oppCount > 0 ? `${oppCount} opportunities` : "a few quick wins";
-    const previewOpps = (report.opportunities || []).slice(0, 3);
-    const previewList = previewOpps.length
-      ? `<ul class="preview-list">${previewOpps
-          .map((o) => `<li>${o.title} <span style="color: var(--gate-muted);">(~${formatMs(o.savingsMs)} savings)</span></li>`)
-          .join("")}</ul>`
-      : `<p class="preview-lock">No major opportunities detected.</p>`;
+    document.body.classList.add('is-gate');
 
     resultsEl.style.display = "block";
     resultsEl.innerHTML = `
-      <section class="report-gate fade-up" style="--gate-bg:#081427;--gate-bg2:#0B1E3A;--gate-accent:#2F80FF;--gate-accent2:#5AA7FF;--gate-text:#EAF2FF;--gate-muted:rgba(234,242,255,0.72);--gate-card:#FFFFFF;--gate-card-border:rgba(15, 23, 42, 0.10);">
+      <section class="report-gate fade-up" style="--gate-bg:#081427;--gate-bg2:#0B1E3A;--gate-accent:#2F80FF;--gate-accent2:#5AA7FF;--gate-text:#EAF2FF;--gate-muted:rgba(234,242,255,0.72);--gate-card:#FFFFFF;--gate-card-border:rgba(15, 23, 42, 0.10); width:100vw; margin-left:calc(50% - 50vw);">
         <div class="gate-inner">
           <div class="gate-label">JD Aitken • Speed Report</div>
           <h2 class="gate-headline">Your report is ready — we found <span style="color: var(--gate-accent);">${oppLabel}</span>.</h2>
-          <p class="gate-sub">Enter your email to receive the full report (includes SEO score + top 10 fixes).</p>
+          <p class="gate-sub">Fill out the form below to receive your results by email.</p>
           <p class="gate-trust">No spam. One report. Reply if you want help improving your site.</p>
           <div class="gate-grid fade-block">
             <div class="gate-card" data-gate-card>
               <h3>Send the full report</h3>
               <form class="gate-form" data-full-report-form novalidate>
-                <input type="email" name="email" placeholder="Email (required)" autocomplete="email" required data-email />
-                <input type="text" name="name" placeholder="First name (optional)" autocomplete="given-name" data-name />
+                <input type="email" name="email" placeholder="Email (required)" autocomplete="email" required data-email aria-label="Email" />
+                <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel" data-phone aria-label="Phone" />
+                <input type="text" name="firstName" placeholder="First name (optional)" autocomplete="given-name" data-first aria-label="First name" />
+                <input type="text" name="lastName" placeholder="Last name (optional)" autocomplete="family-name" data-last aria-label="Last name" />
+                <select name="budget" data-budget aria-label="Monthly marketing budget (optional)">
+                  <option value="">Select budget (optional)</option>
+                  <option value="<500"><$500/mo</option>
+                  <option value="500-1500">$500–$1,500/mo</option>
+                  <option value="1500-5000">$1,500–$5,000/mo</option>
+                  <option value="5000+">$5,000+/mo</option>
+                </select>
                 <input type="text" name="website" class="hp-field" autocomplete="off" tabindex="-1" aria-hidden="true" data-honeypot />
-                <label class="gate-checkbox full-row"><input type="checkbox" data-want-quote /> <span>I want a quote to fix this</span></label>
                 <div class="full-row">
                   <button type="submit" class="gate-button" data-full-submit>SEND THE REPORT TO MY EMAIL</button>
                   <div class="gate-micro" data-full-status></div>
@@ -417,40 +424,25 @@
                 </div>
               </form>
             </div>
-            <div class="gate-preview">
-              <div class="preview-label">Preview</div>
-              ${buildScoreRing(report.perfScore ?? 0)}
-              <div class="metrics">
-                <div class="metric">
-                  <div class="label">LCP (lab)</div>
-                  <div class="value">${formatMs(report.lcpMs)}</div>
-                </div>
-                <div class="metric">
-                  <div class="label">INP (lab)</div>
-                  <div class="value">${formatMs(report.inpMs)}</div>
-                </div>
-                <div class="metric">
-                  <div class="label">CLS (lab)</div>
-                  <div class="value">${formatCls(report.cls)}</div>
-                </div>
-              </div>
-              <div class="preview-lock">Top quick wins (3 of 10):</div>
-              ${previewList}
-              <div class="preview-lock">Full report includes SEO score + top 10 fixes.</div>
-              <div class="gate-micro" style="color: var(--gate-muted); margin-top:8px;">Strategy: ${report.strategy}</div>
-            </div>
           </div>
         </div>
       </section>
     `;
 
-    animateScoreRing(resultsEl);
+    const emailInput = resultsEl.querySelector('[data-email]');
+    if (emailInput) emailInput.focus();
     bindFullReportForm(report);
   };
 
-  const setGateSuccess = (form, report, nameVal, wantQuote) => {
+  const setGateSuccess = (form, report, nameVal) => {
     const card = form.closest('[data-gate-card]');
     if (!card) return;
+    const opps = report.opportunities?.slice(0, 10) || [];
+    const oppList = opps.length
+      ? `<ul class="preview-list" style="color:var(--gate-text); padding-left:18px; margin-top:8px;">${opps
+          .map((o, idx) => `<li><strong>${idx + 1}.</strong> ${o.title} <span style="color:var(--gate-muted);">(${typeof o.savingsMs === "number" ? "~" + formatMs(o.savingsMs) : "est."})</span></li>`)
+          .join("")}</ul>`
+      : `<p class="preview-lock" style="margin-top:8px;">No major opportunities detected.</p>`;
     card.innerHTML = `
       <h3>Sent! Check your inbox.</h3>
       <p style="color:#0f172a; margin-top:6px;">If you don’t see it in 2 minutes, check spam — or email me directly.</p>
@@ -461,23 +453,36 @@
       <div class="cta-card" style="margin-top:12px;">
         Want me to fix these? <a href="/contact.html">Book a quick call</a>.
       </div>
+      <div class="gate-preview" style="margin-top:16px; color: var(--gate-text); background: linear-gradient(160deg, rgba(8,20,39,0.7), rgba(12,34,68,0.55)); border-color: rgba(255,255,255,0.18);">
+        <div class="preview-label">Report preview</div>
+        ${buildScoreRing(report.perfScore ?? 0)}
+        <div class="metric" style="margin-top:10px; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12);">
+          <div class="label" style="color: var(--gate-muted);">SEO score</div>
+          <div class="value" style="color:#fff; font-size:22px;">${typeof report.seoScore === "number" ? report.seoScore + "/100" : "—"}</div>
+        </div>
+        <div class="preview-lock" style="margin-top:10px;">Top 10 opportunities:</div>
+        ${oppList}
+      </div>
     `;
     const copyBtn = card.querySelector('[data-copy-report]');
     if (copyBtn) {
       copyBtn.addEventListener('click', async () => {
-        const text = buildReportText(report, { name: nameVal, wantQuote });
+        const text = buildReportText(report, { name: nameVal });
         const ok = await copyToClipboard(text);
         copyBtn.textContent = ok ? 'Copied!' : 'Copy report';
       });
     }
+    animateScoreRing(card);
   };
 
   const bindFullReportForm = (report) => {
     const form = resultsEl.querySelector('[data-full-report-form]');
     if (!form) return;
     const emailInput = form.querySelector('[data-email]');
-    const nameInput = form.querySelector('[data-name]');
-    const wantQuoteInput = form.querySelector('[data-want-quote]');
+    const phoneInput = form.querySelector('[data-phone]');
+    const firstInput = form.querySelector('[data-first]');
+    const lastInput = form.querySelector('[data-last]');
+    const budgetSelect = form.querySelector('[data-budget]');
     const honeypotInput = form.querySelector('[data-honeypot]');
     const submitBtn = form.querySelector('[data-full-submit]');
     const status = form.querySelector('[data-full-status]');
@@ -494,7 +499,10 @@
       event.preventDefault();
       if (isSubmitting) return;
       const emailVal = emailInput.value.trim();
-      const nameVal = nameInput.value.trim();
+      const phoneVal = (phoneInput?.value || '').trim();
+      const firstVal = (firstInput?.value || '').trim();
+      const lastVal = (lastInput?.value || '').trim();
+      const budgetVal = (budgetSelect?.value || '').trim();
       const hp = (honeypotInput.value || '').trim();
       if (!emailVal) {
         setStatus('Enter your email to get the full report.', { isError: true });
@@ -514,8 +522,11 @@
         url: report.url,
         strategy: report.strategy,
         email: emailVal,
-        name: nameVal,
-        wantQuote: !!wantQuoteInput.checked,
+        name: firstVal || lastVal ? `${firstVal} ${lastVal}`.trim() : '',
+        phone: phoneVal,
+        firstName: firstVal,
+        lastName: lastVal,
+        budget: budgetVal,
         website: hp,
         report: {
           perfScore: report.perfScore,
@@ -537,7 +548,7 @@
         if (!res.ok || data?.success !== true) {
           throw new Error(data?.error || 'Unable to send right now. Please try again.');
         }
-        setGateSuccess(form, report, nameVal, !!wantQuoteInput.checked);
+        setGateSuccess(form, report, firstVal || lastVal);
       } catch (err) {
         setStatus(err?.message || 'Unable to send right now.', { isError: true });
         submitBtn.disabled = false;
@@ -549,6 +560,7 @@
 
   const showError = (message) => {
     clearTimers();
+    document.body.classList.remove('is-gate');
     resultsEl.style.display = "block";
     resultsEl.innerHTML = `<div class="card fade-in"><div class="big" style="margin-bottom:6px;">We hit a snag.</div><p class="muted" style="margin:0 0 6px;">${message}</p><button class="secondary" id="retryBtn">Try again</button></div>`;
     const retry = document.getElementById('retryBtn');
@@ -565,6 +577,7 @@
     resultsEl.style.display = "none";
     currentReport = null;
     clearTimers();
+    document.body.classList.remove('is-gate');
 
     if (!normalized) {
       statusEl.style.display = "block";
