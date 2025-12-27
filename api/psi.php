@@ -60,7 +60,7 @@ $params = http_build_query([
   'key' => $apiKey,
   'strategy' => $strategy,
   // request only what we need:
-  'category' => ['performance', 'seo'],
+  'category' => 'performance',
 ]);
 
 $psiUrl = $endpoint . '?' . $params;

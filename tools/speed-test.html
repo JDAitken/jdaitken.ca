@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Speed Test | JD Aitken</title>
-  <meta name="description" content="Run a quick speed and SEO test using Google Lighthouse data." />
+  <meta name="description" content="Run a quick speed test using Google Lighthouse data." />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -45,20 +45,18 @@
 
     /* Analyzing */
     .full-section { min-height: 100vh; display:flex; align-items:center; justify-content:center; background: radial-gradient(circle at 20% 20%, rgba(47,128,255,0.12), transparent 35%), radial-gradient(circle at 80% 60%, rgba(90,167,255,0.12), transparent 32%), linear-gradient(135deg, var(--bg1, #081427), var(--bg2, #0B1E3A)); color: #EAF2FF; padding: 48px 16px; box-sizing:border-box; }
-    .analyzing-shell { width: min(760px, 94vw); background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:18px; padding:28px; box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
-    .analyzing-title { font-size: 30px; margin:0 0 6px; }
-    .analyzing-sub { color: rgba(234,242,255,0.72); margin:0; }
-    .spinner { width:22px; height:22px; border:2px solid rgba(226,232,240,0.3); border-top-color:#EAF2FF; border-radius:50%; animation: spin 840ms linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg);} }
-    .progress-shell { background: rgba(255,255,255,0.08); border-radius: 14px; height: 16px; margin: 20px 0 12px; overflow:hidden; position:relative; box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 12px 30px rgba(47,128,255,0.18); }
-    .progress-bar { height:100%; width:0%; background: linear-gradient(90deg, #2F80FF, #5AA7FF); transition: width 280ms ease; }
-    .progress-label { font-size:13px; color: rgba(234,242,255,0.8); }
+    .analyzing-shell { width: min(760px, 94vw); text-align:center; padding:32px 22px; border-radius:18px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
+    .brand-mark { letter-spacing: 0.32em; font-size: 12px; color: rgba(234,242,255,0.62); margin-bottom: 16px; text-transform: uppercase; }
+    .analyzing-title { font-size: 32px; margin:0 0 8px; }
+    .analyzing-sub { color: rgba(234,242,255,0.72); margin:0 0 18px; min-height: 20px; }
+    .progress-shell { width: min(680px, 94vw); margin: 0 auto; background: rgba(255,255,255,0.12); border-radius: 12px; height: 12px; overflow:hidden; position:relative; box-shadow: 0 12px 30px rgba(47,128,255,0.18); }
+    .progress-bar { height:100%; width:0%; background: linear-gradient(90deg, #2F80FF, #5AA7FF); transition: width 280ms ease; position:relative; }
+    .progress-bar::after { content:\"\"; position:absolute; top:0; right:-20px; width:48px; height:100%; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0)); mix-blend-mode: screen; animation: shine 1200ms linear infinite; }
+    @keyframes shine { 0% { transform: translateX(0);} 100% { transform: translateX(60px);} }
     .shimmer { position: relative; overflow: hidden; background: rgba(255,255,255,0.05); border-radius:12px; min-height: 64px; }
     .shimmer::after { content:""; position:absolute; inset:0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent); animation: shimmer 1200ms ease-in-out infinite; }
     @keyframes shimmer { 100% { transform: translateX(100%);} }
-    .skeleton-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top: 12px; }
-    .status-steps { display:flex; gap:6px; flex-wrap:wrap; margin-top: 10px; }
-    .status-dot { width: 6px; height:6px; border-radius:50%; background: rgba(226,232,240,0.3); }
+    .skeleton-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top: 18px; }
 
     /* Gate */
     .report-gate { position: relative; margin-top:0; color: var(--gate-text); background: radial-gradient(circle at 20% 20%, rgba(47,128,255,0.12), transparent 35%), radial-gradient(circle at 80% 60%, rgba(90,167,255,0.12), transparent 32%), linear-gradient(135deg, var(--gate-bg), var(--gate-bg2)); overflow:hidden; min-height:100vh; display:flex; align-items:center; }
@@ -98,6 +96,7 @@
     @media (prefers-reduced-motion: reduce) {
       .spinner { animation: none; }
       .progress-bar { transition: none; }
+      .progress-bar::after { animation: none; display:none; }
       .shimmer::after { animation: none; }
       .fade-block { animation: none; }
     }
@@ -106,7 +105,7 @@
 <body>
 
   <div class="intro-wrap">
-    <h1>Speed + SEO Test</h1>
+    <h1>Free Speed Test</h1>
     <p class="muted">Powered by Google Lighthouse data (PageSpeed Insights). Enter a URL to run a quick audit.</p>
 
     <div class="row">
@@ -124,6 +123,7 @@
   let progressTimer = null;
   let messageTimer = null;
   let readyTimer = null;
+  let currentDomain = "";
   const urlInput = document.getElementById("url");
   const statusEl = document.getElementById("status");
   const resultsEl = document.getElementById("results");
@@ -141,6 +141,14 @@
       return new URL(next).href;
     } catch (err) {
       return null;
+    }
+  };
+  const domainFromUrl = (value) => {
+    try {
+      const host = new URL(value).hostname || value;
+      return host.replace(/^www\\./i, "") || host;
+    } catch (e) {
+      return value;
     }
   };
 
@@ -179,7 +187,6 @@
 
   const buildReportObject = (lhr, urlValue, strategyValue) => {
     const perf = score100(lhr?.categories?.performance?.score);
-    const seo = score100(lhr?.categories?.seo?.score);
     const lcpMs = auditValue(lhr, "largest-contentful-paint", true);
     const inpMs = auditValue(lhr, "interaction-to-next-paint", true);
     const cls = auditValue(lhr, "cumulative-layout-shift", true);
@@ -189,7 +196,6 @@
       url: urlValue,
       strategy: strategyValue,
       perfScore: perf,
-      seoScore: seo,
       lcpMs,
       inpMs,
       cls,
@@ -200,7 +206,6 @@
   const buildReportText = (report, { name = "" } = {}) => {
     const friendlyName = name || "there";
     const perfText = typeof report.perfScore === "number" ? `${report.perfScore}/100` : "—";
-    const seoText = typeof report.seoScore === "number" ? `${report.seoScore}/100` : "—";
     const opps = report.opportunities?.slice(0, 10) || [];
     const oppCount = opps.length;
     const lines = [
@@ -215,9 +220,6 @@
       `  LCP: ${formatMs(report.lcpMs)}`,
       `  INP: ${formatMs(report.inpMs)}`,
       `  CLS: ${formatCls(report.cls)}`,
-      ``,
-      `Full report:`,
-      `SEO Score: ${seoText}`,
       ``,
       `Top 10 opportunities:`,
     ];
@@ -322,30 +324,22 @@
     readyTimer = null;
   };
 
-  const renderAnalyzing = () => {
+  const renderAnalyzing = (domainLabel) => {
     document.body.classList.add("is-fullscreen");
     resultsEl.style.display = "block";
     const messages = [
-      "Checking performance…",
+      "Checking performance signals…",
       "Measuring Core Web Vitals…",
-      "Finding quick wins…",
-      "Generating report…",
+      "Scanning for quick wins…",
+      "Generating your report…",
     ];
     resultsEl.innerHTML = `
       <section class="full-section fade-up">
         <div class="analyzing-shell">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="spinner" aria-hidden="true"></div>
-            <div>
-              <div class="analyzing-title">Analyzing your website…</div>
-              <div class="analyzing-sub" data-analyzing-msg>${messages[0]}</div>
-            </div>
-          </div>
+          <div class="brand-mark">JD AITKEN</div>
+          <div class="analyzing-title">Analyzing ${domainLabel || "your website"}…</div>
+          <div class="analyzing-sub" data-analyzing-msg>${messages[0]}</div>
           <div class="progress-shell"><div class="progress-bar" data-progress-bar></div></div>
-          <div class="progress-label" data-progress-label>0%</div>
-          <div class="status-steps">
-            <span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span><span class="status-dot"></span>
-          </div>
           <div class="skeleton-grid">
             <div class="shimmer"></div>
             <div class="shimmer"></div>
@@ -362,14 +356,12 @@
     }, 1200);
 
     const progressBar = resultsEl.querySelector('[data-progress-bar]');
-    const progressLabel = resultsEl.querySelector('[data-progress-label]');
     const start = Date.now();
     const duration = 10000; // 10s to 85%
     progressTimer = setInterval(() => {
       const elapsed = Date.now() - start;
       const pct = Math.min(85, Math.round((elapsed / duration) * 85));
       if (progressBar) progressBar.style.width = `${pct}%`;
-      if (progressLabel) progressLabel.textContent = `${pct}%`;
       if (elapsed >= duration) {
         clearInterval(progressTimer);
       }
@@ -445,10 +437,6 @@
       <div class="gate-preview" style="margin-top:16px; color: var(--gate-text); background: linear-gradient(160deg, rgba(8,20,39,0.7), rgba(12,34,68,0.55)); border-color: rgba(255,255,255,0.18);">
         <div class="preview-label">Report preview</div>
         ${buildScoreRing(report.perfScore ?? 0)}
-        <div class="metric" style="margin-top:10px; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12);">
-          <div class="label" style="color: var(--gate-muted);">SEO score</div>
-          <div class="value" style="color:#fff; font-size:22px;">${typeof report.seoScore === "number" ? report.seoScore + "/100" : "—"}</div>
-        </div>
         <div class="preview-lock" style="margin-top:10px;">Top 10 opportunities:</div>
         ${oppList}
       </div>
@@ -517,7 +505,6 @@
         website: hp,
         report: {
           perfScore: report.perfScore,
-          seoScore: report.seoScore,
           lcpMs: report.lcpMs,
           inpMs: report.inpMs,
           cls: report.cls,
@@ -535,7 +522,7 @@
         if (!res.ok || data?.success !== true) {
           throw new Error(data?.error || 'Unable to send right now. Please try again.');
         }
-        setGateSuccess(form, report, firstVal || lastVal);
+        setGateSuccess(form, report, firstVal);
       } catch (err) {
         setStatus(err?.message || 'Unable to send right now.', { isError: true });
         submitBtn.disabled = false;
@@ -576,9 +563,10 @@
     }
 
     urlInput.value = normalized;
+    currentDomain = domainFromUrl(normalized);
     statusEl.style.display = "none";
     runBtn.disabled = true;
-    renderAnalyzing();
+    renderAnalyzing(currentDomain);
 
     const endpoint = `/api/psi.php?url=${encodeURIComponent(normalized)}&strategy=${encodeURIComponent(strategy)}`;
 
@@ -601,9 +589,9 @@
       progressTimer = null;
     }
     const progressBar = resultsEl.querySelector('[data-progress-bar]');
-    const progressLabel = resultsEl.querySelector('[data-progress-label]');
+    const msgEl = resultsEl.querySelector('[data-analyzing-msg]');
     if (progressBar) progressBar.style.width = '100%';
-    if (progressLabel) progressLabel.textContent = '100% • Complete';
+    if (msgEl) msgEl.textContent = 'Complete';
 
     readyTimer = setTimeout(() => {
       renderGate(currentReport);

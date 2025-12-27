@@ -78,7 +78,6 @@ $cleanHeader = static function ($value) {
 };
 
 $perfScore = isset($report['perfScore']) ? (int)$report['perfScore'] : null;
-$seoScore = isset($report['seoScore']) ? (int)$report['seoScore'] : null;
 $lcpMs = isset($report['lcpMs']) && is_numeric($report['lcpMs']) ? (float)$report['lcpMs'] : null;
 $inpMs = isset($report['inpMs']) && is_numeric($report['inpMs']) ? (float)$report['inpMs'] : null;
 $cls = isset($report['cls']) && is_numeric($report['cls']) ? (float)$report['cls'] : null;
@@ -127,7 +126,6 @@ $formatCls = static function ($value) {
 };
 
 $perfText = is_numeric($perfScore) ? $perfScore . '/100' : '—';
-$seoText = is_numeric($seoScore) ? $seoScore . '/100' : '—';
 $oppCount = count($opportunities);
 $safePhone = $cleanHeader($phone);
 $safeBudget = $cleanHeader($budget);
@@ -149,9 +147,6 @@ $lines = [
   '  LCP: ' . $formatMs($lcpMs),
   '  INP: ' . $formatMs($inpMs),
   '  CLS: ' . $formatCls($cls),
-  '',
-  'Full report:',
-  'SEO Score: ' . $seoText,
   '',
   'Top 10 opportunities:',
 ];
