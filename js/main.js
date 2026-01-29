@@ -75,5 +75,13 @@
   document.addEventListener('DOMContentLoaded', () => {
     Navigation.bind();
     Chatbot.init();
+    const planInput = document.querySelector('[data-plan-input]');
+    if (planInput) {
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get('plan');
+      if (plan) {
+        planInput.value = plan;
+      }
+    }
   });
 })();

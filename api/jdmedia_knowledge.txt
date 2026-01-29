@@ -1,14 +1,18 @@
 JD Media (jdaitken.ca) — Ottawa, Canada
-Services: fast, minimal small-business websites.
-Pricing:
+Services: managed small-business websites (website + hosting + updates) for a simple monthly fee.
+Pricing (12-month minimum term, then month-to-month):
 
-Website Build: starting at $400 CAD (one-time)
+Launch — $175/month
+Includes: website up to 5 pages, hosting + SSL, minor content edits (small text/photo changes), basic maintenance + updates.
+Best for: new businesses.
 
-Hosting + Domain: $25/month or $250/year
+Growth — $275/month (most popular)
+Includes: everything in Launch, priority edits, local SEO optimization (titles, descriptions, Google-friendly structure), conversion improvements (CTA polish, layout tweaks), monthly performance check (lightweight).
+Best for: established local service businesses.
 
-Maintenance: $30/month
+Authority — $375/month
+Includes: everything in Growth, unlimited reasonable edits (within existing sections/layout), landing pages for promos, analytics + recommendations (simple).
+Best for: businesses pushing growth.
 
-AI Chatbot add-on: $30/month
-What’s included in Website Build: mobile responsive, contact form, basic SEO, launch help.
-Typical recommendation: most clients start with Website Build + Hosting, then add Maintenance or AI anytime.
+Launch timeline: most sites go live in 7-14 days after content is received.
 Contact: jd@jdaitken.ca
