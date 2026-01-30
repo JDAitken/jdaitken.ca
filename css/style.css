@@ -266,7 +266,7 @@ a {
 .process h2,
 .testimonials h2 {
   font-size: 32px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
@@ -289,21 +289,104 @@ a {
   margin: 0 0 8px;
 }
 
+.testimonials {
+  background: var(--subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.testimonials-header {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.testimonials-subhead {
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 16px;
+}
+
+.reviews-logo {
+  width: min(240px, 70vw);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  align-items: stretch;
+}
+
 .testimonial-card {
-  padding: 24px;
-  border-radius: 12px;
+  padding: 22px;
+  border-radius: var(--radius-card);
   border: 1px solid var(--border);
-  background: var(--card);
+  background: var(--surface);
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.testimonial-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.testimonial-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1px solid var(--border);
+}
+
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-name {
+  font-weight: 600;
+}
+
+.testimonial-location {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.testimonial-stars {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.testimonial-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: #f4b400;
 }
 
 .testimonial-card .quote {
-  font-size: 18px;
-  margin: 0 0 10px;
-}
-
-.testimonial-card .attribution {
-  color: var(--muted);
+  font-size: 16px;
+  color: var(--text);
   margin: 0;
 }
 
