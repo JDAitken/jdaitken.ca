@@ -72,16 +72,50 @@
     return { bind };
   })();
 
+  const ContactForm = (() => {
+    const init = () => {
+      const form = document.querySelector('[data-contact-form]');
+      const status = document.querySelector('[data-form-status]');
+      if (!form || !status) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = 'Thanks! I'll send your free audit within 48 hours.';
+            status.classList.remove('is-error');
+            status.classList.add('is-visible');
+            form.reset();
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          status.textContent = 'Something went wrong. Please try again or email jd@jdaitken.ca directly.';
+          status.classList.add('is-visible', 'is-error');
+        } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    };
+
+    return { init };
+  })();
+
   document.addEventListener('DOMContentLoaded', () => {
     Navigation.bind();
     Chatbot.init();
-    const planInput = document.querySelector('[data-plan-input]');
-    if (planInput) {
-      const params = new URLSearchParams(window.location.search);
-      const plan = params.get('plan');
-      if (plan) {
-        planInput.value = plan;
-      }
-    }
+    ContactForm.init();
   });
 })();

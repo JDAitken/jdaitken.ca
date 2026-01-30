@@ -133,11 +133,12 @@ a {
 }
 
 .nav-cta {
-  padding: 7px 12px;
+  padding: 10px 16px;
   border: 1px solid var(--accent);
-  border-radius: 10px;
+  border-radius: 6px;
   opacity: 1;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   background: var(--accent);
   color: var(--accent-contrast);
   transition: background-color var(--transition), border-color var(--transition), color var(--transition);
@@ -779,16 +780,65 @@ a {
 
 .form-status {
   display: none;
-  margin-top: 6px;
-  padding: 10px 12px;
+  margin-top: 16px;
+  padding: 16px 20px;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--success-green) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success-green) 35%, transparent);
   color: var(--text);
+  font-weight: 500;
 }
 
 .form-status.is-visible {
   display: block;
+}
+
+.form-status.is-error {
+  background: color-mix(in srgb, #EF4444 12%, transparent);
+  border-color: color-mix(in srgb, #EF4444 35%, transparent);
+}
+
+/* Section CTA blocks */
+.section-cta {
+  text-align: center;
+  padding: 60px 48px;
+  background: var(--subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-cta h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.section-cta p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer CTA */
+.footer-cta {
+  text-align: center;
+  padding: 80px 48px;
+  background: var(--deep-navy);
+  color: #ffffff;
+}
+
+.footer-cta h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.footer-cta p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact p {
@@ -800,12 +850,14 @@ a {
   display: inline-block;
   background: var(--accent);
   color: var(--accent-contrast);
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-weight: 600;
+  padding: 15px 35px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
   letter-spacing: -0.2px;
   margin: 6px;
   border: 1px solid var(--accent);
+  cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), color var(--transition), border-color var(--transition);
 }
 
@@ -814,6 +866,10 @@ a {
   box-shadow: var(--shadow);
   background: var(--accent-hover);
   border-color: var(--accent-hover);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn.secondary {
