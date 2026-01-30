@@ -292,11 +292,27 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
 .process-card h3 {
   margin: 0;
   font-size: 18px;
+}
+
+.process-subhead {
+  text-align: center;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+
+.process-step {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
 }
 
 .process-icon {
@@ -310,6 +326,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 10px 20px rgba(255, 107, 74, 0.2);
 }
 
 .testimonials {
