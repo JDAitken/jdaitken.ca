@@ -276,6 +276,12 @@ a {
   gap: 16px;
 }
 
+.process-grid--two {
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  max-width: 820px;
+  margin: 0 auto;
+}
+
 .process-card {
   padding: 22px;
   border-radius: 12px;
@@ -283,10 +289,27 @@ a {
   background: var(--card);
   box-shadow: var(--shadow);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .process-card h3 {
-  margin: 0 0 8px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.process-icon {
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .testimonials {
@@ -1112,6 +1135,10 @@ footer {
   .faq,
   .packages {
     padding: 80px 24px;
+  }
+
+  .process-grid--two {
+    grid-template-columns: 1fr;
   }
 
   .pricing-hero h1 {
