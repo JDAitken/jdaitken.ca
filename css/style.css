@@ -1,18 +1,27 @@
 :root {
   color-scheme: light;
+
+  /* JD Media HVAC Brand */
+  --deep-navy: #1A2332;
+  --warm-coral: #FF6B4A;
+  --light-gray: #F5F7FA;
+  --charcoal: #2D3748;
+  --success-green: #10B981;
+
+  /* Theme mappings */
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #ffffff;
-  --text: #111827;
-  --muted: #4b5563;
-  --border: #e5e7eb;
-  --shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
-  --shadow-hover: 0 18px 40px rgba(17, 24, 39, 0.12);
-  --accent: #2563eb;
+  --surface-2: var(--light-gray);
+  --text: var(--charcoal);
+  --muted: #6B7280;
+  --border: #E2E8F0;
+  --shadow: 0 12px 30px rgba(26, 35, 50, 0.08);
+  --shadow-hover: 0 18px 40px rgba(26, 35, 50, 0.12);
+  --accent: var(--warm-coral);
   --accent-contrast: #ffffff;
-  --accent-secondary: #64748b;
-  --accent-hover: color-mix(in srgb, var(--accent) 88%, var(--text));
-  --pill: #e5e7eb;
+  --accent-secondary: var(--success-green);
+  --accent-hover: #E85A3A;
+  --pill: var(--light-gray);
   --nav-backdrop: color-mix(in srgb, var(--bg) 92%, transparent);
   --radius-card: 16px;
   --radius-pill: 12px;
@@ -30,7 +39,7 @@
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -217,6 +226,27 @@ a {
   margin-left: auto;
   margin-right: auto;
   font-weight: 600;
+}
+
+/* Dark Hero Variant */
+.hero--dark {
+  background: var(--deep-navy);
+  color: #ffffff;
+}
+.hero--dark .subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero--dark .hero-trust,
+.hero--dark .hero-microcopy {
+  color: rgba(255, 255, 255, 0.7);
+}
+.hero--dark .btn {
+  background: var(--warm-coral);
+  border-color: var(--warm-coral);
+}
+.hero--dark .btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 .section {
