@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work | JD Media</title>
+
+  <title>JD Media | Plans & Pricing</title>
+  <meta name="description" content="Simple monthly plans for a fully managed website." />
+
   <link rel="icon" type="image/svg+xml" href="/brand/favicon/favicon-light.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chat.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <header class="nav" data-nav>
   <div class="nav-inner">
@@ -35,24 +39,16 @@
   </div>
 </header>
 
-<section class="hero hero--work hero--dark" id="top">
-  <h1>HVAC websites managed monthly, launched fast.</h1>
-  <p class="subtitle">Built to turn Google searches into calls.</p>
-  <div class="hero-actions">
-    <a
-      class="btn"
-      href="/contact.html"
-      aria-label="Get my free website audit"
-    >
-      Get My Free Website Audit
-    </a>
+<section class="pricing" id="top">
+  <div class="pricing-hero">
+    <h1>Plans & Pricing</h1>
+    <p class="pricing-headline">Your website, managed for you - one simple monthly fee.</p>
+    <p class="pricing-subheadline">We build it, host it, maintain it, and keep it updated so you never have to think about your website again.</p>
+    <div class="hero-actions pricing-actions">
+      <a class="btn" href="/contact.html">Get My Free Website Audit</a>
+    </div>
+    <p class="pricing-microcopy">12-month minimum. Cancel anytime after.</p>
   </div>
-  <p class="hero-microcopy">No obligation. Most audits delivered within 48 hours.</p>
-</section>
-
-<section class="packages">
-  <h2>Pricing</h2>
-  <p class="packages-intro">Your website, managed for you - one simple monthly fee.</p>
   <div class="pricing-cards">
     <article class="package-card">
       <h3 class="package-title">Launch</h3>
@@ -69,6 +65,7 @@
     </article>
     <article class="package-card featured">
       <span class="package-badge">Most Popular</span>
+      <p class="package-recommended">Recommended</p>
       <h3 class="package-title">Growth</h3>
       <div class="package-price"><strong>$275 / month</strong></div>
       <p class="package-bestfor">Best for: established local service businesses</p>
@@ -100,11 +97,49 @@
   <p class="pricing-guarantee">Launch timeline: most sites go live in 7-14 days after content is received.</p>
 </section>
 
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Is there a minimum term?</summary>
+      <p>Yes. Every plan includes a 12-month minimum. After that, you can cancel anytime.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What counts as an edit?</summary>
+      <p>Launch includes small text/photo changes. Growth adds priority edits. Authority includes unlimited reasonable edits within the existing sections and layout.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you help with SEO?</summary>
+      <p>Yes. Growth and Authority include local SEO optimization (titles, descriptions, and a Google-friendly structure). Launch covers the essentials.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I add pages later?</summary>
+      <p>Absolutely. We can add pages as you grow, or move you to a plan that includes ongoing landing page creation.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What if I already have a site/domain?</summary>
+      <p>No problem. We can migrate your domain and rebuild or refresh your site within the same plan.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What happens after 12 months?</summary>
+      <p>You can keep the plan month-to-month or cancel anytime after the minimum term.</p>
+    </details>
+  </div>
+</section>
+
+<section class="section-cta">
+  <h3>Want a plan recommendation?</h3>
+  <p>Get a free audit and a clear plan to improve your site.</p>
+  <a href="/contact.html" class="btn">Get My Free Website Audit</a>
+</section>
+
 <div id="chat-widget-root" aria-live="polite"></div>
+
 <footer>
   <p>© 2025 JD Media — Web Solutions for HVAC Businesses</p>
 </footer>
-<script src="js/main.js" defer></script>
-<script src="js/chat.js" defer></script>
+
+<script src="/js/main.js" defer></script>
+<script src="/js/chat.js" defer></script>
 </body>
 </html>

@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | JD Media</title>
+
+  <title>JD Media | Portfolio</title>
+  <meta name="description" content="Recent web projects delivered by JD Media. Browse portfolio work and outcomes." />
+
   <link rel="icon" type="image/svg+xml" href="/brand/favicon/favicon-light.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chat.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <header class="nav" data-nav>
   <div class="nav-inner">
@@ -35,37 +39,17 @@
   </div>
 </header>
 
-<main class="projects" style="padding-top:120px">
-  <h1>Projects</h1>
-  <p class="subtitle" style="margin-top:12px">Selected client work built with speed, clarity, and minimalism.</p>
+<section class="hero hero--dark" id="top">
+  <h1>Portfolio</h1>
+  <p class="subtitle">Recent launches and redesigns built to drive calls, leads, and trust.</p>
+  <div class="hero-actions">
+    <a class="btn" href="/contact.html">Get My Free Website Audit</a>
+  </div>
+</section>
 
-  <div class="projects-grid" style="margin-top:32px">
-    <div class="project-card">
-      <picture class="project-thumb">
-        <source
-          type="image/webp"
-          srcset="
-            /images/projects/capital-city-cards-1200.webp 1200w,
-            /images/projects/capital-city-cards-1900.webp 1900w
-          "
-          sizes="(max-width: 768px) 92vw, 520px"
-        />
-        <img
-          src="/images/projects/capital-city-cards-1200.png"
-          srcset="/images/projects/capital-city-cards-1200.png 1200w, /images/projects/capital-city-cards-1900.png 1900w"
-          sizes="(max-width: 768px) 92vw, 520px"
-          alt="Capital City Cards website preview"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-      <div class="project-content">
-        <h3>Capital City Cards</h3>
-        <p>A bold, modern ecommerce experience for premium football hobby breaks.</p>
-        <div class="project-tags">Design • Build • Ecommerce</div>
-        <a href="https://capitalcitycards.ca" class="project-link" target="_blank" rel="noopener">View Project →</a>
-      </div>
-    </div>
+<section class="projects">
+  <h2>Selected Work</h2>
+  <div class="projects-grid">
     <div class="project-card">
       <picture class="project-thumb">
         <source
@@ -80,18 +64,50 @@
           src="/images/projects/legendary-landscaping-1200.png"
           srcset="/images/projects/legendary-landscaping-1200.png 1200w, /images/projects/legendary-landscaping-1900.png 1900w"
           sizes="(max-width: 768px) 92vw, 520px"
-          alt="Legendary Landscaping homepage hero"
+          alt="Legendary Landscaping website hero and services"
           loading="lazy"
           decoding="async"
         />
       </picture>
       <div class="project-content">
         <h3>Legendary Landscaping</h3>
-        <p>Image-led one-pager to showcase services and capture leads fast.</p>
+        <p class="project-meta"><strong>Problem:</strong> Outdated one-pager with slow load times and no clear CTA.</p>
+        <p class="project-meta"><strong>Solution:</strong> Mobile-first rebuild with services grid, gallery, and click-to-call CTA.</p>
+        <p class="project-meta"><strong>Result:</strong> Clearer calls-to-action and faster load time.</p>
         <div class="project-tags">Design • Build • Performance</div>
         <a href="https://johna431.sg-host.com/" class="project-link" target="_blank" rel="noopener">View Project →</a>
       </div>
     </div>
+
+    <div class="project-card">
+      <picture class="project-thumb">
+        <source
+          type="image/webp"
+          srcset="
+            /images/projects/capital-city-cards-1200.webp 1200w,
+            /images/projects/capital-city-cards-1900.webp 1900w
+          "
+          sizes="(max-width: 768px) 92vw, 520px"
+        />
+        <img
+          src="/images/projects/capital-city-cards-1200.png"
+          srcset="/images/projects/capital-city-cards-1200.png 1200w, /images/projects/capital-city-cards-1900.png 1900w"
+          sizes="(max-width: 768px) 92vw, 520px"
+          alt="Capital City Cards ecommerce homepage"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <div class="project-content">
+        <h3>Capital City Cards</h3>
+        <p class="project-meta"><strong>Problem:</strong> Needed a bold experience with clear promos for live streams.</p>
+        <p class="project-meta"><strong>Solution:</strong> Modern layout with featured drops, schedule, and streamlined CTAs.</p>
+        <p class="project-meta"><strong>Result:</strong> Easier navigation to promos and a clearer conversion path.</p>
+        <div class="project-tags">Design • Build • Ecommerce</div>
+        <a href="https://capitalcitycards.ca" class="project-link" target="_blank" rel="noopener">View Project →</a>
+      </div>
+    </div>
+
     <div class="project-card">
       <picture class="project-thumb">
         <source
@@ -113,19 +129,29 @@
       </picture>
       <div class="project-content">
         <h3>Secret Santa Draw</h3>
-        <p>A fast, private Secret Santa web app that creates link-only draws with no accounts or emails. Built mobile-first with privacy-friendly design and curated gift ideas.</p>
+        <p class="project-meta"><strong>Problem:</strong> Users needed a private way to run draws without accounts.</p>
+        <p class="project-meta"><strong>Solution:</strong> Lightweight app with link-only draws and no email collection.</p>
+        <p class="project-meta"><strong>Result:</strong> Faster setup and private sharing for groups.</p>
         <div class="project-tags">Design • Build • UX</div>
         <a href="https://secretsantadraw.ca" class="project-link" target="_blank" rel="noopener">View Project →</a>
       </div>
     </div>
   </div>
-</main>
+</section>
+
+<section class="section-cta">
+  <h3>Want a website that performs like these?</h3>
+  <p>Get a free audit and a clear plan to improve your site.</p>
+  <a href="/contact.html" class="btn">Get My Free Website Audit</a>
+</section>
 
 <div id="chat-widget-root" aria-live="polite"></div>
+
 <footer>
   <p>© 2025 JD Media — Web Solutions for HVAC Businesses</p>
 </footer>
-<script src="js/main.js" defer></script>
-<script src="js/chat.js" defer></script>
+
+<script src="/js/main.js" defer></script>
+<script src="/js/chat.js" defer></script>
 </body>
 </html>

@@ -69,7 +69,26 @@
       });
     };
 
-    return { bind };
+    const setActiveLink = () => {
+      if (!navLinks) return;
+      const normalize = (path) => {
+        const withoutIndex = path.replace(/\/index\.html$/, '');
+        const trimmed = withoutIndex.replace(/\/$/, '');
+        return trimmed.length ? trimmed : '/';
+      };
+      const currentPath = normalize(window.location.pathname);
+      navLinks.querySelectorAll('a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        if (href.startsWith('http') || href.startsWith('mailto')) return;
+        const linkPath = normalize(new URL(href, window.location.origin).pathname);
+        if (linkPath === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    return { bind, setActiveLink };
   })();
 
   const ContactForm = (() => {
@@ -93,7 +112,7 @@
           });
 
           if (response.ok) {
-            status.textContent = 'Thanks! I'll send your free audit within 48 hours.';
+            status.textContent = "Thanks! I'll send your free website audit within 48 hours.";
             status.classList.remove('is-error');
             status.classList.add('is-visible');
             form.reset();
@@ -115,6 +134,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     Navigation.bind();
+    Navigation.setActiveLink();
     Chatbot.init();
     ContactForm.init();
   });
