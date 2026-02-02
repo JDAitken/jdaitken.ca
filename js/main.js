@@ -121,5 +121,27 @@
     Navigation.setActiveLink();
     Chatbot.init();
     ContactForm.init();
+    (() => {
+      const input = document.getElementById('website');
+      if (!input) return;
+
+      const normalizeUrl = (value) => {
+        const v = (value || '').trim();
+        if (!v) return '';
+        if (/^https?:\/\//i.test(v)) return v;
+        return `https://${v}`;
+      };
+
+      input.addEventListener('blur', () => {
+        input.value = normalizeUrl(input.value);
+      });
+
+      const form = input.closest('form');
+      if (form) {
+        form.addEventListener('submit', () => {
+          input.value = normalizeUrl(input.value);
+        });
+      }
+    })();
   });
 })();
