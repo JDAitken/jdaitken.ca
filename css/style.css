@@ -911,6 +911,14 @@ a {
   gap: 8px;
 }
 
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .form-label {
   font-weight: 700;
   font-size: 14px;

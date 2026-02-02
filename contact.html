@@ -40,7 +40,11 @@
   <p class="contact-lead">I'll review your site and show you exactly how to get more leads from your website—no obligation.</p>
 
   <div class="form-card">
-    <form class="contact-form" action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form>
+    <form class="contact-form" action="/api/contact.php" method="POST" data-contact-form>
+      <div class="form-field honeypot" aria-hidden="true">
+        <label class="form-label" for="contact-gotcha">Leave this field empty</label>
+        <input class="form-input" id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
       <div class="form-grid">
         <div class="form-field">
           <label class="form-label" for="contact-name">Name</label>
@@ -67,12 +71,12 @@
 
       <div class="form-field">
         <label class="form-label" for="contact-message">Message (optional)</label>
-        <textarea class="form-textarea" id="contact-message" name="message" rows="4" placeholder="Share goals or issues you'd like reviewed."></textarea>
+        <textarea class="form-textarea" id="contact-message" name="message" rows="4" placeholder="Share goals or issues you'd like reviewed." required></textarea>
         <p class="form-hint">Example: low call volume, slow site, or weak search visibility.</p>
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn">Get My Free Website Audit</button>
+        <button type="submit" class="btn">Request a Quote</button>
       </div>
 
       <div class="form-status" role="status" aria-live="polite" data-form-status></div>

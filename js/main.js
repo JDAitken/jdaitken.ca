@@ -95,37 +95,21 @@
     const init = () => {
       const form = document.querySelector('[data-contact-form]');
       const status = document.querySelector('[data-form-status]');
-      if (!form || !status) return;
+      if (!form) return;
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            status.textContent = "Thanks! I'll send your free website audit within 48 hours.";
-            status.classList.remove('is-error');
-            status.classList.add('is-visible');
-            form.reset();
-          } else {
-            throw new Error('Form submission failed');
-          }
-        } catch (error) {
+      if (status) {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('error') === '1') {
           status.textContent = 'Something went wrong. Please try again or email jd@jdaitken.ca directly.';
           status.classList.add('is-visible', 'is-error');
-        } finally {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
         }
+      }
+
+      form.addEventListener('submit', () => {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
       });
     };
 
