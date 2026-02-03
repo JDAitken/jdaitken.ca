@@ -122,9 +122,6 @@
     Chatbot.init();
     ContactForm.init();
     (() => {
-      const input = document.getElementById('website');
-      if (!input) return;
-
       const normalizeUrl = (value) => {
         const v = (value || '').trim();
         if (!v) return '';
@@ -132,15 +129,53 @@
         return `https://${v}`;
       };
 
-      input.addEventListener('blur', () => {
-        input.value = normalizeUrl(input.value);
-      });
+      const storeKey = 'jd_audit_website';
+      const heroInput = document.getElementById('hero-website');
+      const heroForm = document.querySelector('[data-hero-form]');
+      const contactInput = document.getElementById('website');
 
-      const form = input.closest('form');
-      if (form) {
-        form.addEventListener('submit', () => {
-          input.value = normalizeUrl(input.value);
+      if (heroInput) {
+        heroInput.addEventListener('blur', () => {
+          heroInput.value = normalizeUrl(heroInput.value);
         });
+      }
+
+      if (heroForm && heroInput) {
+        heroForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const normalized = normalizeUrl(heroInput.value);
+          if (normalized) {
+            localStorage.setItem(storeKey, normalized);
+          }
+          const target = normalized
+            ? `/contact.html?website=${encodeURIComponent(normalized)}`
+            : '/contact.html';
+          window.location.href = target;
+        });
+      }
+
+      if (contactInput) {
+        const params = new URLSearchParams(window.location.search);
+        const paramValue = params.get('website');
+        const storedValue = localStorage.getItem(storeKey);
+        const initialValue = paramValue || storedValue;
+        if (initialValue) {
+          contactInput.value = normalizeUrl(initialValue);
+        }
+
+        contactInput.addEventListener('blur', () => {
+          contactInput.value = normalizeUrl(contactInput.value);
+        });
+
+        const form = contactInput.closest('form');
+        if (form) {
+          form.addEventListener('submit', () => {
+            contactInput.value = normalizeUrl(contactInput.value);
+            if (contactInput.value) {
+              localStorage.setItem(storeKey, contactInput.value);
+            }
+          });
+        }
       }
     })();
   });
