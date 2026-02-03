@@ -1121,15 +1121,15 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #0b0f14;
-  color: #ffffff;
+  background: var(--accent);
+  color: var(--accent-contrast);
   padding: 14px 30px;
   border-radius: 999px;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: -0.1px;
   margin: 10px 8px;
-  border: 1px solid #0b0f14;
+  border: 1px solid var(--accent);
   cursor: pointer;
   min-height: 44px;
   min-width: 44px;
@@ -1138,9 +1138,9 @@ a {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.22);
-  background: #111827;
-  border-color: #111827;
+  box-shadow: 0 16px 30px rgba(255, 107, 74, 0.22);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 .btn:active {
