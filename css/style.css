@@ -1118,16 +1118,18 @@ a {
 }
 
 .btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  padding: 16px 36px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: -0.2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b0f14;
+  color: #ffffff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.1px;
   margin: 10px 8px;
-  border: 1px solid var(--accent);
+  border: 1px solid #0b0f14;
   cursor: pointer;
   min-height: 44px;
   min-width: 44px;
@@ -1136,9 +1138,9 @@ a {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.22);
+  background: #111827;
+  border-color: #111827;
 }
 
 .btn:active {
@@ -1146,14 +1148,14 @@ a {
 }
 
 .btn.secondary {
-  background: transparent;
+  background: #ffffff;
   color: var(--text);
   border-color: var(--border);
 }
 
 .btn.secondary:hover {
-  background: var(--card);
-  box-shadow: var(--shadow);
+  background: #f3f4f6;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
 }
 
 .contact-email {
