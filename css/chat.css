@@ -5,8 +5,8 @@
   --chat-text: var(--text);
   --chat-muted: var(--muted);
   --chat-border: var(--border);
-  --chat-accent: var(--accent);
-  --chat-accent-contrast: var(--accent-contrast);
+  --chat-accent: var(--color-accent);
+  --chat-accent-contrast: var(--color-on-accent);
   --chat-radius: var(--radius-card, 14px);
   --chat-shadow: var(--shadow, 0 8px 22px rgba(0,0,0,0.12));
 }
@@ -149,9 +149,9 @@
 }
 
 .chat-message.error {
-  border-color: #e57c7c;
-  background: rgba(229, 124, 124, 0.12);
-  color: #6b1a1a;
+  border-color: var(--color-danger);
+  background: color-mix(in srgb, var(--color-danger) 12%, var(--chat-bg));
+  color: var(--chat-text);
 }
 
 .chat-footer {

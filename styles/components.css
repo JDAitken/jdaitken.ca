@@ -19,9 +19,9 @@
 }
 
 .btn.btn--primary {
-  background: var(--color-accent);
-  color: var(--color-text);
-  border-color: color-mix(in srgb, var(--color-accent) 70%, transparent);
+  background: var(--color-accent-warm);
+  color: var(--color-on-accent);
+  border-color: color-mix(in srgb, var(--color-accent-warm) 70%, transparent);
 }
 
 .btn.btn--primary:hover {
