@@ -104,22 +104,14 @@ a {
   align-items: center;
   line-height: 1;
   position: relative;
-  gap: 4px;
+  gap: 0;
   justify-self: start;
 }
 
-.logo img {
-  height: 22px;
-  width: 22px;
-  display: block;
-  transform: translateY(0.5px);
-  filter: brightness(0) invert(1);
-}
-
 .brand-text {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -227,13 +219,10 @@ a {
 .menu-brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-
-.menu-brand img {
-  width: 26px;
-  height: 26px;
-  filter: brightness(0) invert(1);
+  gap: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .menu-contactBtn {
@@ -1639,11 +1628,6 @@ footer {
 
   .brand-text {
     display: none;
-  }
-
-  .logo img {
-    height: 26px;
-    width: 26px;
   }
 
   .nav-links {
