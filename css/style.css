@@ -150,12 +150,14 @@ a {
   font-weight: 600;
   background: var(--color-accent);
   color: var(--color-on-accent);
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition: background-color var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition), opacity var(--transition);
 }
 
 .nav-cta:hover {
   background: color-mix(in srgb, var(--color-accent) 85%, var(--color-bg));
   border-color: color-mix(in srgb, var(--color-accent) 85%, var(--color-bg));
+  color: var(--color-on-accent);
+  opacity: 0.92;
 }
 .nav-actions {
   display: flex;
