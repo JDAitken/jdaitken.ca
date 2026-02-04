@@ -116,6 +116,7 @@ a {
   width: 22px;
   display: block;
   transform: translateY(0.5px);
+  filter: brightness(0) invert(1);
 }
 
 .brand-text {
@@ -1372,19 +1373,20 @@ footer {
   }
 
   .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: calc(100% - 40px);
-    padding: 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow);
+    position: fixed;
+    inset: 0;
+    padding: 120px 24px 32px;
+    background: var(--color-bg);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 20px;
     display: none;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 900;
   }
 
   [data-nav-open="true"] .nav-links {
@@ -1407,7 +1409,7 @@ footer {
   .menu-toggle {
     display: inline-flex;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 999px;
     border: 1px solid var(--border);
     background: var(--card);
     width: 42px;
@@ -1443,6 +1445,23 @@ footer {
 
   .menu-toggle .menu-icon span {
     top: 5px;
+  }
+
+  [data-nav-open="true"] .menu-toggle {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  [data-nav-open="true"] .menu-toggle .menu-icon::before {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  [data-nav-open="true"] .menu-toggle .menu-icon::after {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  [data-nav-open="true"] .menu-toggle .menu-icon span {
+    opacity: 0;
   }
 
   .hero {
@@ -1515,9 +1534,17 @@ footer {
     gap: 8px;
   }
 
+  .brand-text {
+    display: none;
+  }
+
+  .logo img {
+    height: 26px;
+    width: 26px;
+  }
+
   .nav-links {
-    right: 20px;
-    width: calc(100% - 40px);
+    padding-top: 110px;
   }
 
   .hero {
