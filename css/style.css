@@ -318,15 +318,15 @@ a {
   width: 26px;
   height: 26px;
   border-radius: 999px;
-  background: rgba(255, 107, 74, 0.12);
-  color: var(--accent);
+  background: #111827;
+  color: #ffffff;
   font-size: 16px;
   transition: transform var(--transition), background-color var(--transition);
 }
 
 .hero-submit:hover .btn-arrow {
   transform: translateX(2px);
-  background: rgba(255, 107, 74, 0.2);
+  background: #0b1220;
 }
 
 .hero-link {
