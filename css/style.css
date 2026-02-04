@@ -1724,6 +1724,11 @@ footer {
   text-decoration-thickness: 2px;
 }
 
-.nav a:hover {
+.nav a:not(.logo):hover {
   text-decoration: underline;
+}
+
+.menu-brand,
+.menu-brand:hover {
+  text-decoration: none;
 }
