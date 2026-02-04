@@ -93,8 +93,8 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
-  font-size: 16px;
+  gap: 30px;
+  font-size: 17px;
   line-height: 1.2;
   margin-left: auto;
 }
@@ -159,7 +159,8 @@ a {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-left: 18px;
 }
 
 .menu-toggle {
