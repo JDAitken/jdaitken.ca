@@ -1366,6 +1366,7 @@ footer {
   .nav {
     padding: 20px 24px;
     gap: 10px;
+    z-index: 3001;
   }
 
   .nav-inner {
@@ -1405,6 +1406,17 @@ footer {
   .nav-links a {
     opacity: 1;
     color: var(--color-text);
+  }
+
+  .nav-links .nav-email {
+    margin-top: auto;
+    font-size: 16px;
+    color: var(--color-muted-2);
+  }
+
+  .nav-links .nav-email a {
+    color: var(--color-text);
+    text-decoration: none;
   }
 
   .nav a {
