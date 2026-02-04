@@ -1,3 +1,8 @@
+@import url("/styles/tokens.css");
+@import url("/styles/base.css");
+@import url("/styles/components.css");
+@import url("/styles/utilities.css");
+
 :root {
   color-scheme: light;
 
@@ -1261,6 +1266,13 @@ a {
   min-height: 44px;
   min-width: 44px;
   transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.hero-submit.btn {
+  background: #ffffff;
+  color: var(--text);
+  border-color: rgba(11, 15, 25, 0.12);
+  box-shadow: 0 14px 28px rgba(11, 15, 25, 0.12);
 }
 
 .btn:hover {

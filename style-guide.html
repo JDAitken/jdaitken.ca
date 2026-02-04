@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JD Media Style Reference</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+</head>
+<body>
+  <main class="container stack" style="--stack-space: var(--space-8); padding: var(--space-9) 0;">
+    <header class="stack">
+      <span class="badge">Style Reference</span>
+      <h1>JD Media UI System</h1>
+      <p>Internal reference for tokens, components, and layout primitives.</p>
+    </header>
+
+    <section class="stack">
+      <h2>Typography</h2>
+      <div class="stack">
+        <h1>Heading 1 — Digital Caretaker</h1>
+        <h2>Heading 2 — Calm clarity</h2>
+        <h3>Heading 3 — Quietly technical</h3>
+        <p>Body text uses Inter with calm line-height and muted support copy.</p>
+        <p class="muted">Muted copy for captions and secondary descriptions.</p>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Buttons</h2>
+      <div class="cluster">
+        <a class="btn btn--primary" href="#">Primary action</a>
+        <a class="btn btn--secondary" href="#">Secondary action</a>
+        <a class="btn btn--ghost" href="#">Ghost action</a>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Cards</h2>
+      <div class="cluster">
+        <div class="card" style="max-width: 280px;">
+          <h3>Conversion focus</h3>
+          <p>Surface containers use subtle borders and restrained depth.</p>
+        </div>
+        <div class="card" style="max-width: 280px;">
+          <h3>Mobile-first</h3>
+          <p>Layouts remain calm and readable on every device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Forms</h2>
+      <div class="stack" style="max-width: 420px;">
+        <label class="label" for="sg-name">Name</label>
+        <input class="input" id="sg-name" type="text" placeholder="Jane Smith">
+        <label class="label" for="sg-message">Message</label>
+        <textarea class="textarea" id="sg-message" rows="4" placeholder="Share your goals"></textarea>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Badges + Dividers</h2>
+      <div class="cluster">
+        <span class="badge">Caretaker</span>
+        <span class="badge">Premium</span>
+      </div>
+      <hr class="divider">
+    </section>
+
+    <section class="stack">
+      <h2>Spacing</h2>
+      <div class="stack" style="--stack-space: var(--space-2);">
+        <div class="card">Stack item 1</div>
+        <div class="card">Stack item 2</div>
+        <div class="card">Stack item 3</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
