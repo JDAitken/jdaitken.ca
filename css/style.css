@@ -115,6 +115,15 @@ a {
   line-height: 1;
 }
 
+.logo,
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo {
+  cursor: pointer;
+}
+
 .nav a:not(.btn) {
   font-weight: 500;
   opacity: 0.78;
