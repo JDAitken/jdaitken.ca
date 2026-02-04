@@ -3,6 +3,9 @@
   const nav = document.querySelector('[data-nav]');
   const navLinks = document.querySelector('[data-nav-links]');
   const navToggle = document.querySelector('[data-nav-toggle]');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const menuPanel = document.querySelector('[data-menu-panel]');
+  const menuCloseBtn = document.querySelector('.menu-closeBtn');
   const mobileBreakpoint = window.matchMedia('(max-width: 820px)');
 
   // Placeholder chatbot module: wire API + UI later.
@@ -27,44 +30,94 @@
 
   const Navigation = (() => {
     const isMobile = () => mobileBreakpoint.matches;
+    let lastFocused = null;
+    let previousOverflow = '';
 
-    const setNavState = (open) => {
-      if (!nav) return;
+    const getFocusable = () => {
+      if (!menuOverlay) return [];
+      return Array.from(
+        menuOverlay.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+    };
+
+    const setMenuState = (open) => {
+      if (!nav || !menuOverlay) return;
       nav.setAttribute('data-nav-open', open ? 'true' : 'false');
+      menuOverlay.classList.toggle('is-open', open);
+      menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
       if (navToggle) {
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       }
+      if (open) {
+        lastFocused = document.activeElement;
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+          menuCloseBtn?.focus();
+        });
+      } else {
+        document.body.style.overflow = previousOverflow;
+        if (lastFocused instanceof HTMLElement) {
+          lastFocused.focus();
+        }
+      }
     };
 
-    const closeNav = () => setNavState(false);
-    const toggleNav = () => {
+    const closeMenu = () => setMenuState(false);
+    const openMenu = () => setMenuState(true);
+    const toggleMenu = () => {
       const open = nav?.getAttribute('data-nav-open') === 'true';
-      setNavState(!open);
+      setMenuState(!open);
     };
 
-    const handleClickOutside = (event) => {
-      if (!nav || !isMobile()) return;
-      if (!nav.contains(event.target)) {
-        closeNav();
+    const handleKeydown = (event) => {
+      if (!menuOverlay || menuOverlay.getAttribute('aria-hidden') === 'true') return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
     const bind = () => {
-      if (!nav || !navToggle || !navLinks) return;
-      setNavState(false);
+      if (!nav || !navToggle || !menuOverlay) return;
+      setMenuState(false);
       navToggle.addEventListener('click', () => {
         if (!isMobile()) return;
-        toggleNav();
+        toggleMenu();
       });
-      navLinks.querySelectorAll('a').forEach((link) => {
+      menuCloseBtn?.addEventListener('click', () => closeMenu());
+      menuOverlay.addEventListener('click', (event) => {
+        if (event.target === menuOverlay) {
+          closeMenu();
+        }
+      });
+      menuPanel?.addEventListener('click', (event) => {
+        event.stopPropagation();
+      });
+      menuOverlay.querySelectorAll('.menuLink').forEach((link) => {
         link.addEventListener('click', () => {
-          if (isMobile()) closeNav();
+          if (isMobile()) closeMenu();
         });
       });
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handleKeydown);
       mobileBreakpoint.addEventListener?.('change', () => {
         if (!isMobile()) {
-          setNavState(false);
+          closeMenu();
         }
       });
     };
