@@ -106,8 +106,13 @@ a {
   position: relative;
   gap: 0;
   justify-self: start;
+  color: var(--text);
 }
 
+.logo:hover,
+.logo:focus-visible {
+  color: var(--text);
+}
 .brand-text {
   font-size: 19px;
   font-weight: 600;
