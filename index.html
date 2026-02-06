@@ -108,63 +108,46 @@
   <p class="contact-lead">I'll review your site and show you exactly how to get more leads from your website—no obligation.</p>
 
   <div class="form-card">
-    <form class="contact-form audit-form" action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form novalidate>
-      <fieldset class="form-fieldset">
-        <legend class="form-legend sr-only">Request your free website audit</legend>
-
-        <div class="form-field honeypot" aria-hidden="true">
-          <label class="form-label" for="audit-gotcha">Leave this field empty</label>
-          <input class="form-input" id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-        </div>
-
-        <ul class="audit-bullets" aria-label="What you'll get">
-          <li>Quick wins to get more calls</li>
-          <li>Speed + SEO checks</li>
-          <li>Clear next steps</li>
-        </ul>
-
-        <div class="form-grid">
-          <div class="form-field">
-            <label class="form-label" for="audit-name">Name (first + last)</label>
-            <input class="form-input" id="audit-name" type="text" name="name" autocomplete="name" required data-field="name" aria-describedby="audit-name-error">
-            <p class="form-error" id="audit-name-error" aria-live="polite"></p>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="audit-business">Business name</label>
-            <input class="form-input" id="audit-business" type="text" name="business" autocomplete="organization" required data-field="business" aria-describedby="audit-business-error">
-            <p class="form-error" id="audit-business-error" aria-live="polite"></p>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="audit-phone">Best phone number</label>
-            <input class="form-input" id="audit-phone" type="tel" name="phone" inputmode="tel" autocomplete="tel" data-field="phone" data-contact-method aria-describedby="audit-phone-error">
-            <p class="form-error" id="audit-phone-error" aria-live="polite"></p>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="audit-email">Best email</label>
-            <input class="form-input" id="audit-email" type="email" name="email" autocomplete="email" data-field="email" data-contact-method aria-describedby="audit-email-error">
-            <p class="form-error" id="audit-email-error" aria-live="polite"></p>
-          </div>
-        </div>
-
+    <form class="contact-form" action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form>
+      <div class="form-field honeypot" aria-hidden="true">
+        <label class="form-label" for="audit-gotcha">Leave this field empty</label>
+        <input class="form-input" id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-grid">
         <div class="form-field">
-          <label class="form-label" for="website">Website (optional)</label>
-          <input class="form-input" id="website" name="website" type="url" inputmode="url" placeholder="https://yourwebsite.com" autocomplete="url" data-field="website" aria-describedby="website-error">
-          <p class="form-error" id="website-error" aria-live="polite"></p>
+          <label class="form-label" for="audit-name">Name</label>
+          <input class="form-input" id="audit-name" type="text" name="name" autocomplete="name" required>
         </div>
-
         <div class="form-field">
-          <label class="form-label" for="audit-message">What should I focus on? (optional)</label>
-          <textarea class="form-textarea" id="audit-message" name="message" rows="5" placeholder="Slow site, low calls, unclear CTA, etc." data-field="message" aria-describedby="audit-message-hint audit-message-error"></textarea>
-          <p class="form-hint" id="audit-message-hint">Share goals or pain points you'd like reviewed.</p>
-          <p class="form-error" id="audit-message-error" aria-live="polite"></p>
+          <label class="form-label" for="audit-business">Business Name</label>
+          <input class="form-input" id="audit-business" type="text" name="business" autocomplete="organization" required>
         </div>
+        <div class="form-field">
+          <label class="form-label" for="audit-phone">Phone</label>
+          <input class="form-input" id="audit-phone" type="tel" name="phone" autocomplete="tel" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="audit-email">Email</label>
+          <input class="form-input" id="audit-email" type="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn--primary btn--md">Get My Free Audit</button>
-          <p class="form-privacy">No spam. I’ll reply within 1–2 business days.</p>
-          <div class="form-status" role="status" aria-live="polite" data-form-status></div>
-        </div>
-      </fieldset>
+      <div class="form-field">
+        <label class="form-label" for="website">Current Website (optional)</label>
+        <input class="form-input" id="website" name="website" type="url" placeholder="jdaitken.ca" autocomplete="url">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="audit-message">Message (optional)</label>
+        <textarea class="form-textarea" id="audit-message" name="message" rows="4" placeholder="Share goals or issues you'd like reviewed." required></textarea>
+        <p class="form-hint">Example: low call volume, slow site, or weak search visibility.</p>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn--primary btn--md">Request a Quote</button>
+      </div>
+
+      <div class="form-status" role="status" aria-live="polite" data-form-status></div>
     </form>
   </div>
 </section>

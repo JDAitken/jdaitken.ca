@@ -1184,47 +1184,6 @@ a {
   gap: 18px;
 }
 
-.audit-form {
-  text-align: left;
-}
-
-.audit-form .form-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.audit-bullets {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2);
-  margin: 0;
-  padding: 0;
-  color: var(--muted);
-  font-size: var(--text-sm);
-}
-
-.audit-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-2);
-}
-
-.audit-bullets li::before {
-  content: "•";
-  color: var(--color-accent);
-  line-height: 1.2;
-}
-
-.audit-form .form-grid {
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-}
-
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1262,12 +1221,6 @@ a {
   letter-spacing: -0.1px;
 }
 
-.audit-form .form-label {
-  font-weight: 600;
-  font-size: var(--text-sm);
-  color: var(--text);
-}
-
 .form-input,
 .form-select,
 .form-textarea {
@@ -1282,29 +1235,10 @@ a {
   transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
 }
 
-.audit-form .form-input,
-.audit-form .form-textarea {
-  min-height: 44px;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border-color: color-mix(in srgb, var(--color-border) 80%, transparent);
-  font-size: var(--text-base);
-}
-
-.audit-form .form-input::placeholder,
-.audit-form .form-textarea::placeholder {
-  color: var(--muted);
-}
-
 .form-textarea {
   resize: vertical;
   min-height: 140px;
   line-height: 1.5;
-}
-
-.audit-form .form-textarea {
-  min-height: 160px;
 }
 
 .form-input:focus,
@@ -1314,59 +1248,11 @@ a {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 14%, transparent);
 }
 
-.audit-form .form-input:focus,
-.audit-form .form-textarea:focus {
-  box-shadow: var(--focus-ring);
-}
-
 .form-actions {
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
-}
-
-.audit-form .form-actions {
-  align-items: center;
-  text-align: center;
-  gap: var(--space-3);
-}
-
-.form-error {
-  min-height: 18px;
-  font-size: var(--text-sm);
-  color: var(--color-danger);
-}
-
-.form-field.has-error .form-input,
-.form-field.has-error .form-textarea {
-  border-color: var(--color-danger);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-danger) 16%, transparent);
-}
-
-.form-privacy {
-  font-size: var(--text-sm);
-  color: var(--muted);
-  margin: 0;
-}
-
-.form-confirmation {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-7);
-  text-align: center;
-  box-shadow: var(--shadow-1);
-}
-
-.form-confirmation h3 {
-  margin-bottom: var(--space-2);
-  font-size: var(--text-xl);
-}
-
-.form-confirmation p {
-  color: var(--muted);
-  margin-bottom: var(--space-5);
 }
 
 .form-hint {
@@ -1397,16 +1283,6 @@ a {
 .form-status.is-error {
   background: color-mix(in srgb, var(--color-danger) 12%, transparent);
   border-color: color-mix(in srgb, var(--color-danger) 35%, transparent);
-}
-
-@media (min-width: 720px) {
-  .audit-bullets {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .audit-form .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 /* Section CTA blocks */
