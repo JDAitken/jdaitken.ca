@@ -132,6 +132,7 @@ a {
 .nav a:not(.btn):not(.logo) {
   font-weight: 500;
   opacity: 0.78;
+  color: var(--text);
   text-decoration: none;
   text-underline-offset: 6px;
   text-decoration-thickness: 2px;
@@ -140,12 +141,14 @@ a {
 
 .nav a:not(.btn):not(.logo):hover {
   opacity: 1;
+  color: var(--text);
   text-decoration: underline;
 }
 
 .nav a.active {
   opacity: 1;
   font-weight: 600;
+  color: var(--text);
   text-decoration: underline;
 }
 
@@ -1599,18 +1602,4 @@ footer {
   }
 }
 
-/* Hover underlines for nav links and buttons */
-.nav a {
-  text-decoration: none;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 2px;
-}
-
-.nav a:not(.logo):not(.btn):hover {
-  text-decoration: underline;
-}
-
-.menu-brand,
-.menu-brand:hover {
-  text-decoration: none;
-}
+/* Hover underlines handled in nav link rules above */
