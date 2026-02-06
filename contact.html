@@ -56,50 +56,65 @@
   <p class="contact-lead">I'll review your site and show you exactly how to get more leads from your website—no obligation.</p>
 
   <div class="form-card">
-    <form class="contact-form" action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form>
-      <div class="form-field honeypot" aria-hidden="true">
-        <label class="form-label" for="contact-gotcha">Leave this field empty</label>
-        <input class="form-input" id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-      </div>
-      <div class="form-grid">
-        <div class="form-field">
-          <label class="form-label" for="contact-name">Name</label>
-          <input class="form-input" id="contact-name" type="text" name="name" autocomplete="name" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-business">Business Name</label>
-          <input class="form-input" id="contact-business" type="text" name="business" autocomplete="organization" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-phone">Phone</label>
-          <input class="form-input" id="contact-phone" type="tel" name="phone" autocomplete="tel" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-email">Email</label>
-          <input class="form-input" id="contact-email" type="email" name="email" autocomplete="email" required>
-        </div>
-      </div>
+    <form class="contact-form audit-form" action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form novalidate>
+      <fieldset class="form-fieldset">
+        <legend class="form-legend sr-only">Request your free website audit</legend>
 
-      <div class="form-field">
-        <label class="form-label" for="website">Current Website (optional)</label>
-        <input class="form-input" id="website" name="website" type="url" placeholder="jdaitken.ca" autocomplete="url">
-      </div>
+        <div class="form-field honeypot" aria-hidden="true">
+          <label class="form-label" for="contact-gotcha">Leave this field empty</label>
+          <input class="form-input" id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
 
-      <div class="form-field">
-        <label class="form-label" for="contact-message">Message (optional)</label>
-        <textarea class="form-textarea" id="contact-message" name="message" rows="4" placeholder="Share goals or issues you'd like reviewed." required></textarea>
-        <p class="form-hint">Example: low call volume, slow site, or weak search visibility.</p>
-      </div>
+        <ul class="audit-bullets" aria-label="What you'll get">
+          <li>Quick wins to get more calls</li>
+          <li>Speed + SEO checks</li>
+          <li>Clear next steps</li>
+        </ul>
 
-      <div class="form-actions">
-        <button type="submit" class="btn btn--primary btn--md">Request a Quote</button>
-      </div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="contact-name">Name (first + last)</label>
+            <input class="form-input" id="contact-name" type="text" name="name" autocomplete="name" required data-field="name" aria-describedby="contact-name-error">
+            <p class="form-error" id="contact-name-error" aria-live="polite"></p>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-business">Business name</label>
+            <input class="form-input" id="contact-business" type="text" name="business" autocomplete="organization" required data-field="business" aria-describedby="contact-business-error">
+            <p class="form-error" id="contact-business-error" aria-live="polite"></p>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-phone">Best phone number</label>
+            <input class="form-input" id="contact-phone" type="tel" name="phone" inputmode="tel" autocomplete="tel" data-field="phone" data-contact-method aria-describedby="contact-phone-error">
+            <p class="form-error" id="contact-phone-error" aria-live="polite"></p>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-email">Best email</label>
+            <input class="form-input" id="contact-email" type="email" name="email" autocomplete="email" data-field="email" data-contact-method aria-describedby="contact-email-error">
+            <p class="form-error" id="contact-email-error" aria-live="polite"></p>
+          </div>
+        </div>
 
-      <div class="form-status" role="status" aria-live="polite" data-form-status></div>
+        <div class="form-field">
+          <label class="form-label" for="website">Website (optional)</label>
+          <input class="form-input" id="website" name="website" type="url" inputmode="url" placeholder="https://yourwebsite.com" autocomplete="url" data-field="website" aria-describedby="website-error">
+          <p class="form-error" id="website-error" aria-live="polite"></p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-message">What should I focus on? (optional)</label>
+          <textarea class="form-textarea" id="contact-message" name="message" rows="5" placeholder="Slow site, low calls, unclear CTA, etc." data-field="message" aria-describedby="contact-message-hint contact-message-error"></textarea>
+          <p class="form-hint" id="contact-message-hint">Share goals or pain points you'd like reviewed.</p>
+          <p class="form-error" id="contact-message-error" aria-live="polite"></p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--md">Get My Free Audit</button>
+          <p class="form-privacy">No spam. I’ll reply within 1–2 business days.</p>
+          <div class="form-status" role="status" aria-live="polite" data-form-status></div>
+        </div>
+      </fieldset>
     </form>
   </div>
-
-  <p class="form-hint" style="margin-top: 24px; text-align: center;">I typically respond within 24-48 hours with your personalized audit.</p>
 </main>
 
 <div id="chat-widget-root" aria-live="polite"></div>
