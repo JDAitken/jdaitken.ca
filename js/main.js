@@ -123,17 +123,18 @@
     };
 
     const setActiveLink = () => {
-      if (!navLinks) return;
+      if (!nav) return;
       const normalize = (path) => {
         const withoutIndex = path.replace(/\/index\.html$/, '');
         const trimmed = withoutIndex.replace(/\/$/, '');
         return trimmed.length ? trimmed : '/';
       };
       const currentPath = normalize(window.location.pathname);
-      navLinks.querySelectorAll('a').forEach((link) => {
+      nav.querySelectorAll('a').forEach((link) => {
         const href = link.getAttribute('href');
         if (!href) return;
         if (href.startsWith('http') || href.startsWith('mailto')) return;
+        if (link.classList.contains('logo')) return;
         const linkPath = normalize(new URL(href, window.location.origin).pathname);
         if (linkPath === currentPath) {
           link.classList.add('active');

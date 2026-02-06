@@ -150,6 +150,9 @@ a {
   font-weight: 600;
   color: var(--text);
   text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
 }
 
 .nav-actions {
@@ -266,6 +269,13 @@ a {
   text-decoration: none;
 }
 
+.menuLink.active {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
 .menu-bottom {
   margin-top: auto;
   padding: 12px 0 4px;
@@ -313,14 +323,7 @@ a {
 }
 
 .hero--clay::before {
-  content: "";
-  position: absolute;
-  right: -10%;
-  top: 8%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-surface) 92%, transparent) 0%, color-mix(in srgb, var(--color-bg) 70%, transparent) 55%, color-mix(in srgb, var(--color-bg) 20%, transparent) 70%);
-  pointer-events: none;
+  content: none;
 }
 
 .hero-split {
@@ -339,27 +342,27 @@ a {
 }
 
 .hero-eyebrow {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   color: var(--muted);
   margin-bottom: 18px;
 }
 
 .hero--clay h1 {
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  margin-bottom: 18px;
+  font-size: clamp(46px, 6.2vw, 86px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
 }
 
 .hero--clay .subtitle {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 19px;
+  line-height: 1.7;
   color: var(--muted);
-  margin-bottom: 28px;
-  max-width: 52ch;
+  margin-bottom: 30px;
+  max-width: 60ch;
 }
 
 .hero-form {
@@ -411,8 +414,9 @@ a {
 }
 
 .hero-trust-row {
-  margin-top: 16px;
-  font-size: 13px;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.02em;
 }
@@ -440,6 +444,19 @@ a {
   border-radius: 50%;
   border: 1px dashed color-mix(in srgb, var(--color-border) 80%, transparent);
   opacity: 0.6;
+}
+
+.hero--clay .hero-split {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+}
+
+.hero--clay .hero-copy {
+  max-width: 680px;
+}
+
+.hero--clay .hero-visual {
+  display: none;
 }
 
 .hero--work {
