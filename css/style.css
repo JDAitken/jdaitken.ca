@@ -922,6 +922,8 @@ a {
 
 .pricing-actions {
   margin-top: 12px;
+  display: flex;
+  justify-content: center;
 }
 
 .pricing-actions .btn {
