@@ -466,6 +466,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .hero--dark h1,
@@ -520,6 +521,7 @@ a {
 .hero--dark {
   background: var(--deep-navy);
   color: var(--color-text);
+  text-align: center;
 }
 .hero--dark .subtitle {
   color: var(--color-muted-2);
