@@ -66,7 +66,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 32px;
+  padding: var(--space-4) var(--space-7);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -296,13 +296,13 @@ a {
 
 /* HERO */
 .hero {
-  padding: 180px 48px 140px;
+  padding: 180px var(--space-8) 140px;
   text-align: left;
   position: relative;
 }
 
 .hero--minimal {
-  padding: 140px 24px 120px;
+  padding: 140px var(--space-6) 120px;
   text-align: center;
 }
 
@@ -467,7 +467,7 @@ a {
 }
 
 .hero--work {
-  padding: 140px 36px 110px;
+  padding: 140px var(--space-7) 110px;
   min-height: 72vh;
   display: flex;
   flex-direction: column;
@@ -547,14 +547,14 @@ a {
 }
 
 .section {
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
 }
 
 .why,
 .what-you-get,
 .process,
 .testimonials {
-  padding: 90px 48px;
+  padding: var(--space-10) var(--space-8);
 }
 
 .why h2,
@@ -735,7 +735,7 @@ a {
 
 /* WORK SECTION */
 .work {
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
 }
 
 .work h2 {
@@ -769,7 +769,7 @@ a {
 
 /* ABOUT */
 .about {
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
@@ -783,7 +783,7 @@ a {
 
 /* PROJECTS SECTION */
 .projects {
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
 }
 
 .projects h2 {
@@ -892,7 +892,7 @@ a {
 
 .packages,
 .pricing {
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
   background: var(--bg);
   color: var(--text);
 }
@@ -1101,7 +1101,7 @@ a {
 }
 
 .faq {
-  padding: 90px 48px;
+  padding: var(--space-10) var(--space-8);
   background: var(--subtle);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -1157,7 +1157,7 @@ a {
 /* CONTACT */
 .contact {
   text-align: center;
-  padding: 100px 48px;
+  padding: var(--space-10) var(--space-8);
 }
 
 .contact-page {
@@ -1336,7 +1336,7 @@ a {
 /* Section CTA blocks */
 .section-cta {
   text-align: center;
-  padding: 60px 48px;
+  padding: var(--space-9) var(--space-8);
   background: var(--subtle);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -1358,7 +1358,7 @@ a {
 /* Footer CTA */
 .footer-cta {
   text-align: center;
-  padding: 80px 48px;
+  padding: var(--space-10) var(--space-8);
   background: var(--deep-navy);
   color: var(--color-text);
 }
@@ -1390,7 +1390,7 @@ a {
 
 /* AI Chatbot placeholder */
 .ai-chatbot {
-  padding: 80px 48px;
+  padding: var(--space-10) var(--space-8);
   background: var(--subtle);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -1527,7 +1527,7 @@ footer {
   }
 
   .hero {
-    padding: 140px 24px 110px;
+    padding: 120px var(--space-6) 80px;
   }
 
   .hero-split {
@@ -1544,7 +1544,7 @@ footer {
   }
 
   .hero--minimal {
-    padding: 110px 20px 90px;
+    padding: 100px var(--space-5) 80px;
   }
 
   .hero-form {
@@ -1570,7 +1570,7 @@ footer {
   .pricing,
   .faq,
   .packages {
-    padding: 80px 24px;
+    padding: var(--space-10) var(--space-6);
   }
 
   .process-grid--two {
@@ -1581,8 +1581,14 @@ footer {
     font-size: 32px;
   }
 
+  .pricing-cards {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .pricing-cards .package-card {
     max-width: 100%;
+    flex: none;
   }
 }
 
@@ -1597,15 +1603,11 @@ footer {
   }
 
   .brand-text {
-    display: none;
-  }
-
-  .nav-links {
-    padding-top: 110px;
+    font-size: 17px;
   }
 
   .hero {
-    padding: 110px 20px 80px;
+    padding: 100px var(--space-5) var(--space-10);
   }
 
   .hero--minimal h1 {
