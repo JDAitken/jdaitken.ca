@@ -3,7 +3,18 @@
     "allow": [
       "Bash(./deploy.sh:*)",
       "Bash(bash:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca diff --stat)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca log --oneline -1)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca show --stat HEAD)",
+      "Bash(ls:*)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca status)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca diff)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca log --oneline -5)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca add about.html contact.html index.html process.html services.html thanks.html work.html)",
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca push)"
     ]
   }
 }
