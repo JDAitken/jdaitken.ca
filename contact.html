@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<a href="tel:6138808874" class="tap-to-call" aria-label="Call JD Media">Call Now: 613-880-8874</a>
 <header class="nav" data-nav>
   <div class="nav-inner">
     <div class="nav-main">
@@ -61,50 +62,28 @@
         <label class="form-label" for="contact-gotcha">Leave this field empty</label>
         <input class="form-input" id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
       </div>
-      <div class="form-grid">
-        <div class="form-field">
-          <label class="form-label" for="contact-name">Name</label>
-          <input class="form-input" id="contact-name" type="text" name="name" autocomplete="name" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-business">Business Name</label>
-          <input class="form-input" id="contact-business" type="text" name="business" autocomplete="organization" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-phone">Phone</label>
-          <input class="form-input" id="contact-phone" type="tel" name="phone" autocomplete="tel" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="contact-email">Email</label>
-          <input class="form-input" id="contact-email" type="email" name="email" autocomplete="email" required>
-        </div>
-      </div>
-
       <div class="form-field">
-        <label class="form-label" for="website">Current Website (optional)</label>
-        <input class="form-input" id="website" name="website" type="url" placeholder="jdaitken.ca" autocomplete="url">
+        <label class="form-label" for="contact-name">Name</label>
+        <input class="form-input" id="contact-name" type="text" name="name" autocomplete="name" required>
       </div>
-
       <div class="form-field">
-        <label class="form-label" for="contact-message">Message (optional)</label>
-        <textarea class="form-textarea" id="contact-message" name="message" rows="4" placeholder="Share goals or issues you'd like reviewed." required></textarea>
-        <p class="form-hint">Example: low call volume, slow site, or weak search visibility.</p>
+        <label class="form-label" for="contact-phone">Phone</label>
+        <input class="form-input" id="contact-phone" type="tel" name="phone" autocomplete="tel" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="contact-email">Email</label>
+        <input class="form-input" id="contact-email" type="email" name="email" autocomplete="email" required>
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn--primary btn--md">Get My Free Website Audit</button>
-        <div class="form-email-fallback">
-          <p class="form-email-label">Prefer email?</p>
-          <a class="form-email-link" href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
-          <p class="form-email-helper">We reply within 1 business day.</p>
-        </div>
+        <button type="submit" class="btn btn--primary btn--lg">Get My Free Website Audit</button>
       </div>
 
       <div class="form-status" role="status" aria-live="polite" data-form-status></div>
     </form>
   </div>
 
-  <p class="form-hint" style="margin-top: 24px; text-align: center;">I typically respond within 24-48 hours with your personalized audit.</p>
+  <p class="form-hint" style="margin-top: var(--space-6); text-align: center;">I typically respond within 24-48 hours. Or call directly: <a href="tel:6138808874">613-880-8874</a></p>
 </main>
 
 <div id="chat-widget-root" aria-live="polite"></div>
