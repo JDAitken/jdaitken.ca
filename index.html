@@ -354,16 +354,27 @@
       border-bottom: 1px solid var(--color-border);
     }
 
-    .problem-card h3 {
+    .problem-card {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+      background: transparent;
+      border: none;
+    }
+
+    .problem-card svg {
       margin-bottom: var(--space-sm);
+    }
+
+    .problem-card h3 {
+      margin-bottom: 0;
       font-size: var(--text-lg);
     }
 
-    .problem-card {
-      background: var(--color-bg);
+    /* Solution Section */
+    .solution-card svg {
+      margin-bottom: var(--space-sm);
     }
 
-    /* Solution Section */
     .solution-card h3 {
       margin-bottom: var(--space-sm);
       font-size: var(--text-lg);
@@ -610,6 +621,7 @@
     <nav class="nav-desktop" aria-label="Main">
       <a href="/work.html">Work</a>
       <a href="/services.html">Services</a>
+      <a href="/pricing.html">Pricing</a>
       <a href="/process.html">Process</a>
       <a href="/about.html">About</a>
     </nav>
@@ -633,6 +645,7 @@
     <nav class="mobile-menu-nav" aria-label="Mobile">
       <a href="/work.html">Work</a>
       <a href="/services.html">Services</a>
+      <a href="/pricing.html">Pricing</a>
       <a href="/process.html">Process</a>
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
@@ -670,17 +683,17 @@
         <p>Most service business websites have the same three problems.</p>
       </div>
       <div class="grid-3">
-        <div class="card problem-card">
+        <div class="problem-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <h3>Slow, outdated sites</h3>
-          <p>Legacy templates and heavy assets push visitors away before they ever call for a quote.</p>
         </div>
-        <div class="card problem-card">
+        <div class="problem-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="10" x2="15" y2="14"/><line x1="15" y1="10" x2="9" y2="14"/></svg>
           <h3>Mobile UX issues</h3>
-          <p>Hard-to-tap menus, tiny text, and poor forms cost you leads from homeowners needing urgent repairs.</p>
         </div>
-        <div class="card problem-card">
+        <div class="problem-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
           <h3>No clear CTA or trust</h3>
-          <p>Missing reviews, weak calls-to-action, and no local signals hurt conversions from Google searches.</p>
         </div>
       </div>
     </div>
@@ -694,21 +707,25 @@
         <p>Everything your business needs to show up and convert online.</p>
       </div>
       <div class="grid-4">
-        <div class="card">
+        <div class="card solution-card">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
           <h3>Every page built to book appointments</h3>
-          <p>Home, Services, About, Service Areas, and Contact — structured so visitors take action, not just browse.</p>
+          <p>Structured so visitors take action, not just browse.</p>
         </div>
-        <div class="card">
+        <div class="card solution-card">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <h3>Loads fast on every phone</h3>
-          <p>Homeowners searching "furnace repair near me" at midnight are on their phone. Your site loads in under 2 seconds with tap-to-call on every page.</p>
+          <p>Under 2 seconds with tap-to-call on every page.</p>
         </div>
-        <div class="card">
-          <h3>Show up when locals search for you</h3>
-          <p>On-page SEO tuned for Ottawa and surrounding areas so you appear in the searches that actually lead to booked jobs.</p>
+        <div class="card solution-card">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h3>Show up when locals search</h3>
+          <p>On-page SEO tuned for Ottawa and surrounding areas.</p>
         </div>
-        <div class="card">
+        <div class="card solution-card">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <h3>Turn visitors into phone calls</h3>
-          <p>Click-to-call buttons, quote request forms, and trust signals positioned where they drive the most conversions.</p>
+          <p>CTAs, forms, and trust signals that drive conversions.</p>
         </div>
       </div>
     </div>
@@ -828,6 +845,7 @@
         <ul>
           <li><a href="/work.html">Work</a></li>
           <li><a href="/services.html">Services</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
           <li><a href="/process.html">Process</a></li>
           <li><a href="/about.html">About</a></li>
         </ul>
