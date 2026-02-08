@@ -18,7 +18,9 @@
       "Bash(git -C /Users/jdaitken/code/jdaitken.ca add about.html contact.html index.html process.html services.html work.html pricing/index.html process/index.html portfolio/index.html)",
       "Bash(git push:*)",
       "Bash(git -C /Users/jdaitken/code/jdaitken.ca log --oneline -10)",
-      "Bash(git -C /Users/jdaitken/code/jdaitken.ca config --local --list)"
+      "Bash(git -C /Users/jdaitken/code/jdaitken.ca config --local --list)",
+      "Bash(sips:*)",
+      "Bash(cwebp:*)"
     ]
   }
 }
