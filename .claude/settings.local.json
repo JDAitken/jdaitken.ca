@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(./deploy.sh:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(gh api:*)"
     ]
   }
 }
