@@ -1,32 +1,9 @@
-// Chatbot placeholders kept modular for future API wiring.
 (() => {
-  const nav = document.querySelector('[data-nav]');
-  const navLinks = document.querySelector('[data-nav-links]');
   const navToggle = document.querySelector('[data-nav-toggle]');
-  const menuOverlay = document.querySelector('.menu-overlay');
+  const mobileMenu = document.querySelector('#mobile-menu');
   const menuPanel = document.querySelector('[data-menu-panel]');
-  const menuCloseBtn = document.querySelector('.menu-closeBtn');
-  const mobileBreakpoint = window.matchMedia('(max-width: 820px)');
-
-  // Placeholder chatbot module: wire API + UI later.
-  const Chatbot = (() => {
-    const state = { enabled: false, messages: [] };
-
-    const init = () => {
-      // Keep lightweight for now; hook OpenAI-style API here later.
-      return state;
-    };
-
-    const sendMessage = async (message) => {
-      if (!state.enabled) {
-        return { status: 'disabled', reply: 'Chatbot coming soon.' };
-      }
-      state.messages.push({ role: 'user', content: message });
-      return { status: 'stubbed', reply: 'Pending API connection.' };
-    };
-
-    return { init, sendMessage };
-  })();
+  const menuCloseBtn = document.querySelector('.mobile-menu-close');
+  const mobileBreakpoint = window.matchMedia('(max-width: 767px)');
 
   const Navigation = (() => {
     const isMobile = () => mobileBreakpoint.matches;
@@ -34,19 +11,18 @@
     let previousOverflow = '';
 
     const getFocusable = () => {
-      if (!menuOverlay) return [];
+      if (!mobileMenu) return [];
       return Array.from(
-        menuOverlay.querySelectorAll(
+        mobileMenu.querySelectorAll(
           'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
         )
       );
     };
 
     const setMenuState = (open) => {
-      if (!nav || !menuOverlay) return;
-      nav.setAttribute('data-nav-open', open ? 'true' : 'false');
-      menuOverlay.classList.toggle('is-open', open);
-      menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (!mobileMenu) return;
+      mobileMenu.classList.toggle('is-open', open);
+      mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
       if (navToggle) {
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       }
@@ -66,14 +42,13 @@
     };
 
     const closeMenu = () => setMenuState(false);
-    const openMenu = () => setMenuState(true);
     const toggleMenu = () => {
-      const open = nav?.getAttribute('data-nav-open') === 'true';
+      const open = mobileMenu?.classList.contains('is-open');
       setMenuState(!open);
     };
 
     const handleKeydown = (event) => {
-      if (!menuOverlay || menuOverlay.getAttribute('aria-hidden') === 'true') return;
+      if (!mobileMenu || mobileMenu.getAttribute('aria-hidden') === 'true') return;
       if (event.key === 'Escape') {
         event.preventDefault();
         closeMenu();
@@ -94,25 +69,22 @@
     };
 
     const bind = () => {
-      if (!nav || !navToggle || !menuOverlay) return;
+      if (!navToggle || !mobileMenu) return;
       setMenuState(false);
       navToggle.addEventListener('click', () => {
-        if (!isMobile()) return;
         toggleMenu();
       });
       menuCloseBtn?.addEventListener('click', () => closeMenu());
-      menuOverlay.addEventListener('click', (event) => {
-        if (event.target === menuOverlay) {
+      mobileMenu.addEventListener('click', (event) => {
+        if (event.target === mobileMenu) {
           closeMenu();
         }
       });
       menuPanel?.addEventListener('click', (event) => {
         event.stopPropagation();
       });
-      menuOverlay.querySelectorAll('.menuLink').forEach((link) => {
-        link.addEventListener('click', () => {
-          if (isMobile()) closeMenu();
-        });
+      mobileMenu.querySelectorAll('.mobile-menu-nav a').forEach((link) => {
+        link.addEventListener('click', () => closeMenu());
       });
       document.addEventListener('keydown', handleKeydown);
       mobileBreakpoint.addEventListener?.('change', () => {
@@ -123,18 +95,16 @@
     };
 
     const setActiveLink = () => {
-      if (!nav) return;
       const normalize = (path) => {
         const withoutIndex = path.replace(/\/index\.html$/, '');
         const trimmed = withoutIndex.replace(/\/$/, '');
         return trimmed.length ? trimmed : '/';
       };
       const currentPath = normalize(window.location.pathname);
-      nav.querySelectorAll('a').forEach((link) => {
+      document.querySelectorAll('.nav-desktop a, .mobile-menu-nav a').forEach((link) => {
         const href = link.getAttribute('href');
         if (!href) return;
         if (href.startsWith('http') || href.startsWith('mailto')) return;
-        if (link.classList.contains('logo')) return;
         const linkPath = normalize(new URL(href, window.location.origin).pathname);
         if (linkPath === currentPath) {
           link.classList.add('active');
@@ -173,7 +143,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     Navigation.bind();
     Navigation.setActiveLink();
-    Chatbot.init();
     ContactForm.init();
     (() => {
       const normalizeUrl = (value) => {

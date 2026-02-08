@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>About | JD Media — Your Digital Caretaker in Ottawa</title>
-  <meta name="description" content="I'm JD. I help local service businesses turn their websites into lead-generating machines. Based in Ottawa, focused on technical excellence.">
+  <title>Services | JD Media — Web Design, SEO & AI for Local Businesses</title>
+  <meta name="description" content="Web design, local SEO, and AI integration services for HVAC, plumbing, and home service businesses in Ottawa. Starting at $3,000.">
 
   <link rel="icon" type="image/svg+xml" href="/brand/favicon/favicon-light.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
@@ -26,6 +26,7 @@
       .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: #FFFFFF; padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
       .tap-to-call:hover { background: var(--color-accent-hover); color: #FFFFFF; }
     }
+
     .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
     @media (max-width: 767px) { .site-header { top: 44px; } }
     @media (min-width: 768px) { .site-header { height: var(--header-height); } }
@@ -58,41 +59,46 @@
     .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
     .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
-    /* About page */
-    .about-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
-    @media (min-width: 768px) { .about-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
+    /* Services page */
+    .services-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
+    @media (min-width: 768px) { .services-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
+    .services-hero h1 { margin-bottom: var(--space-sm); }
+    .services-hero p { color: var(--color-text-secondary); font-size: var(--text-lg); max-width: 560px; }
 
-    .about-hero-grid { display: grid; gap: var(--space-xl); }
-    @media (min-width: 768px) { .about-hero-grid { grid-template-columns: 1fr 1.5fr; align-items: center; } }
+    .service-block { display: grid; gap: var(--space-xl); padding: var(--space-2xl) 0; border-bottom: 1px solid var(--color-border); }
+    .service-block:last-child { border-bottom: none; }
+    @media (min-width: 768px) { .service-block { grid-template-columns: 1fr 1.2fr; gap: var(--space-3xl); } }
 
-    .about-photo { border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border); aspect-ratio: 4/5; background: var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .service-label { font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-accent); margin-bottom: var(--space-sm); }
+    .service-intro h2 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    @media (min-width: 768px) { .service-intro h2 { font-size: var(--text-3xl); } }
+    .service-intro > p { color: var(--color-text-secondary); }
+    .service-price { margin-top: var(--space-lg); font-family: var(--font-display); font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); }
+    .service-price span { font-size: var(--text-sm); font-weight: var(--font-normal); color: var(--color-text-muted); }
 
-    .about-intro h1 { margin-bottom: var(--space-sm); }
-    .about-intro .subtitle { font-size: var(--text-lg); color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: var(--leading-snug); }
-    @media (min-width: 768px) { .about-intro .subtitle { font-size: var(--text-xl); } }
+    .service-details h3 { font-size: var(--text-base); font-weight: var(--font-semibold); margin-bottom: var(--space-sm); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: var(--text-xs); }
+    .service-details p { color: var(--color-text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-lg); }
+    .service-includes { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .service-includes li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-lg); position: relative; }
+    .service-includes li::before { content: "\2713"; position: absolute; left: 0; color: var(--color-success); font-weight: var(--font-bold); }
 
-    /* Story section */
-    .story-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-    .story-content { max-width: 680px; margin: 0 auto; }
-    .story-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); margin-top: var(--space-xl); }
-    .story-content h2:first-child { margin-top: 0; }
-    .story-content p { margin-bottom: var(--space-md); line-height: var(--leading-relaxed); }
+    /* Pricing tiers */
+    .pricing-section { background: var(--color-surface); border-top: 1px solid var(--color-border); }
 
-    /* Skills */
-    .skills-section { }
-    .skills-grid { display: grid; gap: var(--space-lg); }
-    @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-    .skill-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
-    .skill-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
-    .skill-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
+    .pricing-grid { display: grid; gap: var(--space-lg); }
+    @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
 
-    /* Philosophy */
-    .philosophy-section {
-      background: var(--color-accent-light); border-top: 1px solid var(--color-border);
-    }
-    .philosophy-content { max-width: 680px; margin: 0 auto; text-align: center; }
-    .philosophy-content h2 { margin-bottom: var(--space-md); }
-    .philosophy-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-accent-dark); }
+    .pricing-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
+    .pricing-card.featured { border-color: var(--color-accent); position: relative; }
+
+    .pricing-badge { position: absolute; top: calc(-1 * var(--space-sm)); left: 50%; transform: translateX(-50%); }
+
+    .pricing-card h3 { font-size: var(--text-xl); margin-bottom: var(--space-xs); }
+    .pricing-amount { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-md); }
+    .pricing-amount span { font-size: var(--text-sm); font-weight: var(--font-normal); color: var(--color-text-muted); }
+    .pricing-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-xl); flex: 1; }
+    .pricing-list li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-lg); position: relative; }
+    .pricing-list li::before { content: "\2713"; position: absolute; left: 0; color: var(--color-success); font-weight: var(--font-bold); }
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
@@ -156,76 +162,135 @@
 
 <main>
 
-  <section class="about-hero">
+  <section class="services-hero">
     <div class="container">
-      <div class="about-hero-grid">
-        <div class="about-photo">
-          Photo placeholder
-        </div>
-        <div class="about-intro">
-          <h1>Hi, I'm JD.</h1>
-          <p class="subtitle">I help local service businesses turn their websites into lead-generating machines.</p>
-          <a href="/contact.html" class="btn btn-primary">Let's Work Together</a>
-        </div>
-      </div>
+      <h1>Services that drive calls and leads</h1>
+      <p>From design to launch to ongoing optimization — we're your Digital Caretaker.</p>
     </div>
   </section>
 
-  <section class="story-section">
+  <section>
     <div class="container">
-      <div class="story-content">
-        <h2>Why web design?</h2>
-        <p>I started building websites and quickly realized most service businesses were getting a raw deal. Agencies churn out templated sites, charge a premium, then disappear. The sites look fine at first, but they're slow, don't convert, and fall apart on mobile. I wanted to do better.</p>
 
-        <h2>Why service businesses?</h2>
-        <p>Service businesses are the backbone of local economies. The HVAC tech, the plumber, the electrician — they deserve websites that work as hard as they do. Not outdated templates that cost them leads every day.</p>
-
-        <h2>Why Ottawa?</h2>
-        <p>I'm based in Ottawa and love working with local businesses. I understand the market, the competition, and what it takes to stand out in a city where homeowners search online before they call.</p>
+      <!-- Service 1: Web Design -->
+      <div class="service-block">
+        <div class="service-intro">
+          <p class="service-label">Core Service</p>
+          <h2>Web Design & Development</h2>
+          <p>Fast, mobile-first websites built to convert visitors into customers. Most service business sites are slow, outdated templates. We build custom, conversion-optimized sites that load in under 2 seconds.</p>
+          <p class="service-price">Starting at $3,000 <span>per project</span></p>
+        </div>
+        <div class="service-details">
+          <h3>What's included</h3>
+          <ul class="service-includes">
+            <li>5-page website (Home, Services, About, Service Areas, Contact)</li>
+            <li>Mobile-first responsive design</li>
+            <li>Conversion-optimized layout with clear CTAs</li>
+            <li>Contact forms with Formspree integration</li>
+            <li>30 days post-launch support</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- Service 2: Local SEO -->
+      <div class="service-block">
+        <div class="service-intro">
+          <p class="service-label">Growth Service</p>
+          <h2>Local SEO</h2>
+          <p>Rank for "[city] + [service]" searches and show up when customers need you. 78% of local mobile searches result in a call or visit. If you're not ranking, you're invisible.</p>
+          <p class="service-price">Starting at $1,500 <span>standalone, or included in Professional plan</span></p>
+        </div>
+        <div class="service-details">
+          <h3>What's included</h3>
+          <ul class="service-includes">
+            <li>On-page SEO (titles, descriptions, headers)</li>
+            <li>Local schema markup (LocalBusiness structured data)</li>
+            <li>Google Business Profile optimization guidance</li>
+            <li>XML sitemap and robots.txt</li>
+            <li>Service area pages for nearby cities</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 3: AI Integration -->
+      <div class="service-block">
+        <div class="service-intro">
+          <p class="service-label">Premium Add-On</p>
+          <h2>AI Integration</h2>
+          <p>Show up in AI search and leverage automation to work while you sleep. 40% of searches now happen via ChatGPT, Perplexity, and AI tools. Traditional SEO alone isn't enough.</p>
+          <p class="service-price">Starting at $2,000 <span>add-on, or included in Premium plan</span></p>
+        </div>
+        <div class="service-details">
+          <h3>What's included</h3>
+          <ul class="service-includes">
+            <li>AI search optimization (structured data, clear content hierarchy)</li>
+            <li>Automated lead notifications (Zapier + AI scoring)</li>
+            <li>AI chatbot widget (custom trained on your services)</li>
+            <li>Monthly performance reports</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="skills-section">
+  <!-- Pricing Tiers -->
+  <section class="pricing-section">
     <div class="container">
       <div class="section-header">
-        <h2>What I bring to the table</h2>
+        <h2>Simple, transparent pricing</h2>
+        <p>Choose the plan that fits your business. No hidden fees.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Mobile-first design</h3>
-          <p>Every site starts at 375px and scales up. Your customers are on their phones — the site needs to work perfectly there first.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Conversion optimization</h3>
-          <p>Clear CTAs, trust signals, and friction-free forms. Every design decision is made to generate more calls and leads.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Local SEO</h3>
-          <p>Structured data, optimized titles, service area pages. Your site shows up when Ottawa homeowners search for your services.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Technical excellence</h3>
-          <p>Clean code, fast load times, accessible markup. Built to score 90+ on Lighthouse across all categories.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="pricing-grid">
 
-  <section class="philosophy-section">
-    <div class="container">
-      <div class="philosophy-content">
-        <h2>The Digital Caretaker approach</h2>
-        <p>I don't just build and disappear. I'm your Digital Caretaker — monitoring, maintaining, and improving your site so it stays relevant as search evolves. Long-term partnerships, not one-off projects.</p>
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <div class="pricing-amount">$3,000–$5,000</div>
+          <ul class="pricing-list">
+            <li>Web Design & Development</li>
+            <li>5-page mobile-first site</li>
+            <li>Contact form integration</li>
+            <li>30 days post-launch support</li>
+          </ul>
+          <a href="/contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <span class="badge badge-accent pricing-badge">Most Popular</span>
+          <h3>Professional</h3>
+          <div class="pricing-amount">$5,000–$8,000</div>
+          <ul class="pricing-list">
+            <li>Everything in Starter</li>
+            <li>Local SEO optimization</li>
+            <li>Conversion optimization</li>
+            <li>Service area pages</li>
+            <li>90 days post-launch support</li>
+          </ul>
+          <a href="/contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Premium</h3>
+          <div class="pricing-amount">$8,000+</div>
+          <ul class="pricing-list">
+            <li>Everything in Professional</li>
+            <li>AI search optimization</li>
+            <li>AI chatbot widget</li>
+            <li>Automated lead notifications</li>
+            <li>6 months ongoing support</li>
+          </ul>
+          <a href="/contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+        </div>
+
       </div>
     </div>
   </section>
 
   <section class="final-cta">
     <div class="container text-center">
-      <h2>Let's work together</h2>
-      <p>Ready to turn your website into a lead-generating machine? Let's talk.</p>
-      <a href="/contact.html" class="btn btn-primary">Get in Touch</a>
+      <h2>Let's build something that works</h2>
+      <p>Schedule a free consultation and we'll map out the right plan for your business.</p>
+      <a href="/contact.html" class="btn btn-primary">Schedule a Free Consultation</a>
     </div>
   </section>
 

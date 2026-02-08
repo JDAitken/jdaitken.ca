@@ -4,123 +4,745 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JD Media | Web Solutions for Local Service Businesses</title>
-  <meta name="description" content="Fast, mobile-first websites for local service businesses. Calm, conversion-focused design and managed hosting." />
+  <title>JD Media | Websites That Get You More Calls</title>
+  <meta name="description" content="Fast, conversion-first websites for HVAC and local service businesses in Ottawa. Mobile-first design that turns clicks into calls.">
 
   <link rel="icon" type="image/svg+xml" href="/brand/favicon/favicon-light.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/chat.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Page-specific styles (homepage only) ===== */
+
+    /* Tap-to-call bar — mobile only */
+    .tap-to-call {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .tap-to-call {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+        position: sticky;
+        top: 0;
+        z-index: calc(var(--z-sticky) + 1);
+        background: var(--color-accent);
+        color: #FFFFFF;
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+        font-weight: var(--font-semibold);
+        text-decoration: none;
+        min-height: 44px;
+        letter-spacing: var(--tracking-wide);
+      }
+
+      .tap-to-call:hover {
+        background: var(--color-accent-hover);
+        color: #FFFFFF;
+      }
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      height: var(--header-height-mobile);
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 767px) {
+      .site-header {
+        top: 44px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header {
+        height: var(--header-height);
+      }
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .header-inner {
+        padding: 0 var(--space-xl);
+      }
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .logo:hover {
+      color: var(--color-text);
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .nav-desktop {
+        display: flex;
+      }
+    }
+
+    .nav-desktop a {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+
+    .nav-desktop a:hover {
+      color: var(--color-text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .header-cta {
+        display: inline-flex;
+      }
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      cursor: pointer;
+      transition: border-color var(--transition-base);
+    }
+
+    .menu-toggle:hover {
+      border-color: var(--color-text-muted);
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 18px;
+      height: 12px;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after,
+    .menu-icon span {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+      border-radius: 1px;
+    }
+
+    .menu-icon::before { top: 0; }
+    .menu-icon span { top: 5px; }
+    .menu-icon::after { bottom: 0; }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--color-overlay);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition-slow);
+      z-index: var(--z-modal);
+    }
+
+    .mobile-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-panel {
+      width: 100%;
+      height: 100%;
+      background: var(--color-surface);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+      transform: translateY(8px);
+      transition: transform var(--transition-slow);
+    }
+
+    .mobile-menu.is-open .mobile-menu-panel {
+      transform: translateY(0);
+    }
+
+    .mobile-menu-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-menu-close {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text);
+      font-size: var(--text-xl);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      flex: 1;
+    }
+
+    .mobile-menu-nav a {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .mobile-menu-footer {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .mobile-menu-footer a {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    /* Hero */
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: var(--space-5xl) 0 var(--space-4xl);
+      }
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-accent);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 {
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-snug);
+      margin-bottom: var(--space-xl);
+      max-width: 560px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-subtitle {
+        font-size: var(--text-xl);
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (min-width: 768px) {
+      .hero-actions {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .hero-trust {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: var(--font-medium);
+    }
+
+    /* Problem Section */
+    .problem-section {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .problem-card h3 {
+      margin-bottom: var(--space-sm);
+      font-size: var(--text-lg);
+    }
+
+    .problem-card {
+      background: var(--color-bg);
+    }
+
+    /* Solution Section */
+    .solution-card h3 {
+      margin-bottom: var(--space-sm);
+      font-size: var(--text-lg);
+    }
+
+    /* Case Study Section */
+    .case-study {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .case-study-card {
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .case-study-card {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .case-study-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .case-study-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .case-study-content h3 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .case-study-content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .case-study-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .metric-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    /* Trust Section */
+    .trust-section {
+      text-align: center;
+    }
+
+    .trust-placeholder {
+      padding: var(--space-xl);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-lg);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    /* Final CTA */
+    .final-cta {
+      background: var(--color-text);
+      color: var(--color-bg);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      color: var(--color-bg);
+      margin-bottom: var(--space-sm);
+    }
+
+    .final-cta p {
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-xl);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta .btn-primary {
+      background: var(--color-accent);
+      color: #FFFFFF;
+    }
+
+    .final-cta .btn-primary:hover {
+      background: var(--color-accent-hover);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-2xl) 0;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .footer-links h4 {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      margin-bottom: var(--space-md);
+      color: var(--color-text);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .footer-links a {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer-bottom {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+  </style>
 </head>
 
 <body>
+
 <a href="tel:6138808874" class="tap-to-call" aria-label="Call JD Media">Call Now: 613-880-8874</a>
-<header class="nav" data-nav>
-  <div class="nav-inner">
-    <a class="logo" aria-label="Homepage" href="/">
-      <span class="brand-text">JD Media</span>
-    </a>
-    <nav id="primary-navigation" aria-label="Main Navigation" class="nav-links" data-nav-links>
-      <a href="/portfolio">Work</a>
-      <a href="/process">Our Process</a>
-      <a href="/pricing">Plans & Pricing</a>
-</nav>
-    <div class="nav-actions">
-      <a href="/contact.html" class="btn btn--primary btn--sm nav-cta">Contact</a>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">JD Media</a>
+
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="/work.html">Work</a>
+      <a href="/services.html">Services</a>
+      <a href="/process.html">Process</a>
+      <a href="/about.html">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="/contact.html" class="btn btn-primary header-cta">Contact</a>
       <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>
         <span class="menu-icon" aria-hidden="true"><span></span></span>
       </button>
     </div>
   </div>
-  <div class="menu-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
-    <div class="menu-panel" data-menu-panel>
-      <div class="menu-top">
-        <a class="menu-brand" href="/">JD Media</a>
-        <a class="btn btn--primary btn--sm menu-contactBtn" href="/contact.html">Contact</a>
-        <button class="menu-closeBtn" type="button" aria-label="Close menu">✕</button>
-      </div>
-      <nav class="menu-nav" aria-label="Mobile">
-        <a class="menuLink" href="/portfolio">Work</a>
-        <a class="menuLink" href="/process">Our Process</a>
-        <a class="menuLink" href="/pricing">Plans & Pricing</a>
-      </nav>
-      <div class="menu-bottom">
-        <a class="menu-email" href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
-      </div>
-    </div>
-  </div>
 </header>
 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+  <div class="mobile-menu-panel" data-menu-panel>
+    <div class="mobile-menu-top">
+      <a href="/" class="logo">JD Media</a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="Mobile">
+      <a href="/work.html">Work</a>
+      <a href="/services.html">Services</a>
+      <a href="/process.html">Process</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:6138808874">613-880-8874</a>
+      <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+    </div>
+  </div>
+</div>
+
 <main>
-  <section class="hero hero--clay" id="top">
-    <div class="hero-inner hero-split">
-      <div class="hero-copy">
-        <p class="hero-eyebrow">Ottawa web design for local service businesses</p>
+
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Ottawa Web Design for Local Service Businesses</p>
         <h1>Websites that get you more calls.</h1>
-        <p class="subtitle">Fast, conversion-first websites for local service businesses — built to turn clicks into confident calls.</p>
+        <p class="hero-subtitle">Fast, conversion-first websites for HVAC, plumbing, and home service businesses — built to turn clicks into confident calls.</p>
         <div class="hero-actions">
-          <a class="btn btn--primary btn--md" href="/contact.html">Get My Free Website Audit</a>
+          <a href="/contact.html" class="btn btn-primary">Get Your Free Website Audit</a>
+          <a href="/work.html" class="btn btn-secondary">See Our Work</a>
         </div>
-        <p class="hero-trust-row">Mobile-first • 48-hour audits • Built for leads</p>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-blob"></div>
-        <div class="hero-orbit"></div>
+        <p class="hero-trust">Mobile-first &middot; 48-hour audits &middot; Built for leads</p>
       </div>
     </div>
   </section>
 
-<section class="why" id="why">
-  <h2>Why service businesses lose leads online</h2>
-  <div class="grid">
-    <div class="tile card">
-      <h3>Slow, outdated sites</h3>
-      <p>Legacy templates and heavy assets push visitors away before they ever call for a quote.</p>
+  <!-- 2. Problem Section -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why service businesses lose leads online</h2>
+        <p>Most service business websites have the same three problems.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card problem-card">
+          <h3>Slow, outdated sites</h3>
+          <p>Legacy templates and heavy assets push visitors away before they ever call for a quote.</p>
+        </div>
+        <div class="card problem-card">
+          <h3>Mobile UX issues</h3>
+          <p>Hard-to-tap menus, tiny text, and poor forms cost you leads from homeowners needing urgent repairs.</p>
+        </div>
+        <div class="card problem-card">
+          <h3>No clear CTA or trust</h3>
+          <p>Missing reviews, weak calls-to-action, and no local signals hurt conversions from Google searches.</p>
+        </div>
+      </div>
     </div>
-    <div class="tile card">
-      <h3>Mobile UX issues</h3>
-      <p>Hard-to-tap menus, tiny text, and poor forms cost you leads from homeowners needing urgent repairs.</p>
+  </section>
+
+  <!-- 3. Solution Section -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>What you get</h2>
+        <p>Everything your business needs to show up and convert online.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <h3>5 pages that sell</h3>
+          <p>Home, Services, About, Service Areas, Contact — built to convert visitors into booked appointments.</p>
+        </div>
+        <div class="card">
+          <h3>Fast + mobile-first</h3>
+          <p>Lightweight build, compressed media, and tap-to-call CTAs on every page to capture demand.</p>
+        </div>
+        <div class="card">
+          <h3>Local SEO basics</h3>
+          <p>Titles, descriptions, and on-page structure tuned for Ottawa and surrounding service areas.</p>
+        </div>
+        <div class="card">
+          <h3>AI-ready</h3>
+          <p>Your site shows up in AI search results — ChatGPT, Perplexity, and the next generation of search.</p>
+        </div>
+      </div>
     </div>
-    <div class="tile card">
-      <h3>No clear CTA or trust</h3>
-      <p>Missing reviews, weak calls-to-action, and no local signals hurt conversions from Google searches.</p>
+  </section>
+
+  <!-- 4. Case Study Preview -->
+  <section class="case-study">
+    <div class="container">
+      <div class="section-header">
+        <h2>See the results</h2>
+        <p>Real projects with measurable outcomes for local businesses.</p>
+      </div>
+      <div class="case-study-card">
+        <div class="case-study-image">
+          <picture>
+            <source type="image/webp"
+              srcset="/images/projects/legendary-landscaping-1200.webp 1200w, /images/projects/legendary-landscaping-1900.webp 1900w"
+              sizes="(max-width: 768px) 92vw, 520px">
+            <img
+              src="/images/projects/legendary-landscaping-1200.png"
+              srcset="/images/projects/legendary-landscaping-1200.png 1200w, /images/projects/legendary-landscaping-1900.png 1900w"
+              sizes="(max-width: 768px) 92vw, 520px"
+              alt="Bytown Plumbing website redesign showing mobile-first layout"
+              loading="lazy"
+              decoding="async">
+          </picture>
+        </div>
+        <div class="case-study-content">
+          <span class="badge badge-accent">Featured Project</span>
+          <h3>Bytown Plumbing</h3>
+          <p>Mobile conversions were low and the site loaded slowly. We rebuilt it mobile-first with optimized CTAs and fast load times.</p>
+          <div class="case-study-metrics">
+            <div class="metric">
+              <div class="metric-value">+40%</div>
+              <div class="metric-label">Mobile calls</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">2s</div>
+              <div class="metric-label">Load time</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">+25%</div>
+              <div class="metric-label">Organic traffic</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">15+</div>
+              <div class="metric-label">Leads / month</div>
+            </div>
+          </div>
+          <a href="/work.html" class="btn btn-secondary">View Full Case Study</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="what-you-get" id="what-you-get">
-  <h2>What you get</h2>
-  <div class="grid">
-    <div class="tile"><h3>5 pages that sell</h3><p>Home, Services, About, Service Areas, Contact — built to convert visitors into booked appointments.</p></div>
-    <div class="tile"><h3>Fast + mobile-first</h3><p>Lightweight build, compressed media, and tap-to-call CTAs on every page to capture demand.</p></div>
-    <div class="tile"><h3>Local SEO basics</h3><p>Titles, descriptions, and on-page structure tuned for Ottawa and surrounding service areas.</p></div>
-    <div class="tile"><h3>Clear calls to action</h3><p>Click-to-call buttons, quote request forms, and trust signals above the fold.</p></div>
-  </div>
-</section>
+  <!-- 5. Trust Signals -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trusted by local businesses</h2>
+      </div>
+      <div class="trust-placeholder">
+        Trustpilot widget &middot; Client logos &middot; Review count — coming soon
+      </div>
+    </div>
+  </section>
 
-<section class="section-cta">
-  <h3>See what's holding your website back</h3>
-  <p>Get a personalized review of your current site with actionable recommendations.</p>
-  <a href="/contact.html" class="btn btn--primary btn--md">Get My Free Website Audit</a>
-</section>
+  <!-- 6. Final CTA -->
+  <section class="final-cta">
+    <div class="container text-center">
+      <h2>See what's holding your website back</h2>
+      <p>Get a personalized review of your current site with actionable recommendations.</p>
+      <a href="/contact.html" class="btn btn-primary">Get My Free Website Audit</a>
+    </div>
+  </section>
 
-<section class="footer-cta">
-  <h3>Don't let another lead slip away</h3>
-  <p>Get a free website audit and see exactly how to turn more visitors into customers.</p>
-  <a href="/contact.html" class="btn btn--primary btn--md">Get My Free Website Audit</a>
-</section>
 </main>
 
-<div id="chat-widget-root" aria-live="polite"></div>
-
-<footer>
-  <p>© 2026 JD Media — Web Solutions for Local Service Businesses</p>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="logo" style="margin-bottom: var(--space-sm);">JD Media</p>
+        <p>Digital Caretaker for local service businesses.</p>
+        <p>Ottawa, ON</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/work.html">Work</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/process.html">Process</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6138808874">613-880-8874</a></li>
+          <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
+          <li><a href="/contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 JD Media. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
-<script src="js/main.js" defer></script>
-<script src="js/chat.js" defer></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>

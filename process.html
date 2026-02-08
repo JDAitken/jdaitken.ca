@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>About | JD Media — Your Digital Caretaker in Ottawa</title>
-  <meta name="description" content="I'm JD. I help local service businesses turn their websites into lead-generating machines. Based in Ottawa, focused on technical excellence.">
+  <title>Process | JD Media — How We Work Together</title>
+  <meta name="description" content="A transparent, collaborative process from discovery to launch. Most projects go live in 4-6 weeks.">
 
   <link rel="icon" type="image/svg+xml" href="/brand/favicon/favicon-light.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
@@ -58,41 +58,55 @@
     .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
     .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
-    /* About page */
-    .about-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
-    @media (min-width: 768px) { .about-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
+    /* Process page */
+    .process-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
+    @media (min-width: 768px) { .process-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
+    .process-hero h1 { margin-bottom: var(--space-sm); }
+    .process-hero p { color: var(--color-text-secondary); font-size: var(--text-lg); max-width: 560px; }
 
-    .about-hero-grid { display: grid; gap: var(--space-xl); }
-    @media (min-width: 768px) { .about-hero-grid { grid-template-columns: 1fr 1.5fr; align-items: center; } }
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
 
-    .about-photo { border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border); aspect-ratio: 4/5; background: var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); font-size: var(--text-sm); }
-
-    .about-intro h1 { margin-bottom: var(--space-sm); }
-    .about-intro .subtitle { font-size: var(--text-lg); color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: var(--leading-snug); }
-    @media (min-width: 768px) { .about-intro .subtitle { font-size: var(--text-xl); } }
-
-    /* Story section */
-    .story-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-    .story-content { max-width: 680px; margin: 0 auto; }
-    .story-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); margin-top: var(--space-xl); }
-    .story-content h2:first-child { margin-top: 0; }
-    .story-content p { margin-bottom: var(--space-md); line-height: var(--leading-relaxed); }
-
-    /* Skills */
-    .skills-section { }
-    .skills-grid { display: grid; gap: var(--space-lg); }
-    @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-    .skill-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
-    .skill-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
-    .skill-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
-
-    /* Philosophy */
-    .philosophy-section {
-      background: var(--color-accent-light); border-top: 1px solid var(--color-border);
+    .process-step {
+      display: grid; gap: var(--space-lg); padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
     }
-    .philosophy-content { max-width: 680px; margin: 0 auto; text-align: center; }
-    .philosophy-content h2 { margin-bottom: var(--space-md); }
-    .philosophy-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-accent-dark); }
+    .process-step:last-child { border-bottom: none; }
+    @media (min-width: 768px) { .process-step { grid-template-columns: 200px 1fr; gap: var(--space-3xl); } }
+
+    .step-number {
+      font-family: var(--font-display); font-size: var(--text-5xl); font-weight: var(--font-bold);
+      color: var(--color-accent-light); line-height: 1;
+    }
+    .step-timeline { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: var(--font-medium); margin-top: var(--space-xs); }
+
+    .step-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .step-content > p { color: var(--color-text-secondary); margin-bottom: var(--space-lg); }
+    .step-deliverable {
+      background: var(--color-accent-light); border-radius: var(--radius-md);
+      padding: var(--space-md) var(--space-lg); display: inline-block;
+    }
+    .step-deliverable strong { font-size: var(--text-sm); color: var(--color-accent-dark); }
+
+    .step-items { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-lg); }
+    .step-items li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-lg); position: relative; }
+    .step-items li::before { content: "\2713"; position: absolute; left: 0; color: var(--color-success); font-weight: var(--font-bold); }
+
+    /* What we need */
+    .needs-section { background: var(--color-surface); border-top: 1px solid var(--color-border); }
+    .needs-grid { display: grid; gap: var(--space-lg); }
+    @media (min-width: 768px) { .needs-grid { grid-template-columns: repeat(2, 1fr); } }
+    .need-card { padding: var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+    .need-card h3 { font-size: var(--text-base); margin-bottom: var(--space-xs); }
+    .need-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
+
+    /* Timeline */
+    .timeline-section { text-align: center; }
+    .timeline-cards { display: grid; gap: var(--space-lg); }
+    @media (min-width: 768px) { .timeline-cards { grid-template-columns: repeat(3, 1fr); } }
+    .timeline-card { padding: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+    .timeline-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-xs); }
+    .timeline-card .timeline-duration { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: var(--font-bold); color: var(--color-accent); margin-bottom: var(--space-sm); }
+    .timeline-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
@@ -156,76 +170,175 @@
 
 <main>
 
-  <section class="about-hero">
+  <section class="process-hero">
     <div class="container">
-      <div class="about-hero-grid">
-        <div class="about-photo">
-          Photo placeholder
+      <h1>How we work together</h1>
+      <p>A transparent, collaborative process — from discovery to launch to ongoing support.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="process-steps">
+
+        <div class="process-step">
+          <div>
+            <div class="step-number">01</div>
+            <div class="step-timeline">Week 1</div>
+          </div>
+          <div class="step-content">
+            <h2>Discovery</h2>
+            <p>We start with a kickoff call to understand your business, goals, and customers. We review your current site, research competitors, and identify keywords.</p>
+            <ul class="step-items">
+              <li>Kickoff call to understand your business and goals</li>
+              <li>Competitor analysis and keyword research</li>
+              <li>Review current site performance</li>
+            </ul>
+            <div class="step-deliverable">
+              <strong>Deliverable: Project brief and sitemap</strong>
+            </div>
+          </div>
         </div>
-        <div class="about-intro">
-          <h1>Hi, I'm JD.</h1>
-          <p class="subtitle">I help local service businesses turn their websites into lead-generating machines.</p>
-          <a href="/contact.html" class="btn btn-primary">Let's Work Together</a>
+
+        <div class="process-step">
+          <div>
+            <div class="step-number">02</div>
+            <div class="step-timeline">Week 2</div>
+          </div>
+          <div class="step-content">
+            <h2>Design</h2>
+            <p>We create wireframes and design mockups based on the project brief. You review, provide feedback, and we revise until you're happy.</p>
+            <ul class="step-items">
+              <li>Wireframes and design mockups</li>
+              <li>Review session with feedback</li>
+              <li>Revisions until approved</li>
+            </ul>
+            <div class="step-deliverable">
+              <strong>Deliverable: Final design files</strong>
+            </div>
+          </div>
         </div>
+
+        <div class="process-step">
+          <div>
+            <div class="step-number">03</div>
+            <div class="step-timeline">Weeks 3–4</div>
+          </div>
+          <div class="step-content">
+            <h2>Development</h2>
+            <p>We build your site with clean, performant code. Mobile-first, fast loading, and optimized for search. You get a staging site to review before launch.</p>
+            <ul class="step-items">
+              <li>Build site with clean, performant code</li>
+              <li>Optimize for mobile and speed</li>
+              <li>Integrate forms, SEO, and tracking</li>
+            </ul>
+            <div class="step-deliverable">
+              <strong>Deliverable: Staging site for review</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div>
+            <div class="step-number">04</div>
+            <div class="step-timeline">Week 5</div>
+          </div>
+          <div class="step-content">
+            <h2>Launch</h2>
+            <p>Final QA, testing across devices, and deployment to production. We set up analytics and monitoring so you can track results from day one.</p>
+            <ul class="step-items">
+              <li>Final QA and cross-device testing</li>
+              <li>Deploy to production</li>
+              <li>Set up analytics and monitoring</li>
+            </ul>
+            <div class="step-deliverable">
+              <strong>Deliverable: Live website</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div>
+            <div class="step-number">05</div>
+            <div class="step-timeline">Ongoing</div>
+          </div>
+          <div class="step-content">
+            <h2>Support</h2>
+            <p>We don't build and disappear. Your plan includes post-launch support for bug fixes, minor updates, and monthly check-ins on Premium plans.</p>
+            <ul class="step-items">
+              <li>30–90 days post-launch support (depending on plan)</li>
+              <li>Monthly check-ins (Premium plan)</li>
+              <li>Bug fixes and minor updates</li>
+            </ul>
+            <div class="step-deliverable">
+              <strong>Deliverable: Peace of mind</strong>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="story-section">
-    <div class="container">
-      <div class="story-content">
-        <h2>Why web design?</h2>
-        <p>I started building websites and quickly realized most service businesses were getting a raw deal. Agencies churn out templated sites, charge a premium, then disappear. The sites look fine at first, but they're slow, don't convert, and fall apart on mobile. I wanted to do better.</p>
-
-        <h2>Why service businesses?</h2>
-        <p>Service businesses are the backbone of local economies. The HVAC tech, the plumber, the electrician — they deserve websites that work as hard as they do. Not outdated templates that cost them leads every day.</p>
-
-        <h2>Why Ottawa?</h2>
-        <p>I'm based in Ottawa and love working with local businesses. I understand the market, the competition, and what it takes to stand out in a city where homeowners search online before they call.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="skills-section">
+  <!-- What we need from you -->
+  <section class="needs-section">
     <div class="container">
       <div class="section-header">
-        <h2>What I bring to the table</h2>
+        <h2>What we need from you</h2>
+        <p>A few things to have ready so we can hit the ground running.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Mobile-first design</h3>
-          <p>Every site starts at 375px and scales up. Your customers are on their phones — the site needs to work perfectly there first.</p>
+      <div class="needs-grid">
+        <div class="need-card">
+          <h3>Brand assets</h3>
+          <p>Logo, colors, fonts — anything that represents your business visually.</p>
         </div>
-        <div class="skill-card">
-          <h3>Conversion optimization</h3>
-          <p>Clear CTAs, trust signals, and friction-free forms. Every design decision is made to generate more calls and leads.</p>
+        <div class="need-card">
+          <h3>Content</h3>
+          <p>Service descriptions, about text, and photos. We can help write if needed.</p>
         </div>
-        <div class="skill-card">
-          <h3>Local SEO</h3>
-          <p>Structured data, optimized titles, service area pages. Your site shows up when Ottawa homeowners search for your services.</p>
+        <div class="need-card">
+          <h3>Hosting / domain access</h3>
+          <p>Login credentials for your hosting provider and domain registrar.</p>
         </div>
-        <div class="skill-card">
-          <h3>Technical excellence</h3>
-          <p>Clean code, fast load times, accessible markup. Built to score 90+ on Lighthouse across all categories.</p>
+        <div class="need-card">
+          <h3>Timely feedback</h3>
+          <p>Quick turnaround on design reviews keeps the project on schedule.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="philosophy-section">
+  <!-- Timeline expectations -->
+  <section class="timeline-section">
     <div class="container">
-      <div class="philosophy-content">
-        <h2>The Digital Caretaker approach</h2>
-        <p>I don't just build and disappear. I'm your Digital Caretaker — monitoring, maintaining, and improving your site so it stays relevant as search evolves. Long-term partnerships, not one-off projects.</p>
+      <div class="section-header">
+        <h2>Timeline expectations</h2>
+      </div>
+      <div class="timeline-cards">
+        <div class="timeline-card">
+          <h3>Typical project</h3>
+          <div class="timeline-duration">4–6 weeks</div>
+          <p>From kickoff to launch for a standard 5-page website.</p>
+        </div>
+        <div class="timeline-card">
+          <h3>Rush project</h3>
+          <div class="timeline-duration">2–3 weeks</div>
+          <p>Expedited timeline available for an additional fee.</p>
+        </div>
+        <div class="timeline-card">
+          <h3>Complex project</h3>
+          <div class="timeline-duration">8–12 weeks</div>
+          <p>E-commerce, custom integrations, or large-scale sites.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="final-cta">
     <div class="container text-center">
-      <h2>Let's work together</h2>
-      <p>Ready to turn your website into a lead-generating machine? Let's talk.</p>
-      <a href="/contact.html" class="btn btn-primary">Get in Touch</a>
+      <h2>Ready to get started?</h2>
+      <p>Let's talk about your project and find the right approach for your business.</p>
+      <a href="/contact.html" class="btn btn-primary">Start Your Project</a>
     </div>
   </section>
 
