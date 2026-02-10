@@ -23,8 +23,8 @@
   <style>
     .tap-to-call { display: none; }
     @media (max-width: 767px) {
-      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: #FFFFFF; padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
-      .tap-to-call:hover { background: var(--color-accent-hover); color: #FFFFFF; }
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-text); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
     }
     .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
     @media (max-width: 767px) { .site-header { top: 44px; } }
@@ -120,7 +120,7 @@
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
     .final-cta p { color: var(--color-text-muted); font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
-    .final-cta .btn-primary { background: var(--color-accent); color: #FFFFFF; }
+    .final-cta .btn-primary { background: var(--color-accent); color: var(--color-text); }
     .final-cta .btn-primary:hover { background: var(--color-accent-hover); }
 
     .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }

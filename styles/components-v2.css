@@ -33,7 +33,7 @@
 
 .btn-primary {
   background: var(--color-accent);
-  color: #FFFFFF;
+  color: var(--color-text);
   border-color: var(--color-accent);
 }
 

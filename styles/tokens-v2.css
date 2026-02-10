@@ -1,6 +1,6 @@
 /* ==========================================================================
-   JD Media Design System Tokens v2.0
-   Light-mode, Clay-inspired aesthetic for credibility-first web design
+   JD Media Design System Tokens v2.1
+   Light-mode, Navy + Coral brand palette
    ========================================================================== */
 
 :root {
@@ -9,16 +9,17 @@
   /* Base Colors */
   --color-bg: #FAFAFA;              /* Soft off-white page background */
   --color-surface: #FFFFFF;          /* Pure white cards/containers */
-  --color-text: #1A1A1A;            /* Near-black primary text */
-  --color-text-secondary: #6B6B6B;  /* Medium gray secondary text */
-  --color-text-muted: #A3A3A3;      /* Light gray muted text */
-  --color-border: #E5E5E5;          /* Subtle borders/dividers */
+  --color-text: #1B3A5F;            /* Navy primary text */
+  --color-text-secondary: #5A6E85;  /* Navy-toned secondary text */
+  --color-text-muted: #8B9DB3;      /* Navy-toned muted text */
+  --color-border: #E0E6ED;          /* Navy-tinted borders/dividers */
   
   /* Accent Colors */
-  --color-accent: #0D9488;          /* Warm teal (calm, grounded, credible) */
-  --color-accent-hover: #0F766E;    /* Darker teal on hover */
-  --color-accent-light: #CCFBF1;    /* Light teal backgrounds */
-  --color-accent-dark: #115E59;     /* Dark teal for text on light backgrounds */
+  --color-accent: #FF6B6B;          /* Coral accent */
+  --color-accent-hover: #E85D5D;    /* Darker coral on hover */
+  --color-accent-light: #FFE8E8;    /* Light coral backgrounds */
+  --color-accent-dark: #B83B3B;     /* Dark coral for text on light backgrounds */
+  --color-accent-text: #B83B3B;     /* Accessible coral for inline text links */
   
   /* Success/Trust Green */
   --color-success: #10B981;         /* Green for positive signals */

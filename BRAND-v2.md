@@ -14,20 +14,22 @@ JD Media is a **Digital Caretaker** for local service businesses. We build calm,
 
 ## Visual Identity
 
-### Color Palette (Light Mode)
+### Color Palette (Light Mode — Navy + Coral)
 ```css
 /* Base */
 --color-bg: #FAFAFA;              /* Soft off-white background */
 --color-surface: #FFFFFF;          /* Pure white cards/surfaces */
---color-text: #1A1A1A;            /* Near-black primary text */
---color-text-secondary: #6B6B6B;  /* Medium gray secondary text */
---color-text-muted: #A3A3A3;      /* Light gray muted text */
---color-border: #E5E5E5;          /* Subtle borders */
+--color-text: #1B3A5F;            /* Navy primary text */
+--color-text-secondary: #5A6E85;  /* Navy-toned secondary text */
+--color-text-muted: #8B9DB3;      /* Navy-toned muted text */
+--color-border: #E0E6ED;          /* Navy-tinted borders */
 
 /* Accent Colors */
---color-accent: #0D9488;          /* Warm teal (calm, grounded, credible) */
---color-accent-hover: #0F766E;    /* Darker teal on hover */
---color-accent-light: #CCFBF1;    /* Light teal backgrounds */
+--color-accent: #FF6B6B;          /* Coral accent */
+--color-accent-hover: #E85D5D;    /* Darker coral on hover */
+--color-accent-light: #FFE8E8;    /* Light coral backgrounds */
+--color-accent-dark: #B83B3B;     /* Dark coral for text on light backgrounds */
+--color-accent-text: #B83B3B;     /* Accessible coral for inline text links (5.63:1 on white) */
 --color-success: #10B981;         /* Green for trust signals */
 --color-success-light: #D1FAE5;   /* Light green backgrounds */
 
@@ -79,9 +81,9 @@ JD Media is a **Digital Caretaker** for local service businesses. We build calm,
 ## Component Principles
 
 ### Buttons
-- **Primary**: Accent teal, medium padding, subtle shadow
-- **Secondary**: White background, border, text accent color
-- **Ghost**: No background, text accent color, no border
+- **Primary**: Coral background with navy text, medium padding, subtle shadow
+- **Secondary**: White background, border, coral text
+- **Ghost**: No background, coral text, no border
 - All buttons: Clear focus ring, smooth transitions, accessible contrast
 
 ### Cards
