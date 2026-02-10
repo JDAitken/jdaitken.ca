@@ -25,9 +25,9 @@ JD Media is a **Digital Caretaker** for local service businesses. We build calm,
 --color-border: #E5E5E5;          /* Subtle borders */
 
 /* Accent Colors */
---color-accent: #3B82F6;          /* Clean blue (credibility, trust) */
---color-accent-hover: #2563EB;    /* Darker blue on hover */
---color-accent-light: #DBEAFE;    /* Light blue backgrounds */
+--color-accent: #0D9488;          /* Warm teal (calm, grounded, credible) */
+--color-accent-hover: #0F766E;    /* Darker teal on hover */
+--color-accent-light: #CCFBF1;    /* Light teal backgrounds */
 --color-success: #10B981;         /* Green for trust signals */
 --color-success-light: #D1FAE5;   /* Light green backgrounds */
 
@@ -79,7 +79,7 @@ JD Media is a **Digital Caretaker** for local service businesses. We build calm,
 ## Component Principles
 
 ### Buttons
-- **Primary**: Accent blue, medium padding, subtle shadow
+- **Primary**: Accent teal, medium padding, subtle shadow
 - **Secondary**: White background, border, text accent color
 - **Ghost**: No background, text accent color, no border
 - All buttons: Clear focus ring, smooth transitions, accessible contrast
