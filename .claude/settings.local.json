@@ -23,7 +23,8 @@
       "Bash(cwebp:*)",
       "Bash(git rm:*)",
       "Bash(grep:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(python3:*)"
     ]
   }
 }
