@@ -521,12 +521,91 @@
       text-align: center;
     }
 
-    .trust-placeholder {
-      padding: var(--space-xl);
-      border: 1px dashed var(--color-border);
-      border-radius: var(--radius-lg);
+    .google-review-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .google-review-header img {
+      height: 32px;
+      width: auto;
+    }
+
+    .google-review-summary {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-ui);
+      font-size: var(--text-base);
+      color: var(--color-text);
+    }
+
+    .google-review-summary strong {
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+    }
+
+    .google-review-stars {
+      color: #FBBC04;
+      letter-spacing: 2px;
+    }
+
+    .google-review-summary .review-count {
       color: var(--color-text-muted);
       font-size: var(--text-sm);
+    }
+
+    .review-card {
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .review-card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-text);
+      color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-ui);
+      font-weight: var(--font-bold);
+      font-size: var(--text-base);
+      flex-shrink: 0;
+    }
+
+    .review-author {
+      font-family: var(--font-ui);
+      font-weight: var(--font-semibold);
+      font-size: var(--text-base);
+      color: var(--color-text);
+    }
+
+    .review-card .google-review-stars {
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .review-text {
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
     }
 
     /* Final CTA */
@@ -832,8 +911,21 @@
       <div class="section-header">
         <h2>Trusted by local businesses</h2>
       </div>
-      <div class="trust-placeholder">
-        Trustpilot widget &middot; Client logos &middot; Review count — coming soon
+      <div class="google-review-header">
+        <img src="/images/logos/Google-Review-Logo.png" alt="Google Reviews" />
+        <div class="google-review-summary">
+          <strong>5.0</strong>
+          <span class="google-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="review-count">(1 review)</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="review-avatar">P</div>
+          <div class="review-author">Patrick Damiani</div>
+        </div>
+        <div class="google-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;JD Media is the kind of web partner you want in your corner. JD handled the technical stuff end-to-end and explained things in plain English, so I could stay focused on running my business. Fast, reliable, and the site looks great. I highly recommend JD Media!&rdquo;</p>
       </div>
     </div>
   </section>
