@@ -530,8 +530,9 @@
     }
 
     .google-review-header img {
-      height: 44px;
+      height: clamp(64px, 9vw, 88px);
       width: auto;
+      max-width: min(300px, 80vw);
     }
 
     .google-review-summary {
