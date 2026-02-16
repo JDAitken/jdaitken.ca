@@ -24,7 +24,8 @@
       "Bash(git rm:*)",
       "Bash(grep:*)",
       "Bash(chmod:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "WebFetch(domain:johna440.sg-host.com)"
     ]
   }
 }
