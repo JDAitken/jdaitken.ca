@@ -243,14 +243,13 @@
 
 .footer-brand .logo-img {
   height: 28px;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
-/* Active nav link */
-.nav-desktop a.active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.footer-brand p {
+  margin-bottom: var(--space-xs);
 }
+
 
 @media (min-width: 768px) {
   .footer-brand .logo-img {
