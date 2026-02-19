@@ -237,9 +237,19 @@
 }
 
 /* Footer logo - smaller scale */
+.footer-brand .logo-link {
+  display: block;
+}
+
 .footer-brand .logo-img {
   height: 28px;
   margin-bottom: var(--space-sm);
+}
+
+/* Active nav link */
+.nav-desktop a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (min-width: 768px) {
