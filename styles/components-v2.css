@@ -210,3 +210,40 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* ===== Logo ===== */
+
+.logo-img {
+  display: block;
+  height: 32px; /* Mobile: fits within 64px header */
+  width: auto;
+  transition: opacity var(--transition-base);
+}
+
+.logo-img:hover {
+  opacity: 0.85;
+}
+
+.logo-img:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (min-width: 768px) {
+  .logo-img {
+    height: 40px; /* Desktop: fits within 72px header */
+  }
+}
+
+/* Footer logo - smaller scale */
+.footer-brand .logo-img {
+  height: 28px;
+  margin-bottom: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .footer-brand .logo-img {
+    height: 32px;
+  }
+}

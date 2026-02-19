@@ -31,17 +31,6 @@
     @media (min-width: 768px) { .site-header { height: var(--header-height); } }
     .header-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md); }
     @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
-    .logo { font-family: var(--font-display); font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); text-decoration: none; line-height: 1; display: flex; flex-direction: column; }
-    .logo:hover { color: var(--color-text); }
-    .logo-tagline {
-      font-family: var(--font-ui);
-      font-size: var(--text-xs);
-      font-weight: var(--font-normal);
-      color: var(--color-text-muted);
-      letter-spacing: var(--tracking-wide);
-      line-height: 1;
-      margin-top: 2px;
-    }
     .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
     @media (min-width: 768px) { .nav-desktop { display: flex; } }
     .nav-desktop a { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base); }
@@ -141,7 +130,9 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo">JD Media <span class="logo-tagline">Ottawa Web Design</span></a>
+    <a href="/" class="logo-link">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+    </a>
     <nav class="nav-desktop" aria-label="Main">
       <a href="/work.html">Work</a>
 
@@ -161,7 +152,9 @@
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
   <div class="mobile-menu-panel" data-menu-panel>
     <div class="mobile-menu-top">
-      <a href="/" class="logo">JD Media <span class="logo-tagline">Ottawa Web Design</span></a>
+      <a href="/" class="logo-link">
+        <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+      </a>
       <button class="mobile-menu-close" type="button" aria-label="Close menu">&#x2715;</button>
     </div>
     <nav class="mobile-menu-nav" aria-label="Mobile">
@@ -359,7 +352,9 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <p class="logo" style="margin-bottom: var(--space-sm);">JD Media</p>
+        <a href="/" class="logo-link">
+          <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
+        </a>
         <p>Digital Caretaker for local service businesses.</p>
         <p>Ottawa, ON</p>
       </div>

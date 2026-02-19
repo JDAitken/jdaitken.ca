@@ -32,8 +32,6 @@
       width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md);
     }
     @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
-    .logo { font-family: var(--font-display); font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); text-decoration: none; line-height: 1; }
-    .logo:hover { color: var(--color-text); }
 
     .thanks-section {
       min-height: 60vh; display: flex; align-items: center;
@@ -54,7 +52,9 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo">JD Media</a>
+    <a href="/" class="logo-link">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+    </a>
   </div>
 </header>
 
