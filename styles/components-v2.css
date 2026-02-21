@@ -217,6 +217,7 @@
   display: block;
   height: 32px; /* Mobile: fits within 64px header */
   width: auto;
+  max-width: 200px; /* Prevent SVG intrinsic width from overriding height constraint */
   transition: opacity var(--transition-base);
 }
 
