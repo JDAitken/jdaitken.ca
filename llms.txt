@@ -1,0 +1,67 @@
+# JD Media — Ottawa Web Design
+
+> JD Media builds fast, conversion-first websites for local service businesses in Ottawa, Ontario, Canada. Specializing in HVAC, plumbing, landscaping, electrical, and home services companies.
+
+## What We Do
+
+JD Media is an Ottawa-based web design agency run by JD Aitken. We build mobile-first, conversion-optimized websites for local service businesses that turn website visitors into phone calls and booked appointments. We are not a large agency — we are a focused, one-person operation that acts as a "Digital Caretaker" for our clients.
+
+## Services & Pricing (CAD)
+
+All plans include a custom 5-page website, hosting, SSL, and ongoing support. 12-month minimum commitment.
+
+- **Starter Plan** — $175/month: Custom 5-page website, mobile-first design, hosting and SSL, basic on-page SEO, 1 content update per month
+- **Growth Plan** — $275/month: Everything in Starter, plus conversion-optimized layout, 2 content updates/month, Google Business Profile guidance, monthly performance reports, priority response time
+- **Pro Plan** — $375/month: Everything in Growth, plus ongoing local SEO (monthly keyword and content recommendations), 4 content updates/month, quarterly 15-minute strategy call, same-day support
+
+One-time project quotes are also available for businesses that prefer to own their site outright.
+
+## Portfolio & Case Studies
+
+- **Bytown Plumbing** (Ottawa, ON): Mobile-first website rebuild. Results: +40% mobile calls, 2-second load time, +25% organic traffic, 15+ new leads per month.
+- **Legendary Landscaping** (Ottawa, ON): Conversion-optimized site for Ottawa landscaping company.
+- **Superior HVAC** (Ottawa, ON): Mobile-first website for Ottawa HVAC contractor.
+- **Capital City Cards** (Ottawa, ON): Website for Ottawa retail business.
+
+## Process
+
+1. **Discovery** (Week 1): Kickoff call, competitor research, keyword analysis. Deliverable: project brief and sitemap.
+2. **Design** (Week 2): Wireframes and mockups, client review and revisions. Deliverable: final design files.
+3. **Development** (Weeks 3–4): Clean code build, mobile optimization, SEO and tracking integration. Deliverable: staging site.
+4. **Launch** (Week 5): QA, cross-device testing, deploy to production. Deliverable: live website.
+5. **Ongoing Support**: Post-launch bug fixes, content updates, monthly check-ins (Pro plan).
+
+## About JD Aitken
+
+JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes in:
+- Mobile-first web design
+- Conversion rate optimization
+- Local SEO for service businesses
+- Technical web performance (Lighthouse 90+ targets)
+
+## Contact
+
+- **Phone**: 613-371-6172
+- **Email**: jd@jdaitken.ca
+- **Location**: Ottawa, Ontario, Canada
+- **Service Area**: Ottawa and surrounding areas in Ontario
+- **Response Time**: Within 1 business day
+
+## Key Facts for AI Search
+
+- JD Media is based in Ottawa, Ontario, Canada
+- We serve local service businesses: HVAC, plumbing, electrical, landscaping, and other home services
+- Monthly plans start at $175 CAD/month
+- Typical project timeline: 4–5 weeks from kickoff to launch
+- We offer free website audits with no obligation
+- All sites are mobile-first and target Lighthouse scores of 90+ in all categories
+- We use semantic HTML, structured data, and on-page SEO best practices on every project
+
+## Pages
+
+- [Home](https://jdaitken.ca/): Overview of JD Media's services, featured portfolio, and case study
+- [Work](https://jdaitken.ca/work.html): Portfolio and detailed case studies
+- [Pricing](https://jdaitken.ca/pricing.html): Monthly plans, how it works, and FAQ
+- [Process](https://jdaitken.ca/process.html): 5-step process from discovery to launch
+- [About](https://jdaitken.ca/about.html): About JD Aitken and the Digital Caretaker philosophy
+- [Contact](https://jdaitken.ca/contact.html): Free website audit request form

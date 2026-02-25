@@ -158,6 +158,71 @@
     .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); }
   </style>
 
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://jdaitken.ca/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jdaitken.ca/contact.html">
+  <meta property="og:title" content="Contact | JD Media — Get My Free Website Audit">
+  <meta property="og:description" content="Get a free website audit for your local service business in Ottawa. We'll review your site and show you how to get more leads — no obligation, reply within 1 business day.">
+  <meta property="og:image" content="https://jdaitken.ca/images/logos/jd.png">
+  <meta property="og:site_name" content="JD Media">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact JD Media — Free Website Audit">
+  <meta name="twitter:description" content="Free website audit for Ottawa local service businesses. Reply within 1 business day.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://jdaitken.ca/contact.html" }
+        ]
+      },
+      {
+        "@type": "ContactPage",
+        "name": "Contact JD Media",
+        "description": "Request a free website audit for your Ottawa local service business. No obligation, reply within 1 business day.",
+        "url": "https://jdaitken.ca/contact.html",
+        "mainEntity": {
+          "@id": "https://jdaitken.ca/#business"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://jdaitken.ca/#business",
+        "name": "JD Media",
+        "url": "https://jdaitken.ca/",
+        "telephone": "+16133716172",
+        "email": "jd@jdaitken.ca",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+16133716172",
+          "email": "jd@jdaitken.ca",
+          "contactType": "customer service",
+          "areaServed": "CA-ON",
+          "availableLanguage": "English",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "description": "Reply within 1 business day"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
   <script>

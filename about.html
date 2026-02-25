@@ -108,6 +108,79 @@
     .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); }
   </style>
 
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://jdaitken.ca/about.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://jdaitken.ca/about.html">
+  <meta property="og:title" content="About | JD Media — Your Digital Caretaker in Ottawa">
+  <meta property="og:description" content="I'm JD Aitken. I help local service businesses in Ottawa turn their websites into lead-generating machines. Mobile-first design, local SEO, and conversion optimization.">
+  <meta property="og:image" content="https://jdaitken.ca/images/jd-aitken.png">
+  <meta property="og:site_name" content="JD Media">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About JD Aitken | JD Media Ottawa Web Design">
+  <meta name="twitter:description" content="Ottawa web designer specializing in conversion-first websites for local service businesses.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://jdaitken.ca/about.html" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://jdaitken.ca/about.html#jd",
+        "name": "JD Aitken",
+        "givenName": "JD",
+        "familyName": "Aitken",
+        "jobTitle": "Founder & Web Designer",
+        "description": "Ottawa-based web designer specializing in mobile-first, conversion-optimized websites for local service businesses. Founder of JD Media.",
+        "email": "jd@jdaitken.ca",
+        "telephone": "+16133716172",
+        "image": "https://jdaitken.ca/images/jd-aitken.png",
+        "url": "https://jdaitken.ca/about.html",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "knowsAbout": [
+          "Web Design",
+          "Mobile-First Design",
+          "Conversion Rate Optimization",
+          "Local SEO",
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "worksFor": { "@id": "https://jdaitken.ca/#business" },
+        "founder": [{ "@id": "https://jdaitken.ca/#business" }]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://jdaitken.ca/#business",
+        "name": "JD Media",
+        "url": "https://jdaitken.ca/",
+        "telephone": "+16133716172",
+        "email": "jd@jdaitken.ca",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
   <script>
