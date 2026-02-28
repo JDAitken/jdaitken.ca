@@ -257,3 +257,125 @@
     height: 32px;
   }
 }
+
+/* ===== Google Reviews / Testimonials ===== */
+
+.reviews-section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reviews-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.reviews-header img {
+  height: clamp(60px, 10vw, 100px);
+  width: auto;
+  max-width: min(360px, 88vw);
+}
+
+.reviews-rating-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+.reviews-rating-row strong {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+}
+
+.reviews-rating-row .review-count {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.reviews-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.review-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.review-card-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: #6B8F71;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+  flex-shrink: 0;
+}
+
+.review-author-name {
+  font-family: var(--font-ui);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+.review-author-location {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-tight);
+  margin-top: 2px;
+}
+
+.review-stars {
+  color: #F5A623;
+  letter-spacing: 2px;
+  font-size: var(--text-base);
+  flex-shrink: 0;
+}
+
+.review-text {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  margin: 0;
+}
