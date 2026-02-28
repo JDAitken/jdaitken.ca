@@ -340,8 +340,8 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: #6B8F71;
-  color: #ffffff;
+  background: var(--color-success-dark);
+  color: var(--color-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,4 +378,8 @@
   line-height: var(--leading-normal);
   color: var(--color-text);
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
