@@ -261,7 +261,7 @@
 /* ===== Google Reviews / Testimonials ===== */
 
 .reviews-section {
-  background: var(--color-surface);
+  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
@@ -276,9 +276,11 @@
 }
 
 .reviews-header img {
-  height: clamp(60px, 10vw, 100px);
+  max-height: 72px;
   width: auto;
-  max-width: min(360px, 88vw);
+  max-width: min(260px, 75vw);
+  display: block;
+  margin: 0 auto;
 }
 
 .reviews-rating-row {
@@ -313,7 +315,7 @@
 }
 
 .review-card {
-  background: var(--color-bg);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
