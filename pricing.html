@@ -39,6 +39,8 @@
     .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
     .header-cta { display: none; }
     @media (min-width: 768px) { .header-cta { display: inline-flex; } }
+    .btn-nav-outline { background: transparent; border: 1.5px solid var(--color-text); color: var(--color-text); }
+    .btn-nav-outline:hover { background: var(--color-text); color: var(--color-surface); }
     .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base); }
     .menu-toggle:hover { border-color: var(--color-text-muted); }
     @media (min-width: 768px) { .menu-toggle { display: none; } }
@@ -282,7 +284,7 @@
       <a href="/about.html">About</a>
     </nav>
     <div class="header-actions">
-      <a href="/contact.html" class="btn btn-primary header-cta">Contact</a>
+      <a href="/contact.html" class="btn btn-nav-outline header-cta">Book a call</a>
       <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>
         <span class="menu-icon" aria-hidden="true"><span></span></span>
       </button>
