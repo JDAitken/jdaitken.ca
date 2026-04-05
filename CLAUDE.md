@@ -185,4 +185,12 @@ font-family: 'DM Sans';
 
 ---
 
+## Workflow Rules
+
+**Frontend changes:** Invoke the `frontend-design` skill whenever making changes to HTML, CSS, or visual layout.
+
+**After making changes:** Always commit and push to `main` when edits are complete. GitHub Actions will handle deployment automatically.
+
+---
+
 **For detailed brand guidelines, visual identity, and component principles, see `BRAND-v2.md`.**
