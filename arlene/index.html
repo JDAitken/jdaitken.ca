@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Arlene's 10K Steps 🔥</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFF8F0;
+    --surface: #FFFFFF;
+    --orange: #FF6B35;
+    --orange-light: #FF9A6C;
+    --orange-glow: rgba(255, 107, 53, 0.25);
+    --amber: #FFB347;
+    --green: #52B788;
+    --text: #1A1A1A;
+    --muted: #8A8A8A;
+    --border: #F0E8DF;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 16px 40px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 179, 71, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .header h1 span {
+    color: var(--orange);
+  }
+
+  .header p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* Streak display */
+  .streak-card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 28px 24px;
+    border: 1.5px solid var(--border);
+    margin-bottom: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+
+  .streak-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .flame-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .flame-emoji {
+    font-size: 3.5rem;
+    line-height: 1;
+    filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.4));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+  }
+
+  .streak-count {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(4rem, 16vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .streak-count.bump {
+    transform: scale(1.12);
+  }
+
+  .streak-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .streak-sub {
+    font-size: 0.875rem;
+    color: var(--orange);
+    font-weight: 600;
+    margin-top: 8px;
+    min-height: 20px;
+    transition: opacity 0.3s;
+  }
+
+  /* Today status */
+  .today-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .today-status.done {
+    background: rgba(82, 183, 136, 0.12);
+    color: var(--green);
+    border: 1.5px solid rgba(82, 183, 136, 0.3);
+  }
+
+  .today-status.pending {
+    background: rgba(255, 107, 53, 0.08);
+    color: var(--orange);
+    border: 1.5px solid rgba(255, 107, 53, 0.2);
+  }
+
+  /* Check-in button */
+  .checkin-btn {
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: -0.01em;
+  }
+
+  .checkin-btn.active {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35), 0 2px 8px rgba(255, 107, 53, 0.2);
+  }
+
+  .checkin-btn.active:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4), 0 4px 12px rgba(255, 107, 53, 0.25);
+  }
+
+  .checkin-btn.active:active {
+    transform: scale(0.97);
+  }
+
+  .checkin-btn.completed {
+    background: rgba(82, 183, 136, 0.1);
+    color: var(--green);
+    border: 2px solid rgba(82, 183, 136, 0.3);
+    cursor: default;
+  }
+
+  .checkin-btn .btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .checkin-btn .btn-icon {
+    font-size: 1.4rem;
+  }
+
+  /* Ripple */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transform: scale(0);
+    animation: ripple-anim 0.6s linear;
+    pointer-events: none;
+  }
+
+  @keyframes ripple-anim {
+    to { transform: scale(4); opacity: 0; }
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 18px 16px;
+    border: 1.5px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+
+  .stat-icon {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Calendar / Week view */
+  .week-card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 22px 20px;
+    border: 1.5px solid var(--border);
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+
+  .week-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+
+  .day-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .day-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+
+  .day-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .day-circle.completed {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+  }
+
+  .day-circle.today {
+    border-color: var(--orange);
+    background: rgba(255, 107, 53, 0.06);
+  }
+
+  .day-circle.today.completed {
+    border-color: transparent;
+  }
+
+  .day-circle.missed {
+    background: #F5F0EB;
+  }
+
+  .day-circle.future {
+    background: transparent;
+    border-color: #E8E0D8;
+  }
+
+  /* Milestones */
+  .milestones-card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 22px 20px;
+    border: 1.5px solid var(--border);
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+
+  .milestone-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .milestone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .milestone-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #FAFAF9;
+    border: 1.5px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .milestone-item.achieved {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.06) 0%, rgba(255, 179, 71, 0.06) 100%);
+    border-color: rgba(255, 107, 53, 0.2);
+  }
+
+  .milestone-emoji {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .milestone-info {
+    flex: 1;
+  }
+
+  .milestone-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .milestone-item:not(.achieved) .milestone-name {
+    color: var(--muted);
+  }
+
+  .milestone-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .milestone-check {
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .milestone-item.achieved .milestone-check {
+    opacity: 1;
+  }
+
+  /* Reset button */
+  .reset-btn {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 4px;
+  }
+
+  .reset-btn:hover { color: var(--text); }
+
+  /* Celebration overlay */
+  .celebrate {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .celebrate-text {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--orange);
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+    pointer-events: none;
+  }
+
+  .celebrate-text.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .celebrate-text.hide {
+    opacity: 0;
+    transform: scale(1.2) translateY(-20px);
+    transition: all 0.4s ease;
+  }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 101;
+    animation: confetti-fall var(--duration) ease-in forwards;
+  }
+
+  @keyframes confetti-fall {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--dx), 100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Animations */
+  @keyframes pulse-flame {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .flame-pulse {
+    animation: pulse-flame 2s ease-in-out infinite;
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .streak-card, .checkin-btn, .stats-row, .week-card, .milestones-card {
+    animation: slide-up 0.5s ease both;
+  }
+  .checkin-btn { animation-delay: 0.05s; }
+  .stats-row { animation-delay: 0.1s; }
+  .week-card { animation-delay: 0.15s; }
+  .milestones-card { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <h1>Arlene's <span>10K</span> Steps</h1>
+    <p id="date-display">Loading...</p>
+  </div>
+
+  <!-- Main streak card -->
+  <div class="streak-card">
+    <div class="flame-container">
+      <span class="flame-emoji flame-pulse" id="flame">🔥</span>
+    </div>
+    <div class="streak-count" id="streak-count">0</div>
+    <div class="streak-label">Day Streak</div>
+    <div class="streak-sub" id="streak-message">Start your streak today! 💪</div>
+
+    <div class="today-status pending" id="today-status">
+      <span>👟</span>
+      <span id="status-text">Still going today?</span>
+    </div>
+  </div>
+
+  <!-- Check-in button -->
+  <button class="checkin-btn active" id="checkin-btn" onclick="checkIn(event)">
+    <div class="btn-content">
+      <span class="btn-icon" id="btn-icon">👟</span>
+      <span id="btn-text">I hit 10K steps today!</span>
+    </div>
+  </button>
+
+  <!-- Stats row -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-icon">🏆</span>
+      <div class="stat-value" id="best-streak">0</div>
+      <div class="stat-label">Best Streak</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">📅</span>
+      <div class="stat-value" id="total-days">0</div>
+      <div class="stat-label">Total Days</div>
+    </div>
+  </div>
+
+  <!-- Week view -->
+  <div class="week-card">
+    <div class="week-title">This Week</div>
+    <div class="week-days" id="week-days"></div>
+  </div>
+
+  <!-- Milestones -->
+  <div class="milestones-card">
+    <div class="milestone-title">Milestones</div>
+    <div class="milestone-list" id="milestones"></div>
+  </div>
+
+  <button class="reset-btn" onclick="confirmReset()">Reset all data</button>
+</div>
+
+<!-- Celebration overlay -->
+<div class="celebrate" id="celebrate">
+  <div class="celebrate-text" id="celebrate-text"></div>
+</div>
+
+<script>
+  const MILESTONES = [
+    { days: 3,   emoji: '🌱', name: '3 Day Sprout',      desc: 'The habit is taking root!' },
+    { days: 7,   emoji: '⚡', name: '1 Week Warrior',    desc: 'A full week — incredible!' },
+    { days: 14,  emoji: '🌊', name: '2 Week Wave',       desc: 'You\'re unstoppable!' },
+    { days: 21,  emoji: '🦋', name: '21 Day Transform',  desc: 'Science says it\'s a habit now!' },
+    { days: 30,  emoji: '🏅', name: '30 Day Champion',   desc: 'An entire month. Legendary!' },
+    { days: 60,  emoji: '🥇', name: '60 Day Legend',     desc: 'Two months strong!' },
+    { days: 100, emoji: '👑', name: '100 Day Royalty',   desc: 'Hall of fame. Unreal.' },
+  ];
+
+  function getStreak(log) {
+    if (!log || log.length === 0) return 0;
+    const sorted = [...log].sort().reverse();
+    const today = getTodayStr();
+    let streak = 0;
+    let checkDate = today;
+    for (let i = 0; i < sorted.length; i++) {
+      if (sorted[i] === checkDate) {
+        streak++;
+        checkDate = prevDay(checkDate);
+      } else if (sorted[i] < checkDate) {
+        break;
+      }
+    }
+    return streak;
+  }
+
+  function getTodayStr() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  function prevDay(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    d.setDate(d.getDate() - 1);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function loadData() {
+    try {
+      return JSON.parse(localStorage.getItem('arlene_steps') || '{"log":[]}');
+    } catch { return { log: [] }; }
+  }
+
+  function saveData(data) {
+    localStorage.setItem('arlene_steps', JSON.stringify(data));
+  }
+
+  function formatDate(d) {
+    return d.toLocaleDateString('en-CA', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  function render() {
+    const data = loadData();
+    const today = getTodayStr();
+    const todayDone = data.log.includes(today);
+    const streak = getStreak(data.log);
+    const best = data.best || 0;
+    const total = data.log.length;
+
+    // Header date
+    document.getElementById('date-display').textContent = formatDate(new Date());
+
+    // Streak
+    document.getElementById('streak-count').textContent = streak;
+    document.getElementById('best-streak').textContent = best;
+    document.getElementById('total-days').textContent = total;
+
+    // Flame scaling with streak
+    const flame = document.getElementById('flame');
+    if (streak >= 30) flame.textContent = '🔥🔥🔥';
+    else if (streak >= 14) flame.textContent = '🔥🔥';
+    else flame.textContent = '🔥';
+
+    // Streak message
+    const msg = document.getElementById('streak-message');
+    if (streak === 0) msg.textContent = 'Start your streak today! 💪';
+    else if (streak < 3) msg.textContent = `${streak} day${streak > 1 ? 's' : ''}! Keep going 🚀`;
+    else if (streak < 7) msg.textContent = `${streak} days! You\'re on a roll 🎯`;
+    else if (streak < 14) msg.textContent = `${streak} days! This is incredible 🌟`;
+    else if (streak < 30) msg.textContent = `${streak} days! Absolute machine 💪🔥`;
+    else msg.textContent = `${streak} days! You are UNSTOPPABLE 👑`;
+
+    // Today status + button
+    const btn = document.getElementById('checkin-btn');
+    const statusEl = document.getElementById('today-status');
+    if (todayDone) {
+      btn.className = 'checkin-btn completed';
+      btn.onclick = null;
+      document.getElementById('btn-icon').textContent = '✅';
+      document.getElementById('btn-text').textContent = 'Done for today! See you tomorrow 🌅';
+      statusEl.className = 'today-status done';
+      document.getElementById('status-text').textContent = 'Today\'s steps: ✓ Done!';
+    } else {
+      btn.className = 'checkin-btn active';
+      btn.onclick = (e) => checkIn(e);
+      document.getElementById('btn-icon').textContent = '👟';
+      document.getElementById('btn-text').textContent = 'I hit 10K steps today!';
+      statusEl.className = 'today-status pending';
+      document.getElementById('status-text').textContent = 'Still going today?';
+    }
+
+    // Week view
+    const weekEl = document.getElementById('week-days');
+    weekEl.innerHTML = '';
+    const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const now = new Date();
+    const dayOfWeek = now.getDay();
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() - dayOfWeek + i);
+      const ds = d.toISOString().slice(0, 10);
+      const isToday = ds === today;
+      const isFuture = ds > today;
+      const isDone = data.log.includes(ds);
+
+      let circleClass = 'day-circle';
+      let icon = '';
+      if (isFuture) {
+        circleClass += ' future';
+        icon = '';
+      } else if (isDone) {
+        circleClass += ' completed';
+        if (isToday) circleClass += ' today';
+        icon = '✓';
+      } else if (isToday) {
+        circleClass += ' today';
+        icon = '·';
+      } else {
+        circleClass += ' missed';
+        icon = '·';
+      }
+
+      weekEl.innerHTML += `
+        <div class="day-dot">
+          <span class="day-label">${days[i]}</span>
+          <div class="${circleClass}" style="color:${isDone ? 'white' : '#ccc'}">${icon}</div>
+        </div>`;
+    }
+
+    // Milestones
+    const milestoneEl = document.getElementById('milestones');
+    milestoneEl.innerHTML = '';
+    MILESTONES.forEach(m => {
+      const achieved = best >= m.days || streak >= m.days || total >= m.days;
+      milestoneEl.innerHTML += `
+        <div class="milestone-item ${achieved ? 'achieved' : ''}">
+          <span class="milestone-emoji">${m.emoji}</span>
+          <div class="milestone-info">
+            <div class="milestone-name">${m.name} <span style="font-weight:400;font-size:0.75rem;color:var(--muted)">${m.days} days</span></div>
+            <div class="milestone-desc">${m.desc}</div>
+          </div>
+          <span class="milestone-check">✅</span>
+        </div>`;
+    });
+  }
+
+  function checkIn(e) {
+    const data = loadData();
+    const today = getTodayStr();
+    if (data.log.includes(today)) return;
+
+    // Ripple
+    if (e) {
+      const btn = document.getElementById('checkin-btn');
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    }
+
+    data.log.push(today);
+    const streak = getStreak(data.log);
+    if (streak > (data.best || 0)) data.best = streak;
+    saveData(data);
+
+    // Bump animation
+    const countEl = document.getElementById('streak-count');
+    countEl.classList.add('bump');
+    setTimeout(() => countEl.classList.remove('bump'), 400);
+
+    // Celebrate!
+    const celebrateMessages = streak === 1
+      ? ['Day 1! Let\'s go! 🔥', 'The streak begins! 💥', 'First step! 🚀']
+      : streak % 10 === 0
+      ? [`${streak} days!!! 🎉👑`, `${streak} DAY STREAK! 🏆`, `LEGENDARY! ${streak} days! 🌟`]
+      : MILESTONES.find(m => m.days === streak)
+      ? [`${MILESTONES.find(m => m.days === streak).name}! 🎉`, `${streak} days! ${MILESTONES.find(m => m.days === streak).emoji}`]
+      : [`Day ${streak}! 🔥`, `${streak} days strong! 💪`, `Keep it up! 🌟`];
+
+    const msg = celebrateMessages[Math.floor(Math.random() * celebrateMessages.length)];
+    celebrate(msg);
+    confetti();
+    render();
+  }
+
+  function celebrate(msg) {
+    const el = document.getElementById('celebrate-text');
+    el.textContent = msg;
+    el.className = 'celebrate-text show';
+    setTimeout(() => {
+      el.className = 'celebrate-text hide';
+      setTimeout(() => el.className = 'celebrate-text', 400);
+    }, 1800);
+  }
+
+  function confetti() {
+    const colors = ['#FF6B35', '#FFB347', '#52B788', '#FF9A6C', '#FFE66D'];
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = '-10px';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
+      el.style.setProperty('--duration', (1.5 + Math.random() * 1) + 's');
+      el.style.animationDelay = Math.random() * 0.4 + 's';
+      el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    }
+  }
+
+  function confirmReset() {
+    if (confirm('Reset all data? This will clear Arlene\'s entire streak history.')) {
+      localStorage.removeItem('arlene_steps');
+      render();
+    }
+  }
+
+  render();
+</script>
+</body>
+</html>

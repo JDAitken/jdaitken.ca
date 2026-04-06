@@ -5,6 +5,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /private/
+Disallow: /arlene/
 
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
