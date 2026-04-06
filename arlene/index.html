@@ -243,6 +243,58 @@
     to { transform: scale(4); opacity: 0; }
   }
 
+  /* Streak backfill card */
+  .backfill-card {
+    background: linear-gradient(135deg, rgba(255,107,53,0.06) 0%, rgba(255,179,71,0.06) 100%);
+    border: 1.5px solid rgba(255,107,53,0.2);
+    border-radius: 24px;
+    padding: 22px 20px;
+    margin-bottom: 16px;
+  }
+  .backfill-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .backfill-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .backfill-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .backfill-input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,107,53,0.25);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text);
+    background: var(--surface);
+    outline: none;
+  }
+  .backfill-input:focus { border-color: var(--orange); }
+  .backfill-btn {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+  }
+  .backfill-btn:hover { opacity: 0.88; }
+
   .day-circle.past-toggle {
     cursor: pointer;
   }
@@ -703,6 +755,16 @@
     </div>
   </button>
 
+  <!-- Streak backfill -->
+  <div class="backfill-card">
+    <div class="backfill-title">Already on a streak? Get credit for it. 🔥</div>
+    <div class="backfill-sub">Pick the day you started and we'll fill in all the days at once.</div>
+    <div class="backfill-row">
+      <input type="date" class="backfill-input" id="backfill-input">
+      <button class="backfill-btn" onclick="fillStreakFrom()">Fill all days →</button>
+    </div>
+  </div>
+
   <!-- Total steps -->
   <div class="stat-card total-steps-card">
     <span class="stat-icon">👣</span>
@@ -821,9 +883,11 @@
     // Header date
     document.getElementById('date-display').textContent = formatDate(new Date());
 
-    // Set max date on past logger input
+    // Set max date on inputs
     const pastInput = document.getElementById('past-date-input');
     if (pastInput) pastInput.max = today;
+    const backfillInput = document.getElementById('backfill-input');
+    if (backfillInput) backfillInput.max = today;
 
     // Streak
     document.getElementById('streak-count').textContent = streak;
@@ -1037,6 +1101,38 @@
       if (streak > (data.best || 0)) data.best = streak;
     }
     saveData(data);
+    render();
+  }
+
+  function fillStreakFrom() {
+    const input = document.getElementById('backfill-input');
+    const dateStr = input.value;
+    if (!dateStr) return;
+    const today = getTodayStr();
+    if (dateStr > today) return;
+
+    // Build list of all dates from start to today
+    const dates = [];
+    let cur = dateStr;
+    while (cur <= today) {
+      dates.push(cur);
+      const d = new Date(cur + 'T12:00:00');
+      d.setDate(d.getDate() + 1);
+      cur = d.toISOString().slice(0, 10);
+    }
+
+    const startLabel = new Date(dateStr + 'T12:00:00').toLocaleDateString('en-CA', { month: 'long', day: 'numeric' });
+    if (!confirm(`Fill all ${dates.length} days from ${startLabel} to today?`)) return;
+
+    const data = loadData();
+    dates.forEach(d => { if (!data.log.includes(d)) data.log.push(d); });
+    const streak = getStreak(data.log);
+    if (streak > (data.best || 0)) data.best = streak;
+    saveData(data);
+
+    input.value = '';
+    celebrate(`${dates.length} days filled! 👑`);
+    confetti();
     render();
   }
 
