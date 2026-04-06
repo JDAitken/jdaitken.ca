@@ -723,14 +723,14 @@
   <!-- Stats row -->
   <div class="stats-row">
     <div class="stat-card">
-      <span class="stat-icon">🏆</span>
-      <div class="stat-value" id="best-streak">0</div>
-      <div class="stat-label">Best Streak</div>
+      <span class="stat-icon">🗺️</span>
+      <div class="stat-value" id="km-walked">0</div>
+      <div class="stat-label">Est. km walked</div>
     </div>
     <div class="stat-card">
-      <span class="stat-icon">📅</span>
-      <div class="stat-value" id="total-days">0</div>
-      <div class="stat-label">Total Days</div>
+      <span class="stat-icon">🔁</span>
+      <div class="stat-value" id="weeks-in-a-row">0</div>
+      <div class="stat-label">Weeks in a row</div>
     </div>
   </div>
 
@@ -832,8 +832,8 @@
 
     // Streak
     document.getElementById('streak-count').textContent = streak;
-    document.getElementById('best-streak').textContent = best;
-    document.getElementById('total-days').textContent = total;
+    document.getElementById('km-walked').textContent = Math.round(total * 7.5).toLocaleString();
+    document.getElementById('weeks-in-a-row').textContent = Math.floor(streak / 7);
     document.getElementById('total-steps').textContent = (total * 10000).toLocaleString();
 
     // Flame scaling with streak
