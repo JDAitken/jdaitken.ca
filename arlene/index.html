@@ -723,14 +723,14 @@
   <!-- Stats row -->
   <div class="stats-row">
     <div class="stat-card">
-      <span class="stat-icon">🏆</span>
-      <div class="stat-value" id="best-streak">0</div>
-      <div class="stat-label">Best Streak</div>
+      <span class="stat-icon">📆</span>
+      <div class="stat-value" id="week-count">0<span style="font-size:1rem;font-weight:500;color:var(--muted)">/7</span></div>
+      <div class="stat-label">This Week</div>
     </div>
     <div class="stat-card">
-      <span class="stat-icon">📅</span>
-      <div class="stat-value" id="total-days">0</div>
-      <div class="stat-label">Total Days</div>
+      <span class="stat-icon">🗺️</span>
+      <div class="stat-value" id="km-walked">0 <span style="font-size:1rem;font-weight:500;color:var(--muted)">km</span></div>
+      <div class="stat-label">Est. Distance</div>
     </div>
   </div>
 
@@ -832,9 +832,22 @@
 
     // Streak
     document.getElementById('streak-count').textContent = streak;
-    document.getElementById('best-streak').textContent = best;
-    document.getElementById('total-days').textContent = total;
     document.getElementById('total-steps').textContent = (total * 10000).toLocaleString();
+
+    // This week count
+    const now = new Date();
+    const dayOfWeek = now.getDay();
+    let weekDays = 0;
+    for (let i = 0; i <= dayOfWeek; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() - dayOfWeek + i);
+      if (data.log.includes(d.toISOString().slice(0, 10))) weekDays++;
+    }
+    document.getElementById('week-count').innerHTML = `${weekDays}<span style="font-size:1rem;font-weight:500;color:var(--muted)">/${dayOfWeek + 1}</span>`;
+
+    // Est. km (10,000 steps ≈ 7.5 km)
+    const km = Math.round(total * 7.5);
+    document.getElementById('km-walked').innerHTML = `${km.toLocaleString()} <span style="font-size:1rem;font-weight:500;color:var(--muted)">km</span>`;
 
     // Flame scaling with streak
     const flame = document.getElementById('flame');
