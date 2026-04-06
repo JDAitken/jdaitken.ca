@@ -296,6 +296,79 @@
     transition: opacity 0.2s;
   }
   .past-log-btn:hover { opacity: 0.85; }
+  .past-log-btn.remove-mode {
+    background: rgba(220, 38, 38, 0.12);
+    color: #b91c1c;
+  }
+  .past-log-btn.remove-mode:hover { opacity: 0.8; }
+
+  .picker-status {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 6px;
+    min-height: 1rem;
+    padding-left: 2px;
+    transition: color 0.2s;
+  }
+  .picker-status.logged { color: var(--green); }
+  .picker-status.not-logged { color: var(--muted); }
+
+  /* History card */
+  .history-card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 22px 20px;
+    border: 1.5px solid var(--border);
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .history-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .history-empty {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 8px 0;
+  }
+  .history-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+  .history-row:last-child { border-bottom: none; }
+  .history-row-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .history-check { color: var(--orange); font-weight: 700; }
+  .history-remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .history-remove-btn:hover {
+    background: rgba(220,38,38,0.08);
+    color: #b91c1c;
+  }
 
   /* Total steps banner */
   .total-steps-card {
@@ -422,7 +495,8 @@
   }
 
   .day-circle.missed {
-    background: #F5F0EB;
+    background: rgba(220, 38, 38, 0.07);
+    border: 1.5px dashed rgba(220, 38, 38, 0.3);
   }
 
   .day-circle.future {
@@ -658,9 +732,16 @@
     <div class="week-days" id="week-days"></div>
     <div class="past-logger">
       <span class="past-logger-label">Past day</span>
-      <input type="date" class="past-date-input" id="past-date-input">
-      <button class="past-log-btn" onclick="logPastDay()">Log it</button>
+      <input type="date" class="past-date-input" id="past-date-input" oninput="updatePickerStatus()">
+      <button class="past-log-btn" id="past-log-btn" onclick="logPastDay()">Log it</button>
     </div>
+    <div class="picker-status" id="picker-status"></div>
+  </div>
+
+  <!-- History -->
+  <div class="history-card">
+    <div class="history-title">History</div>
+    <div id="history-list"><div class="history-empty">No history yet</div></div>
   </div>
 
   <!-- Milestones -->
@@ -800,7 +881,8 @@
 
       let circleClass = 'day-circle';
       let icon = '';
-      const isPast = !isToday && !isFuture;
+      let iconColor = '#ccc';
+      let titleAttr = '';
       if (isFuture) {
         circleClass += ' future';
         icon = '';
@@ -808,21 +890,52 @@
         circleClass += ' completed';
         if (isToday) circleClass += ' today';
         icon = '✓';
+        iconColor = 'white';
+        titleAttr = 'Tap to remove';
       } else if (isToday) {
         circleClass += ' today';
         icon = '·';
+        titleAttr = 'Tap to mark done';
       } else {
         circleClass += ' missed';
-        icon = '·';
+        icon = '✕';
+        iconColor = 'rgba(220,38,38,0.5)';
+        titleAttr = 'Tap to mark done';
       }
       if (!isFuture) circleClass += ' past-toggle';
 
       weekEl.innerHTML += `
         <div class="day-dot">
           <span class="day-label">${days[i]}</span>
-          <div class="${circleClass}" style="color:${isDone ? 'white' : '#ccc'}" onclick="toggleDay('${ds}')">${icon}</div>
+          <div class="${circleClass}" style="color:${iconColor}" title="${titleAttr}" onclick="toggleDay('${ds}')">${icon}</div>
         </div>`;
     }
+
+    // History list — all logged dates outside the current week, newest first
+    const historyEl = document.getElementById('history-list');
+    const now2 = new Date();
+    const weekStart = new Date(now2);
+    weekStart.setDate(now2.getDate() - now2.getDay()); // Sunday
+    weekStart.setHours(0,0,0,0);
+    const weekStartStr = weekStart.toISOString().slice(0, 10);
+    const pastWeekDates = data.log
+      .filter(d => d < weekStartStr)
+      .sort()
+      .reverse();
+    if (pastWeekDates.length === 0) {
+      historyEl.innerHTML = '<div class="history-empty">No history yet</div>';
+    } else {
+      historyEl.innerHTML = pastWeekDates.map(d => {
+        const label = new Date(d + 'T12:00:00').toLocaleDateString('en-CA', { weekday: 'long', month: 'long', day: 'numeric' });
+        return `<div class="history-row">
+          <div class="history-row-left"><span class="history-check">✓</span> ${label}</div>
+          <button class="history-remove-btn" onclick="toggleDay('${d}')" title="Remove">×</button>
+        </div>`;
+      }).join('');
+    }
+
+    // Sync picker status
+    updatePickerStatus();
 
     // Milestones
     const milestoneEl = document.getElementById('milestones');
@@ -927,6 +1040,34 @@
     render();
   }
 
+  function updatePickerStatus() {
+    const input = document.getElementById('past-date-input');
+    const statusEl = document.getElementById('picker-status');
+    const btn = document.getElementById('past-log-btn');
+    if (!input || !statusEl || !btn) return;
+    const dateStr = input.value;
+    if (!dateStr) {
+      statusEl.textContent = '';
+      statusEl.className = 'picker-status';
+      btn.textContent = 'Log it';
+      btn.className = 'past-log-btn';
+      return;
+    }
+    const data = loadData();
+    const isLogged = data.log.includes(dateStr);
+    if (isLogged) {
+      statusEl.textContent = '✓ Already logged for this day';
+      statusEl.className = 'picker-status logged';
+      btn.textContent = 'Remove';
+      btn.className = 'past-log-btn remove-mode';
+    } else {
+      statusEl.textContent = 'Not logged yet — hit Log it to add';
+      statusEl.className = 'picker-status not-logged';
+      btn.textContent = 'Log it';
+      btn.className = 'past-log-btn';
+    }
+  }
+
   function logPastDay() {
     const input = document.getElementById('past-date-input');
     const dateStr = input.value;
@@ -934,7 +1075,10 @@
     const today = getTodayStr();
     if (dateStr > today) return;
     const data = loadData();
-    if (!data.log.includes(dateStr)) {
+    if (data.log.includes(dateStr)) {
+      data.log = data.log.filter(d => d !== dateStr);
+      saveData(data);
+    } else {
       data.log.push(dateStr);
       const streak = getStreak(data.log);
       if (streak > (data.best || 0)) data.best = streak;
