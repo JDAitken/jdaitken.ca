@@ -243,6 +243,78 @@
     to { transform: scale(4); opacity: 0; }
   }
 
+  .day-circle.past-toggle {
+    cursor: pointer;
+  }
+  .day-circle.past-toggle:hover {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+
+  /* Past date logger */
+  .past-logger {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1.5px solid var(--border);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .past-logger-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .past-date-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+  }
+  .past-date-input:focus {
+    border-color: var(--orange);
+  }
+  .past-log-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    background: var(--orange);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .past-log-btn:hover { opacity: 0.85; }
+
+  /* Total steps banner */
+  .total-steps-card {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 179, 71, 0.08) 100%);
+    border-color: rgba(255, 107, 53, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .total-steps-card .stat-icon {
+    margin-bottom: 0;
+    font-size: 1.8rem;
+  }
+  .total-steps-card .stat-value {
+    font-size: 2rem;
+    color: var(--orange);
+  }
+
   /* Stats row */
   .stats-row {
     display: grid;
@@ -557,6 +629,15 @@
     </div>
   </button>
 
+  <!-- Total steps -->
+  <div class="stat-card total-steps-card">
+    <span class="stat-icon">👣</span>
+    <div>
+      <div class="stat-value" id="total-steps">0</div>
+      <div class="stat-label">Total steps logged</div>
+    </div>
+  </div>
+
   <!-- Stats row -->
   <div class="stats-row">
     <div class="stat-card">
@@ -575,6 +656,11 @@
   <div class="week-card">
     <div class="week-title">This Week</div>
     <div class="week-days" id="week-days"></div>
+    <div class="past-logger">
+      <span class="past-logger-label">Past day</span>
+      <input type="date" class="past-date-input" id="past-date-input">
+      <button class="past-log-btn" onclick="logPastDay()">Log it</button>
+    </div>
   </div>
 
   <!-- Milestones -->
@@ -654,10 +740,15 @@
     // Header date
     document.getElementById('date-display').textContent = formatDate(new Date());
 
+    // Set max date on past logger input
+    const pastInput = document.getElementById('past-date-input');
+    if (pastInput) pastInput.max = today;
+
     // Streak
     document.getElementById('streak-count').textContent = streak;
     document.getElementById('best-streak').textContent = best;
     document.getElementById('total-days').textContent = total;
+    document.getElementById('total-steps').textContent = (total * 10000).toLocaleString();
 
     // Flame scaling with streak
     const flame = document.getElementById('flame');
@@ -709,6 +800,7 @@
 
       let circleClass = 'day-circle';
       let icon = '';
+      const isPast = !isToday && !isFuture;
       if (isFuture) {
         circleClass += ' future';
         icon = '';
@@ -723,11 +815,12 @@
         circleClass += ' missed';
         icon = '·';
       }
+      if (!isFuture) circleClass += ' past-toggle';
 
       weekEl.innerHTML += `
         <div class="day-dot">
           <span class="day-label">${days[i]}</span>
-          <div class="${circleClass}" style="color:${isDone ? 'white' : '#ccc'}">${icon}</div>
+          <div class="${circleClass}" style="color:${isDone ? 'white' : '#ccc'}" onclick="toggleDay('${ds}')">${icon}</div>
         </div>`;
     }
 
@@ -817,6 +910,40 @@
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 3000);
     }
+  }
+
+  function toggleDay(dateStr) {
+    const today = getTodayStr();
+    if (dateStr > today) return; // no future dates
+    const data = loadData();
+    if (data.log.includes(dateStr)) {
+      data.log = data.log.filter(d => d !== dateStr);
+    } else {
+      data.log.push(dateStr);
+      const streak = getStreak(data.log);
+      if (streak > (data.best || 0)) data.best = streak;
+    }
+    saveData(data);
+    render();
+  }
+
+  function logPastDay() {
+    const input = document.getElementById('past-date-input');
+    const dateStr = input.value;
+    if (!dateStr) return;
+    const today = getTodayStr();
+    if (dateStr > today) return;
+    const data = loadData();
+    if (!data.log.includes(dateStr)) {
+      data.log.push(dateStr);
+      const streak = getStreak(data.log);
+      if (streak > (data.best || 0)) data.best = streak;
+      saveData(data);
+      celebrate('Logged! 🔥');
+      confetti();
+    }
+    input.value = '';
+    render();
   }
 
   function confirmReset() {
