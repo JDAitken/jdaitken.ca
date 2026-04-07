@@ -317,21 +317,23 @@
 
     .hero-actions {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
       margin-bottom: var(--space-lg);
     }
 
-    .hero-work-link {
-      font-size: 13px;
-      color: #888;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .btn-hero-outline {
+      background: transparent;
+      border: 1.5px solid var(--color-text);
+      color: var(--color-text);
     }
 
-    .hero-work-link:hover {
-      color: var(--color-text-secondary);
+    .btn-hero-outline:hover {
+      background: var(--color-text);
+      color: var(--color-surface);
     }
 
     .hero-trust {
@@ -760,8 +762,8 @@
         <h1>Websites that get you <span class="text-accent">more calls.</span></h1>
         <p class="hero-subtitle">Built for HVAC, plumbing, and home service businesses in Ottawa.</p>
         <div class="hero-actions">
-          <a href="/contact.html" class="btn btn-primary">Get my free website audit →</a>
-          <a href="#work" class="hero-work-link">or see examples of our work ↓</a>
+          <a href="/contact.html" class="btn btn-primary">Get my free website audit</a>
+          <a href="#work" class="btn btn-hero-outline">See Work</a>
         </div>
       </div>
     </div>
