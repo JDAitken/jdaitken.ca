@@ -274,7 +274,6 @@
     /* Hero */
     .hero {
       padding: var(--space-4xl) 0 var(--space-3xl);
-      background: #171717;
     }
 
     @media (min-width: 768px) {
@@ -294,7 +293,6 @@
       line-height: 1.08;
       letter-spacing: -0.02em;
       margin-bottom: var(--space-lg);
-      color: #FFFFFF;
     }
 
     .text-accent {
@@ -303,7 +301,7 @@
 
     .hero-subtitle {
       font-size: var(--text-base);
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--color-text-muted);
       line-height: var(--leading-snug);
       margin-bottom: var(--space-2xl);
       max-width: 560px;
@@ -327,30 +325,17 @@
       margin-bottom: var(--space-lg);
     }
 
-    /* Button overrides for dark hero */
-    .hero .btn-primary {
-      background: #FFFFFF;
-      color: #171717;
-      border-color: #FFFFFF;
-    }
-
-    .hero .btn-primary:hover {
-      background: #F0F0F0;
-      border-color: #F0F0F0;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-    }
-
     .btn-hero-outline {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      color: #FFFFFF;
+      border: 1.5px solid var(--color-text);
+      color: var(--color-text);
     }
 
     .btn-hero-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.6);
-      color: #FFFFFF;
+      background: var(--color-text);
+      color: var(--color-surface);
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(27, 58, 95, 0.2);
     }
 
     .hero-trust {
@@ -361,7 +346,7 @@
 
     .hero-social-proof {
       font-size: var(--text-sm);
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--color-text-muted);
       font-weight: var(--font-medium);
       text-align: center;
       margin-top: 0;
