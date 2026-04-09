@@ -319,44 +319,83 @@
       }
     }
 
-    .hero-actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-lg);
+    /* Audit form */
+    .audit-form {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
     }
 
-    .btn-hero-outline {
-      background: transparent;
-      border: 1.5px solid var(--color-text);
+    .audit-fields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .audit-input {
+      width: 100%;
+      padding: var(--btn-padding-y) var(--btn-padding-x);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--btn-radius);
+      font-family: var(--font-ui);
+      font-size: var(--btn-font-size);
+      color: var(--color-text);
+      background: var(--color-surface);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      min-height: 48px;
+      box-sizing: border-box;
+    }
+
+    .audit-input:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.12);
+    }
+
+    .audit-input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .audit-submit {
+      width: 100%;
+    }
+
+    .audit-note {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .audit-error {
+      font-size: var(--text-sm);
+      color: var(--color-accent-dark);
+      text-align: center;
+      margin-top: var(--space-xs);
+      margin-bottom: 0;
+    }
+
+    .audit-see-work {
+      display: block;
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      margin-top: var(--space-lg);
+      transition: color 0.15s ease;
+    }
+
+    .audit-see-work:hover {
       color: var(--color-text);
     }
 
-    .btn-hero-outline:hover {
-      background: var(--color-text);
-      color: var(--color-surface);
-      box-shadow: 0 4px 16px rgba(27, 58, 95, 0.2);
-    }
-
-    .hero-trust {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      font-weight: var(--font-medium);
-    }
-
-    .hero-social-proof {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      font-weight: var(--font-medium);
+    .audit-success-msg {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
       text-align: center;
-      margin-top: 0;
-    }
-
-    .hero-stars {
-      color: #F5A623;
+      padding: var(--space-xl) 0;
     }
 
     /* Problem Section */
@@ -788,11 +827,17 @@
       <div class="hero-content">
         <h1>Websites that get you <span class="text-accent">more calls.</span></h1>
         <p class="hero-subtitle">Most contractor websites lose jobs before the phone ever rings. We fix that — for one flat monthly rate.</p>
-        <div class="hero-actions">
-          <a href="https://calendly.com/jd-jdaitken/discovery-call" class="btn btn-primary">Show me what I'm missing</a>
-          <a href="#work" class="btn btn-hero-outline">See Work</a>
-        </div>
-        <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 5x more Google calls in 30 days</p>
+        <form class="audit-form" id="auditForm" novalidate>
+          <input type="hidden" name="_gotcha" tabindex="-1" autocomplete="off" value="">
+          <div class="audit-fields">
+            <input type="url" name="website_url" class="audit-input" placeholder="yourwebsite.com" autocomplete="url" required>
+            <input type="email" name="email" class="audit-input" placeholder="Your email" autocomplete="email" required>
+            <button type="submit" class="btn btn-primary audit-submit">Show me what I'm missing</button>
+          </div>
+          <p class="audit-note">I'll record a 3-minute video breakdown and send it within 24 hours. No pitch.</p>
+          <p class="audit-error" id="auditError" hidden></p>
+        </form>
+        <a href="#work" class="audit-see-work">See our work ↓</a>
       </div>
     </div>
   </section>
@@ -978,9 +1023,9 @@
   <!-- 6. Final CTA -->
   <section class="final-cta">
     <div class="container text-center">
-      <h2>See what's holding your website back</h2>
-      <p>Get a personalized review of your current site with actionable recommendations.</p>
-      <a href="/contact.html" class="btn btn-primary">Get My Free Website Audit</a>
+      <h2>Ready to talk? Book a free 15-minute call.</h2>
+      <p>No commitment. We'll look at your site together and figure out if we're a fit.</p>
+      <a href="https://calendly.com/jd-jdaitken/discovery-call" class="btn btn-primary">Book a Call</a>
       <p class="pricing-note">Plans from $175/mo · No setup fees · Cancel after 12 months</p>
     </div>
   </section>
@@ -1023,5 +1068,43 @@
 </footer>
 
 <script src="/js/main.js" defer></script>
+<script>
+(function () {
+  var form = document.getElementById('auditForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn    = form.querySelector('.audit-submit');
+    var errEl  = document.getElementById('auditError');
+    var origTxt = btn.textContent;
+
+    btn.disabled    = true;
+    btn.textContent = 'Sending\u2026';
+    errEl.hidden    = true;
+
+    try {
+      var res  = await fetch('/api/audit.php', { method: 'POST', body: new FormData(form) });
+      var data = await res.json();
+
+      if (data.success) {
+        form.outerHTML = '<p class="audit-success-msg">Got it \u2014 I\u2019ll send your video review within 24 hours.</p>';
+        var seeWork = document.querySelector('.audit-see-work');
+        if (seeWork) seeWork.remove();
+      } else {
+        errEl.textContent = data.error || 'Something went wrong.';
+        errEl.hidden      = false;
+        btn.disabled      = false;
+        btn.textContent   = origTxt;
+      }
+    } catch (_) {
+      errEl.textContent = 'Something went wrong. Email jd@jdaitken.ca directly.';
+      errEl.hidden      = false;
+      btn.disabled      = false;
+      btn.textContent   = origTxt;
+    }
+  });
+})();
+</script>
 </body>
 </html>
