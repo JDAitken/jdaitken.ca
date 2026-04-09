@@ -532,37 +532,6 @@
       }
     }
 
-    /* Problem Section */
-    .problem-section {
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .problem-card {
-      text-align: center;
-    }
-
-    .problem-card svg {
-      display: block;
-      margin: 0 auto var(--space-sm);
-    }
-
-    .problem-card h3 {
-      margin-bottom: 0;
-      font-size: var(--text-lg);
-    }
-
-    /* Solution Section */
-    .solution-card svg {
-      display: block;
-      margin-bottom: var(--space-sm);
-    }
-
-    .solution-card h3 {
-      margin-bottom: var(--space-sm);
-      font-size: var(--text-lg);
-    }
-
     /* Case Study Section */
     .case-study {
       background: var(--color-surface);
@@ -627,71 +596,6 @@
       color: var(--color-text-muted);
       text-transform: uppercase;
       letter-spacing: var(--tracking-wide);
-    }
-
-    /* Portfolio Preview */
-    .portfolio-preview {
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      gap: var(--space-lg);
-    }
-
-    @media (min-width: 768px) {
-      .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .portfolio-item {
-      display: block;
-      text-decoration: none;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      transition: box-shadow var(--transition-base);
-    }
-
-    .portfolio-item:hover {
-      box-shadow: var(--shadow-md);
-    }
-
-    .portfolio-thumb {
-      aspect-ratio: 16 / 9;
-      background: var(--color-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-      text-align: center;
-      padding: var(--space-md);
-    }
-
-    .portfolio-caption {
-      padding: var(--space-md);
-      font-size: var(--text-sm);
-      color: var(--color-text-secondary);
-      font-weight: var(--font-medium);
-    }
-
-    .portfolio-more {
-      margin-top: var(--space-xl);
-      text-align: center;
-    }
-
-    .portfolio-more a {
-      font-weight: var(--font-semibold);
-      font-size: var(--text-base);
-      color: var(--color-accent);
-    }
-
-    .portfolio-more a:hover {
-      color: var(--color-accent-hover);
     }
 
     /* Final CTA */
@@ -960,7 +864,7 @@
     <div class="container">
       <div class="hero-content">
         <h1>Websites that get you <span class="text-accent">more calls.</span></h1>
-        <p class="hero-subtitle">Most contractor websites lose jobs before the phone ever rings. We fix that — for one flat monthly rate.</p>
+        <p class="hero-subtitle">Most Ottawa contractor websites lose jobs before the phone ever rings. We fix that — for one flat monthly rate.</p>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary" id="openAuditModal">Show me what I'm missing</button>
           <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 5x more Google calls in 30 days</p>
@@ -969,95 +873,7 @@
     </div>
   </section>
 
-  <!-- 2. Problem Section -->
-  <section class="problem-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Why service businesses lose leads online</h2>
-        <p>Most service business websites have the same three problems.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card problem-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <h3>Slow, outdated sites</h3>
-        </div>
-        <div class="card problem-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="10" x2="15" y2="14"/><line x1="15" y1="10" x2="9" y2="14"/></svg>
-          <h3>Mobile UX issues</h3>
-        </div>
-        <div class="card problem-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <h3>No clear CTA or trust</h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. Solution Section -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <h2>What you get</h2>
-        <p>Everything your business needs to show up and convert online.</p>
-      </div>
-      <div class="grid-4">
-        <div class="card solution-card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-          <h3>Every page built to book appointments</h3>
-          <p>Structured so visitors take action, not just browse.</p>
-        </div>
-        <div class="card solution-card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <h3>Loads fast on every phone</h3>
-          <p>Under 2 seconds with tap-to-call on every page.</p>
-        </div>
-        <div class="card solution-card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <h3>Show up when locals search</h3>
-          <p>On-page SEO tuned for Ottawa and surrounding areas.</p>
-        </div>
-        <div class="card solution-card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <h3>Turn visitors into phone calls</h3>
-          <p>CTAs, forms, and trust signals that drive conversions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3b. Portfolio Preview -->
-  <section class="portfolio-preview" id="work">
-    <div class="container">
-      <div class="section-header">
-        <h2>Sites we've built</h2>
-        <p>Recent work for local service businesses in the Ottawa area.</p>
-      </div>
-      <div class="portfolio-grid">
-        <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="portfolio-item">
-          <div class="portfolio-thumb">
-            <picture>
-              <img src="/images/projects/legendary-landscaping-update.png" alt="Legendary Landscaping website" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
-            </picture>
-          </div>
-          <div class="portfolio-caption">Legendary Landscaping — Ottawa</div>
-        </a>
-        <a href="https://capitalcitycards.ca" target="_blank" rel="noopener" class="portfolio-item">
-          <div class="portfolio-thumb">
-            <picture>
-              <source type="image/webp" srcset="/images/projects/capital-city-cards-1200.webp">
-              <img src="/images/projects/capital-city-cards-1200.png" alt="Capital City Cards website" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
-            </picture>
-          </div>
-          <div class="portfolio-caption">Capital City Cards — Ottawa</div>
-        </a>
-      </div>
-      <div class="portfolio-more">
-        <a href="/work.html">See all work &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Case Study Preview -->
+  <!-- Case Study -->
   <section class="case-study">
     <div class="container">
       <div class="section-header">
@@ -1091,12 +907,9 @@
               <div class="metric-value">+35</div>
               <div class="metric-label">Organic sessions / month</div>
             </div>
-            <div class="metric">
-              <div class="metric-value">5</div>
-              <div class="metric-label">GBP calls in March</div>
-            </div>
           </div>
           <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="btn btn-secondary">View Live Site</a>
+          <a href="/work.html" class="btn btn-secondary">See All Work &rarr;</a>
         </div>
       </div>
     </div>
