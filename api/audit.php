@@ -70,18 +70,27 @@ if ($gotcha !== '') {
 }
 
 // Fields
+$name    = trim(strip_tags((string)($_POST['name']        ?? '')));
+$email   = trim((string)($_POST['email']       ?? ''));
+$phone   = trim(strip_tags((string)($_POST['phone']       ?? '')));
 $website = trim(strip_tags((string)($_POST['website_url'] ?? '')));
-$email   = trim((string)($_POST['email'] ?? ''));
-$email   = str_replace(["\r", "\n"], '', $email);
+
+$name    = mb_substr($name,    0, 80);
+$phone   = mb_substr($phone,   0, 40);
 $website = mb_substr($website, 0, 200);
+$email   = str_replace(["\r", "\n"], '', $email);
 
 // Validation
-if (mb_strlen($website) < 3) {
-  json_error(422, 'Please enter your website URL.');
+if (mb_strlen($name) < 2) {
+  json_error(422, 'Please enter your name.');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   json_error(422, 'Please enter a valid email address.');
+}
+
+if (mb_strlen($website) < 3) {
+  json_error(422, 'Please enter your website URL.');
 }
 
 // Email
@@ -91,8 +100,10 @@ $referrer   = $_SERVER['HTTP_REFERER'] ?? 'N/A';
 $body = implode("\n", [
   'New audit request',
   '',
-  "Website: {$website}",
+  "Name:    {$name}",
   "Email:   {$email}",
+  "Phone:   " . ($phone !== '' ? $phone : 'N/A'),
+  "Website: {$website}",
   '',
   "Referrer: {$referrer}",
   "IP:       {$ip}",
