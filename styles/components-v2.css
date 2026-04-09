@@ -46,6 +46,7 @@
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
   box-shadow: 0 4px 16px rgba(255, 107, 107, 0.35);
+  color: #fff;
 }
 
 .btn-secondary {
@@ -57,6 +58,7 @@
 .btn-secondary:hover {
   border-color: var(--color-accent);
   box-shadow: var(--shadow-sm);
+  color: var(--color-accent);
 }
 
 .btn-ghost {
@@ -67,6 +69,7 @@
 
 .btn-ghost:hover {
   background: var(--color-accent-light);
+  color: var(--color-accent);
 }
 
 .btn-full {
