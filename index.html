@@ -393,14 +393,14 @@
     .modal-panel {
       background: var(--color-surface);
       border-radius: var(--radius-xl);
-      padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
+      padding: 3rem 3.5rem 2.5rem;
       width: 100%;
-      max-width: 520px;
+      max-width: 700px;
       position: relative;
       transform: translateY(12px) scale(0.97);
       transition: transform 0.25s ease, opacity 0.25s ease;
       opacity: 0;
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
     }
 
     .modal-overlay.is-open .modal-panel {
@@ -410,15 +410,15 @@
 
     .modal-close {
       position: absolute;
-      top: var(--space-md);
-      right: var(--space-md);
+      top: 1.25rem;
+      right: 1.25rem;
       background: none;
       border: none;
       cursor: pointer;
       color: var(--color-text-muted);
       padding: var(--space-xs);
       line-height: 1;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       transition: color 0.15s ease;
       border-radius: var(--radius-sm);
     }
@@ -428,43 +428,47 @@
     }
 
     .modal-heading {
-      font-size: var(--text-xl);
+      font-size: var(--text-3xl);
       font-weight: var(--font-bold);
       color: var(--color-text);
-      margin-bottom: var(--space-xs);
+      margin-bottom: var(--space-sm);
       line-height: var(--leading-tight);
       letter-spacing: var(--tracking-tight);
+      text-align: center;
     }
 
     .modal-subhead {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-xl);
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2xl);
+      text-align: center;
+      line-height: var(--leading-normal);
     }
 
     .modal-form-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-sm);
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
     }
 
     .modal-input {
       width: 100%;
-      padding: 0.75rem var(--space-md);
-      border: 1.5px solid var(--color-border);
+      padding: 1rem 1.125rem;
+      border: 1.5px solid transparent;
       border-radius: var(--btn-radius);
       font-family: var(--font-ui);
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
       color: var(--color-text);
-      background: var(--color-bg);
+      background: #f0f2f5;
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-      min-height: 46px;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+      min-height: 56px;
       box-sizing: border-box;
     }
 
     .modal-input:focus {
+      background: var(--color-surface);
       border-color: var(--color-accent);
       box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
     }
@@ -473,18 +477,24 @@
       color: var(--color-text-muted);
     }
 
-    .modal-submit {
-      width: 100%;
-      margin-top: var(--space-sm);
+    .modal-form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      margin-top: var(--space-md);
     }
 
     .modal-note {
       font-size: 0.75rem;
       color: var(--color-text-muted);
-      text-align: center;
-      margin-top: var(--space-sm);
-      margin-bottom: 0;
+      margin: 0;
       line-height: 1.5;
+    }
+
+    .modal-submit {
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .modal-error {
@@ -518,9 +528,19 @@
       margin-bottom: 0;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       .modal-panel {
         padding: var(--space-xl) var(--space-lg) var(--space-lg);
+      }
+      .modal-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .modal-submit {
+        width: 100%;
       }
     }
 
@@ -1014,8 +1034,10 @@
           <input type="url"   name="website_url" class="modal-input" placeholder="yoursite.com"  autocomplete="url" required>
         </div>
         <p class="modal-error" id="auditError" hidden></p>
-        <button type="submit" class="btn btn-primary modal-submit">Show me what I'm missing</button>
-        <p class="modal-note">I typically respond within a few hours. Your info stays private.</p>
+        <div class="modal-form-footer">
+          <p class="modal-note">I'll send a short video review within 24 hours. No pitch.</p>
+          <button type="submit" class="btn btn-primary modal-submit">Get my free review</button>
+        </div>
       </form>
     </div>
     <div id="modalSuccess" class="modal-success" hidden>
