@@ -274,6 +274,41 @@
     /* Hero */
     .hero {
       padding: var(--space-4xl) 0 var(--space-3xl);
+      background-color: #f7f6f3;
+      background-image:
+        linear-gradient(rgba(27, 58, 95, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 58, 95, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .hero::before {
+      top: -25%;
+      right: -12%;
+      width: 55vw;
+      height: 55vw;
+      max-width: 700px;
+      max-height: 700px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.08) 0%, transparent 68%);
+    }
+
+    .hero::after {
+      bottom: -30%;
+      left: -10%;
+      width: 48vw;
+      height: 48vw;
+      max-width: 620px;
+      max-height: 620px;
+      background: radial-gradient(circle, rgba(27, 58, 95, 0.06) 0%, transparent 68%);
     }
 
     @media (min-width: 768px) {
