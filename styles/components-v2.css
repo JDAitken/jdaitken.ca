@@ -3,6 +3,25 @@
    Uses tokens-v2.css variables exclusively
    ========================================================================== */
 
+/* ===== Nav Phone ===== */
+
+.nav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color var(--transition-base);
+  white-space: nowrap;
+}
+
+.nav-phone:hover {
+  color: var(--color-accent);
+}
+
 /* ===== Buttons ===== */
 
 .btn {
