@@ -444,13 +444,9 @@
 
     .modal-form-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: var(--space-sm);
       margin-bottom: var(--space-sm);
-    }
-
-    .modal-form-grid .field-full {
-      grid-column: 1 / -1;
     }
 
     .modal-input {
@@ -523,10 +519,6 @@
     }
 
     @media (max-width: 480px) {
-      .modal-form-grid {
-        grid-template-columns: 1fr;
-      }
-
       .modal-panel {
         padding: var(--space-xl) var(--space-lg) var(--space-lg);
       }
@@ -1017,10 +1009,7 @@
       <h2 class="modal-heading" id="modalHeading">Let's see what your site is costing you.</h2>
       <p class="modal-subhead">Fill in your details — I'll send a 3-minute video review within 24 hours. No pitch, no strings.</p>
       <form id="auditForm" novalidate>
-        <input type="hidden" name="_gotcha" tabindex="-1" autocomplete="off" value="">
         <div class="modal-form-grid">
-          <input type="text"  name="name"        class="modal-input" placeholder="Your name"     autocomplete="given-name" required>
-          <input type="tel"   name="phone"       class="modal-input" placeholder="Phone number"  autocomplete="tel">
           <input type="email" name="email"       class="modal-input" placeholder="Email address" autocomplete="email" required>
           <input type="url"   name="website_url" class="modal-input" placeholder="yoursite.com"  autocomplete="url" required>
         </div>
@@ -1079,14 +1068,16 @@
     errEl.hidden    = true;
 
     try {
-      var res  = await fetch('/api/audit.php', { method: 'POST', body: new FormData(form) });
-      var data = await res.json();
-
-      if (data.success) {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
         formWrap.hidden = true;
         success.hidden  = false;
       } else {
-        errEl.textContent = data.error || 'Something went wrong.';
+        errEl.textContent = 'Something went wrong \u2014 email jd@jdaitken.ca directly.';
         errEl.hidden      = false;
         btn.disabled      = false;
         btn.textContent   = origTxt;
