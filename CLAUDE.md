@@ -189,7 +189,12 @@ font-family: 'DM Sans';
 
 **Frontend changes:** Invoke the `frontend-design` skill whenever making changes to HTML, CSS, or visual layout.
 
-**After making changes:** Always commit and push to `main` when edits are complete. GitHub Actions will handle deployment automatically.
+**Deploy after every change:** After completing any change to the site, always commit and push to `main`. Do not wait or batch changes — deploy immediately after each task is done. GitHub Actions will handle deployment automatically.
+
+```bash
+git add <changed-files>
+git push origin main
+```
 
 ---
 
