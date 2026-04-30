@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>JD Media | Websites That Get You More Calls</title>
-  <meta name="description" content="Fast, conversion-first websites for HVAC and local service businesses in Ottawa. Mobile-first design that turns clicks into calls.">
+  <meta name="description" content="Fast websites that get Ottawa contractors more calls from Google. Fully managed, no setup fees. Live and ranking in 30 days — or your first month is free.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/favicon-2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-2.png">
@@ -647,6 +647,73 @@
       margin-bottom: 0;
     }
 
+    /* Problem framing */
+    .problem-section {
+      padding: var(--space-3xl) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .problem-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .problem-inner p {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-md);
+    }
+    .problem-inner p:last-child {
+      margin-bottom: 0;
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+    }
+
+    /* Guarantee band */
+    .guarantee-band {
+      background: var(--color-text);
+      padding: var(--space-2xl) 0;
+    }
+    .guarantee-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .guarantee-inner { align-items: center; }
+    }
+    .guarantee-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      line-height: 1;
+    }
+    .guarantee-text strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      color: var(--color-surface);
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-display);
+    }
+    .guarantee-text p {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.65);
+      margin: 0;
+      line-height: var(--leading-relaxed);
+    }
+
     /* Footer */
     .site-footer {
       border-top: 1px solid var(--color-border);
@@ -706,7 +773,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jdaitken.ca/">
   <meta property="og:title" content="JD Media | Websites That Get You More Calls">
-  <meta property="og:description" content="Fast, conversion-first websites for HVAC and local service businesses in Ottawa. Mobile-first design that turns clicks into calls.">
+  <meta property="og:description" content="Fast websites that get Ottawa contractors more calls from Google. Fully managed, no setup fees. Live and ranking in 30 days — or your first month is free.">
   <meta property="og:image" content="https://jdaitken.ca/images/logos/jd.png">
   <meta property="og:site_name" content="JD Media">
   <meta property="og:locale" content="en_CA">
@@ -732,7 +799,7 @@
         "@id": "https://jdaitken.ca/#business",
         "name": "JD Media",
         "alternateName": "JD Media Ottawa",
-        "description": "Ottawa web design agency building conversion-first, mobile-first websites for local service businesses including HVAC, plumbing, landscaping, and home services companies.",
+        "description": "Ottawa web design agency building fast websites that get local service businesses more calls from Google — including HVAC, plumbing, landscaping, and home services companies.",
         "url": "https://jdaitken.ca/",
         "telephone": "+13435030123",
         "email": "jd@jdaitken.ca",
@@ -752,24 +819,24 @@
           "itemListElement": [
             {
               "@type": "Offer",
-              "name": "Starter Plan",
-              "price": "175",
-              "priceCurrency": "CAD",
-              "description": "Custom 5-page website, mobile-first design, hosting and SSL, basic on-page SEO, 1 content update per month."
-            },
-            {
-              "@type": "Offer",
-              "name": "Growth Plan",
+              "name": "Foundation Plan",
               "price": "275",
               "priceCurrency": "CAD",
-              "description": "Everything in Starter plus conversion-optimized layout, 2 content updates per month, Google Business Profile guidance, and monthly performance reports."
+              "description": "Custom 5-page website, mobile-first design, hosting and SSL, on-page SEO setup, 1 content update per month."
             },
             {
               "@type": "Offer",
-              "name": "Pro Plan",
-              "price": "375",
+              "name": "Managed Plan",
+              "price": "399",
               "priceCurrency": "CAD",
-              "description": "Everything in Growth plus ongoing local SEO, 4 content updates per month, and quarterly strategy call."
+              "description": "Everything in Foundation plus active Google Business Profile management, monthly performance report, up to 2 updates per month, 1 business day response."
+            },
+            {
+              "@type": "Offer",
+              "name": "Done For You Plan",
+              "price": "549",
+              "priceCurrency": "CAD",
+              "description": "Everything in Managed plus monthly SEO content, up to 4 updates per month, quarterly strategy call, same-day response."
             }
           ]
         },
@@ -897,6 +964,16 @@
     </div>
   </section>
 
+  <!-- Problem framing -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <p>Most contractor websites either don&rsquo;t exist, look outdated, or exist but don&rsquo;t generate calls. Customers find them on Google, land on a slow or confusing page, and leave without calling.</p>
+        <p>The contractor never knows it happened.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Case Study -->
   <section class="case-study">
     <div class="container">
@@ -938,6 +1015,19 @@
           </div>
           <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="btn btn-secondary">View Live Site</a>
           <a href="/work.html" class="btn btn-secondary">See All Work &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="guarantee-band">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-icon">✓</div>
+        <div class="guarantee-text">
+          <strong>Live and ranking in 30 days &mdash; or your first month is free.</strong>
+          <p>Every new client gets the same guarantee. If your site isn&rsquo;t live and showing up in Google local search within 30 days of launch, you don&rsquo;t pay for month one. No fine print.</p>
         </div>
       </div>
     </div>
@@ -1019,10 +1109,10 @@
   <!-- 6. Final CTA -->
   <section class="final-cta">
     <div class="container text-center">
-      <h2>Ready to talk? Book a free 10-minute call.</h2>
-      <p>No commitment. We'll look at your site together and figure out if we're a fit.</p>
+      <h2>Ready to get more calls from Google?</h2>
+      <p>Book a free 10-minute call. No pitch &mdash; just an honest look at what&rsquo;s possible for your business.</p>
       <a href="https://calendly.com/jd-jdaitken/discovery-call" class="btn btn-primary">Book a Call</a>
-      <p class="pricing-note">Plans from $275/mo · No setup fees · Cancel after 12 months</p>
+      <p class="pricing-note">Most clients choose the Managed plan at $399/mo &middot; No setup fees &middot; 30-day guarantee</p>
     </div>
   </section>
 

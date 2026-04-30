@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Pricing | JD Media — Simple Monthly Plans for Local Businesses</title>
-  <meta name="description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $175/mo for local service businesses.">
+  <meta name="description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $275/mo for local service businesses.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/favicon-2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-2.png">
@@ -121,6 +121,26 @@
     .faq-item.is-open .faq-answer { max-height: 300px; }
     .faq-answer p { padding-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
 
+    /* Guarantee band */
+    .guarantee-band { background: var(--color-text); padding: var(--space-2xl) 0; }
+    .guarantee-inner { display: flex; align-items: flex-start; gap: var(--space-lg); max-width: 640px; margin: 0 auto; }
+    @media (min-width: 768px) { .guarantee-inner { align-items: center; } }
+    .guarantee-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--color-accent); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: var(--font-bold); color: var(--color-text); line-height: 1; }
+    .guarantee-text strong { display: block; font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-surface); margin-bottom: var(--space-xs); font-family: var(--font-display); }
+    .guarantee-text p { font-size: var(--text-sm); color: rgba(255,255,255,0.65); margin: 0; line-height: var(--leading-relaxed); }
+
+    /* Comparison table */
+    .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    .compare-table th, .compare-table td { padding: var(--space-md) var(--space-lg); text-align: left; border-bottom: 1px solid var(--color-border); }
+    .compare-table thead th { font-weight: var(--font-semibold); color: var(--color-text); background: var(--color-surface); }
+    .compare-table thead th:first-child { color: transparent; }
+    .compare-table thead th:nth-child(2) { color: var(--color-accent); }
+    .compare-table tbody td:first-child { color: var(--color-text-secondary); font-weight: var(--font-medium); }
+    .compare-table tbody td { color: var(--color-text-muted); }
+    .compare-table .compare-yes { color: var(--color-text); font-weight: var(--font-semibold); }
+    .compare-table tbody tr:hover { background: var(--color-bg); }
+
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
     .final-cta p { color: var(--color-text-muted); font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
@@ -143,13 +163,13 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jdaitken.ca/pricing.html">
   <meta property="og:title" content="Pricing | JD Media — Simple Monthly Plans for Local Businesses">
-  <meta property="og:description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $175/mo for local service businesses in Ottawa.">
+  <meta property="og:description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $275/mo for local service businesses in Ottawa.">
   <meta property="og:image" content="https://jdaitken.ca/images/logos/jd.png">
   <meta property="og:site_name" content="JD Media">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pricing | JD Media Ottawa Web Design">
-  <meta name="twitter:description" content="Flat monthly plans starting at $175/mo. Custom website, hosting, and ongoing support included.">
+  <meta name="twitter:description" content="Flat monthly plans starting at $275/mo. Custom website, hosting, and ongoing support included.">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -190,7 +210,7 @@
             "item": {
               "@type": "Service",
               "name": "Managed Plan",
-              "description": "Everything in Foundation plus conversion-optimized layout, Google Business Profile managed monthly, simple monthly performance report, up to 2 updates per month, response within 1 business day.",
+              "description": "Everything in Foundation plus a layout built to turn visitors into callers, Google Business Profile managed monthly, simple monthly performance report, up to 2 updates per month, response within 1 business day.",
               "provider": { "@id": "https://jdaitken.ca/#business" },
               "offers": {
                 "@type": "Offer",
@@ -327,6 +347,19 @@
     </div>
   </section>
 
+  <!-- Guarantee -->
+  <section class="guarantee-band">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-icon">✓</div>
+        <div class="guarantee-text">
+          <strong>Live and ranking in 30 days &mdash; or your first month is free.</strong>
+          <p>Every new client gets the same guarantee. If your site isn&rsquo;t live and showing up in Google local search within 30 days of launch, you don&rsquo;t pay for month one. No fine print.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing Cards -->
   <section>
     <div class="container">
@@ -403,6 +436,66 @@
           <h3>Simple monthly fee</h3>
           <p>You pay a flat monthly fee — no surprise invoices, no hidden costs.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>How we compare</h2>
+        <p>JD Media vs. DIY platforms vs. big agencies.</p>
+      </div>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>JD Media</th>
+              <th>DIY (Wix / Squarespace)</th>
+              <th>Big Agency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Setup cost</td>
+              <td class="compare-yes">$0</td>
+              <td>$0&ndash;200</td>
+              <td>$2,000&ndash;5,000</td>
+            </tr>
+            <tr>
+              <td>Monthly cost</td>
+              <td class="compare-yes">$275&ndash;549</td>
+              <td>$20&ndash;50</td>
+              <td>$500&ndash;2,000+</td>
+            </tr>
+            <tr>
+              <td>Shows up on Google</td>
+              <td class="compare-yes">&#10003;</td>
+              <td>Rarely</td>
+              <td>Sometimes</td>
+            </tr>
+            <tr>
+              <td>Someone managing it monthly</td>
+              <td class="compare-yes">&#10003;</td>
+              <td>&#10007;</td>
+              <td>&#10003;</td>
+            </tr>
+            <tr>
+              <td>Local person you can call</td>
+              <td class="compare-yes">&#10003;</td>
+              <td>&#10007;</td>
+              <td>&#10007;</td>
+            </tr>
+            <tr>
+              <td>30-day guarantee</td>
+              <td class="compare-yes">&#10003;</td>
+              <td>&#10007;</td>
+              <td>&#10007;</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
