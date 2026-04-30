@@ -451,6 +451,7 @@
       gap: var(--space-md);
       margin-bottom: var(--space-md);
     }
+    .modal-input-full { grid-column: 1 / -1; }
 
     .modal-input {
       width: 100%;
@@ -958,7 +959,7 @@
         <h1>More booked jobs from Google.<span class="text-accent">Guaranteed.</span></h1>
         <p class="hero-subtitle">I build fast, conversion-first websites for Ottawa contractors — fully managed, updated monthly, no setup fees. If you're not live and ranking in local search within 30 days, your first month is free.</p>
         <div class="hero-actions">
-          <button type="button" class="btn btn-primary" id="openAuditModal">Show me what I'm missing</button>
+          <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Show me what I'm missing</button>
           <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 13 new quote requests in April — up 333%</p>
         </div>
       </div>
@@ -1111,8 +1112,8 @@
   <section class="final-cta">
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
-      <p>Book a free 15-minute call. No pitch &mdash; just an honest look at what&rsquo;s possible for your business.</p>
-      <a href="https://calendly.com/jd-jdaitken/discovery-call" class="btn btn-primary">Book a Call</a>
+      <p>Drop your details and I&rsquo;ll reply within 1 business day &mdash; free audit included.</p>
+      <button type="button" class="btn btn-primary open-audit-modal">Get in Touch</button>
       <p class="pricing-note">Most clients choose the Managed plan at $399/mo &middot; No setup fees &middot; 30-day guarantee</p>
     </div>
   </section>
@@ -1162,23 +1163,24 @@
     <button class="modal-close" id="closeAuditModal" aria-label="Close">&times;</button>
     <div id="modalFormWrap">
       <h2 class="modal-heading" id="modalHeading">Let's see what your site is costing you.</h2>
-      <p class="modal-subhead">Drop your details — I'll send a free 3-minute video review of your site within 48 hours. Not ranking in 30 days? First month free.</p>
+      <p class="modal-subhead">Drop your details and I'll reply within 1 business day. No pitch — just an honest look at what's possible.</p>
       <form id="auditForm" novalidate>
         <div class="modal-form-grid">
-          <input type="email" name="email"       class="modal-input" placeholder="Email address" autocomplete="email" required>
-          <input type="url"   name="website_url" class="modal-input" placeholder="yoursite.com"  autocomplete="url" required>
+          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     autocomplete="name"  required>
+          <input type="email" name="email" class="modal-input" placeholder="Email address" autocomplete="email" required>
+          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" autocomplete="tel" required>
         </div>
         <p class="modal-error" id="auditError" hidden></p>
         <div class="modal-form-footer">
-          <p class="modal-note">I'll send a short video review within 48 hours. No pitch.</p>
-          <button type="submit" class="btn btn-primary modal-submit">Get my free review</button>
+          <p class="modal-note">Replies within 1 business day &middot; No obligation.</p>
+          <button type="submit" class="btn btn-primary modal-submit">Get in Touch</button>
         </div>
       </form>
     </div>
     <div id="modalSuccess" class="modal-success" hidden>
       <div class="modal-success-icon">✓</div>
       <h3 class="modal-success-heading">Got it — I'll be in touch soon.</h3>
-      <p class="modal-success-sub">Check your inbox within 48 hours for your video review.</p>
+      <p class="modal-success-sub">I'll reply within 1 business day.</p>
     </div>
   </div>
 </div>
@@ -1186,7 +1188,6 @@
 <script>
 (function () {
   var overlay  = document.getElementById('auditModal');
-  var openBtn  = document.getElementById('openAuditModal');
   var closeBtn = document.getElementById('closeAuditModal');
   var form     = document.getElementById('auditForm');
   var errEl    = document.getElementById('auditError');
@@ -1204,7 +1205,9 @@
     document.body.style.overflow = '';
   }
 
-  if (openBtn)  openBtn.addEventListener('click', openModal);
+  document.querySelectorAll('.open-audit-modal').forEach(function(btn) {
+    btn.addEventListener('click', openModal);
+  });
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
   overlay.addEventListener('click', function (e) {
