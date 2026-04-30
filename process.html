@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Process | JD Media — How We Work Together</title>
-  <meta name="description" content="A transparent, collaborative process from discovery to launch. Most projects go live in 4-6 weeks.">
+  <meta name="description" content="A transparent, collaborative process from discovery to launch. Most standard sites are live within 1–2 weeks.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/favicon-2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-2.png">
@@ -103,10 +103,14 @@
     .timeline-section { text-align: center; }
     .timeline-cards { display: grid; gap: var(--space-lg); }
     @media (min-width: 768px) { .timeline-cards { grid-template-columns: repeat(3, 1fr); } }
-    .timeline-card { padding: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+    .timeline-card { padding: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-align: left; position: relative; overflow: hidden; }
+    .timeline-card.featured { border-color: var(--color-accent); border-width: 2px; }
+    .timeline-card-tag { display: inline-block; font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-muted); margin-bottom: var(--space-md); }
+    .timeline-card.featured .timeline-card-tag { color: var(--color-accent); }
     .timeline-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-xs); }
-    .timeline-card .timeline-duration { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: var(--font-bold); color: var(--color-accent); margin-bottom: var(--space-sm); }
-    .timeline-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
+    .timeline-card .timeline-duration { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: var(--font-bold); color: var(--color-text); line-height: 1; margin-bottom: var(--space-md); }
+    .timeline-card.featured .timeline-duration { color: var(--color-accent); }
+    .timeline-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; line-height: var(--leading-relaxed); }
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
@@ -153,8 +157,8 @@
       {
         "@type": "HowTo",
         "name": "How JD Media Builds a Website for Your Local Service Business",
-        "description": "A transparent, collaborative web design process from discovery to launch to ongoing support. Typical timeline is 4–5 weeks.",
-        "totalTime": "P5W",
+        "description": "A transparent, collaborative web design process from discovery to launch to ongoing support. Most standard sites are live within 1–2 weeks.",
+        "totalTime": "P2W",
         "supply": [
           { "@type": "HowToSupply", "name": "Brand assets (logo, colors, fonts)" },
           { "@type": "HowToSupply", "name": "Content (service descriptions, about text, photos)" },
@@ -279,7 +283,7 @@
         <div class="process-step">
           <div>
             <div class="step-number">01</div>
-            <div class="step-timeline">Week 1</div>
+            <div class="step-timeline">Day 1</div>
           </div>
           <div class="step-content">
             <h2>Discovery</h2>
@@ -298,7 +302,7 @@
         <div class="process-step">
           <div>
             <div class="step-number">02</div>
-            <div class="step-timeline">Week 2</div>
+            <div class="step-timeline">Days 1–3</div>
           </div>
           <div class="step-content">
             <h2>Design</h2>
@@ -317,7 +321,7 @@
         <div class="process-step">
           <div>
             <div class="step-number">03</div>
-            <div class="step-timeline">Weeks 3–4</div>
+            <div class="step-timeline">Days 3–7</div>
           </div>
           <div class="step-content">
             <h2>Development</h2>
@@ -336,7 +340,7 @@
         <div class="process-step">
           <div>
             <div class="step-number">04</div>
-            <div class="step-timeline">Week 5</div>
+            <div class="step-timeline">Days 7–10</div>
           </div>
           <div class="step-content">
             <h2>Launch</h2>
@@ -414,20 +418,23 @@
         <h2>Timeline expectations</h2>
       </div>
       <div class="timeline-cards">
-        <div class="timeline-card">
-          <h3>Typical project</h3>
-          <div class="timeline-duration">4–6 weeks</div>
-          <p>From kickoff to launch for a standard 5-page website.</p>
+        <div class="timeline-card featured">
+          <span class="timeline-card-tag">Most builds</span>
+          <h3>Standard build</h3>
+          <div class="timeline-duration">~1 week</div>
+          <p>From kickoff call to live site — typical for a standard 5-page local service site.</p>
         </div>
         <div class="timeline-card">
-          <h3>Rush project</h3>
-          <div class="timeline-duration">2–3 weeks</div>
-          <p>Expedited timeline available for an additional fee.</p>
+          <span class="timeline-card-tag">Need it faster?</span>
+          <h3>Rush build</h3>
+          <div class="timeline-duration">3–5 days</div>
+          <p>Available for an additional fee when the timeline is tight.</p>
         </div>
         <div class="timeline-card">
+          <span class="timeline-card-tag">Larger scope</span>
           <h3>Complex project</h3>
-          <div class="timeline-duration">8–12 weeks</div>
-          <p>E-commerce, custom integrations, or large-scale sites.</p>
+          <div class="timeline-duration">2–4 weeks</div>
+          <p>E-commerce, custom integrations, or multi-location sites.</p>
         </div>
       </div>
     </div>
@@ -437,7 +444,7 @@
     <div class="container text-center">
       <h2>Ready to get started?</h2>
       <p>Let's talk about your project and find the right approach for your business.</p>
-      <a href="/contact.html" class="btn btn-primary">Start Your Project</a>
+      <a href="https://calendly.com/jd-jdaitken/discovery-call" class="btn btn-primary">Book a Free Call</a>
     </div>
   </section>
 
