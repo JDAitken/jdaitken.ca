@@ -33,6 +33,4 @@ jobs:
             ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       - name: Print deployed commit
-        run: |
-          echo "✅ Deployed commit: ${{ github.sha }}"
-          echo "📝 Commit message: ${{ github.event.head_commit.message }}"
+        run: echo "✅ Deployed commit ${{ github.sha }}"
