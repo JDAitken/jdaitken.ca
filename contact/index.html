@@ -117,7 +117,14 @@
 
     .form-card {
       background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); padding: var(--space-xl);
+      border-radius: var(--radius-lg); padding: var(--space-2xl);
+    }
+    .form-card h2 {
+      font-size: var(--text-xl); font-weight: var(--font-bold);
+      color: var(--color-text); margin-bottom: var(--space-xl);
+    }
+    .form-card form {
+      display: flex; flex-direction: column; gap: var(--space-lg);
     }
 
     .contact-sidebar { display: flex; flex-direction: column; gap: var(--space-xl); }
@@ -301,6 +308,7 @@
       <div class="contact-grid">
 
         <div class="form-card">
+          <h2>Request a free audit</h2>
           <form action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form>
             <div class="honeypot" aria-hidden="true">
               <label for="contact-gotcha">Leave this field empty</label>
