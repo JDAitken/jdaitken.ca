@@ -14,7 +14,7 @@ function redirect_to(string $path): void {
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
@@ -25,7 +25,7 @@ if (!is_dir(RATE_LIMIT_DIR)) {
 }
 
 if (!is_dir(RATE_LIMIT_DIR) || !is_writable(RATE_LIMIT_DIR)) {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 $ipKey = preg_replace('/[^a-zA-Z0-9_\-\.]/', '_', $ip);
@@ -47,7 +47,7 @@ $entries = array_values(array_filter($entries, static function ($entry) use ($ti
 }));
 
 if (count($entries) >= RATE_LIMIT_MAX) {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 $entries[] = $timestamp;
@@ -55,7 +55,7 @@ file_put_contents($rateFile, json_encode($entries), LOCK_EX);
 
 $gotcha = trim((string)($_POST['_gotcha'] ?? ''));
 if ($gotcha !== '') {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 $name = trim(strip_tags((string)($_POST['name'] ?? '')));
@@ -69,15 +69,15 @@ $message = mb_substr($message, 0, 2000);
 $email = str_replace(["\r", "\n"], '', $email);
 
 if (mb_strlen($name) < 2) {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 if (mb_strlen($message) < 10) {
-  redirect_to('/contact.html?error=1');
+  redirect_to('/contact?error=1');
 }
 
 $referrer = $_SERVER['HTTP_REFERER'] ?? '';
@@ -107,7 +107,7 @@ $headers = [
 $mailSent = @mail(RECIPIENT_EMAIL, SUBJECT, $body, implode("\r\n", $headers));
 
 if ($mailSent) {
-  redirect_to('/thanks.html');
+  redirect_to('/thanks/');
 }
 
-redirect_to('/contact.html?error=1');
+redirect_to('/contact?error=1');

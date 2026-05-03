@@ -60,8 +60,8 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 ## Pages
 
 - [Home](https://jdaitken.ca/): Overview of JD Media's services, featured portfolio, and case study
-- [Work](https://jdaitken.ca/work.html): Portfolio and detailed case studies
-- [Pricing](https://jdaitken.ca/pricing.html): Monthly plans, how it works, and FAQ
-- [Process](https://jdaitken.ca/process.html): 5-step process from discovery to launch
-- [About](https://jdaitken.ca/about.html): About JD Aitken and the Digital Caretaker philosophy
-- [Contact](https://jdaitken.ca/contact.html): Free website audit request form
+- [Work](https://jdaitken.ca/work): Portfolio and detailed case studies
+- [Pricing](https://jdaitken.ca/pricing): Monthly plans, how it works, and FAQ
+- [Process](https://jdaitken.ca/process): 5-step process from discovery to launch
+- [About](https://jdaitken.ca/about): About JD Aitken and the Digital Caretaker philosophy
+- [Contact](https://jdaitken.ca/contact): Free website audit request form
