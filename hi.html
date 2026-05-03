@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JD Media | Ottawa Web Design</title>
+  <meta name="description" content="Websites for Ottawa service businesses — built and managed for a flat monthly fee. No big upfront costs.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/favicon-2.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-2.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      border-top: 4px solid var(--color-accent);
+      background: var(--color-bg);
+      min-height: 100vh;
+    }
+
+    .hi-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* Logo block */
+    .hi-logo {
+      padding-top: var(--space-3xl);
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    .hi-logo img {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin: 0 auto var(--space-md);
+    }
+    .hi-descriptor {
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* Hero */
+    .hi-hero {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+    .hi-hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-sm);
+    }
+    @media (min-width: 480px) {
+      .hi-hero h1 { font-size: var(--text-4xl); }
+    }
+    .hi-hero p {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+      margin: 0;
+    }
+
+    /* Divider */
+    .hi-rule {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: var(--space-xl) 0;
+    }
+
+    /* Value bullets */
+    .hi-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .hi-bullets li {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      padding-left: var(--space-xl);
+      position: relative;
+      line-height: var(--leading-relaxed);
+    }
+    .hi-bullets li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-weight: var(--font-bold);
+    }
+
+    /* Rating */
+    .hi-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+    .hi-stars {
+      color: var(--color-accent);
+      font-size: var(--text-base);
+      letter-spacing: 1px;
+    }
+    .hi-rating-label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .hi-rating-label strong {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-semibold);
+    }
+
+    /* Form section */
+    .hi-form-header {
+      margin-bottom: var(--space-lg);
+    }
+    .hi-form-header h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+    .hi-form-header p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .hi-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .hi-form-error {
+      font-size: var(--text-sm);
+      color: var(--color-accent-dark);
+      margin: 0;
+      display: none;
+    }
+    .hi-form-error.is-visible { display: block; }
+
+    /* Success state */
+    .hi-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-2xl) 0 var(--space-lg);
+    }
+    .hi-success.is-visible { display: block; }
+    .hi-success-icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-sm);
+      color: var(--color-success);
+    }
+    .hi-success h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+    .hi-success p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    /* Or divider */
+    .hi-or {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    .hi-or::before,
+    .hi-or::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+    .hi-or span {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      white-space: nowrap;
+    }
+
+    /* Tap to call */
+    .hi-call {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    .hi-call a {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+    .hi-call a:hover { color: var(--color-accent); }
+
+    /* Footer */
+    .hi-footer {
+      text-align: center;
+      padding: var(--space-xl) 0 var(--space-3xl);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+    .hi-footer a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+    .hi-footer a:hover { color: var(--color-text-secondary); }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9Q56QL24ES');
+  </script>
+</head>
+
+<body>
+
+<div class="hi-wrap">
+
+  <!-- Logo -->
+  <div class="hi-logo">
+    <img src="/images/logos/jd-media-logo.svg" alt="JD Media">
+    <p class="hi-descriptor">Ottawa Web Design</p>
+  </div>
+
+  <!-- Hero -->
+  <div class="hi-hero">
+    <h1>Let's talk about your website.</h1>
+    <p>Flat monthly plans. Custom-built in 2&nbsp;weeks. No big upfront costs.</p>
+  </div>
+
+  <hr class="hi-rule">
+
+  <!-- Value bullets -->
+  <ul class="hi-bullets">
+    <li>Custom 5-page website built for your business — not a template</li>
+    <li>Hosting, SSL, and updates managed for you every month</li>
+    <li>Set up so Google can find you — we handle the technical side</li>
+  </ul>
+
+  <!-- Rating -->
+  <div class="hi-rating">
+    <span class="hi-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span class="hi-rating-label"><strong>5.0</strong> &middot; 4 Google Reviews</span>
+  </div>
+
+  <hr class="hi-rule">
+
+  <!-- Form -->
+  <div class="hi-form-header">
+    <h2>Get in touch</h2>
+    <p>I&rsquo;ll reply within 1 business day.</p>
+  </div>
+
+  <div id="hiFormWrap">
+    <form id="hiForm" class="hi-form" novalidate>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <label class="form-label" for="hi-name">Your name</label>
+        <input id="hi-name" class="input" type="text" name="name" placeholder="Jane Smith" autocomplete="name" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="hi-phone">Phone number</label>
+        <input id="hi-phone" class="input" type="tel" name="phone" placeholder="613-555-0100" autocomplete="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="hi-message">What are you looking for? <span style="font-weight:var(--font-normal);color:var(--color-text-muted)">(optional)</span></label>
+        <textarea id="hi-message" class="textarea" name="message" rows="3" placeholder="Tell me about your business and what you need."></textarea>
+      </div>
+
+      <p class="hi-form-error" id="hiError"></p>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-xs)">Send Message</button>
+    </form>
+  </div>
+
+  <div class="hi-success" id="hiSuccess">
+    <div class="hi-success-icon">&#10003;</div>
+    <h3>Got it &mdash; I&rsquo;ll be in touch soon.</h3>
+    <p>I&rsquo;ll reply within 1 business day.</p>
+  </div>
+
+  <!-- Or / call -->
+  <div class="hi-or"><span>or</span></div>
+
+  <div class="hi-call">
+    <a href="tel:3435030123">343-503-0123</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="hi-footer">
+    &copy; 2026 JD Media &middot; <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var form    = document.getElementById('hiForm');
+  var formWrap = document.getElementById('hiFormWrap');
+  var success = document.getElementById('hiSuccess');
+  var errEl   = document.getElementById('hiError');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    errEl.classList.remove('is-visible');
+
+    var btn = form.querySelector('button[type="submit"]');
+    var orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        formWrap.hidden = true;
+        success.classList.add('is-visible');
+      } else {
+        throw new Error();
+      }
+    } catch (_) {
+      errEl.textContent = 'Something went wrong — email jd@jdaitken.ca directly.';
+      errEl.classList.add('is-visible');
+      btn.disabled = false;
+      btn.textContent = orig;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
