@@ -867,14 +867,17 @@
 <script>
   // ── Helpers ──────────────────────────────────────────────────────────────
 
-  // Use LOCAL date to avoid UTC timezone-flip bugs (e.g. after 8pm Eastern
-  // toISOString() returns tomorrow's date which causes false "already done" state)
-  function getTodayStr() {
-    const d = new Date();
+  // Use LOCAL date components — never toISOString() which returns UTC and shifts
+  // the date backward in Eastern time (e.g. 9pm EDT = 1am UTC next day)
+  function dateToStr(d) {
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, '0');
     const day = String(d.getDate()).padStart(2, '0');
     return `${y}-${m}-${day}`;
+  }
+
+  function getTodayStr() {
+    return dateToStr(new Date());
   }
 
   const MILESTONES = [
@@ -1023,7 +1026,7 @@
     for (let i = 0; i < 7; i++) {
       const d = new Date(now);
       d.setDate(now.getDate() - dayOfWeek + i);
-      const ds = d.toISOString().slice(0, 10);
+      const ds = dateToStr(d);
       const isToday = ds === today;
       const isFuture = ds > today;
       const isDone = data.log.includes(ds);
