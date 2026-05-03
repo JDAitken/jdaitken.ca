@@ -578,6 +578,81 @@
     opacity: 1;
   }
 
+  /* Step updater */
+  .step-updater {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .step-updater-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .step-current {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .step-current-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .step-updater-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .step-input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,107,53,0.25);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+    -moz-appearance: textfield;
+  }
+  .step-input::-webkit-outer-spin-button,
+  .step-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .step-input:focus { border-color: var(--orange); }
+  .step-lock-btn {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+  }
+  .step-lock-btn:hover { opacity: 0.88; }
+  .step-bonus {
+    font-size: 0.78rem;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 8px;
+    min-height: 1rem;
+  }
+
   /* Reset button */
   .reset-btn {
     background: none;
@@ -701,6 +776,18 @@
     </div>
   </button>
 
+  <!-- Today's step count updater (shown when today is done) -->
+  <div class="step-updater" id="step-updater" style="display:none">
+    <div class="step-updater-heading">Today's steps</div>
+    <div class="step-current" id="step-current-val">10,000</div>
+    <div class="step-current-label">steps logged today</div>
+    <div class="step-updater-row">
+      <input type="number" class="step-input" id="step-input" min="10000" step="100" placeholder="Enter actual count">
+      <button class="step-lock-btn" onclick="updateTodaySteps()">Lock In</button>
+    </div>
+    <div class="step-bonus" id="step-bonus"></div>
+  </div>
+
   <!-- Streak backfill -->
   <div class="backfill-card">
     <div class="backfill-title">Already on a streak? Get credit for it. 🔥</div>
@@ -762,6 +849,18 @@
 </div>
 
 <script>
+  // ── Helpers ──────────────────────────────────────────────────────────────
+
+  // Use LOCAL date to avoid UTC timezone-flip bugs (e.g. after 8pm Eastern
+  // toISOString() returns tomorrow's date which causes false "already done" state)
+  function getTodayStr() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
   const MILESTONES = [
     { days: 1,   emoji: '👟', name: 'First Step',          desc: 'Every legend starts somewhere.' },
     { days: 3,   emoji: '🌱', name: 'Seedling',            desc: 'Three days in — the habit is sprouting!' },
@@ -786,8 +885,10 @@
     if (!log || log.length === 0) return 0;
     const sorted = [...log].sort().reverse();
     const today = getTodayStr();
+    // If today isn't logged yet, start counting from yesterday so the
+    // streak doesn't drop to 0 while the day is still in progress
+    let checkDate = log.includes(today) ? today : prevDay(today);
     let streak = 0;
-    let checkDate = today;
     for (let i = 0; i < sorted.length; i++) {
       if (sorted[i] === checkDate) {
         streak++;
@@ -799,10 +900,6 @@
     return streak;
   }
 
-  function getTodayStr() {
-    return new Date().toISOString().slice(0, 10);
-  }
-
   function prevDay(dateStr) {
     const d = new Date(dateStr + 'T12:00:00');
     d.setDate(d.getDate() - 1);
@@ -811,8 +908,14 @@
 
   function loadData() {
     try {
-      return JSON.parse(localStorage.getItem('arlene_steps') || '{"log":[]}');
-    } catch { return { log: [] }; }
+      const data = JSON.parse(localStorage.getItem('arlene_steps') || '{"log":[]}');
+      // Migrate old data: add steps object if missing, seed each logged day at 10,000
+      if (!data.steps) {
+        data.steps = {};
+        (data.log || []).forEach(d => { data.steps[d] = 10000; });
+      }
+      return data;
+    } catch { return { log: [], steps: {} }; }
   }
 
   function saveData(data) {
@@ -841,10 +944,13 @@
     if (backfillInput) backfillInput.max = today;
 
     // Streak
+    // Total steps: sum actual steps per day (not just count × 10K)
+    const totalSteps = data.log.reduce((sum, d) => sum + (data.steps[d] || 10000), 0);
+
     document.getElementById('streak-count').textContent = streak;
-    document.getElementById('km-walked').textContent = Math.round(total * 7.5).toLocaleString();
+    document.getElementById('km-walked').textContent = Math.round(totalSteps / 1000 * 0.75).toLocaleString();
     document.getElementById('weeks-in-a-row').textContent = Math.floor(streak / 7);
-    document.getElementById('total-steps').textContent = (total * 10000).toLocaleString();
+    document.getElementById('total-steps').textContent = totalSteps.toLocaleString();
 
     // Flame scaling with streak
     const flame = document.getElementById('flame');
@@ -861,16 +967,27 @@
     else if (streak < 30) msg.textContent = `${streak} days! Absolute machine 💪🔥`;
     else msg.textContent = `${streak} days! You are UNSTOPPABLE 👑`;
 
-    // Today status + button
+    // Today status + button + step updater
     const btn = document.getElementById('checkin-btn');
     const statusEl = document.getElementById('today-status');
+    const stepUpdater = document.getElementById('step-updater');
     if (todayDone) {
+      const todaySteps = data.steps[today] || 10000;
       btn.className = 'checkin-btn completed';
       btn.onclick = null;
       document.getElementById('btn-icon').textContent = '✅';
       document.getElementById('btn-text').textContent = 'Done for today! See you tomorrow 🌅';
       statusEl.className = 'today-status done';
-      document.getElementById('status-text').textContent = 'Today\'s steps: ✓ Done!';
+      document.getElementById('status-text').textContent = `Today: ${todaySteps.toLocaleString()} steps ✓`;
+      // Show step updater
+      stepUpdater.style.display = 'block';
+      document.getElementById('step-current-val').textContent = todaySteps.toLocaleString();
+      document.getElementById('step-input').value = '';
+      document.getElementById('step-input').placeholder = todaySteps.toLocaleString();
+      const bonus = todaySteps - 10000;
+      document.getElementById('step-bonus').textContent = bonus > 0
+        ? `+${bonus.toLocaleString()} bonus steps above goal 🌟`
+        : '';
     } else {
       btn.className = 'checkin-btn active';
       btn.onclick = (e) => checkIn(e);
@@ -878,6 +995,7 @@
       document.getElementById('btn-text').textContent = 'I hit 10K steps today!';
       statusEl.className = 'today-status pending';
       document.getElementById('status-text').textContent = 'Still going today?';
+      stepUpdater.style.display = 'none';
     }
 
     // Week view
@@ -966,6 +1084,7 @@
     }
 
     data.log.push(today);
+    if (!data.steps[today]) data.steps[today] = 10000;
     const streak = getStreak(data.log);
     if (streak > (data.best || 0)) data.best = streak;
     saveData(data);
@@ -987,6 +1106,25 @@
     const msg = celebrateMessages[Math.floor(Math.random() * celebrateMessages.length)];
     celebrate(msg);
     confetti();
+    render();
+  }
+
+  function updateTodaySteps() {
+    const input = document.getElementById('step-input');
+    const val = parseInt(input.value, 10);
+    if (!val || val < 10000) {
+      input.style.borderColor = 'rgba(220,38,38,0.5)';
+      setTimeout(() => { input.style.borderColor = ''; }, 1200);
+      return;
+    }
+    const data = loadData();
+    const today = getTodayStr();
+    if (!data.log.includes(today)) return;
+    data.steps[today] = val;
+    saveData(data);
+    input.value = '';
+    const bonus = val - 10000;
+    if (bonus > 0) celebrate(`+${bonus.toLocaleString()} bonus steps! 🌟`);
     render();
   }
 
@@ -1023,8 +1161,10 @@
     const data = loadData();
     if (data.log.includes(dateStr)) {
       data.log = data.log.filter(d => d !== dateStr);
+      delete data.steps[dateStr];
     } else {
       data.log.push(dateStr);
+      if (!data.steps[dateStr]) data.steps[dateStr] = 10000;
       const streak = getStreak(data.log);
       if (streak > (data.best || 0)) data.best = streak;
     }
@@ -1053,7 +1193,10 @@
     if (!confirm(`Fill all ${dates.length} days from ${startLabel} to today?`)) return;
 
     const data = loadData();
-    dates.forEach(d => { if (!data.log.includes(d)) data.log.push(d); });
+    dates.forEach(d => {
+      if (!data.log.includes(d)) data.log.push(d);
+      if (!data.steps[d]) data.steps[d] = 10000;
+    });
     const streak = getStreak(data.log);
     if (streak > (data.best || 0)) data.best = streak;
     saveData(data);
@@ -1101,9 +1244,11 @@
     const data = loadData();
     if (data.log.includes(dateStr)) {
       data.log = data.log.filter(d => d !== dateStr);
+      delete data.steps[dateStr];
       saveData(data);
     } else {
       data.log.push(dateStr);
+      if (!data.steps[dateStr]) data.steps[dateStr] = 10000;
       const streak = getStreak(data.log);
       if (streak > (data.best || 0)) data.best = streak;
       saveData(data);
