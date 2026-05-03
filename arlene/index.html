@@ -348,11 +348,21 @@
     transition: opacity 0.2s;
   }
   .past-log-btn:hover { opacity: 0.85; }
-  .past-log-btn.remove-mode {
-    background: rgba(220, 38, 38, 0.12);
-    color: #b91c1c;
+  .past-steps-row {
+    margin-top: 8px;
   }
-  .past-log-btn.remove-mode:hover { opacity: 0.8; }
+  .past-remove-link {
+    background: none;
+    border: none;
+    font-size: 0.72rem;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 2px;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  .past-remove-link:hover { color: rgba(220,38,38,0.8); }
 
   .picker-status {
     font-size: 0.75rem;
@@ -830,7 +840,13 @@
       <input type="date" class="past-date-input" id="past-date-input" oninput="updatePickerStatus()">
       <button class="past-log-btn" id="past-log-btn" onclick="logPastDay()">Log it</button>
     </div>
+    <div class="past-steps-row" id="past-steps-row" style="display:none">
+      <input type="number" class="backfill-input" id="past-steps-input" min="1" step="100" placeholder="Steps walked (default 10,000)">
+    </div>
     <div class="picker-status" id="picker-status"></div>
+    <div id="past-remove-wrap" style="display:none">
+      <button class="past-remove-link" onclick="removePastDay()">Remove this day</button>
+    </div>
   </div>
 
 
@@ -1211,6 +1227,9 @@
     const input = document.getElementById('past-date-input');
     const statusEl = document.getElementById('picker-status');
     const btn = document.getElementById('past-log-btn');
+    const stepsRow = document.getElementById('past-steps-row');
+    const stepsInput = document.getElementById('past-steps-input');
+    const removeWrap = document.getElementById('past-remove-wrap');
     if (!input || !statusEl || !btn) return;
     const dateStr = input.value;
     if (!dateStr) {
@@ -1218,44 +1237,71 @@
       statusEl.className = 'picker-status';
       btn.textContent = 'Log it';
       btn.className = 'past-log-btn';
+      stepsRow.style.display = 'none';
+      removeWrap.style.display = 'none';
       return;
     }
     const data = loadData();
     const isLogged = data.log.includes(dateStr);
+    stepsRow.style.display = 'block';
     if (isLogged) {
-      statusEl.textContent = '✓ Already logged for this day';
+      const current = data.steps[dateStr] || 10000;
+      stepsInput.value = current;
+      statusEl.textContent = `✓ Logged — ${current.toLocaleString()} steps`;
       statusEl.className = 'picker-status logged';
-      btn.textContent = 'Remove';
-      btn.className = 'past-log-btn remove-mode';
+      btn.textContent = 'Update Steps';
+      btn.className = 'past-log-btn';
+      removeWrap.style.display = 'block';
     } else {
-      statusEl.textContent = 'Not logged yet — hit Log it to add';
+      stepsInput.value = '';
+      statusEl.textContent = 'Not logged yet — enter steps and hit Log it';
       statusEl.className = 'picker-status not-logged';
       btn.textContent = 'Log it';
       btn.className = 'past-log-btn';
+      removeWrap.style.display = 'none';
     }
   }
 
   function logPastDay() {
-    const input = document.getElementById('past-date-input');
-    const dateStr = input.value;
+    const dateInput = document.getElementById('past-date-input');
+    const stepsInput = document.getElementById('past-steps-input');
+    const dateStr = dateInput.value;
     if (!dateStr) return;
     const today = getTodayStr();
     if (dateStr > today) return;
+    const steps = parseInt(stepsInput.value, 10) || 10000;
     const data = loadData();
     if (data.log.includes(dateStr)) {
-      data.log = data.log.filter(d => d !== dateStr);
-      delete data.steps[dateStr];
+      // Update step count for existing logged day
+      data.steps[dateStr] = steps;
       saveData(data);
+      const bonus = steps - 10000;
+      celebrate(bonus > 0 ? `+${bonus.toLocaleString()} bonus steps! 🌟` : 'Steps updated! ✅');
     } else {
+      // Log the day fresh
       data.log.push(dateStr);
-      if (!data.steps[dateStr]) data.steps[dateStr] = 10000;
+      data.steps[dateStr] = steps;
       const streak = getStreak(data.log);
       if (streak > (data.best || 0)) data.best = streak;
       saveData(data);
       celebrate('Logged! 🔥');
       confetti();
     }
-    input.value = '';
+    dateInput.value = '';
+    stepsInput.value = '';
+    render();
+  }
+
+  function removePastDay() {
+    const dateInput = document.getElementById('past-date-input');
+    const dateStr = dateInput.value;
+    if (!dateStr) return;
+    const data = loadData();
+    data.log = data.log.filter(d => d !== dateStr);
+    delete data.steps[dateStr];
+    saveData(data);
+    dateInput.value = '';
+    document.getElementById('past-steps-input').value = '';
     render();
   }
 
