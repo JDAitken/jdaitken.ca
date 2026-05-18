@@ -644,9 +644,16 @@
     .pricing-note {
       margin-top: var(--space-md);
       font-size: var(--text-sm);
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.7);
       margin-bottom: 0;
     }
+
+    /* Stats strip */
+    .stats-strip { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--color-border); }
+    .stats-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); text-align: center; }
+    @media (min-width: 640px) { .stats-inner { grid-template-columns: repeat(4, 1fr); } }
+    .stat-value { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-accent); font-family: var(--font-display); line-height: 1; }
+    .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
 
     /* Problem framing */
     .problem-section {
@@ -670,6 +677,16 @@
       font-weight: var(--font-semibold);
       color: var(--color-text);
     }
+
+    /* How it works */
+    .how-it-works { padding: var(--space-3xl) 0; background: var(--color-bg); }
+    .case-studies-list { display: flex; flex-direction: column; gap: var(--space-2xl); }
+    .steps-grid { display: grid; gap: var(--space-xl); margin-top: var(--space-2xl); }
+    @media (min-width: 640px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
+    .step { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .step-num { width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--color-accent-light); color: var(--color-accent-dark); font-weight: var(--font-bold); font-size: var(--text-sm); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); }
+    .step h3 { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); }
+    .step p { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
 
     /* Guarantee band */
     .guarantee-band {
@@ -964,8 +981,32 @@
         <h1>Websites that get you more calls.<span class="text-accent">Guaranteed.</span></h1>
         <p class="hero-subtitle">I build fast, conversion-first websites for Ottawa contractors — fully managed, updated monthly, no setup fees. If you're not live and ranking in local search within 30 days, your first month is free.</p>
         <div class="hero-actions">
-          <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Show me what I'm missing</button>
-          <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 13 new quote requests in April — up 333%</p>
+          <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Get My Free Site Audit</button>
+          <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 13 quote requests in month two &mdash; ~$10,000 in new pipeline</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-value">5.0 ★</div>
+          <div class="stat-label">Google rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">90+</div>
+          <div class="stat-label">PageSpeed on every site</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">16.1%</div>
+          <div class="stat-label">Click-through rate (vs. 2–3% avg)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Top 3</div>
+          <div class="stat-label">Local rankings in 30 days</div>
         </div>
       </div>
     </div>
@@ -985,9 +1026,10 @@
   <section class="case-study">
     <div class="container">
       <div class="section-header">
-        <h2>See the results</h2>
-        <p>Real projects with measurable outcomes for local businesses.</p>
+        <h2>Real results for real businesses</h2>
+        <p>Case studies from Ottawa contractors we&rsquo;ve helped grow.</p>
       </div>
+      <div class="case-studies-list">
       <div class="case-study-card">
         <div class="case-study-image">
           <picture>
@@ -1001,7 +1043,7 @@
         <div class="case-study-content">
           <span class="badge badge-accent">Featured Project</span>
           <h3>Legendary Landscaping</h3>
-          <p>Month 1 we built the foundation — fast site, local SEO, Google Business Profile optimization. Month 2: 13 quote requests, one new lead roughly every two days. Now ranking in the top 3 for local softscape searches and outpacing every Ottawa competitor on PageSpeed.</p>
+          <p>13 quote requests in a single month &mdash; one new lead roughly every two days. We rebuilt the site for speed and local search, optimized the Google Business Profile, and launched in 30 days. Now ranking top 3 for local softscape searches in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">13</div>
@@ -1023,6 +1065,80 @@
           <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="btn btn-secondary">View Live Site</a>
           <a href="/work" class="btn btn-secondary">See All Work &rarr;</a>
         </div>
+      </div>
+
+      <!-- Capital City Cards -->
+      <div class="case-study-card">
+        <div class="case-study-image">
+          <picture>
+            <source type="image/webp"
+              srcset="/images/projects/capital-city-cards-1200.webp 1200w, /images/projects/capital-city-cards-1900.webp 1900w"
+              sizes="(max-width: 768px) 92vw, 520px">
+            <img
+              src="/images/projects/capital-city-cards-1200.png"
+              srcset="/images/projects/capital-city-cards-1200.png 1200w, /images/projects/capital-city-cards-1900.png 1900w"
+              sizes="(max-width: 768px) 92vw, 520px"
+              alt="Capital City Cards website showing product catalog and mobile design"
+              loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="case-study-content">
+          <span class="badge badge-accent">E-Commerce</span>
+          <h3>Capital City Cards</h3>
+          <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. We built a full e-commerce site with Stripe payments in one week, got it ranking on Google, and hit a 16.1% click-through rate in month one &mdash; 8&times; the industry average of 2&ndash;3%.</p>
+          <div class="case-study-metrics">
+            <div class="metric">
+              <div class="metric-value">16.1%</div>
+              <div class="metric-label">Click-through rate</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">#2.6</div>
+              <div class="metric-label">Avg. position — top keyword</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">88</div>
+              <div class="metric-label">PageSpeed score (mobile)</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">1 wk</div>
+              <div class="metric-label">From brief to live</div>
+            </div>
+          </div>
+          <a href="https://capitalcitycards.ca" target="_blank" rel="noopener" class="btn btn-secondary">View Live Site</a>
+          <a href="/work" class="btn btn-secondary">See All Work &rarr;</a>
+        </div>
+      </div>
+
+      </div><!-- /.case-studies-list -->
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>What happens next</h2>
+        <p>Three steps from first message to ranked and generating leads.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Free audit</h3>
+          <p>I look at what your current site is costing you and what it could be doing. No pitch &mdash; just an honest breakdown.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Build &amp; launch</h3>
+          <p>Custom site live in 30 days, built to rank in local search and make visitors call you. Not a template &mdash; built for your business.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Monthly management</h3>
+          <p>GBP optimization, site updates, and a monthly report. You answer the phone &mdash; I handle everything online.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: var(--space-xl);">
+        <a href="/process" class="btn btn-secondary">See the full process &rarr;</a>
       </div>
     </div>
   </section>
@@ -1056,20 +1172,6 @@
         <div class="review-card">
           <div class="review-card-header">
             <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">P</div>
-              <div>
-                <div class="review-author-name">Patrick Damiani</div>
-                <div class="review-author-location">Ottawa, ON</div>
-              </div>
-            </div>
-            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          </div>
-          <p class="review-text">&ldquo;JD Media is the kind of web partner you want in your corner. JD handled the technical stuff end-to-end and explained things in plain English, so I could stay focused on running my business. Fast, reliable, and the site looks great. I highly recommend JD Media!&rdquo;</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-card-identity">
               <div class="review-avatar" aria-hidden="true">L</div>
               <div>
                 <div class="review-author-name">Legendary Landscaping</div>
@@ -1084,15 +1186,15 @@
         <div class="review-card">
           <div class="review-card-header">
             <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">R</div>
+              <div class="review-avatar" aria-hidden="true">P</div>
               <div>
-                <div class="review-author-name">Renee G</div>
+                <div class="review-author-name">Patrick Damiani</div>
                 <div class="review-author-location">Ottawa, ON</div>
               </div>
             </div>
             <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
-          <p class="review-text">&ldquo;JD built our family member&rsquo;s website and has been incredibly dedicated to growing his business. He&rsquo;s professional, hardworking, and genuinely cares about getting results for his clients. Highly recommend!&rdquo;</p>
+          <p class="review-text">&ldquo;JD Media is the kind of web partner you want in your corner. JD handled the technical stuff end-to-end and explained things in plain English, so I could stay focused on running my business. Fast, reliable, and the site looks great. I highly recommend JD Media!&rdquo;</p>
         </div>
 
         <div class="review-card">
@@ -1109,6 +1211,20 @@
           <p class="review-text">&ldquo;JD media was super helpful with my website launch! They were very attentive to what I wanted and delivered faster than expected. Modifications I asked for were completed the next day and the whole process was smooth, fast and easy. Highly recommend!&rdquo;</p>
         </div>
 
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-card-identity">
+              <div class="review-avatar" aria-hidden="true">R</div>
+              <div>
+                <div class="review-author-name">Renee G</div>
+                <div class="review-author-location">Ottawa, ON</div>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-text">&ldquo;JD built our family member&rsquo;s website and has been incredibly dedicated to growing his business. He&rsquo;s professional, hardworking, and genuinely cares about getting results for his clients. Highly recommend!&rdquo;</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1118,7 +1234,7 @@
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
       <p>Drop your details and I&rsquo;ll reply within 1 business day &mdash; free audit included.</p>
-      <button type="button" class="btn btn-primary open-audit-modal">Get in Touch</button>
+      <button type="button" class="btn btn-primary open-audit-modal">Get My Free Audit</button>
       <p class="pricing-note">Most clients choose the Growth plan at $375/mo &middot; No setup fees &middot; 30-day guarantee</p>
     </div>
   </section>
