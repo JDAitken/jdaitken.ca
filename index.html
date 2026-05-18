@@ -649,11 +649,18 @@
     }
 
     /* Stats strip */
-    .stats-strip { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--color-border); }
-    .stats-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); text-align: center; }
+    .stats-strip { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .stats-inner { display: grid; grid-template-columns: repeat(2, 1fr); }
     @media (min-width: 640px) { .stats-inner { grid-template-columns: repeat(4, 1fr); } }
-    .stat-value { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-accent); font-family: var(--font-display); line-height: 1; }
-    .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+    .stat-item { padding: var(--space-xl) var(--space-lg); text-align: center; border-right: 1px solid var(--color-border); }
+    .stat-item:nth-child(2) { border-right: none; }
+    @media (min-width: 640px) { .stat-item:nth-child(2) { border-right: 1px solid var(--color-border); } }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:nth-child(odd) { border-bottom: 1px solid var(--color-border); }
+    @media (min-width: 640px) { .stat-item:nth-child(odd) { border-bottom: none; } }
+    .stat-value { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-accent); font-family: var(--font-display); line-height: 1; letter-spacing: -0.02em; }
+    .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-sm); text-transform: uppercase; letter-spacing: var(--tracking-wide); line-height: var(--leading-snug); }
+    .stat-source { font-size: 10px; color: var(--color-text-muted); opacity: 0.6; margin-top: 2px; font-style: italic; }
 
     /* Problem framing */
     .problem-section {
@@ -995,18 +1002,22 @@
         <div class="stat-item">
           <div class="stat-value">5.0 ★</div>
           <div class="stat-label">Google rating</div>
+          <div class="stat-source">Verified reviews</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">15.8%</div>
+          <div class="stat-label">Avg. click-through rate</div>
+          <div class="stat-source">Industry avg: 2–3%</div>
         </div>
         <div class="stat-item">
           <div class="stat-value">90+</div>
-          <div class="stat-label">PageSpeed on every site</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">16.1%</div>
-          <div class="stat-label">Click-through rate (vs. 2–3% avg)</div>
+          <div class="stat-label">PageSpeed on every build</div>
+          <div class="stat-source">Google Lighthouse</div>
         </div>
         <div class="stat-item">
           <div class="stat-value">Top 3</div>
-          <div class="stat-label">Local rankings in 30 days</div>
+          <div class="stat-label">Local search ranking</div>
+          <div class="stat-source">Within 30 days of launch</div>
         </div>
       </div>
     </div>
