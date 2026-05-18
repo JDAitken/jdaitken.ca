@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# Node
+node_modules/
+package-lock.json
+
+# Local only
+.env
