@@ -649,20 +649,6 @@
       margin-bottom: 0;
     }
 
-    /* Stats strip */
-    .stats-strip { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 0; }
-    .stats-inner { display: grid; grid-template-columns: repeat(2, 1fr); }
-    @media (min-width: 640px) { .stats-inner { grid-template-columns: repeat(4, 1fr); } }
-    .stat-item { padding: var(--space-sm) var(--space-lg); text-align: center; border-right: 1px solid var(--color-border); }
-    .stat-item:nth-child(2) { border-right: none; }
-    @media (min-width: 640px) { .stat-item:nth-child(2) { border-right: 1px solid var(--color-border); } }
-    .stat-item:last-child { border-right: none; }
-    .stat-item:nth-child(odd) { border-bottom: 1px solid var(--color-border); }
-    @media (min-width: 640px) { .stat-item:nth-child(odd) { border-bottom: none; } }
-    .stat-value { font-size: var(--text-2xl); font-weight: var(--font-bold); color: var(--color-accent); font-family: var(--font-display); line-height: 1; letter-spacing: -0.02em; }
-    .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: var(--tracking-wide); line-height: var(--leading-snug); }
-    .stat-source { font-size: 10px; color: var(--color-text-muted); opacity: 0.6; margin-top: 1px; font-style: italic; }
-
     /* Problem framing */
     .problem-section {
       padding: var(--space-3xl) 0;
@@ -996,33 +982,6 @@
     </div>
   </section>
 
-  <!-- Stats strip -->
-  <section class="stats-strip">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item">
-          <div class="stat-value">40+</div>
-          <div class="stat-label">Leads generated for clients</div>
-          <div class="stat-source">Across active clients</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">$50k+</div>
-          <div class="stat-label">In client pipeline</div>
-          <div class="stat-source">From inbound leads</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">30 days</div>
-          <div class="stat-label">To first leads</div>
-          <div class="stat-source">Guaranteed or first month free</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">#1</div>
-          <div class="stat-label">Google ranking</div>
-          <div class="stat-source">For target keywords</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Problem framing -->
   <section class="problem-section">

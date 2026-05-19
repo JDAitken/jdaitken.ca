@@ -109,6 +109,38 @@
     .footer-links a { font-size: var(--text-sm); color: var(--color-text-secondary); }
     .footer-links a:hover { color: var(--color-accent); }
     .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
+
+    .testimonials-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .testimonials-grid { display: grid; gap: var(--space-lg); }
+    @media (min-width: 768px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    .testimonial-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
+    .testimonial-stars { color: var(--color-accent); font-size: var(--text-sm); letter-spacing: 2px; margin-bottom: var(--space-md); }
+    .testimonial-quote { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-normal); font-style: italic; margin-bottom: var(--space-md); }
+    .testimonial-author { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-text); }
+    .testimonial-location { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(2px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-md); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .modal-panel { background: var(--color-surface); border-radius: var(--radius-xl); padding: 3rem 3.5rem 2.5rem; width: 100%; max-width: 700px; position: relative; transform: translateY(12px) scale(0.97); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; box-shadow: 0 32px 80px rgba(0,0,0,0.18); }
+    .modal-overlay.is-open .modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+    .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; cursor: pointer; color: var(--color-text-muted); padding: var(--space-xs); line-height: 1; font-size: 1.5rem; transition: color 0.15s ease; border-radius: var(--radius-sm); }
+    .modal-close:hover { color: var(--color-text); }
+    .modal-heading { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-sm); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); text-align: center; }
+    .modal-subhead { font-size: var(--text-base); color: var(--color-text-secondary); margin-bottom: var(--space-2xl); text-align: center; line-height: var(--leading-normal); }
+    .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
+    .modal-input-full { grid-column: 1 / -1; }
+    .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+    .modal-input::placeholder { color: var(--color-text-muted); }
+    .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
+    .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
+    .modal-submit { flex-shrink: 0; white-space: nowrap; }
+    .modal-error { font-size: var(--text-sm); color: var(--color-accent-dark); text-align: center; margin-top: var(--space-xs); margin-bottom: 0; }
+    .modal-success { text-align: center; padding: var(--space-xl) 0 var(--space-md); }
+    .modal-success-icon { font-size: 2.5rem; margin-bottom: var(--space-sm); }
+    .modal-success-heading { font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .modal-success-sub { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 0; }
+    @media (max-width: 600px) { .modal-panel { padding: var(--space-xl) var(--space-lg) var(--space-lg); } .modal-form-grid { grid-template-columns: 1fr; } .modal-form-footer { flex-direction: column; align-items: flex-start; } .modal-submit { width: 100%; } }
   </style>
 
   <!-- Canonical & Open Graph -->
@@ -257,7 +289,7 @@
         <div class="about-intro">
           <h1>Hi, I'm JD.</h1>
           <p class="subtitle">I help local service businesses turn their websites into lead-generating machines.</p>
-          <a href="/contact" class="btn btn-primary">Let's Work Together</a>
+          <a href="#" class="btn btn-primary open-audit-modal">Let's Work Together</a>
         </div>
       </div>
     </div>
@@ -304,6 +336,25 @@
     </div>
   </section>
 
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">&ldquo;JD made the whole process easy &mdash; he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out.&rdquo;</p>
+          <div class="testimonial-author">Legendary Landscaping</div>
+          <div class="testimonial-location">Ottawa, ON</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">&ldquo;JD Media was super helpful with my website launch! They were very attentive to what I wanted and delivered faster than expected. Modifications I asked for were completed the next day and the whole process was smooth, fast and easy.&rdquo;</p>
+          <div class="testimonial-author">Arlene</div>
+          <div class="testimonial-location">Ottawa, ON</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="philosophy-section">
     <div class="container">
       <div class="philosophy-content">
@@ -317,7 +368,7 @@
     <div class="container text-center">
       <h2>Let's work together</h2>
       <p>Ready to turn your website into a lead-generating machine? Let's talk.</p>
-      <a href="/contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#" class="btn btn-primary open-audit-modal">Get in Touch</a>
     </div>
   </section>
 
@@ -362,5 +413,80 @@
 </footer>
 
 <script src="/js/main.js" defer></script>
+
+<div class="modal-overlay" id="auditModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal-panel" id="auditModalPanel">
+    <button class="modal-close" id="closeAuditModal" aria-label="Close">&times;</button>
+    <div id="modalFormWrap">
+      <h2 class="modal-heading" id="modalHeading">Let's see what your site is costing you.</h2>
+      <p class="modal-subhead">Drop your details and I'll reply within 1 business day. No pitch — just an honest look at what's possible.</p>
+      <form id="auditForm" novalidate>
+        <div class="modal-form-grid">
+          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     autocomplete="name"  required>
+          <input type="email" name="email" class="modal-input" placeholder="Email address" autocomplete="email" required>
+          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" autocomplete="tel" required>
+          <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
+        </div>
+        <p class="modal-error" id="auditError" hidden></p>
+        <div class="modal-form-footer">
+          <p class="modal-note">Replies within 1 business day &middot; No obligation.</p>
+          <button type="submit" class="btn btn-primary modal-submit">Get in Touch</button>
+        </div>
+      </form>
+    </div>
+    <div id="modalSuccess" class="modal-success" hidden>
+      <div class="modal-success-icon">✓</div>
+      <h3 class="modal-success-heading">Got it — I'll be in touch soon.</h3>
+      <p class="modal-success-sub">I'll reply within 1 business day.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay  = document.getElementById('auditModal');
+  var closeBtn = document.getElementById('closeAuditModal');
+  var form     = document.getElementById('auditForm');
+  var errEl    = document.getElementById('auditError');
+  var formWrap = document.getElementById('modalFormWrap');
+  var success  = document.getElementById('modalSuccess');
+
+  function openModal() {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { form.querySelector('input:not([type=hidden])').focus(); }, 250);
+  }
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-audit-modal').forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.modal-submit');
+    var origTxt = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    errEl.hidden = true;
+    try {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
+        method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+      });
+      if (res.ok) { formWrap.hidden = true; success.hidden = false; }
+      else { throw new Error(); }
+    } catch (_) {
+      errEl.textContent = 'Something went wrong — email jd@jdaitken.ca directly.';
+      errEl.hidden = false; btn.disabled = false; btn.textContent = origTxt;
+    }
+  });
+})();
+</script>
 </body>
 </html>
