@@ -59,6 +59,7 @@
     .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
     /* About page */
+    .hero-eyebrow { display: inline-block; font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-accent); margin-bottom: var(--space-sm); }
     .about-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
     @media (min-width: 768px) { .about-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
 
@@ -82,7 +83,7 @@
     .skills-section { }
     .skills-grid { display: grid; gap: var(--space-lg); }
     @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-    .skill-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+    .skill-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-top: 3px solid var(--color-accent); border-radius: var(--radius-lg); background: var(--color-surface); }
     .skill-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
     .skill-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
 
@@ -90,9 +91,13 @@
     .philosophy-section {
       background: var(--color-accent-light); border-top: 1px solid var(--color-border);
     }
-    .philosophy-content { max-width: 680px; margin: 0 auto; text-align: center; }
+    .philosophy-content { max-width: 680px; margin: 0 auto; }
     .philosophy-content h2 { margin-bottom: var(--space-md); }
-    .philosophy-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-accent-dark); }
+    .philosophy-content > p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-accent-dark); margin-bottom: 0; }
+    .commitment-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-lg); margin-top: var(--space-xl); }
+    .commitment-list li { padding-left: var(--space-lg); border-left: 3px solid var(--color-accent); }
+    .commitment-list strong { display: block; font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .commitment-list span { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-normal); }
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
@@ -287,9 +292,10 @@
           <img src="/images/jd-aitken.png" alt="JD Aitken — founder of JD Media" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="about-intro">
-          <h1>Hi, I'm JD.</h1>
-          <p class="subtitle">I help local service businesses turn their websites into lead-generating machines.</p>
-          <a href="#" class="btn btn-primary open-audit-modal">Let's Work Together</a>
+          <span class="hero-eyebrow">Ottawa Web Design</span>
+          <h1>Not an agency. Not a template. Just websites that work.</h1>
+          <p class="subtitle">I'm JD Aitken — one person who builds, manages, and stands behind every site. No handoffs, no disappearing acts. If your site isn't getting you calls, that's my problem to fix.</p>
+          <a href="#" class="btn btn-primary open-audit-modal">Get a Free Audit</a>
         </div>
       </div>
     </div>
@@ -298,40 +304,10 @@
   <section class="story-section">
     <div class="container">
       <div class="story-content">
-        <h2>Why web design?</h2>
-        <p>I started building websites and quickly realized most service businesses were getting a raw deal. Agencies churn out templated sites, charge a premium, then disappear. The sites look fine at first, but they're slow, don't convert, and fall apart on mobile. I wanted to do better.</p>
-
-        <h2>Why service businesses?</h2>
-        <p>Service businesses are the backbone of local economies. The HVAC tech, the plumber, the electrician — they deserve websites that work as hard as they do. Not outdated templates that cost them leads every day.</p>
-
-        <h2>Why Ottawa?</h2>
-        <p>I'm based in Ottawa and love working with local businesses. I understand the market, the competition, and what it takes to stand out in a city where homeowners search online before they call.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="skills-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>What I bring to the table</h2>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Mobile-first design</h3>
-          <p>Every site starts at 375px and scales up. Your customers are on their phones — the site needs to work perfectly there first.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Built to generate calls</h3>
-          <p>Clear phone numbers, trust-building layouts, and simple contact forms. Every design decision is made to get visitors to call or reach out.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Local SEO</h3>
-          <p>Structured data, optimized titles, service area pages. Your site shows up when Ottawa homeowners search for your services.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Technical excellence</h3>
-          <p>Clean code, fast load times, accessible markup. Built to score 90+ on Lighthouse across all categories.</p>
-        </div>
+        <h2>Why I started JD Media</h2>
+        <p>A few years ago I was looking at Google Analytics with a trades contractor. His site was pulling 200&ndash;300 visitors a month &mdash; people searching for exactly what he offered. His phone wasn&rsquo;t ringing. We pulled up the site on a phone. It took 11 seconds to load. The contact form was broken. The phone number wasn&rsquo;t clickable.</p>
+        <p>He&rsquo;d been paying for a website that was actively turning away customers. He had no idea.</p>
+        <p>That&rsquo;s the invisible tax bad web design puts on small businesses &mdash; not a line on the invoice, just calls you never got. Quotes you never sent. Revenue that quietly went to a competitor who had a faster site. I started JD Media to fix that: websites built to get you work, managed by one person who sticks around to make sure they keep working.</p>
       </div>
     </div>
   </section>
@@ -355,11 +331,51 @@
     </div>
   </section>
 
+  <section class="skills-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What working with me looks like</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Live in 30 days. Every time.</h3>
+          <p>From first call to live site in 30 days or less. No months-long projects, no waiting for an agency to fit you in. You have a working site fast &mdash; and it&rsquo;s built right the first time.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Designed to get the phone ringing.</h3>
+          <p>Every layout decision is made with one goal: get visitors to call or reach out. Legendary Landscaping went from 3 inbound leads a month to 13. That&rsquo;s the standard every site is built to.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Top 3 on Google &mdash; or first month free.</h3>
+          <p>I handle your Google Business Profile, on-page SEO, and structured data. You show up when Ottawa homeowners search for your services &mdash; guaranteed within 30 days or your first month is on me.</p>
+        </div>
+        <div class="skill-card">
+          <h3>One person. Full accountability.</h3>
+          <p>I write the code, manage the SEO, and answer your emails. Not a team of subcontractors &mdash; me. You&rsquo;ll always know exactly who to call, and you&rsquo;ll always get a response within 1 business day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="philosophy-section">
     <div class="container">
       <div class="philosophy-content">
-        <h2>The Digital Caretaker approach</h2>
-        <p>I don't just build and disappear. I'm your Digital Caretaker — monitoring, maintaining, and improving your site so it stays relevant as search evolves. Long-term partnerships, not one-off projects.</p>
+        <h2>The Digital Caretaker promise</h2>
+        <p>I don&rsquo;t build sites and disappear. Every client gets the same three commitments:</p>
+        <ul class="commitment-list">
+          <li>
+            <strong>You&rsquo;ll always reach me.</strong>
+            <span>I reply to every message within 1 business day. Not a ticket system, not a support queue &mdash; me, directly.</span>
+          </li>
+          <li>
+            <strong>Your results are my responsibility.</strong>
+            <span>I track your rankings, traffic, and leads. Every month you get a plain-English update on what&rsquo;s working and what I&rsquo;m improving.</span>
+          </li>
+          <li>
+            <strong>Your site grows with your business.</strong>
+            <span>As you add services or expand to new areas, I update the site to match. Month 12 should be better than day one.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
