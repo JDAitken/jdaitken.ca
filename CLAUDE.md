@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> This file provides context for Claude Code when working in the jdaitken.ca repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -12,190 +12,112 @@
 - Vanilla JavaScript (no frameworks)
 - Deployment via GitHub Actions to SiteGround
 
+## Local Development
+
+Serve locally with PHP (required for API endpoints):
+```bash
+php -S localhost:8080
+```
+
+Screenshot testing uses Puppeteer (already installed in `node_modules/`):
+```bash
+node -e "
+const p = require('puppeteer');
+(async () => {
+  const b = await p.launch();
+  const pg = await b.newPage();
+  await pg.setViewport({ width: 1440, height: 900 });
+  await pg.goto('http://localhost:8080/', { waitUntil: 'networkidle0' });
+  await pg.screenshot({ path: '/tmp/screen-desktop.png', fullPage: false });
+  await pg.setViewport({ width: 390, height: 844 });
+  await pg.screenshot({ path: '/tmp/screen-mobile.png', fullPage: false });
+  await b.close();
+})();
+"
+```
+
 ## Architecture
+
+### Page Structure
+
+Pages live as `index.html` inside named subdirectories — **not** flat `.html` files in root:
+
+```
+index.html          ← Homepage
+about/index.html
+work/index.html
+pricing/index.html
+process/index.html
+contact/index.html
+thanks/index.html   ← Post-form submission confirmation
+hi/index.html       ← noindex landing page (outreach/cold leads)
+arlene/index.html   ← noindex personal mini-app (not part of main site)
+```
 
 ### CSS Design System (Three-Layer Architecture)
 
-The CSS follows a token-based design system:
+Load in this order — all three are required on every page:
 
-1. **`styles/tokens-v2.css`** - Design tokens (source of truth)
-   - All CSS custom properties (colors, spacing, typography, shadows)
-   - Never hardcode values that exist as tokens
-   - Mobile-first responsive typography scaling
+1. **`styles/tokens-v2.css`** — CSS custom properties (colors, spacing, typography, shadows). Source of truth.
+2. **`styles/base-v2.css`** — Resets, global typography, element defaults.
+3. **`styles/components-v2.css`** — Reusable UI components referencing token variables.
 
-2. **`styles/base-v2.css`** - Base styles
-   - CSS resets and normalizations
-   - Global typography rules
-   - Element-level defaults
-
-3. **`styles/components-v2.css`** - Component styles
-   - Reusable UI components (buttons, cards, forms, badges)
-   - All components reference tokens-v2.css variables
-
-**Critical Rule:** Always use CSS custom properties from `tokens-v2.css`. Never hardcode colors, spacing, or typography values.
+**Hard rule:** Never hardcode colors, spacing, or font names. Always use `var(--token-name)`.
 
 ### JavaScript
 
-Vanilla JavaScript located in `/js`:
-- `main.js` - Navigation, mobile menu, smooth scrolling
-- `chat.js` - AI chat widget powered by OpenAI API
+- `js/main.js` — Navigation, mobile menu, smooth scrolling
+- `js/chat.js` — AI chat widget (proxied through `api/chat.php`)
 
-### PHP Backend
+### PHP API Endpoints
 
-API endpoints in `/api`:
-- `contact.php` - Contact form handler with rate limiting and spam protection
-- `chat.php` - OpenAI chat proxy with CORS headers and API key security
+All live in `/api/`:
+- `contact.php` — Contact form handler with rate limiting and spam protection
+- `chat.php` — OpenAI chat proxy; reads knowledge base from `api/jdmedia_knowledge.txt`
+- `audit.php` — SEO audit request form handler with rate limiting
 
-### HTML Pages
+`api/jdmedia_knowledge.txt` — Plain-text knowledge base fed to the AI chat (pricing, services, contact info). Keep in sync with live pricing.
 
-7 main pages in root directory:
-- `index.html` - Homepage
-- `about.html` - About JD Media
-- `work.html` - Portfolio/case studies
-- `pricing.html` - Service pricing
-- `process.html` - Development process
-- `contact.html` - Contact form
-- `thanks.html` - Form submission confirmation
+`api/tmp/` — Rate-limit state files; gitignored.
 
-## Development Guidelines
+### Brand Assets
 
-### Design System Principles
+- `brand/favicon/` — All favicon sizes + apple-touch-icon
+- `images/logos/jd-media-logo.svg` — Primary logo
+- `images/og-image.png` — OG/social share image
 
-**Always reference tokens:**
-```css
-/* ✓ GOOD */
-color: var(--color-text);
-padding: var(--space-lg);
-font-family: var(--font-display);
+### Archive
 
-/* ✗ BAD */
-color: #1B3A5F;
-padding: 24px;
-font-family: 'DM Sans';
-```
+`_archive/` holds retired files (old brand assets, old docs). Do not edit anything under `_archive/`.
 
-**Mobile-first responsive approach:**
-- Default styles for mobile (375px)
-- Scale up for tablet (768px+) and desktop (1024px+)
-- Use CSS custom properties that adapt at breakpoints (e.g., `var(--text-hero)`)
-
-**High contrast accessibility:**
-- Minimum 4.5:1 contrast for text
-- Minimum 3:1 contrast for UI elements
-- Focus indicators on all interactive elements
-- Semantic HTML structure
-
-### Code Style
-
-- **No frameworks** - Keep vanilla HTML/CSS/JS
-- **No build tools** - Direct file editing
-- **Semantic HTML** - Use appropriate elements (`<header>`, `<nav>`, `<main>`, `<article>`, etc.)
-- **Progressive enhancement** - Core functionality works without JavaScript
-
-### Brand Standards
+## Brand Standards
 
 **Color Palette:**
 - Navy (`--color-text: #1B3A5F`) for primary text
 - Coral (`--color-accent: #FF6B6B`) for accents/CTAs
-- Soft off-white background (`--color-bg: #FAFAFA`)
-- Pure white surfaces (`--color-surface: #FFFFFF`)
+- Off-white background (`--color-bg: #FAFAFA`)
+- White surfaces (`--color-surface: #FFFFFF`)
 
-**Typography:**
-- **Inter** for UI/body text (weights: 400, 500, 600)
-- **DM Sans** for headings/hero text (weights: 500, 700)
-- 8px spacing scale (`--space-xs` through `--space-5xl`)
+**Typography:** Inter (body, weights 400/500/600) · DM Sans (headings, weights 500/700)
 
-**Voice & Tone:**
-- Calm and confident (no hype or urgency tricks)
-- Caretaker mindset - helpful and invested
-- Quietly technical - sophisticated without intimidation
-- Use real metrics and case studies (no fake content)
+**Voice:** Calm and confident. Real metrics only — no fake content or hype.
 
 ## Deployment
 
-**Automated via GitHub Actions:**
-- Workflow: `.github/workflows/deploy.yml`
-- Triggers on push to `main` branch
-- Deploys to SiteGround via rsync over SSH (port 18765)
-- Excludes: `.git/`, `.github/`, `node_modules/`, `.DS_Store`
+Push to `main` — GitHub Actions deploys automatically via rsync to SiteGround (port 18765). Deploy after every change; do not batch.
 
-**Required GitHub Secrets:**
-- `SSH_PRIVATE_KEY` - ED25519 private key for authentication
-- `SSH_USER` - SiteGround username
-- `SSH_HOST` - SiteGround server IP/hostname
-- `SSH_PORT` - SSH port (18765)
-- `DEPLOY_PATH` - Target directory on server
+```bash
+git add <changed-files>
+git commit -m "..."
+git push origin main
+```
 
-**Manual deployment:** Can be triggered via GitHub Actions UI (workflow_dispatch)
-
-## Important Files
-
-### Core CSS (Load in Order)
-1. `styles/tokens-v2.css` - Design tokens
-2. `styles/base-v2.css` - Base styles
-3. `styles/components-v2.css` - Components
-
-### Reference Documents
-- `BRAND-v2.md` - Comprehensive brand guidelines (positioning, voice, visual identity)
-- `claude-code-prompt.md` - Design system documentation
-
-### Configuration
-- `.github/workflows/deploy.yml` - Deployment workflow
-- `api/.htaccess` - PHP routing configuration
-
-### Brand Assets
-- `/brand` directory - Logo files, brand resources
-
-## Common Tasks
-
-**Adding a new page:**
-1. Create HTML file in root directory
-2. Include all three CSS files in order (tokens → base → components)
-3. Link fonts: Inter and DM Sans from Google Fonts
-4. Use semantic HTML structure
-5. Follow mobile-first responsive patterns
-6. Add navigation link in all existing pages
-
-**Styling a component:**
-1. Check if similar component exists in `components-v2.css`
-2. Use only tokens from `tokens-v2.css`
-3. Maintain accessibility standards (contrast, focus states)
-4. Test mobile → tablet → desktop
-
-**Deploying changes:**
-1. Commit changes to `main` branch
-2. GitHub Actions automatically deploys to SiteGround
-3. Monitor workflow in GitHub Actions tab
-
-## Performance Targets
-
-- Initial load: <50KB (HTML/CSS/critical JS)
-- First Contentful Paint: <1.5s
-- Time to Interactive: <3s
-- Lighthouse score: 90+ across all categories
-
-## Accessibility Standards
-
-- WCAG 2.1 AA compliance minimum
-- Semantic HTML structure
-- Alt text on all images
-- Form labels and error states
-- Keyboard navigation support
-- Screen reader friendly
-
----
+`deploy.sh` exists but is not used for this project — GitHub Actions handles it.
 
 ## Workflow Rules
 
 **Frontend changes:** Invoke the `frontend-design` skill whenever making changes to HTML, CSS, or visual layout.
 
-**Deploy after every change:** After completing any change to the site, always commit and push to `main`. Do not wait or batch changes — deploy immediately after each task is done. GitHub Actions will handle deployment automatically.
+**CSS:** Always use tokens from `tokens-v2.css`. Never hardcode hex values, spacing, or font names.
 
-```bash
-git add <changed-files>
-git push origin main
-```
-
----
-
-**For detailed brand guidelines, visual identity, and component principles, see `BRAND-v2.md`.**
+**Client case studies:** Only Legendary Landscaping and Capital City Cards are cleared for public use. Do not use J&J Remodeling without permission.
