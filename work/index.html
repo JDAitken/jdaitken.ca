@@ -134,6 +134,12 @@
     .view-site-link { display: inline-flex; align-items: center; gap: 0.4em; font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-accent); text-decoration: none; margin-top: var(--space-md); transition: gap var(--transition-base); }
     .view-site-link:hover { gap: 0.6em; }
 
+    .case-study-card--active { background: var(--color-bg); border-style: dashed; }
+    .badge-active { background: rgba(16,185,129,0.08); color: #059669; border: 1px solid rgba(16,185,129,0.2); }
+    .in-progress-note { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-md); background: var(--color-surface); border-radius: var(--radius-md); border: 1px solid var(--color-border); margin: var(--space-lg) 0; font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+    .in-progress-dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; flex-shrink: 0; box-shadow: 0 0 0 0 rgba(16,185,129,0.4); animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { box-shadow: 0 0 0 6px rgba(16,185,129,0); } }
+
     .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(2px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-md); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
     .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
     .modal-panel { background: var(--color-surface); border-radius: var(--radius-xl); padding: 3rem 3.5rem 2.5rem; width: 100%; max-width: 700px; position: relative; transform: translateY(12px) scale(0.97); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; box-shadow: 0 32px 80px rgba(0,0,0,0.18); }
@@ -389,7 +395,7 @@
         </article>
 
         <!-- J&J Remodeling — active client, results in progress -->
-        <article class="case-study-card">
+        <article class="case-study-card case-study-card--active">
           <div class="case-study-image">
             <a href="https://jandjremodeling.ca" target="_blank" rel="noopener">
               <picture>
@@ -402,11 +408,16 @@
           </div>
           <div class="case-study-content">
             <div class="case-study-meta">
-              <span class="badge badge-accent">Renovation</span>
-              <span class="badge">Ottawa, ON</span>
+              <span class="badge badge-active">Active Client</span>
+              <span class="badge badge-default">Renovation</span>
+              <span class="badge badge-default">Ottawa, ON</span>
             </div>
             <h3>J&amp;J Remodeling</h3>
             <p>Ottawa home renovation specialists &mdash; kitchens, additions, full gut renovations. We manage their Google Business Profile and local search presence so homeowners searching Ottawa find them first.</p>
+            <div class="in-progress-note">
+              <span class="in-progress-dot"></span>
+              Campaign live &mdash; tracking rankings and inbound calls
+            </div>
             <a href="https://jandjremodeling.ca" target="_blank" rel="noopener" class="view-site-link">
               View site
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -422,7 +433,7 @@
   <section class="reviews-section">
     <div class="container">
       <div class="reviews-header">
-        <img src="/images/logos/Google-Review-Logo.png" alt="Google Reviews" width="300" height="100">
+        <img src="/images/logos/Google-Review-Logo.png" alt="Google Reviews" width="160" height="53">
         <div class="reviews-rating-row">
           <strong>5.0</strong>
           <span class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -433,13 +444,10 @@
 
         <div class="review-card">
           <div class="review-card-header">
-            <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">P</div>
-              <div>
+            <div>
                 <div class="review-author-name">Patrick Damiani</div>
                 <div class="review-author-location">Ottawa, ON</div>
               </div>
-            </div>
             <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
           <p class="review-text">&ldquo;JD Media is the kind of web partner you want in your corner. JD handled the technical stuff end-to-end and explained things in plain English, so I could stay focused on running my business. Fast, reliable, and the site looks great. I highly recommend JD Media!&rdquo;</p>
@@ -447,13 +455,10 @@
 
         <div class="review-card">
           <div class="review-card-header">
-            <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">L</div>
-              <div>
+            <div>
                 <div class="review-author-name">Legendary Landscaping</div>
                 <div class="review-author-location">Ottawa, ON</div>
               </div>
-            </div>
             <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
           <p class="review-text">&ldquo;JD Media built our website for Legendary Landscaping and we couldn&rsquo;t be happier with how it turned out. The site looks sharp, loads fast, and actually shows off our work the way we wanted. JD made the whole process easy &mdash; he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out. If you&rsquo;re a local trades or landscaping business looking to level up your website, I&rsquo;d highly recommend giving JD Media a call.&rdquo;</p>
@@ -461,13 +466,10 @@
 
         <div class="review-card">
           <div class="review-card-header">
-            <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">R</div>
-              <div>
+            <div>
                 <div class="review-author-name">Renee G</div>
                 <div class="review-author-location">Ottawa, ON</div>
               </div>
-            </div>
             <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
           <p class="review-text">&ldquo;JD built our family member&rsquo;s website and has been incredibly dedicated to growing his business. He&rsquo;s professional, hardworking, and genuinely cares about getting results for his clients. Highly recommend!&rdquo;</p>
@@ -475,13 +477,10 @@
 
         <div class="review-card">
           <div class="review-card-header">
-            <div class="review-card-identity">
-              <div class="review-avatar" aria-hidden="true">A</div>
-              <div>
+            <div>
                 <div class="review-author-name">Arlene</div>
                 <div class="review-author-location">Ottawa, ON</div>
               </div>
-            </div>
             <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
           <p class="review-text">&ldquo;JD media was super helpful with my website launch! They were very attentive to what I wanted and delivered faster than expected. Modifications I asked for were completed the next day and the whole process was smooth, fast and easy. Highly recommend!&rdquo;</p>
