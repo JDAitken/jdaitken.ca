@@ -120,4 +120,4 @@ git push origin main
 
 **CSS:** Always use tokens from `tokens-v2.css`. Never hardcode hex values, spacing, or font names.
 
-**Client case studies:** Only Legendary Landscaping and Capital City Cards are cleared for public use. Do not use J&J Remodeling without permission.
+**Client case studies:** Legendary Landscaping, Capital City Cards, and J&J Remodeling are all cleared for public use.

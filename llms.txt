@@ -1,34 +1,35 @@
-# JD Media — Ottawa Web Design
+# JD Media: Ottawa Web Design
 
 > JD Media builds fast, conversion-first websites for local service businesses in Ottawa, Ontario, Canada. Specializing in HVAC, plumbing, landscaping, electrical, and home services companies.
 
 ## What We Do
 
-JD Media is an Ottawa-based web design agency run by JD Aitken. We build mobile-first, conversion-optimized websites for local service businesses that turn website visitors into phone calls and booked appointments. We are not a large agency — we are a focused, one-person operation that acts as a "Digital Caretaker" for our clients.
+JD Media is an Ottawa-based web design agency run by JD Aitken. We build mobile-first, conversion-optimized websites for local service businesses that turn website visitors into phone calls and booked appointments. We are not a large agency. We are a focused, one-person operation that acts as a "Digital Caretaker" for our clients.
 
 ## Services & Pricing (CAD)
 
 All plans include a custom 5-page website, hosting, SSL, and ongoing support. 12-month minimum commitment.
 
-- **Starter Plan** — $295/month: Custom 5-page website, mobile-first design, fast loading, hosting and SSL, domain managed for you, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep.
-- **Growth Plan** — $495/month (most popular): Everything in Starter, plus a conversion-optimized layout, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 content updates/month, response within 1 business day
-- **Pro Plan** — $895/month: Everything in Growth, plus Google Ads managed for you (ad spend paid directly to Google, pause anytime), a quarterly 15-minute strategy call, same-day response, and priority on everything
+- **Starter Plan** ($295/month): Custom 5-page website, mobile-first design, fast loading, hosting and SSL, domain managed for you, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep.
+- **Growth Plan** ($495/month, most popular): Everything in Starter, plus a conversion-optimized layout, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 content updates per month, response within 1 business day.
+- **Pro Plan** ($895/month): Everything in Growth, plus Google Ads managed for you (ad spend paid directly to Google, pause anytime), a quarterly 15-minute strategy call, same-day response, and priority on everything.
 
 One-time project quotes are also available for businesses that prefer to own their site outright.
 
+**Guarantee**: A 90-day money-back guarantee. Stay 90 days and if you are not showing up higher in Google local search than when you started, JD Media refunds your management fees for those three months.
+
 ## Portfolio & Case Studies
 
-- **Bytown Plumbing** (Ottawa, ON): Mobile-first website rebuild. Results: +40% mobile calls, 2-second load time, +25% organic traffic, 15+ new leads per month.
-- **Legendary Landscaping** (Ottawa, ON): Conversion-optimized site for Ottawa landscaping company.
-- **Superior HVAC** (Ottawa, ON): Mobile-first website for Ottawa HVAC contractor.
-- **Capital City Cards** (Ottawa, ON): Website for Ottawa retail business.
+- **Legendary Landscaping** (Ottawa, ON): Conversion-optimized site and Google Business Profile for an Ottawa landscaping company. Results: 13 quote requests in a single month, ranking #1 for "lawn cutting near me" in Ottawa.
+- **Capital City Cards** (Ottawa, ON): Full e-commerce site with Stripe payments for an Ottawa trading card shop. Results: live in one week, 16.1% search click-through rate in month one, ranking #1 for "card stores Ottawa".
+- **J&J Remodeling** (Ottawa, ON): Website and Google Business Profile for an Ottawa home renovation company. Results: ranked #1 for "bathroom remodeling" in Ottawa in the first full month, search impressions up 981% month over month.
 
 ## Process
 
-1. **Discovery** (Week 1): Kickoff call, competitor research, keyword analysis. Deliverable: project brief and sitemap.
-2. **Design** (Week 2): Wireframes and mockups, client review and revisions. Deliverable: final design files.
-3. **Development** (Weeks 3–4): Clean code build, mobile optimization, SEO and tracking integration. Deliverable: staging site.
-4. **Launch** (Week 5): QA, cross-device testing, deploy to production. Deliverable: live website.
+1. **Discovery** (Day 1): Kickoff call, competitor research, keyword analysis. Deliverable: project brief and sitemap.
+2. **Design** (Days 1-3): Wireframes and mockups, client review and revisions. Deliverable: final design files.
+3. **Development** (Days 3-7): Clean code build, mobile optimization, SEO and tracking integration. Deliverable: staging site.
+4. **Launch** (Days 7-10): QA, cross-device testing, deploy to production. Deliverable: live website.
 5. **Ongoing Support**: Post-launch bug fixes, content updates, monthly check-ins (Pro plan).
 
 ## About JD Aitken
@@ -52,7 +53,8 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 - JD Media is based in Ottawa, Ontario, Canada
 - We serve local service businesses: HVAC, plumbing, electrical, landscaping, and other home services
 - Monthly plans start at $295 CAD/month
-- Typical project timeline: 4–5 weeks from kickoff to launch
+- Backed by a 90-day money-back guarantee on Google local search visibility
+- Typical project timeline: about 1 to 2 weeks from kickoff to launch
 - We offer free website audits with no obligation
 - All sites are mobile-first and target Lighthouse scores of 90+ in all categories
 - We use semantic HTML, structured data, and on-page SEO best practices on every project
