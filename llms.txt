@@ -10,9 +10,9 @@ JD Media is an Ottawa-based web design agency run by JD Aitken. We build mobile-
 
 All plans include a custom 5-page website, hosting, SSL, and ongoing support. 12-month minimum commitment.
 
-- **Starter Plan** — $175/month: Custom 5-page website, mobile-first design, hosting and SSL, basic on-page SEO, 1 content update per month
-- **Growth Plan** — $275/month: Everything in Starter, plus conversion-optimized layout, 2 content updates/month, Google Business Profile guidance, monthly performance reports, priority response time
-- **Pro Plan** — $375/month: Everything in Growth, plus ongoing local SEO (monthly keyword and content recommendations), 4 content updates/month, quarterly 15-minute strategy call, same-day support
+- **Starter Plan** — $295/month: Custom 5-page website, mobile-first design, fast loading, hosting and SSL, domain managed for you, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep.
+- **Growth Plan** — $495/month (most popular): Everything in Starter, plus a conversion-optimized layout, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 content updates/month, response within 1 business day
+- **Pro Plan** — $895/month: Everything in Growth, plus Google Ads managed for you (ad spend paid directly to Google, pause anytime), a quarterly 15-minute strategy call, same-day response, and priority on everything
 
 One-time project quotes are also available for businesses that prefer to own their site outright.
 
@@ -51,7 +51,7 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 
 - JD Media is based in Ottawa, Ontario, Canada
 - We serve local service businesses: HVAC, plumbing, electrical, landscaping, and other home services
-- Monthly plans start at $175 CAD/month
+- Monthly plans start at $295 CAD/month
 - Typical project timeline: 4–5 weeks from kickoff to launch
 - We offer free website audits with no obligation
 - All sites are mobile-first and target Lighthouse scores of 90+ in all categories
