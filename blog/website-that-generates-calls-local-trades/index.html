@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>What a Local Trade Business Website Needs to Generate Calls | JD Media</title>
+  <meta name="description" content="Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .tap-to-call { display: none; }
+    @media (max-width: 767px) {
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-text); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
+    }
+    .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
+    @media (max-width: 767px) { .site-header { top: 44px; } }
+    @media (min-width: 768px) { .site-header { height: var(--header-height); } }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md); }
+    @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
+    .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
+    @media (min-width: 768px) { .nav-desktop { display: flex; } }
+    .nav-desktop a { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base); }
+    .nav-desktop a:hover { color: var(--color-text); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
+    .header-cta { display: none; }
+    @media (min-width: 768px) { .header-cta { display: inline-flex; } }
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base); }
+    .menu-toggle:hover { border-color: var(--color-text-muted); }
+    @media (min-width: 768px) { .menu-toggle { display: none; } }
+    .menu-icon { position: relative; width: 18px; height: 12px; }
+    .menu-icon::before, .menu-icon::after, .menu-icon span { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; border-radius: 1px; }
+    .menu-icon::before { top: 0; } .menu-icon span { top: 5px; } .menu-icon::after { bottom: 0; }
+    .mobile-menu { position: fixed; inset: 0; background: var(--color-overlay); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--transition-slow); z-index: var(--z-modal); }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .mobile-menu-panel { width: 100%; height: 100%; background: var(--color-surface); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xl); transform: translateY(8px); transition: transform var(--transition-slow); }
+    .mobile-menu.is-open .mobile-menu-panel { transform: translateY(0); }
+    .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; }
+    .mobile-menu-close { width: 44px; height: 44px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: transparent; color: var(--color-text); font-size: var(--text-xl); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .mobile-menu-nav { display: flex; flex-direction: column; gap: var(--space-lg); flex: 1; }
+    .mobile-menu-nav a { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); text-decoration: none; }
+    .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
+    .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
+
+    /* Blog post */
+    .post-breadcrumbs { padding: var(--space-lg) 0 0; font-size: var(--text-sm); }
+    .post-breadcrumbs a { color: var(--color-accent); font-weight: var(--font-medium); text-decoration: none; }
+    .post-breadcrumbs a:hover { text-decoration: underline; }
+    .post-breadcrumbs span[aria-current] { color: var(--color-text-muted); }
+    .breadcrumb-sep { color: var(--color-text-muted); }
+
+    .post-hero { padding: var(--space-xl) 0 var(--space-lg); }
+    .post-hero .tag { display: inline-block; font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-accent); border: 1px solid var(--color-accent); border-radius: var(--radius-full); padding: 4px 12px; margin-bottom: var(--space-md); text-decoration: none; }
+    .post-hero h1 { max-width: 22ch; margin-bottom: var(--space-md); }
+    .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); font-size: var(--text-sm); color: var(--color-text-muted); }
+    .post-meta .meta-sep { color: var(--color-accent); }
+
+    .post-feature-image { max-width: var(--container-xl); margin: 0 auto var(--space-2xl); padding: 0 var(--space-md); }
+    .post-feature-image img { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-lg); }
+    .post-feature-credit { display: block; margin-top: var(--space-sm); font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .post-body { padding-bottom: var(--space-3xl); }
+    .post-content { max-width: 680px; margin: 0 auto; font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-text-secondary); }
+    .post-content > * + * { margin-top: var(--space-lg); }
+    .post-content h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-text); margin-top: var(--space-2xl); padding-top: var(--space-md); border-top: 2px solid var(--color-accent); }
+    .post-content p { max-width: none; }
+    .post-content a { color: var(--color-accent-dark); font-weight: var(--font-semibold); }
+    .post-content a:hover { text-decoration: underline; }
+
+    .post-cta { margin-top: var(--space-2xl); background: var(--color-accent-light); border-left: 3px solid var(--color-accent); border-radius: var(--radius-lg); padding: var(--space-xl); }
+    .post-cta h3 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-sm); color: var(--color-text); }
+    .post-cta p { color: var(--color-accent-dark); margin-bottom: var(--space-lg); }
+
+    .post-faq { max-width: 680px; margin: var(--space-2xl) auto 0; }
+    .post-faq h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-text); margin-bottom: var(--space-lg); }
+    .post-faq-item { border-bottom: 1px solid var(--color-border); padding: var(--space-lg) 0; }
+    .post-faq-item h3 { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .post-faq-item p { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
+    .footer-inner { display: grid; gap: var(--space-xl); }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .footer-links h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-md); color: var(--color-text); }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .footer-links a { font-size: var(--text-sm); color: var(--color-text-secondary); }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
+  </style>
+
+  <link rel="canonical" href="https://jdaitken.ca/blog/website-that-generates-calls-local-trades/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jdaitken.ca/blog/website-that-generates-calls-local-trades/">
+  <meta property="og:title" content="What a Local Trade Business Website Needs to Generate Calls">
+  <meta property="og:description" content="Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.">
+  <meta property="og:image" content="https://jdaitken.ca/images/blog/business-owner-phone-call.jpg">
+  <meta property="og:site_name" content="JD Media">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What a Local Trade Business Website Needs to Generate Calls">
+  <meta name="twitter:description" content="Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.">
+  <meta name="twitter:image" content="https://jdaitken.ca/images/blog/business-owner-phone-call.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What a Local Trade Business Website Needs to Generate Calls",
+    "description": "Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.",
+    "datePublished": "2026-06-30",
+    "dateModified": "2026-06-30",
+    "author": { "@type": "Person", "name": "JD Aitken", "url": "https://jdaitken.ca/about" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JD Media",
+      "logo": { "@type": "ImageObject", "url": "https://jdaitken.ca/images/logos/jd-media-logo.svg" }
+    },
+    "image": "https://jdaitken.ca/images/blog/business-owner-phone-call.jpg",
+    "url": "https://jdaitken.ca/blog/website-that-generates-calls-local-trades/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much should a small trade business website cost?", "acceptedAnswer": { "@type": "Answer", "text": "For an Ottawa trade business, a properly built site with hosting, local SEO setup, and ongoing updates typically runs a few hundred dollars a month rather than a one-time few-thousand-dollar build that gets ignored after launch. The ongoing part matters more than the sticker price, since a site that never gets updated slowly drops out of search results." } },
+      { "@type": "Question", "name": "Do I need to run Google Ads to get found?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Two of my clients ranked in the top 3 for their core service terms in Ottawa without spending a cent on ads, purely from local SEO and Google Business Profile work. Ads can speed things up, but they're not a substitute for a site built to rank organically." } },
+      { "@type": "Question", "name": "What's the single biggest mistake trade business websites make?", "acceptedAnswer": { "@type": "Answer", "text": "Treating the website as a digital business card instead of a lead-generation tool. A page with your logo, a phone number, and a paragraph about \"quality service\" doesn't answer what a homeowner is actually searching for, so it doesn't rank and it doesn't convert." } },
+      { "@type": "Question", "name": "How long does it take to see results from a new website?", "acceptedAnswer": { "@type": "Answer", "text": "One client saw 13 quote requests in the first month after a rebuild. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly." } },
+      { "@type": "Question", "name": "Do I need a blog if I'm just a local plumber or landscaper?", "acceptedAnswer": { "@type": "Answer", "text": "Not a general blog, but you do need pages that answer the specific questions your customers are typing into Google, like cost guides and seasonal service pages. That content is what shows up in search when someone in your city is actually looking to hire." } }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9Q56QL24ES');
+  </script>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1285414636910501');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel -->
+</head>
+
+<body>
+
+<a href="tel:3435030123" class="tap-to-call" aria-label="Call JD Media">Call Now: 343-503-0123</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="/work">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/process">Process</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:3435030123" class="nav-phone header-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        343-503-0123
+      </a>
+      <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>
+        <span class="menu-icon" aria-hidden="true"><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+  <div class="mobile-menu-panel" data-menu-panel>
+    <div class="mobile-menu-top">
+      <a href="/" class="logo-link">
+        <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="Mobile">
+      <a href="/work">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/process">Process</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:3435030123">343-503-0123</a>
+      <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <div class="post-breadcrumbs">
+    <div class="container">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span aria-current="page">What a Local Trade Business Website Needs to Generate Calls</span>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <div class="container">
+      <span class="tag">Local SEO</span>
+      <h1>What a Local Trade Business Website Needs to Generate Calls</h1>
+      <div class="post-meta">
+        <time datetime="2026-06-30">June 30, 2026</time>
+        <span class="meta-sep" aria-hidden="true">·</span>
+        <span>By JD Aitken</span>
+        <span class="meta-sep" aria-hidden="true">·</span>
+        <span>6 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <figure class="post-feature-image">
+    <img src="/images/blog/business-owner-phone-call.jpg"
+         alt="Small business owner answering a phone call at his desk"
+         width="940" height="627"
+         loading="eager">
+    <span class="post-feature-credit">Photo by RDNE Stock project on Pexels</span>
+  </figure>
+
+  <div class="post-body">
+    <div class="container">
+      <article class="post-content">
+
+        <p>A homeowner in Barrhaven types "interlocking patio cost Ottawa" into Google at 9pm on a Tuesday. She's not browsing. She's trying to decide whether to call someone this week or wait until spring. The business that answers that exact question, on a page built for it, gets the call. The business with a homepage that says "quality service since 2015" does not.</p>
+        <p>That's the whole game. Not the logo, not the colour scheme, not whether the site "looks professional." Whether it answers the question someone actually typed.</p>
+
+        <h2>Your Homepage Isn't Doing the Work You Think It Is</h2>
+        <p>Most local trade sites put all their effort into the homepage and treat everything else as an afterthought. But a homepage rarely ranks for anything specific, because it's trying to be about everything at once. What actually shows up in search is a page built around one service and one location: interlocking in Ottawa, retaining walls in Ottawa, bathroom remodeling in Ottawa.</p>
+        <p>When I rebuilt J&amp;J Remodeling's site, that shift alone took them to the #1 result on Google for "bathroom remodeling" within their first full month live. Search impressions were up 981%, clicks up 450%, and none of it came from ad spend. That's not a fluke of good design. That's a site with pages built to answer specific searches instead of one page trying to cover everything.</p>
+
+        <h2>Google Business Profile Is Doing More Than You Think</h2>
+        <p>A website without an active Google Business Profile is fighting with one hand tied. The map pack, the reviews, the "people also search for" section, most of that traffic never touches your website at all. It goes straight from the search result to a phone call.</p>
+        <p>For Legendary Landscaping, the GBP work alongside the site rebuild put them in the top 3 results for interlocking and hardscape in Ottawa, and top 3 for artificial turf searches in Orleans specifically. One client told them they'd found the business through ChatGPT, not a Google search. AI answer engines are pulling from the same signals: a complete profile, real reviews, and a site that clearly states what you do and where.</p>
+
+        <h2>Speed and Mobile Aren't Optional Anymore</h2>
+        <p>Here's a number worth sitting with: most people looking to hire a trade are doing it from their phone, standing in the room they want fixed. If your site takes five seconds to load or the "call now" button is buried under a hamburger menu, that visitor is back on Google before your site finishes rendering.</p>
+        <p>This isn't a nice-to-have. It's the difference between a call and a bounce.</p>
+
+        <h2>What Actually Converts a Visitor Into a Call</h2>
+        <p>A fast, mobile-first page that answers the search intent directly is the foundation. On top of that, a few things matter more than people expect:</p>
+        <p>Real photos of real jobs beat stock images every time, because homeowners can tell the difference between a business that's done the work and one that's borrowing someone else's. A phone number that's clickable, not just visible, removes a step between someone deciding to call and actually calling. And a clear price range, even a rough one, keeps you from losing leads to the competitor who was willing to say a number out loud.</p>
+        <p>None of this requires a redesign every year. It requires a site that gets touched monthly, not built once and left alone.</p>
+
+        <h2>The Part Nobody Tells You</h2>
+        <p>A website is not a project with an end date. It's closer to a storefront window that needs restocking. Search rankings shift, competitors update their sites, and Google changes what it rewards. A site that was built well two years ago and hasn't been touched since is quietly losing ground to one that gets a new page or an updated review count every month.</p>
+        <p>If you want to see what this looks like for your specific trade, I'll walk through your current site and what it would take to get it generating calls instead of just existing. See <a href="/pricing">what that looks like month to month</a>, <a href="/process">how I work</a>, and some <a href="/work">real results from Ottawa clients</a> if you want the numbers before the conversation. You can also see how Google's own <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener">SEO starter guide</a> frames a lot of the same fundamentals.</p>
+
+        <div class="post-cta">
+          <h3>Want a straight answer on what your site needs?</h3>
+          <p>I'll look at your current site and tell you exactly what's holding it back from generating calls, no sales pitch.</p>
+          <a href="/contact" class="btn btn-primary">Get a Free Audit</a>
+        </div>
+
+      </article>
+
+      <section class="post-faq" aria-label="Frequently asked questions">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="post-faq-item">
+          <h3>How much should a small trade business website cost?</h3>
+          <p>For an Ottawa trade business, a properly built site with hosting, local SEO setup, and ongoing updates typically runs a few hundred dollars a month rather than a one-time few-thousand-dollar build that gets ignored after launch. The ongoing part matters more than the sticker price, since a site that never gets updated slowly drops out of search results.</p>
+        </div>
+        <div class="post-faq-item">
+          <h3>Do I need to run Google Ads to get found?</h3>
+          <p>Not necessarily. Two of my clients ranked in the top 3 for their core service terms in Ottawa without spending a cent on ads, purely from local SEO and Google Business Profile work. Ads can speed things up, but they're not a substitute for a site built to rank organically.</p>
+        </div>
+        <div class="post-faq-item">
+          <h3>What's the single biggest mistake trade business websites make?</h3>
+          <p>Treating the website as a digital business card instead of a lead-generation tool. A page with your logo, a phone number, and a paragraph about "quality service" doesn't answer what a homeowner is actually searching for, so it doesn't rank and it doesn't convert.</p>
+        </div>
+        <div class="post-faq-item">
+          <h3>How long does it take to see results from a new website?</h3>
+          <p>One client saw 13 quote requests in the first month after a rebuild. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly.</p>
+        </div>
+        <div class="post-faq-item">
+          <h3>Do I need a blog if I'm just a local plumber or landscaper?</h3>
+          <p>Not a general blog, but you do need pages that answer the specific questions your customers are typing into Google, like cost guides and seasonal service pages. That content is what shows up in search when someone in your city is actually looking to hire.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
+        </a>
+        <p>Digital Caretaker for local service businesses.</p>
+        <p>Ottawa, ON</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/process">Process</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3435030123">343-503-0123</a></li>
+          <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
+          <li><a href="/contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+
+</body>
+</html>
