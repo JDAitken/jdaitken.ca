@@ -571,7 +571,7 @@
     }
 
     .case-study-image {
-      border-radius: var(--radius-lg);
+      border-radius: var(--card-radius); /* v2: radius-lg */
       overflow: hidden;
       border: 1px solid var(--color-border);
     }
@@ -633,7 +633,7 @@
     }
 
     .final-cta p {
-      color: var(--color-text-muted);
+      color: var(--color-text-on-navy); /* v2: text-muted, 2.3:1 on navy */
       font-size: var(--text-lg);
       margin-bottom: var(--space-xl);
       max-width: 480px;
@@ -1006,7 +1006,7 @@
         <h1>Websites that get you more&nbsp;calls.</h1>
         <!-- v2 hero: <h1>Websites that get you more calls.<span class="text-accent">Guaranteed.</span></h1> — guarantee moved to the closer, see guarantee-band -->
 
-        <p class="hero-subtitle">I build fast, conversion-first websites for Ottawa contractors. Fully managed, updated every month, no setup fees.</p>
+        <p class="hero-subtitle">I build fast websites for Ottawa contractors that turn Google searches into phone calls. Fully managed, updated every month, no setup fees.</p>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Get My Free Site Audit</button>
           <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 13 quote requests in month two &middot; $10k+ in new pipeline</p>
@@ -1030,8 +1030,8 @@
   <section class="case-study">
     <div class="container">
       <div class="section-header">
-        <h2>Real results for real businesses</h2>
-        <p>Case studies from Ottawa contractors we&rsquo;ve helped grow.</p>
+        <h2>Three Ottawa businesses. Three #1&nbsp;rankings.</h2>
+        <p>What happened after each one switched to a site built for local search.</p>
       </div>
       <div class="case-studies-list">
       <div class="case-study-card">
@@ -1049,7 +1049,7 @@
         <div class="case-study-content">
           <span class="badge badge-accent">Landscaping</span>
           <h3>Legendary Landscaping</h3>
-          <p>13 quote requests in a single month. One new lead roughly every two days. We rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Now ranking #1 for &ldquo;lawn cutting near me&rdquo; in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
+          <p>13 quote requests in a single month. A new quote request roughly every two days. I rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Now ranking #1 for &ldquo;lawn cutting near me&rdquo; in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">13</div>
@@ -1057,7 +1057,7 @@
             </div>
             <div class="metric">
               <div class="metric-value">+333%</div>
-              <div class="metric-label">Lead growth, month over month</div>
+              <div class="metric-label">Quote request growth, month over month</div>
             </div>
             <div class="metric">
               <div class="metric-value">#1</div>
@@ -1092,7 +1092,7 @@
         <div class="case-study-content">
           <span class="badge badge-accent">E-Commerce</span>
           <h3>Capital City Cards</h3>
-          <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. We built a full e-commerce site with Stripe payments in one week, got it ranking on Google, and hit a 16.1% click-through rate in month one. That&rsquo;s 8&times; the industry average of 2-3%.</p>
+          <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. I built a full e-commerce site with Stripe payments in one week and got it ranking on Google. In month one, 16 of every 100 people who saw the shop on Google clicked through &mdash; 8&times; the typical rate.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">1 wk</div>
@@ -1104,7 +1104,7 @@
             </div>
             <div class="metric">
               <div class="metric-value">8&times;</div>
-              <div class="metric-label">Industry avg search CTR</div>
+              <div class="metric-label">The typical Google click rate</div>
             </div>
             <div class="metric">
               <div class="metric-value">232</div>
@@ -1130,7 +1130,7 @@
         <div class="case-study-content">
           <span class="badge badge-accent">Renovation</span>
           <h3>J&amp;J Remodeling</h3>
-          <p>Ranked #1 for &ldquo;bathroom remodeling&rdquo; in Ottawa in their first full month live. We built the site, set up their Google Business Profile, and got them showing up on Maps right away.</p>
+          <p>Ranked #1 for &ldquo;bathroom remodeling&rdquo; in Ottawa in their first full month live. I built the site, set up their Google Business Profile, and got them showing up on Maps right away.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">#1</div>
@@ -1155,7 +1155,11 @@
 
       </div><!-- /.case-studies-list -->
       <div style="text-align:center; margin-top: var(--space-2xl);">
-        <a href="/work" class="btn btn-secondary">See All Work &rarr;</a>
+        <p style="font-size: var(--text-lg); color: var(--color-text-secondary); margin-bottom: var(--space-md);">Want numbers like these for your business?</p>
+        <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
+        <div style="margin-top: var(--space-md);">
+          <a href="/work" class="btn btn-ghost">See All Work &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1165,7 +1169,7 @@
     <div class="container">
       <div class="section-header">
         <h2>What happens next</h2>
-        <p>Three steps from first message to ranked and generating leads.</p>
+        <p>Three steps from first message to ranked and getting quote requests.</p>
       </div>
       <div class="steps-grid">
         <div class="step">
@@ -1269,7 +1273,11 @@
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
       <p>Drop your details and I&rsquo;ll reply within 1 business day. Free audit included.</p>
-      <button type="button" class="btn btn-primary open-audit-modal">Get My Free Audit</button>
+      <div style="display:flex; align-items:center; justify-content:center; gap:var(--space-md); margin-bottom:var(--space-xl);">
+        <img src="/images/jd-aitken.png" alt="JD Aitken" width="56" height="56" style="border-radius:var(--radius-sm); object-fit:cover; border:1px solid rgba(255,255,255,0.25);" loading="lazy">
+        <p style="font-size:var(--text-sm); color:var(--color-text-on-navy); margin:0; text-align:left;">You&rsquo;ll deal with me directly &mdash; I build it, I manage it, I answer the phone.<br><strong style="color:var(--color-surface);">JD Aitken</strong></p>
+      </div>
+      <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
       <p class="pricing-note">Most clients choose the Growth plan at $495/mo &middot; No setup fees &middot; 90-day money-back guarantee</p>
     </div>
   </section>

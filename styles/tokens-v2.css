@@ -40,6 +40,9 @@
   --color-warning: #F59E0B;         /* Orange for warnings */
   --color-warning-light: #FEF3C7;   /* Light orange backgrounds */
   
+  /* On-navy text (final CTA bands etc.) — 4.5:1+ on --color-text */
+  --color-text-on-navy: rgba(255, 255, 255, 0.72);
+
   /* Overlay & Shadow */
   --color-overlay: rgba(0, 0, 0, 0.5);      /* Modal overlays */
   --color-shadow: rgba(0, 0, 0, 0.08);      /* Default shadow color */

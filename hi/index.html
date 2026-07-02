@@ -105,7 +105,7 @@
       content: "✓";
       position: absolute;
       left: 0;
-      color: var(--color-accent);
+      color: var(--color-success-dark); /* v2: accent */
       font-weight: var(--font-bold);
     }
 
@@ -118,7 +118,7 @@
       margin-bottom: var(--space-xl);
     }
     .hi-stars {
-      color: var(--color-accent);
+      color: #F5A623; /* v2: accent — stars are gold sitewide */
       font-size: var(--text-base);
       letter-spacing: 1px;
     }
@@ -277,7 +277,7 @@
   <!-- Hero -->
   <div class="hi-hero">
     <h1>Let's talk about your website.</h1>
-    <p>Flat monthly plans. Custom-built in 2&nbsp;weeks. No big upfront costs.</p>
+    <p>Flat monthly plans. Custom-built in about a&nbsp;week. No big upfront costs.</p>
   </div>
 
   <hr class="hi-rule">
@@ -286,7 +286,7 @@
   <ul class="hi-bullets">
     <li>Custom 5-page website built for your business — not a template</li>
     <li>Hosting, SSL, and updates managed for you every month</li>
-    <li>Set up so Google can find you — we handle the technical side</li>
+    <li>Set up so Google can find you — I handle the technical side</li>
   </ul>
 
   <!-- Rating -->
@@ -325,6 +325,8 @@
       <p class="hi-form-error" id="hiError"></p>
 
       <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-xs)">Send Message</button>
+
+      <p style="font-size:var(--text-xs); color:var(--color-text-muted); text-align:center; margin:var(--space-sm) 0 0;">Backed by the 90-day money-back guarantee.</p>
     </form>
   </div>
 

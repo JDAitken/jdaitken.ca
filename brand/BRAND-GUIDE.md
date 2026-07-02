@@ -37,6 +37,7 @@ Navy leads. Red is rationed. Green is proof.
 | `--color-accent-text` | `#A5322B` | Red for inline text links |
 | `--color-accent-light` | `#F8E5E3` | Focus rings **only** — never decorative backgrounds |
 | `--color-success` | `#10B981` | Real metrics and proof only |
+| `--color-text-on-navy` | `rgba(255,255,255,0.72)` | Body text on navy bands (AA-safe) |
 
 Rules:
 - **One red primary CTA per screen.** Everything else is navy.
@@ -69,6 +70,16 @@ Rules:
 **Badges** — `.badge-accent` is now a solid navy chip with white text (spec-label look). No coral tints.
 
 **Inputs** — 4px radius, red border + light-red ring on focus (functional accent use, allowed).
+
+**Modals** — the one radius exception: 16px (`--radius-xl`). Overlays float, so the softer corner is deliberate.
+
+**Guarantee icon** — 4px-radius red square with a white checkmark, everywhere it appears. Never a circle.
+
+**Stars** — always gold `#F5A623`. Checkmark lists use `--color-success-dark`. Neither is ever red.
+
+**CTA standard** — every button that opens the audit modal says **"Get My Free Site Audit"**, on every page, no variants. Contact/landing message forms say "Send Message". The action keeps its name through the whole flow.
+
+**Logo** — wordmark set in Barlow Bold: "jd" in signal red, "media" in navy. Favicons are the Barlow "j" in white on a signal-red square. Sources regenerate from `images/logos/jd-media-logo.svg`.
 
 **Spacing** — 8px scale, unchanged. Generous vertical space between sections (`--space-4xl`+ on desktop): whitespace is how calm reads visually.
 

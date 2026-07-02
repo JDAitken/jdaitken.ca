@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Work | JD Media Ottawa: Real Results for Ottawa Businesses</title>
-  <meta name="description" content="Case studies from Ottawa local service businesses we've helped grow: landscaping, renovation, e-commerce. Real projects, real metrics. See what's possible for your business.">
+  <meta name="description" content="Three Ottawa businesses, three #1 local rankings: landscaping, renovation, e-commerce. Case studies with the numbers behind them.">
 
   <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
@@ -88,10 +88,10 @@
 
     .case-studies { display: flex; flex-direction: column; gap: var(--space-3xl); }
 
-    .case-study-card { display: grid; gap: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-xl); }
+    .case-study-card { display: grid; gap: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--card-radius); /* v2: radius-xl */ padding: var(--space-xl); }
     @media (min-width: 768px) { .case-study-card { grid-template-columns: 1fr 1fr; align-items: center; padding: var(--space-2xl); } }
 
-    .case-study-image { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-border); }
+    .case-study-image { border-radius: var(--card-radius); /* v2: radius-lg */ overflow: hidden; border: 1px solid var(--color-border); }
     .case-study-image img { width: 100%; height: auto; display: block; }
 
     .case-study-meta { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
@@ -113,7 +113,7 @@
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
     .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
-    .final-cta p { color: var(--color-text-muted); font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final-cta p { color: var(--color-text-on-navy); /* v2: text-muted, 2.3:1 on navy */ font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
     .final-cta .btn-primary { background: var(--color-accent); color: var(--color-text); }
     .final-cta .btn-primary:hover { background: var(--color-accent-hover); }
 
@@ -200,7 +200,7 @@
             "item": {
               "@type": "CreativeWork",
               "name": "Legendary Landscaping Website",
-              "description": "Website for Ottawa landscaping company. Conversion-optimized layout with local SEO. Results: 3x quote requests, 1.8-second load time, +55% organic traffic, 20+ new leads per month.",
+              "description": "Website for Ottawa landscaping company. Conversion-optimized layout with local SEO. Results: 3x quote requests, 1.8-second load time, +55% organic traffic, 20+ new quote requests per month.",
               "url": "https://legendarylandscaping.ca",
               "creator": { "@id": "https://jdaitken.ca/#business" },
               "about": { "@type": "LocalBusiness", "name": "Legendary Landscaping", "address": { "@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA" } }
@@ -307,8 +307,8 @@
 
   <section class="work-hero">
     <div class="container">
-      <h1>Real results for Ottawa businesses</h1>
-      <p>Case studies from local service companies we've helped grow.</p>
+      <h1>Three Ottawa businesses. Three #1&nbsp;rankings.</h1>
+      <p>Case studies with the numbers behind them.</p>
     </div>
   </section>
 
@@ -334,7 +334,7 @@
               <span class="badge">Ottawa, ON</span>
             </div>
             <h3>Legendary Landscaping</h3>
-            <p>13 quote requests in a single month. One new lead roughly every two days. We rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Now ranking #1 for &ldquo;lawn cutting near me&rdquo; in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
+            <p>13 quote requests in a single month. A new quote request roughly every two days. I rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Now ranking #1 for &ldquo;lawn cutting near me&rdquo; in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
 
             <div class="case-study-metrics">
               <div class="metric">
@@ -343,7 +343,7 @@
               </div>
               <div class="metric">
                 <div class="metric-value">+333%</div>
-                <div class="metric-label">Lead growth, month over month</div>
+                <div class="metric-label">Quote request growth, month over month</div>
               </div>
               <div class="metric">
                 <div class="metric-value">#1</div>
@@ -388,7 +388,7 @@
               <span class="badge">Ottawa, ON</span>
             </div>
             <h3>Capital City Cards</h3>
-            <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. We built a full e-commerce site with Stripe payments in one week, got it ranking on Google, and hit a 16.1% click-through rate in month one. That&rsquo;s 8&times; the industry average of 2-3%.</p>
+            <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. I built a full e-commerce site with Stripe payments in one week, got it ranking on Google, and hit a 16.1% click-through rate in month one. That&rsquo;s 8&times; the industry average of 2-3%.</p>
 
             <div class="case-study-metrics">
               <div class="metric">
@@ -401,7 +401,7 @@
               </div>
               <div class="metric">
                 <div class="metric-value">8&times;</div>
-                <div class="metric-label">Industry avg search CTR</div>
+                <div class="metric-label">The typical Google click rate</div>
               </div>
               <div class="metric">
                 <div class="metric-value">232</div>
@@ -537,7 +537,7 @@
     <div class="container text-center">
       <h2>Ready to see results like these?</h2>
       <p>Get a free audit and see exactly how your site can generate more calls.</p>
-      <a href="#" class="btn btn-primary open-audit-modal">Get My Free Website Audit</a>
+      <a href="#" class="btn btn-primary open-audit-modal">Get My Free Site Audit</a>
     </div>
   </section>
 
