@@ -18,7 +18,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     .tap-to-call { display: none; }
@@ -31,7 +31,7 @@
         font-weight: var(--font-semibold); text-decoration: none; min-height: 44px;
         letter-spacing: var(--tracking-wide);
       }
-      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
     }
 
     .site-header {
@@ -108,7 +108,7 @@
     .case-study-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); margin: var(--space-lg) 0; }
 
     .metric { text-align: center; }
-    .metric-value { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-accent); line-height: 1; margin-bottom: var(--space-xs); }
+    .metric-value { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); /* v2: accent */ line-height: 1; margin-bottom: var(--space-xs); }
     .metric-label { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
 
     .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
@@ -127,7 +127,7 @@
     .footer-links a:hover { color: var(--color-accent); }
     .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
 
-    .case-study-quote { border-left: 3px solid var(--color-accent); margin: var(--space-lg) 0 0; padding: var(--space-sm) var(--space-md); }
+    .case-study-quote { border-left: 3px solid var(--color-text); /* v2: accent */ margin: var(--space-lg) 0 0; padding: var(--space-sm) var(--space-md); }
     .case-study-quote p { font-size: var(--text-base); color: var(--color-text-secondary); font-style: italic; margin-bottom: var(--space-xs); line-height: var(--leading-normal); }
     .case-study-quote cite { font-size: var(--text-sm); color: var(--color-text-muted); font-style: normal; }
 
@@ -151,7 +151,7 @@
     .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
     .modal-input-full { grid-column: 1 / -1; }
     .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
-    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
     .modal-input::placeholder { color: var(--color-text-muted); }
     .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
     .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
@@ -550,7 +550,7 @@
         <a href="/" class="logo-link">
           <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
         </a>
-        <p>Digital Caretaker for local service businesses.</p>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
         <p>Ottawa, ON</p>
       </div>
       <div class="footer-links">
@@ -573,7 +573,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
       <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
         <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
       </a>

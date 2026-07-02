@@ -18,7 +18,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ===== Page-specific styles (homepage only) ===== */
@@ -38,7 +38,7 @@
         top: 0;
         z-index: calc(var(--z-sticky) + 1);
         background: var(--color-accent);
-        color: var(--color-text);
+        color: var(--color-surface);
         padding: var(--space-sm) var(--space-md);
         font-size: var(--text-sm);
         font-weight: var(--font-semibold);
@@ -49,7 +49,7 @@
 
       .tap-to-call:hover {
         background: var(--color-accent-hover);
-        color: var(--color-text);
+        color: var(--color-surface);
       }
     }
 
@@ -275,7 +275,7 @@
     /* Hero */
     .hero {
       padding: var(--space-4xl) 0 var(--space-3xl);
-      background-color: #f7f6f3;
+      background-color: var(--color-bg);
       position: relative;
       overflow: hidden;
     }
@@ -477,7 +477,7 @@
     .modal-input:focus {
       background: var(--color-surface);
       border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+      box-shadow: 0 0 0 3px var(--color-accent-light);
     }
 
     .modal-input::placeholder {
@@ -608,7 +608,7 @@
       font-family: var(--font-display);
       font-size: var(--text-3xl);
       font-weight: var(--font-bold);
-      color: var(--color-accent);
+      color: var(--color-text); /* v2: var(--color-accent) — proof numbers read as instrumentation, not decoration */
       line-height: 1;
       margin-bottom: var(--space-xs);
     }
@@ -643,7 +643,7 @@
 
     .final-cta .btn-primary {
       background: var(--color-accent);
-      color: var(--color-text);
+      color: var(--color-surface); /* v2: var(--color-text) */
     }
 
     .final-cta .btn-primary:hover {
@@ -686,7 +686,7 @@
     .steps-grid { display: grid; gap: var(--space-2xl); margin-top: var(--space-2xl); }
     @media (min-width: 640px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
     .step { display: flex; flex-direction: column; gap: var(--space-md); }
-    .step-num { width: 52px; height: 52px; border-radius: var(--radius-full); background: var(--color-accent); color: var(--color-surface); font-weight: var(--font-bold); font-size: var(--text-lg); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); flex-shrink: 0; }
+    .step-num { width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--color-text); color: var(--color-surface); font-weight: var(--font-bold); font-size: var(--text-lg); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); flex-shrink: 0; } /* v2: radius-full + accent bg */
     .step h3 { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); }
     .step p { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
 
@@ -710,13 +710,13 @@
       width: 48px;
       height: 48px;
       background: var(--color-accent);
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-sm); /* v2: radius-full */
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.25rem;
       font-weight: var(--font-bold);
-      color: var(--color-text);
+      color: var(--color-surface); /* v2: var(--color-text) */
       line-height: 1;
     }
     .guarantee-text strong {
@@ -1003,7 +1003,9 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Websites that get you more calls.<span class="text-accent">Guaranteed.</span></h1>
+        <h1>Websites that get you more&nbsp;calls.</h1>
+        <!-- v2 hero: <h1>Websites that get you more calls.<span class="text-accent">Guaranteed.</span></h1> — guarantee moved to the closer, see guarantee-band -->
+
         <p class="hero-subtitle">I build fast, conversion-first websites for Ottawa contractors. Fully managed, updated every month, no setup fees.</p>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Get My Free Site Audit</button>
@@ -1188,19 +1190,6 @@
     </div>
   </section>
 
-  <!-- Guarantee -->
-  <section class="guarantee-band">
-    <div class="container">
-      <div class="guarantee-inner">
-        <div class="guarantee-icon">✓</div>
-        <div class="guarantee-text">
-          <strong>The 90-day money-back guarantee.</strong>
-          <p>Stay 90 days. If you&rsquo;re not showing up higher in Google local search than when you started, I&rsquo;ll refund your management fees for those three months. No fine print, no risk.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 5. Trust Signals -->
   <!-- Google Reviews -->
   <section class="reviews-section">
@@ -1262,13 +1251,26 @@
     </div>
   </section>
 
+  <!-- Guarantee — the closer: last thing before the ask -->
+  <section class="guarantee-band">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-icon">✓</div>
+        <div class="guarantee-text">
+          <strong>The 90-day money-back guarantee.</strong>
+          <p>Stay 90 days. If you&rsquo;re not showing up higher in Google local search than when you started, I&rsquo;ll refund your management fees for those three months. No fine print, no risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 6. Final CTA -->
   <section class="final-cta">
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
       <p>Drop your details and I&rsquo;ll reply within 1 business day. Free audit included.</p>
       <button type="button" class="btn btn-primary open-audit-modal">Get My Free Audit</button>
-      <p class="pricing-note">Most clients choose the Growth plan at $495/mo &middot; No setup fees &middot; 30-day guarantee</p>
+      <p class="pricing-note">Most clients choose the Growth plan at $495/mo &middot; No setup fees &middot; 90-day money-back guarantee</p>
     </div>
   </section>
 
@@ -1282,7 +1284,7 @@
         <a href="/" class="logo-link">
           <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
         </a>
-        <p>Digital Caretaker for local service businesses.</p>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
         <p>Ottawa, ON</p>
       </div>
       <div class="footer-links">
@@ -1304,7 +1306,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
       <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
         <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
       </a>

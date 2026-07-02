@@ -18,13 +18,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     .tap-to-call { display: none; }
     @media (max-width: 767px) {
-      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-text); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
-      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-surface); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
     }
 
     .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
@@ -86,7 +86,7 @@
     .how-steps { display: grid; gap: var(--space-lg); }
     @media (min-width: 768px) { .how-steps { grid-template-columns: repeat(3, 1fr); } }
     .how-step { text-align: center; }
-    .how-number { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-accent-light); line-height: 1; margin-bottom: var(--space-sm); }
+    .how-number { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-border); /* v2: accent-light */ line-height: 1; margin-bottom: var(--space-sm); }
     .how-step h3 { font-size: var(--text-base); margin-bottom: var(--space-xs); }
     .how-step p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
 
@@ -94,7 +94,7 @@
     .terms-grid { display: grid; gap: var(--space-md); }
     @media (min-width: 768px) { .terms-grid { grid-template-columns: repeat(2, 1fr); } }
     .terms-item { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
-    .terms-icon { flex-shrink: 0; width: 20px; height: 20px; color: var(--color-accent); margin-top: 1px; }
+    .terms-icon { flex-shrink: 0; width: 20px; height: 20px; color: var(--color-success-dark); margin-top: 1px; } /* v2: accent */
     .terms-item p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; line-height: var(--leading-relaxed); }
 
     /* FAQ */
@@ -132,9 +132,9 @@
     .guarantee-text strong { display: block; font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-surface); margin-bottom: var(--space-xs); font-family: var(--font-display); }
     .guarantee-text p { font-size: var(--text-sm); color: rgba(255,255,255,0.65); margin: 0; line-height: var(--leading-relaxed); }
 
-    .roi-strip { background: var(--color-accent-light); border-bottom: 1px solid var(--color-border); padding: var(--space-xl) 0; }
+    .roi-strip { background: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: var(--space-xl) 0; } /* v2: accent-light tint */
     .roi-inner { display: flex; align-items: center; justify-content: center; gap: var(--space-lg); flex-wrap: wrap; text-align: center; }
-    .roi-inner p { margin: 0; font-size: var(--text-sm); color: var(--color-accent-dark); }
+    .roi-inner p { margin: 0; font-size: var(--text-sm); color: var(--color-text-secondary); } /* v2: accent-dark */
     .roi-inner strong { color: var(--color-text); }
     .roi-inner a { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-accent-dark); white-space: nowrap; }
 
@@ -177,7 +177,7 @@
     .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
     .modal-input-full { grid-column: 1 / -1; }
     .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
-    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
     .modal-input::placeholder { color: var(--color-text-muted); }
     .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
     .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
@@ -731,7 +731,7 @@
         <a href="/" class="logo-link">
           <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
         </a>
-        <p>Digital Caretaker for local service businesses.</p>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
         <p>Ottawa, ON</p>
       </div>
       <div class="footer-links">
@@ -754,7 +754,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
       <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
         <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
       </a>

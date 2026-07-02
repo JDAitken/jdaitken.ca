@@ -18,13 +18,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     .tap-to-call { display: none; }
     @media (max-width: 767px) {
-      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-text); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
-      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-surface); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
     }
     .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
     @media (max-width: 767px) { .site-header { top: 44px; } }
@@ -75,17 +75,17 @@
 
     .step-number {
       font-family: var(--font-display); font-size: var(--text-5xl); font-weight: var(--font-bold);
-      color: var(--color-accent-light); line-height: 1;
+      color: var(--color-border); /* v2: accent-light */ line-height: 1;
     }
     .step-timeline { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: var(--font-medium); margin-top: var(--space-xs); }
 
     .step-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
     .step-content > p { color: var(--color-text-secondary); margin-bottom: var(--space-lg); }
     .step-deliverable {
-      background: var(--color-accent-light); border-radius: var(--radius-md);
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); /* v2: accent-light tint */
       padding: var(--space-md) var(--space-lg); display: inline-block;
     }
-    .step-deliverable strong { font-size: var(--text-sm); color: var(--color-accent-dark); }
+    .step-deliverable strong { font-size: var(--text-sm); color: var(--color-text); } /* v2: accent-dark */
 
     .step-items { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-lg); }
     .step-items li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-lg); position: relative; }
@@ -140,7 +140,7 @@
     .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
     .modal-input-full { grid-column: 1 / -1; }
     .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
-    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
     .modal-input::placeholder { color: var(--color-text-muted); }
     .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
     .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
@@ -430,22 +430,22 @@
       </div>
       <div class="needs-grid">
         <div class="need-card">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M3 21a9 9 0 0 1 18 0"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M3 21a9 9 0 0 1 18 0"/></svg>
           <h3>Brand assets</h3>
           <p>Logo, colors, fonts: anything that represents your business visually.</p>
         </div>
         <div class="need-card">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           <h3>Content</h3>
           <p>Service descriptions, about text, and photos. We can help write if needed.</p>
         </div>
         <div class="need-card">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           <h3>Hosting / domain access</h3>
           <p>Login credentials for your hosting provider and domain registrar.</p>
         </div>
         <div class="need-card">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <h3>Timely feedback</h3>
           <p>Quick turnaround on design reviews keeps the project on schedule.</p>
         </div>
@@ -499,7 +499,7 @@
         <a href="/" class="logo-link">
           <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
         </a>
-        <p>Digital Caretaker for local service businesses.</p>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
         <p>Ottawa, ON</p>
       </div>
       <div class="footer-links">
@@ -522,7 +522,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
       <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
         <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
       </a>

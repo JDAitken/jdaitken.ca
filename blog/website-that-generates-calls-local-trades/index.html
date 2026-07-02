@@ -19,13 +19,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     .tap-to-call { display: none; }
     @media (max-width: 767px) {
-      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-text); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
-      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-text); }
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-surface); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
     }
     .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
     @media (max-width: 767px) { .site-header { top: 44px; } }
@@ -81,9 +81,9 @@
     .post-content a { color: var(--color-accent-dark); font-weight: var(--font-semibold); }
     .post-content a:hover { text-decoration: underline; }
 
-    .post-cta { margin-top: var(--space-2xl); background: var(--color-accent-light); border-left: 3px solid var(--color-accent); border-radius: var(--radius-lg); padding: var(--space-xl); }
+    .post-cta { margin-top: var(--space-2xl); background: var(--color-surface); border: 1px solid var(--color-border); border-left: 3px solid var(--color-text); border-radius: var(--card-radius); padding: var(--space-xl); } /* v2: accent-light tint + accent border */
     .post-cta h3 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-sm); color: var(--color-text); }
-    .post-cta p { color: var(--color-accent-dark); margin-bottom: var(--space-lg); }
+    .post-cta p { color: var(--color-text-secondary); margin-bottom: var(--space-lg); } /* v2: accent-dark */
 
     .post-faq { max-width: 680px; margin: var(--space-2xl) auto 0; }
     .post-faq h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-text); margin-bottom: var(--space-lg); }
@@ -329,7 +329,7 @@
         <a href="/" class="logo-link">
           <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
         </a>
-        <p>Digital Caretaker for local service businesses.</p>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
         <p>Ottawa, ON</p>
       </div>
       <div class="footer-links">
@@ -351,7 +351,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Web Solutions for Local Service Businesses</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
     </div>
   </div>
 </footer>
