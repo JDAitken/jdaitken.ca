@@ -72,6 +72,12 @@
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel -->
+
+  <!-- Lead conversion: contact form redirects here on success -->
+  <script>
+    gtag('event', 'generate_lead', { form: 'contact', page: '/thanks/' });
+    fbq('track', 'Lead');
+  </script>
 </head>
 
 <body>

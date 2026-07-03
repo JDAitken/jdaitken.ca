@@ -375,6 +375,8 @@
       if (res.ok) {
         formWrap.hidden = true;
         success.classList.add('is-visible');
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'hi', page: location.pathname });
+        if (typeof fbq  === 'function') fbq('track', 'Lead');
       } else {
         throw new Error();
       }

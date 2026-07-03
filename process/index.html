@@ -593,7 +593,11 @@
       var res = await fetch('https://formspree.io/f/xaqjbayd', {
         method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
       });
-      if (res.ok) { formWrap.hidden = true; success.hidden = false; }
+      if (res.ok) {
+        formWrap.hidden = true; success.hidden = false;
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'audit-modal', page: location.pathname });
+        if (typeof fbq  === 'function') fbq('track', 'Lead');
+      }
       else { throw new Error(); }
     } catch (_) {
       errEl.textContent = 'Something went wrong. Email jd@jdaitken.ca directly.';
