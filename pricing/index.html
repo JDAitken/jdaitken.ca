@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Pricing | JD Media Ottawa: Plans from $295/mo</title>
-  <meta name="description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $295/mo for local service businesses.">
+  <title>Pricing | JD Media Ottawa: Plans from $500/mo</title>
+  <meta name="description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $500/mo for local service businesses.">
 
   <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
@@ -65,8 +65,8 @@
     .pricing-hero h1 { margin-bottom: var(--space-sm); }
     .pricing-hero p { color: var(--color-text-secondary); font-size: var(--text-lg); max-width: 560px; margin: 0 auto; }
 
-    .pricing-grid { display: grid; gap: var(--space-lg); }
-    @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+    .pricing-grid { display: grid; gap: var(--space-lg); max-width: 800px; margin: 0 auto; }
+    @media (min-width: 640px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
 
     .pricing-card { border: 1px solid var(--color-border); border-radius: var(--card-radius); /* v2: radius-lg */ padding: var(--space-xl); display: flex; flex-direction: column; background: var(--color-surface); }
     .pricing-card.featured { border-color: var(--color-accent); border-width: 2px; position: relative; }
@@ -76,10 +76,15 @@
     .pricing-bestfor { font-size: var(--text-sm); color: var(--color-text-muted); font-style: italic; margin-bottom: var(--space-lg); }
     .pricing-amount { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-xs); }
     .pricing-amount span { font-size: var(--text-sm); font-weight: var(--font-normal); color: var(--color-text-muted); }
+    .pricing-value-anchor { font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-lg); line-height: var(--leading-relaxed); }
     .pricing-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-xl); flex: 1; }
     .pricing-list li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-lg); position: relative; }
     .pricing-list li::before { content: "\2713"; position: absolute; left: 0; color: var(--color-success); font-weight: var(--font-bold); }
     .pricing-fineprint { font-size: var(--text-xs); color: var(--color-text-muted); margin: calc(-1 * var(--space-md)) 0 var(--space-lg); line-height: var(--leading-relaxed); }
+
+    .pricing-notes { max-width: 560px; margin: var(--space-xl) auto 0; text-align: center; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .pricing-notes p { font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed); }
+    .pricing-notes a { color: var(--color-accent-text); font-weight: var(--font-medium); }
 
     /* How it works */
     .how-section { background: var(--color-surface); border-top: 1px solid var(--color-border); }
@@ -194,14 +199,14 @@
   <link rel="canonical" href="https://jdaitken.ca/pricing/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jdaitken.ca/pricing/">
-  <meta property="og:title" content="Pricing | JD Media Ottawa: Plans from $295/mo">
-  <meta property="og:description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $295/mo for local service businesses in Ottawa.">
+  <meta property="og:title" content="Pricing | JD Media Ottawa: Plans from $500/mo">
+  <meta property="og:description" content="No big upfront costs. Get a professionally managed website for a flat monthly fee. Plans start at $500/mo for local service businesses in Ottawa.">
   <meta property="og:image" content="https://jdaitken.ca/images/og-image.png">
   <meta property="og:site_name" content="JD Media">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pricing | JD Media Ottawa Web Design">
-  <meta name="twitter:description" content="Flat monthly plans starting at $295/mo. Custom website, hosting, and ongoing support included.">
+  <meta name="twitter:description" content="Flat monthly plans starting at $500/mo. Custom website, hosting, and ongoing support included.">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -225,14 +230,14 @@
             "position": 1,
             "item": {
               "@type": "Service",
-              "name": "Starter Plan",
-              "description": "Custom 5-page website built for your business, mobile-first fast-loading design, hosting and SSL, domain managed for you, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep.",
+              "name": "Growth Plan",
+              "description": "Custom 5-page website built for your business, mobile-first and fast, hosting/SSL/domain managed, a layout built to turn visitors into callers, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 updates per month, response within 1 business day.",
               "provider": { "@id": "https://jdaitken.ca/#business" },
               "offers": {
                 "@type": "Offer",
-                "price": "295",
+                "price": "500",
                 "priceCurrency": "CAD",
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": "295", "priceCurrency": "CAD", "unitCode": "MON" }
+                "priceSpecification": { "@type": "UnitPriceSpecification", "price": "500", "priceCurrency": "CAD", "unitCode": "MON" }
               }
             }
           },
@@ -241,30 +246,14 @@
             "position": 2,
             "item": {
               "@type": "Service",
-              "name": "Growth Plan",
-              "description": "Everything in Starter plus a layout built to turn visitors into callers, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 updates per month, response within 1 business day.",
-              "provider": { "@id": "https://jdaitken.ca/#business" },
-              "offers": {
-                "@type": "Offer",
-                "price": "495",
-                "priceCurrency": "CAD",
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": "495", "priceCurrency": "CAD", "unitCode": "MON" }
-              }
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-              "@type": "Service",
               "name": "Pro Plan",
               "description": "Everything in Growth plus Google Ads managed for you (ad spend paid directly to Google), pause anytime with no penalty, a quarterly 15-minute strategy call, same-day response on any request, and priority on everything.",
               "provider": { "@id": "https://jdaitken.ca/#business" },
               "offers": {
                 "@type": "Offer",
-                "price": "895",
+                "price": "900",
                 "priceCurrency": "CAD",
-                "priceSpecification": { "@type": "UnitPriceSpecification", "price": "895", "priceCurrency": "CAD", "unitCode": "MON" }
+                "priceSpecification": { "@type": "UnitPriceSpecification", "price": "900", "priceCurrency": "CAD", "unitCode": "MON" }
               }
             }
           }
@@ -286,7 +275,7 @@
           {
             "@type": "Question",
             "name": "Do I own the website?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The subscription includes the website as a managed service. JD Media hosts and maintains it. If you cancel after your commitment, the site is taken down. If you'd like to own your site outright, ask us about a one-time project quote." }
+            "acceptedAnswer": { "@type": "Answer", "text": "During your plan, JD Media hosts and maintains the site as a managed service. Once you complete your 12-month minimum, you can request a free static export and take the site with you, anytime. You're never locked in." }
           },
           {
             "@type": "Question",
@@ -301,7 +290,7 @@
           {
             "@type": "Question",
             "name": "How much does a website cost from JD Media?",
-            "acceptedAnswer": { "@type": "Answer", "text": "JD Media offers monthly plans starting at $295/month (CAD) for the Starter plan, $495/month for Growth, and $895/month for Pro. All plans include a custom 5-page website, hosting, SSL, and ongoing support. One-time project quotes are also available." }
+            "acceptedAnswer": { "@type": "Answer", "text": "JD Media offers monthly plans starting at $500/month (CAD) for Growth, and $900/month for Pro. Both plans include a custom 5-page website, hosting, SSL, monthly SEO and Google Business Profile management, and ongoing support. One-time project quotes are also available for a website-only build." }
           }
         ]
       }
@@ -413,29 +402,16 @@
     <div class="container">
       <div class="pricing-grid">
 
-        <div class="pricing-card">
-          <h3>Starter</h3>
-          <div class="pricing-amount">$295<span>/mo</span></div>
-          <p class="pricing-bestfor">Best for: You need a real website. Something professional that shows up on Google and doesn't embarrass you when a customer looks you up.</p>
+        <div class="pricing-card featured">
+          <span class="badge badge-accent pricing-badge">Recommended</span>
+          <h3>Growth</h3>
+          <div class="pricing-amount">$500<span>/mo</span></div>
+          <p class="pricing-value-anchor">A custom build like this runs $2,000+ as a one-time project elsewhere. Here, setup is $0 &mdash; it's part of the plan.</p>
+          <p class="pricing-bestfor">Best for: You want Google to send you customers without paying for ads. I build and run everything &mdash; the site, the rankings, the profile &mdash; so you don't have to think about it.</p>
           <ul class="pricing-list">
             <li>Custom 5-page website built for your business (not a template)</li>
-            <li>Looks great on phones. That's where your customers are searching</li>
-            <li>Loads fast. Slow sites lose customers before they even read a word</li>
+            <li>Mobile-first and fast. That's where your customers are searching</li>
             <li>Hosting, SSL, and your domain managed for you</li>
-            <li>Set up so Google can find and index your site</li>
-            <li>1 update per month. New photo, changed hours, updated service, whatever you need</li>
-          </ul>
-          <p class="pricing-fineprint">12-month minimum. Your custom site is yours to keep after that.</p>
-          <a href="#" class="btn btn-secondary open-audit-modal" style="width: 100%;">Get My Free Site Audit</a>
-        </div>
-
-        <div class="pricing-card featured">
-          <span class="badge badge-accent pricing-badge">Most Popular</span>
-          <h3>Growth</h3>
-          <div class="pricing-amount">$495<span>/mo</span></div>
-          <p class="pricing-bestfor">Best for: You want Google to send you customers without paying for ads. I work on your rankings every month so you don't have to think about it.</p>
-          <ul class="pricing-list">
-            <li>Everything in Starter</li>
             <li>Layout built to make visitors call you, not just look around and leave</li>
             <li>Your Google Business Profile managed monthly (this is what gets you in the map results)</li>
             <li>Monthly SEO content targeting searches your customers are actually making</li>
@@ -448,11 +424,12 @@
 
         <div class="pricing-card">
           <h3>Pro</h3>
-          <div class="pricing-amount">$895<span>/mo</span></div>
-          <p class="pricing-bestfor">Best for: You answer the phone and run jobs. I run everything that gets you customers online. You don't touch any of it.</p>
+          <div class="pricing-amount">$900<span>/mo</span></div>
+          <p class="pricing-value-anchor">Everything in Growth, plus your Google Ads managed for you.</p>
+          <p class="pricing-bestfor">Best for: You answer the phone and run jobs. I run everything that gets you customers online, including paid ads. You don't touch any of it.</p>
           <ul class="pricing-list">
             <li>Everything in Growth</li>
-            <li>Google Ads managed for you. You pay Google directly for ad spend, we manage everything else</li>
+            <li>Google Ads managed for you. You pay Google directly for ad spend, I manage everything else</li>
             <li>Pause your ads anytime. No penalty, no hassle</li>
             <li>Quarterly 15-minute call to review what's working and what's next</li>
             <li>Same-day response on any request or question</li>
@@ -461,6 +438,11 @@
           <a href="#" class="btn btn-secondary open-audit-modal" style="width: 100%;">Get My Free Site Audit</a>
         </div>
 
+      </div>
+
+      <div class="pricing-notes">
+        <p>I take on a limited number of new builds each month &mdash; I do the work myself.</p>
+        <p>Just need a professional website? I do one-time builds too. <a href="/contact">Ask me</a>.</p>
       </div>
     </div>
   </section>
@@ -472,7 +454,7 @@
         <div class="guarantee-icon">✓</div>
         <div class="guarantee-text">
           <strong>The 90-day money-back guarantee</strong>
-          <p>Stay 90 days. If you're not showing up higher in Google local search than when you started, I'll refund your management fees for those three months. No fine print, no risk.</p>
+          <p>Stay 90 days. If you're not showing up higher in Google local search and your map results than when you started, I'll refund your management fees for those three months. No fine print, no risk.</p>
         </div>
       </div>
     </div>
@@ -530,7 +512,7 @@
             </tr>
             <tr>
               <td>Monthly cost</td>
-              <td class="compare-yes">$295-895</td>
+              <td class="compare-yes">$500-900</td>
               <td>$20-50</td>
               <td>$500-2,000+</td>
             </tr>
@@ -581,11 +563,11 @@
         </div>
         <div class="terms-item">
           <svg class="terms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <p>Your site is built and managed as part of your plan. It lives on our infrastructure. It&rsquo;s a service, not a one-time handoff.</p>
+          <p>Your site is built and managed as part of your plan during the term. Once you complete your 12 months, it&rsquo;s yours to take &mdash; a free static export, anytime. You&rsquo;re never locked in.</p>
         </div>
         <div class="terms-item">
           <svg class="terms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <p>Prefer to own your site outright? I offer one-time project builds too. <a href="/contact">Just ask</a>.</p>
+          <p>Prefer to own your site outright from day one? I offer one-time project builds too. <a href="/contact">Just ask</a>.</p>
         </div>
       </div>
     </div>
@@ -625,7 +607,7 @@
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
           <div class="faq-answer" role="region">
-            <p>The subscription includes the website as a managed service. JD Media hosts and maintains it. If you cancel after your commitment, the site is taken down. If you'd like to own your site outright, ask us about a one-time project quote.</p>
+            <p>During your plan, I host and maintain the site as a managed service. Once you complete your 12-month minimum, you can request a free static export and take the site with you, anytime, at no charge. You're never locked in.</p>
           </div>
         </div>
 

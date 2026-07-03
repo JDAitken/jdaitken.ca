@@ -10,11 +10,10 @@ JD Media is an Ottawa-based web design agency run by JD Aitken. We build mobile-
 
 All plans include a custom 5-page website, hosting, SSL, and ongoing support. 12-month minimum commitment.
 
-- **Starter Plan** ($295/month): Custom 5-page website, mobile-first design, fast loading, hosting and SSL, domain managed for you, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep.
-- **Growth Plan** ($495/month, most popular): Everything in Starter, plus a conversion-optimized layout, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 content updates per month, response within 1 business day.
-- **Pro Plan** ($895/month): Everything in Growth, plus Google Ads managed for you (ad spend paid directly to Google, pause anytime), a quarterly 15-minute strategy call, same-day response, and priority on everything.
+- **Growth Plan** ($500/month, recommended entry plan): Custom 5-page website, mobile-first design, fast loading, hosting/SSL/domain managed, a conversion-optimized layout, Google Business Profile managed monthly, monthly SEO content targeting local searches, a simple monthly performance report, up to 3 content updates per month, response within 1 business day.
+- **Pro Plan** ($900/month): Everything in Growth, plus Google Ads managed for you (ad spend paid directly to Google, pause anytime), a quarterly 15-minute strategy call, same-day response, and priority on everything.
 
-One-time project quotes are also available for businesses that prefer to own their site outright.
+One-time project quotes are also available for businesses that just want a website with no ongoing marketing. During the plan, the site is a managed service; once a client completes the 12-month minimum, they can request a free static export and take the site with them, anytime, at no charge.
 
 **Guarantee**: A 90-day money-back guarantee. Stay 90 days and if you are not showing up higher in Google local search than when you started, JD Media refunds your management fees for those three months.
 
@@ -52,7 +51,7 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 
 - JD Media is based in Ottawa, Ontario, Canada
 - We serve local service businesses: HVAC, plumbing, electrical, landscaping, and other home services
-- Monthly plans start at $295 CAD/month
+- Monthly plans start at $500 CAD/month
 - Backed by a 90-day money-back guarantee on Google local search visibility
 - Typical project timeline: about 1 to 2 weeks from kickoff to launch
 - We offer free website audits with no obligation

@@ -3,18 +3,18 @@ About: one-person operation run by JD Aitken. JD builds and runs the websites Ot
 Services: managed small-business websites (website + hosting + updates) for a simple monthly fee.
 Pricing (12-month minimum term, then month-to-month):
 
-Starter: $295/month
-Includes: custom 5-page website (not a template), mobile-first and fast loading, hosting + SSL + domain managed for you, on-page SEO setup so Google can index the site, 1 content update per month. 12-month minimum, then the custom site is yours to keep.
-Best for: businesses that need a real, professional website that shows up on Google.
-
-Growth: $495/month (most popular)
-Includes: everything in Starter, a layout built to turn visitors into callers, Google Business Profile managed monthly (drives map results), monthly SEO content targeting local searches, a simple monthly report on how many people found and called you, up to 3 updates per month, response within 1 business day.
+Growth: $500/month (recommended entry plan)
+Includes: custom 5-page website (not a template), mobile-first and fast loading, hosting + SSL + domain managed for you, a layout built to turn visitors into callers, Google Business Profile managed monthly (drives map results), monthly SEO content targeting local searches, a simple monthly report on how many people found and called you, up to 3 updates per month, response within 1 business day.
 Best for: businesses that want Google to send them customers without paying for ads.
 
-Pro: $895/month
+Pro: $900/month
 Includes: everything in Growth, Google Ads managed for you (you pay Google directly for ad spend, pause anytime with no penalty), quarterly 15-minute strategy call, same-day response, priority on everything.
-Best for: businesses that want their entire online customer acquisition handled for them.
+Best for: businesses that want their entire online customer acquisition handled for them, including paid ads.
+
+Website-only / one-time build: for businesses that just want a site with no ongoing marketing, JD Media also offers one-time project builds, priced as a custom quote. Not a featured plan — ask directly.
+
+Ownership: during the plan, the site is a managed service (hosted and maintained by JD Media). Once a client completes the 12-month minimum, they can request a free static export and take the site with them, anytime, at no charge. Clients are never locked in.
 
 Launch timeline: most sites go live in 7-14 days after content is received.
-Guarantee: 90-day money-back guarantee. Stay 90 days and if you are not showing up higher in Google local search than when you started, JD Media refunds your management fees for those three months. No fine print.
+Guarantee: 90-day money-back guarantee, applies to Growth and Pro. Stay 90 days and if you are not showing up higher in Google local search than when you started, JD Media refunds your management fees for those three months. No fine print.
 Contact: jd@jdaitken.ca
