@@ -274,7 +274,7 @@
 
     /* Hero */
     .hero {
-      padding: var(--space-4xl) 0 var(--space-3xl);
+      padding: var(--space-3xl) 0;
       background-color: var(--color-bg);
       position: relative;
       overflow: hidden;
@@ -310,7 +310,7 @@
 
     @media (min-width: 768px) {
       .hero {
-        padding: var(--space-5xl) 0 var(--space-5xl);
+        padding: var(--space-4xl) 0;
       }
     }
 
@@ -318,6 +318,11 @@
       max-width: 960px;
       margin: 0 auto;
       text-align: center;
+    }
+
+    .hero .kicker {
+      text-align: center;
+      margin-bottom: var(--space-md);
     }
 
     .hero h1 {
@@ -339,7 +344,7 @@
       font-size: var(--text-base);
       color: var(--color-text-muted);
       line-height: var(--leading-snug);
-      margin-bottom: var(--space-2xl);
+      margin-bottom: var(--space-xl);
       max-width: 560px;
       margin-left: auto;
       margin-right: auto;
@@ -371,9 +376,13 @@
       text-align: center;
     }
 
+    /* .hero-stars unused since hero proof line dropped the star rating (incoherent next to a
+       quote-request stat; the real 5.0 Google rating lives in the reviews section instead) —
+       kept in case a future hero variant restores it.
     .hero-stars {
       color: #F5A623;
     }
+    */
 
     /* Modal */
     .modal-overlay {
@@ -1003,13 +1012,14 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
+        <span class="kicker">Ottawa web design &middot; local SEO</span>
         <h1>Websites that get you more&nbsp;calls.</h1>
         <!-- v2 hero: <h1>Websites that get you more calls.<span class="text-accent">Guaranteed.</span></h1> — guarantee moved to the closer, see guarantee-band -->
 
-        <p class="hero-subtitle">I build fast websites for Ottawa contractors that turn Google searches into phone calls. Fully managed, updated every month, no setup fees.</p>
+        <p class="hero-subtitle">Fast, fully managed websites for Ottawa contractors that turn Google searches into phone calls. No setup fees.</p>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary open-audit-modal" id="openAuditModal">Get My Free Site Audit</button>
-          <p class="hero-social-proof"><span class="hero-stars">★★★★★</span> Legendary Landscaping: 13 quote requests in month two &middot; $10k+ in new pipeline</p>
+          <p class="hero-social-proof">13 quote requests in one month, up from zero. Legendary Landscaping, Ottawa.</p>
         </div>
       </div>
     </div>
@@ -1030,8 +1040,8 @@
   <section class="case-study">
     <div class="container">
       <div class="section-header">
-        <h2>Three Ottawa businesses. Three #1&nbsp;rankings.</h2>
-        <p>What happened after each one switched to a site built for local search.</p>
+        <h2>Proof, not promises.</h2>
+        <p>Three Ottawa businesses, and the numbers from their own dashboards.</p>
       </div>
       <div class="case-studies-list">
       <div class="case-study-card">
@@ -1049,23 +1059,23 @@
         <div class="case-study-content">
           <span class="badge badge-accent">Landscaping</span>
           <h3>Legendary Landscaping</h3>
-          <p>13 quote requests in a single month. A new quote request roughly every two days. I rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Now ranking #1 for &ldquo;lawn cutting near me&rdquo; in Ottawa, ahead of competitors who&rsquo;ve been online for years.</p>
+          <p>13 quote requests in 90 days &mdash; up from zero before the rebuild. I rebuilt the site for speed and local search, optimized the Google Business Profile, and launched fast. Last quarter the site drew 163 clicks from Google; the quarter before, it was 30.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">13</div>
-              <div class="metric-label">Quote requests in April</div>
+              <div class="metric-label">Quote requests in 90 days</div>
             </div>
             <div class="metric">
-              <div class="metric-value">+333%</div>
-              <div class="metric-label">Quote request growth, month over month</div>
+              <div class="metric-value">0</div>
+              <div class="metric-label">In the 90 days before</div>
             </div>
             <div class="metric">
-              <div class="metric-value">#1</div>
-              <div class="metric-label">Rank: lawn cutting near me</div>
+              <div class="metric-value">163</div>
+              <div class="metric-label">Google clicks last quarter &mdash; up from 30</div>
             </div>
             <div class="metric">
-              <div class="metric-value">14</div>
-              <div class="metric-label">Monthly calls from Google</div>
+              <div class="metric-value">2,850</div>
+              <div class="metric-label">Times shown in search &mdash; up from 765</div>
             </div>
           </div>
           <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -1092,23 +1102,23 @@
         <div class="case-study-content">
           <span class="badge badge-accent">E-Commerce</span>
           <h3>Capital City Cards</h3>
-          <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. I built a full e-commerce site with Stripe payments in one week and got it ranking on Google. In month one, 16 of every 100 people who saw the shop on Google clicked through &mdash; 8&times; the typical rate.</p>
+          <p>Patrick was losing sales every day his inventory wasn&rsquo;t online. I built a full e-commerce site with Stripe payments in one week. Three months in: 250+ clicks from Google, and 14 of every 100 people who see the shop in search click through &mdash; quarter after quarter. Typical is 2 or 3.</p>
           <div class="case-study-metrics">
             <div class="metric">
               <div class="metric-value">1 wk</div>
               <div class="metric-label">From brief to live</div>
             </div>
             <div class="metric">
-              <div class="metric-value">#1</div>
-              <div class="metric-label">Rank: card stores Ottawa</div>
+              <div class="metric-value">250+</div>
+              <div class="metric-label">Clicks from Google in 3 months</div>
             </div>
             <div class="metric">
-              <div class="metric-value">8&times;</div>
-              <div class="metric-label">The typical Google click rate</div>
+              <div class="metric-value">14%</div>
+              <div class="metric-label">Of searchers click through &mdash; typical is 2&ndash;3%</div>
             </div>
             <div class="metric">
-              <div class="metric-value">232</div>
-              <div class="metric-label">Organic clicks: 3 months</div>
+              <div class="metric-value">+92%</div>
+              <div class="metric-label">Visitors, last 90 days vs. prior</div>
             </div>
           </div>
           <a href="https://capitalcitycards.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -1130,23 +1140,23 @@
         <div class="case-study-content">
           <span class="badge badge-accent">Renovation</span>
           <h3>J&amp;J Remodeling</h3>
-          <p>Ranked #1 for &ldquo;bathroom remodeling&rdquo; in Ottawa in their first full month live. I built the site, set up their Google Business Profile, and got them showing up on Maps right away.</p>
+          <p>Ottawa renovation specialists with no web presence at all. I built the site, set up their Google Business Profile, and had them live in a week. 134 visitors from Google search in their first 90 days &mdash; a standing start, still climbing.</p>
           <div class="case-study-metrics">
             <div class="metric">
-              <div class="metric-value">#1</div>
-              <div class="metric-label">Rank: bathroom remodeling Ottawa</div>
+              <div class="metric-value">1 wk</div>
+              <div class="metric-label">From brief to live</div>
             </div>
             <div class="metric">
-              <div class="metric-value">+981%</div>
-              <div class="metric-label">GSC impressions, month over month</div>
+              <div class="metric-value">134</div>
+              <div class="metric-label">Visitors in the first 90 days</div>
             </div>
             <div class="metric">
-              <div class="metric-value">+450%</div>
-              <div class="metric-label">GSC clicks, month over month</div>
+              <div class="metric-value">100%</div>
+              <div class="metric-label">New visitors &mdash; starting from zero</div>
             </div>
             <div class="metric">
-              <div class="metric-value">4.9</div>
-              <div class="metric-label">Avg. search position</div>
+              <div class="metric-value">Day 1</div>
+              <div class="metric-label">On Google Business Profile and Maps</div>
             </div>
           </div>
           <a href="https://jandjremodeling.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>

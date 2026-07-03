@@ -25,7 +25,16 @@
       "Bash(grep:*)",
       "Bash(chmod:*)",
       "Bash(python3:*)",
-      "WebFetch(domain:johna440.sg-host.com)"
+      "WebFetch(domain:johna440.sg-host.com)",
+      "Bash(convert:*)",
+      "Bash(magick identify:*)",
+      "Bash(magick:*)",
+      "Bash(git revert:*)",
+      "Bash(git pull:*)",
+      "Bash(git:*)",
+      "Bash(npx serve *)",
+      "Bash(node -e ' *)",
+      "Bash(npm install *)"
     ]
   }
 }
