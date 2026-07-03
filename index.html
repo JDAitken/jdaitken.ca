@@ -659,11 +659,39 @@
       background: var(--color-accent-hover);
     }
 
+    /* .pricing-note: retired in favor of .cta-trust chips below — kept for reference
     .pricing-note {
       margin-top: var(--space-md);
       font-size: var(--text-sm);
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: 0;
+    }
+    */
+
+    .cta-signature {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      max-width: 480px;
+      margin: 0 auto var(--space-xl);
+      padding-top: var(--space-lg);
+      font-size: var(--text-sm);
+      color: var(--color-text-on-navy);
+    }
+
+    .cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .cta-trust span {
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
     }
 
     /* Problem framing */
@@ -816,6 +844,12 @@
   <meta name="twitter:description" content="Fast, conversion-first websites for HVAC and local service businesses in Ottawa. Mobile-first design that turns clicks into calls.">
 
   <!-- Structured Data -->
+  <!-- Starter Plan retired from the two-tier lineup (Growth/Pro); JSON-LD has no comment
+       syntax so it's preserved here instead of inline:
+       { "@type": "Offer", "name": "Starter Plan", "price": "295", "priceCurrency": "CAD",
+         "description": "Custom 5-page website, mobile-first design, hosting and SSL, on-page
+         SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours
+         to keep." } -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -859,22 +893,15 @@
           "itemListElement": [
             {
               "@type": "Offer",
-              "name": "Starter Plan",
-              "price": "295",
-              "priceCurrency": "CAD",
-              "description": "Custom 5-page website, mobile-first design, hosting and SSL, on-page SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours to keep."
-            },
-            {
-              "@type": "Offer",
               "name": "Growth Plan",
-              "price": "495",
+              "price": "500",
               "priceCurrency": "CAD",
-              "description": "Everything in Starter plus active Google Business Profile management, monthly SEO content, monthly performance report, up to 3 updates per month, 1 business day response."
+              "description": "Custom 5-page website, mobile-first design, hosting and SSL, active Google Business Profile management, monthly SEO content, monthly performance report, up to 3 updates per month, 1 business day response."
             },
             {
               "@type": "Offer",
               "name": "Pro Plan",
-              "price": "895",
+              "price": "900",
               "priceCurrency": "CAD",
               "description": "Everything in Growth plus Google Ads managed for you (ad spend paid directly to Google), pause anytime, quarterly strategy call, same-day priority response."
             }
@@ -1289,9 +1316,13 @@
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
       <p>Drop your details and I&rsquo;ll reply within 1 business day. Free audit included.</p>
-      <p style="font-size:var(--text-sm); color:var(--color-text-on-navy); margin:0 auto var(--space-xl); max-width:480px;">You&rsquo;ll deal with me directly &mdash; I build it, I manage it, I answer the phone. <strong style="color:var(--color-surface);">&mdash; JD Aitken</strong></p>
+      <p class="cta-signature">You&rsquo;ll deal with me directly &mdash; I build it, I manage it, I answer the phone. <strong style="color:var(--color-surface);">&mdash; JD Aitken</strong></p>
       <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
-      <p class="pricing-note">Most clients choose the Growth plan at $495/mo &middot; No setup fees &middot; 90-day money-back guarantee</p>
+      <div class="cta-trust">
+        <span>Growth plan &middot; $500/mo</span>
+        <span>No setup fees</span>
+        <span>90-day money-back guarantee</span>
+      </div>
     </div>
   </section>
 
