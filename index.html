@@ -659,15 +659,15 @@
       background: var(--color-accent-hover);
     }
 
-    /* .pricing-note: retired in favor of .cta-trust chips below — kept for reference
     .pricing-note {
       margin-top: var(--space-md);
       font-size: var(--text-sm);
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: 0;
     }
-    */
 
+    /* .cta-signature + .cta-trust: tried as a fix for a "wall of text" CTA, then simplified
+       further to a single quiet .pricing-note line — kept for reference
     .cta-signature {
       border-top: 1px solid rgba(255, 255, 255, 0.14);
       max-width: 480px;
@@ -693,6 +693,7 @@
       border-radius: var(--radius-sm);
       padding: var(--space-sm) var(--space-md);
     }
+    */
 
     /* Problem framing */
     .problem-section {
@@ -1316,13 +1317,19 @@
     <div class="container text-center">
       <h2>Ready to get more calls from Google?</h2>
       <p>Drop your details and I&rsquo;ll reply within 1 business day. Free audit included.</p>
+      <!-- Signature line: cut along with the trust chips below when simplifying this CTA
       <p class="cta-signature">You&rsquo;ll deal with me directly &mdash; I build it, I manage it, I answer the phone. <strong style="color:var(--color-surface);">&mdash; JD Aitken</strong></p>
+      -->
       <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
+      <!-- Trust chips: replaced with the single quiet line below (guarantee already stated
+           in full in .guarantee-band directly above this section)
       <div class="cta-trust">
         <span>Growth plan &middot; $500/mo</span>
         <span>No setup fees</span>
         <span>90-day money-back guarantee</span>
       </div>
+      -->
+      <p class="pricing-note">Growth plan &middot; $500/mo &middot; No setup fees</p>
     </div>
   </section>
 
