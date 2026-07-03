@@ -92,15 +92,10 @@ All live in `/api/`:
 
 ## Brand Standards
 
-**Color Palette:**
-- Navy (`--color-text: #1B3A5F`) for primary text
-- Coral (`--color-accent: #FF6B6B`) for accents/CTAs
-- Off-white background (`--color-bg: #FAFAFA`)
-- White surfaces (`--color-surface: #FFFFFF`)
-
-**Typography:** Inter (body, weights 400/500/600) · DM Sans (headings, weights 500/700)
-
-**Voice:** Calm and confident. Real metrics only — no fake content or hype.
+Source of truth: `brand/BRAND-GUIDE.md` (v3.0). Read it before any visual or copy change — don't
+rely on values restated here, they drift. Current headline points: navy-dominant with signal red
+(`#C9403A`) rationed to one CTA per screen, Barlow headlines / Inter body, no agency jargon, the
+90-day guarantee stated once per page at the decision point (never in the hero).
 
 ## Deployment
 
