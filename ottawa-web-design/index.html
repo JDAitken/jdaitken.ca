@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ottawa Web Design for Contractors | JD Media</title>
+  <meta name="description" content="Ottawa web design for contractors and trades businesses. Custom websites built to rank in local search and turn visitors into calls. Managed monthly, no setup fees.">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .tap-to-call { display: none; }
+    @media (max-width: 767px) {
+      .tap-to-call {
+        display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
+        position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1);
+        background: var(--color-accent); color: var(--color-surface);
+        padding: var(--space-sm) var(--space-md); font-size: var(--text-sm);
+        font-weight: var(--font-semibold); text-decoration: none; min-height: 44px;
+        letter-spacing: var(--tracking-wide);
+      }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
+    }
+
+    .site-header {
+      position: sticky; top: 0; z-index: var(--z-sticky);
+      background: var(--color-surface); border-bottom: 1px solid var(--color-border);
+      height: var(--header-height-mobile); display: flex; align-items: center;
+    }
+    @media (max-width: 767px) { .site-header { top: 44px; } }
+    @media (min-width: 768px) { .site-header { height: var(--header-height); } }
+
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md);
+    }
+    @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
+
+    .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
+    @media (min-width: 768px) { .nav-desktop { display: flex; } }
+    .nav-desktop a {
+      font-size: var(--text-sm); font-weight: var(--font-medium);
+      color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base);
+    }
+    .nav-desktop a:hover { color: var(--color-text); }
+    .nav-desktop a.active { color: var(--color-accent); }
+
+    .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
+    .header-cta { display: none; }
+    @media (min-width: 768px) { .header-cta { display: inline-flex; } }
+    .btn-nav-outline { background: transparent; border: 1.5px solid var(--color-text); color: var(--color-text); }
+    .btn-nav-outline:hover { background: var(--color-text); color: var(--color-surface); }
+
+    .menu-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: var(--radius-md);
+      border: 1px solid var(--color-border); background: var(--color-surface);
+      color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base);
+    }
+    .menu-toggle:hover { border-color: var(--color-text-muted); }
+    @media (min-width: 768px) { .menu-toggle { display: none; } }
+
+    .menu-icon { position: relative; width: 18px; height: 12px; }
+    .menu-icon::before, .menu-icon::after, .menu-icon span {
+      content: ""; position: absolute; left: 0; right: 0; height: 2px;
+      background: currentColor; border-radius: 1px;
+    }
+    .menu-icon::before { top: 0; } .menu-icon span { top: 5px; } .menu-icon::after { bottom: 0; }
+
+    .mobile-menu {
+      position: fixed; inset: 0; background: var(--color-overlay);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity var(--transition-slow); z-index: var(--z-modal);
+    }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .mobile-menu-panel {
+      width: 100%; height: 100%; background: var(--color-surface);
+      padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xl);
+      transform: translateY(8px); transition: transform var(--transition-slow);
+    }
+    .mobile-menu.is-open .mobile-menu-panel { transform: translateY(0); }
+    .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; }
+    .mobile-menu-close {
+      width: 44px; height: 44px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: transparent;
+      color: var(--color-text); font-size: var(--text-xl); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mobile-menu-nav { display: flex; flex-direction: column; gap: var(--space-lg); flex: 1; }
+    .mobile-menu-nav a {
+      font-family: var(--font-display); font-size: var(--text-3xl);
+      font-weight: var(--font-bold); color: var(--color-text); text-decoration: none;
+    }
+    .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
+    .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
+
+    /* Hero */
+    .odw-hero { padding: var(--space-3xl) 0 var(--space-2xl); text-align: center; }
+    @media (min-width: 768px) { .odw-hero { padding: var(--space-4xl) 0 var(--space-3xl); } }
+    .odw-hero .kicker { text-align: center; }
+    .odw-hero h1 { max-width: 820px; margin: 0 auto var(--space-lg); }
+    .odw-hero-subtitle {
+      font-size: var(--text-base); color: var(--color-text-secondary);
+      max-width: 620px; margin: 0 auto var(--space-xl); line-height: var(--leading-relaxed);
+    }
+    @media (min-width: 768px) { .odw-hero-subtitle { font-size: var(--text-lg); } }
+    .odw-hero-proof {
+      font-size: var(--text-sm); color: var(--color-text-muted); font-weight: var(--font-medium);
+      margin-top: var(--space-lg); margin-bottom: 0;
+    }
+
+    /* Problem framing */
+    .problem-section { padding: var(--space-3xl) 0; background: var(--color-text); }
+    .problem-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .problem-inner p { font-size: var(--text-lg); color: rgba(255, 255, 255, 0.68); line-height: var(--leading-relaxed); margin-bottom: var(--space-md); }
+    .problem-inner p:last-child { margin-bottom: 0; font-weight: var(--font-bold); color: var(--color-surface); font-size: var(--text-xl); }
+
+    /* Positioning / story */
+    .story-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .story-content { max-width: 680px; margin: 0 auto; }
+    .story-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); }
+    .story-content p { margin-bottom: var(--space-md); line-height: var(--leading-relaxed); }
+    .story-content p:last-child { margin-bottom: 0; }
+
+    /* What you get */
+    .skills-grid { display: grid; gap: var(--space-lg); }
+    @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+    .skill-card { padding: var(--space-xl); border: 1px solid var(--color-border); border-top: 3px solid var(--color-text); border-radius: var(--card-radius); background: var(--color-surface); }
+    .skill-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
+    .skill-card p { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
+
+    /* Service area */
+    .service-area-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); text-align: center; }
+    .service-area-content { max-width: 640px; margin: 0 auto; }
+    .service-area-content p { color: var(--color-text-secondary); font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-xl); }
+    .service-area-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+
+    /* Case Study Section (proof) */
+    .case-study { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .case-study-card { display: grid; gap: var(--space-xl); }
+    @media (min-width: 768px) { .case-study-card { grid-template-columns: 1fr 1fr; align-items: center; } }
+    .case-study-image { border-radius: var(--card-radius); overflow: hidden; border: 1px solid var(--color-border); }
+    .case-study-image img { width: 100%; height: auto; display: block; }
+    .view-site-link { display: inline-flex; align-items: center; gap: 0.4em; font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-accent); text-decoration: none; margin-top: var(--space-sm); transition: gap var(--transition-base); }
+    .view-site-link:hover { gap: 0.6em; }
+    .case-study-content h3 { margin-bottom: var(--space-sm); }
+    .case-study-content p { margin-bottom: var(--space-md); }
+    .case-study-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); margin: var(--space-lg) 0; }
+    .metric { text-align: center; }
+    .metric-value { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); line-height: 1; margin-bottom: var(--space-xs); }
+    .metric-label { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+    .case-studies-list { display: flex; flex-direction: column; gap: var(--space-2xl); }
+
+    /* Pricing teaser */
+    .pricing-teaser-section { text-align: center; }
+    .pricing-teaser-copy { font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 560px; margin: 0 auto var(--space-xl); line-height: var(--leading-relaxed); }
+
+    /* FAQ */
+    .faq-section { background: var(--color-surface); border-top: 1px solid var(--color-border); }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--color-border); }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+      width: 100%; padding: var(--space-lg) 0; background: none; border: none;
+      font-family: var(--font-ui); font-size: var(--text-base); font-weight: var(--font-semibold);
+      color: var(--color-text); text-align: left; cursor: pointer;
+    }
+    .faq-question:hover { color: var(--color-accent); }
+    .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform var(--transition-base); }
+    .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: currentColor; border-radius: 1px; }
+    .faq-icon::before { top: 50%; left: 0; right: 0; height: 2px; transform: translateY(-50%); }
+    .faq-icon::after { left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); transition: transform var(--transition-base); }
+    .faq-item.is-open .faq-icon::after { transform: translateX(-50%) scaleY(0); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-slow); }
+    .faq-item.is-open .faq-answer { max-height: 300px; }
+    .faq-answer p { padding-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+
+    /* Guarantee band */
+    .guarantee-band { background: var(--color-text); padding: var(--space-2xl) 0; }
+    .guarantee-inner { display: flex; align-items: flex-start; gap: var(--space-lg); max-width: 640px; margin: 0 auto; }
+    @media (min-width: 768px) { .guarantee-inner { align-items: center; } }
+    .guarantee-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--color-accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: var(--font-bold); color: var(--color-surface); line-height: 1; }
+    .guarantee-text strong { display: block; font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-surface); margin-bottom: var(--space-xs); font-family: var(--font-display); }
+    .guarantee-text p { font-size: var(--text-sm); color: rgba(255,255,255,0.65); margin: 0; line-height: var(--leading-relaxed); }
+
+    /* Final CTA */
+    .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
+    .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
+    .final-cta p { color: var(--color-text-on-navy); font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final-cta .btn-primary { background: var(--color-accent); color: var(--color-surface); }
+    .final-cta .btn-primary:hover { background: var(--color-accent-hover); }
+    .pricing-note { margin-top: var(--space-md); font-size: var(--text-sm); color: rgba(255, 255, 255, 0.7); margin-bottom: 0; }
+
+    /* Footer */
+    .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
+    .footer-inner { display: grid; gap: var(--space-xl); }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .footer-links h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-md); color: var(--color-text); }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .footer-links a { font-size: var(--text-sm); color: var(--color-text-secondary); }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
+
+    /* Audit modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(2px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-md); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .modal-panel { background: var(--color-surface); border-radius: var(--radius-xl); padding: 3rem 3.5rem 2.5rem; width: 100%; max-width: 700px; position: relative; transform: translateY(12px) scale(0.97); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; box-shadow: 0 32px 80px rgba(0,0,0,0.18); }
+    .modal-overlay.is-open .modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+    .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; cursor: pointer; color: var(--color-text-muted); padding: var(--space-xs); line-height: 1; font-size: 1.5rem; transition: color 0.15s ease; border-radius: var(--radius-sm); }
+    .modal-close:hover { color: var(--color-text); }
+    .modal-heading { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-sm); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); text-align: center; }
+    .modal-subhead { font-size: var(--text-base); color: var(--color-text-secondary); margin-bottom: var(--space-2xl); text-align: center; line-height: var(--leading-normal); }
+    .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
+    .modal-input-full { grid-column: 1 / -1; }
+    .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
+    .modal-input::placeholder { color: var(--color-text-muted); }
+    .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
+    .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
+    .modal-submit { flex-shrink: 0; white-space: nowrap; }
+    .modal-error { font-size: var(--text-sm); color: var(--color-accent-dark); text-align: center; margin-top: var(--space-xs); margin-bottom: 0; }
+    .modal-success { text-align: center; padding: var(--space-xl) 0 var(--space-md); }
+    .modal-success-icon { font-size: 2.5rem; margin-bottom: var(--space-sm); }
+    .modal-success-heading { font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .modal-success-sub { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 0; }
+    @media (max-width: 600px) { .modal-panel { padding: var(--space-xl) var(--space-lg) var(--space-lg); } .modal-form-grid { grid-template-columns: 1fr; } .modal-form-footer { flex-direction: column; align-items: flex-start; } .modal-submit { width: 100%; } }
+  </style>
+
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://jdaitken.ca/ottawa-web-design/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jdaitken.ca/ottawa-web-design/">
+  <meta property="og:title" content="Ottawa Web Design for Contractors | JD Media">
+  <meta property="og:description" content="Custom web design and development for Ottawa contractors and trades businesses, built to rank in local search and turn visitors into calls.">
+  <meta property="og:image" content="https://jdaitken.ca/images/og-image.png">
+  <meta property="og:site_name" content="JD Media">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ottawa Web Design for Contractors | JD Media">
+  <meta name="twitter:description" content="Custom web design and development for Ottawa trades businesses, built to get you more calls.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "Ottawa Web Design", "item": "https://jdaitken.ca/ottawa-web-design/" }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://jdaitken.ca/ottawa-web-design/#service",
+        "serviceType": "Web Design",
+        "name": "Ottawa Web Design for Contractors",
+        "description": "Custom web design and development for Ottawa contractors and trades businesses. Mobile-first, built to rank in local search, managed monthly for a flat fee.",
+        "url": "https://jdaitken.ca/ottawa-web-design/",
+        "provider": { "@id": "https://jdaitken.ca/#business" },
+        "areaServed": [
+          { "@type": "City", "name": "Ottawa", "sameAs": "https://en.wikipedia.org/wiki/Ottawa" },
+          { "@type": "City", "name": "Kanata" },
+          { "@type": "City", "name": "Nepean" },
+          { "@type": "City", "name": "Barrhaven" },
+          { "@type": "City", "name": "Orléans" },
+          { "@type": "City", "name": "Gloucester" },
+          { "@type": "AdministrativeArea", "name": "Ontario" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a website cost for a contractor in Ottawa?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Plans start at $500/month (CAD), which includes the website, hosting, and monthly SEO and Google Business Profile management. One-time project quotes are also available if you just want a website built." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to build a website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "About a week for a standard 5-page site, from kickoff call to live site. Rush builds are available in 3-5 days for an additional fee." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this web design or web development?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Both. I design the site and build it myself, mobile-first HTML, CSS, and JavaScript, not a page builder. The same person handles the visual design and the code that makes it fast and functional." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle local SEO and my Google Business Profile too?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every plan includes on-page SEO, monthly SEO content, and active Google Business Profile management, since that's what gets you into the map results homeowners actually click." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I already have a website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "I'll rebuild it from scratch. Your current site stays live until the new one is ready." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9Q56QL24ES');
+  </script>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1285414636910501');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel -->
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<a href="tel:3435030123" class="tap-to-call" aria-label="Call JD Media">Call Now: 343-503-0123</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="/work">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:3435030123" class="nav-phone header-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        343-503-0123
+      </a>
+      <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>
+        <span class="menu-icon" aria-hidden="true"><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+  <div class="mobile-menu-panel" data-menu-panel>
+    <div class="mobile-menu-top">
+      <a href="/" class="logo-link">
+        <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="Mobile">
+      <a href="/work">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:3435030123">343-503-0123</a>
+      <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="odw-hero">
+    <div class="container">
+      <span class="kicker">Ottawa Web Design for Contractors</span>
+      <h1>Ottawa web design built to get contractors more&nbsp;calls.</h1>
+      <p class="odw-hero-subtitle">Custom web design and development for Ottawa trades and service businesses &mdash; mobile-first, fast, and built to turn Google searches into phone calls. Managed monthly. No setup fees.</p>
+      <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
+      <p class="odw-hero-proof">13 quote requests in one month, up from zero. Legendary Landscaping, Ottawa.</p>
+    </div>
+  </section>
+
+  <!-- Problem framing -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <p>Most contractor websites look the same: a template, a stock photo, and a contact form nobody checks.</p>
+        <p>Homeowners notice &mdash; and they call whoever&rsquo;s site looks like an active, trustworthy business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-content">
+        <h2>Web design and development, not just a design file</h2>
+        <p>A lot of &ldquo;web design&rdquo; is a file handed off with no plan for what happens after launch. I design, build, and maintain the site myself &mdash; one person, one flat monthly fee &mdash; so there&rsquo;s no handoff and nothing falls through the cracks once it&rsquo;s live.</p>
+        <p>That includes the parts that actually get you found: mobile-first development, fast load times, and the on-page and local SEO work that gets Ottawa homeowners to your site in the first place.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>What you get</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Custom design, not a template</h3>
+          <p>Every site is built for your business specifically &mdash; your services, your service area, your photos. Not a theme with your logo dropped in.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Mobile-first web development</h3>
+          <p>Most searches for a contractor happen on a phone. Every site is built and tested mobile-first, and loads fast enough that people stick around to call.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Built to rank in Ottawa search</h3>
+          <p>On-page SEO and a managed Google Business Profile from day one, so you show up when Ottawa homeowners search for what you do.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Managed for one flat fee</h3>
+          <p>Hosting, updates, and monthly reporting included. No separate invoices for hosting, no surprise redesign fee down the road.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="service-area-section">
+    <div class="container">
+      <div class="service-area-content">
+        <div class="section-header">
+          <h2>Serving Ottawa and the surrounding area</h2>
+        </div>
+        <p>Based in Ottawa, working with contractors and trades businesses across the city and into the surrounding communities.</p>
+        <div class="service-area-chips">
+          <span class="badge badge-default">Ottawa</span>
+          <span class="badge badge-default">Kanata</span>
+          <span class="badge badge-default">Nepean</span>
+          <span class="badge badge-default">Barrhaven</span>
+          <span class="badge badge-default">Orl&eacute;ans</span>
+          <span class="badge badge-default">Gloucester</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof -->
+  <section class="case-study">
+    <div class="container">
+      <div class="section-header">
+        <h2>Proof, not promises.</h2>
+        <p>Two Ottawa contractors, and the numbers from their own dashboards.</p>
+      </div>
+      <div class="case-studies-list">
+        <div class="case-study-card">
+          <div class="case-study-image">
+            <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/projects/legendary-landscaping-update-1200.webp 1200w, /images/projects/legendary-landscaping-update-1900.webp 1900w"
+                sizes="(max-width: 768px) 92vw, 520px">
+              <img
+                src="/images/projects/legendary-landscaping-update-1200.png"
+                srcset="/images/projects/legendary-landscaping-update-1200.png 1200w, /images/projects/legendary-landscaping-update-1900.png 1900w"
+                sizes="(max-width: 768px) 92vw, 520px"
+                alt="Legendary Landscaping website redesign showing service pages"
+                loading="lazy"
+                decoding="async">
+            </picture>
+            </a>
+          </div>
+          <div class="case-study-content">
+            <span class="badge badge-accent">Landscaping</span>
+            <h3>Legendary Landscaping</h3>
+            <p>13 quote requests in their first 30 days &mdash; up from zero before the rebuild. I rebuilt the site for speed and local search and optimized their Google Business Profile.</p>
+            <div class="case-study-metrics">
+              <div class="metric">
+                <div class="metric-value">13</div>
+                <div class="metric-label">Quote requests in 30 days</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">0</div>
+                <div class="metric-label">In the 30 days before</div>
+              </div>
+            </div>
+            <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+        </div>
+
+        <div class="case-study-card">
+          <div class="case-study-image">
+            <a href="https://jandjremodeling.ca" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/projects/jandj_hero-1200.webp 1200w, /images/projects/jandj_hero-1900.webp 1900w"
+                sizes="(max-width: 768px) 92vw, 520px">
+              <img
+                src="/images/projects/jandj_hero-1200.png"
+                srcset="/images/projects/jandj_hero-1200.png 1200w, /images/projects/jandj_hero-1900.png 1900w"
+                sizes="(max-width: 768px) 92vw, 520px"
+                alt="J&amp;J Remodeling website showing Ottawa home renovation services"
+                loading="lazy" decoding="async">
+            </picture>
+            </a>
+          </div>
+          <div class="case-study-content">
+            <span class="badge badge-accent">Renovation</span>
+            <h3>J&amp;J Remodeling</h3>
+            <p>Ottawa renovation specialists with no web presence at all. I built the site, set up their Google Business Profile, and had them live in a week &mdash; on Google Maps from day one.</p>
+            <div class="case-study-metrics">
+              <div class="metric">
+                <div class="metric-value">1 wk</div>
+                <div class="metric-label">From brief to live</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">Day 1</div>
+                <div class="metric-label">On Google Business Profile and Maps</div>
+              </div>
+            </div>
+            <a href="https://jandjremodeling.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: var(--space-2xl);">
+        <p style="font-size: var(--text-lg); color: var(--color-text-secondary); margin-bottom: var(--space-md);">Want numbers like these for your business?</p>
+        <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
+        <div style="margin-top: var(--space-md);">
+          <a href="/work" class="btn btn-ghost">See All Work &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing teaser -->
+  <section class="pricing-teaser-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple monthly pricing</h2>
+      </div>
+      <p class="pricing-teaser-copy">Plans start at $500/month (CAD) &mdash; website, hosting, and monthly SEO and Google Business Profile management included. No setup fees.</p>
+      <a href="/pricing" class="btn btn-secondary">See plans &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How much does a website cost for a contractor in Ottawa?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Plans start at $500/month (CAD), which includes the website, hosting, and monthly SEO and Google Business Profile management. One-time project quotes are also available if you just want a website built.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How long does it take to build a website?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>About a week for a standard 5-page site, from kickoff call to live site. Rush builds are available in 3-5 days for an additional fee.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Is this web design or web development?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Both. I design the site and build it myself &mdash; mobile-first HTML, CSS, and JavaScript, not a page builder. The same person handles the visual design and the code that makes it fast and functional.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Do you handle local SEO and my Google Business Profile too?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Yes. Every plan includes on-page SEO, monthly SEO content, and active Google Business Profile management, since that&rsquo;s what gets you into the map results homeowners actually click.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            What if I already have a website?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>I&rsquo;ll rebuild it from scratch. Your current site stays live until the new one is ready.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="guarantee-band">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-icon">&#10003;</div>
+        <div class="guarantee-text">
+          <strong>The 90-day money-back guarantee.</strong>
+          <p>Stay 90 days. If you&rsquo;re not showing up higher in Google local search than when you started, I&rsquo;ll refund your management fees for those three months. No fine print, no risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container text-center">
+      <h2>Ready for a website that gets you calls?</h2>
+      <p>Drop your details and I&rsquo;ll reply within 1 business day. Free audit included.</p>
+      <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
+      <p class="pricing-note">Growth plan &middot; $500/mo &middot; No setup fees</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
+        </a>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
+        <p>Ottawa, ON</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog/website-that-generates-calls-local-trades/">Blog</a></li>
+          <li><a href="/ottawa-web-design/">Ottawa Web Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3435030123">343-503-0123</a></li>
+          <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
+          <li><a href="/contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
+      <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
+        <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+
+<div class="modal-overlay" id="auditModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal-panel" id="auditModalPanel">
+    <button class="modal-close" id="closeAuditModal" aria-label="Close">&times;</button>
+    <div id="modalFormWrap">
+      <h2 class="modal-heading" id="modalHeading">Let's see what your site is costing you.</h2>
+      <p class="modal-subhead">Drop your details and I'll reply within 1 business day. No pitch. Just an honest look at what's possible.</p>
+      <form id="auditForm" novalidate>
+        <div class="modal-form-grid">
+          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     autocomplete="name"  required>
+          <input type="email" name="email" class="modal-input" placeholder="Email address" autocomplete="email" required>
+          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" autocomplete="tel" required>
+          <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
+        </div>
+        <p class="modal-error" id="auditError" hidden></p>
+        <div class="modal-form-footer">
+          <p class="modal-note">Replies within 1 business day &middot; No obligation.</p>
+          <button type="submit" class="btn btn-primary modal-submit">Get in Touch</button>
+        </div>
+      </form>
+    </div>
+    <div id="modalSuccess" class="modal-success" hidden>
+      <div class="modal-success-icon">✓</div>
+      <h3 class="modal-success-heading">Got it. I'll be in touch soon.</h3>
+      <p class="modal-success-sub">I'll reply within 1 business day.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay  = document.getElementById('auditModal');
+  var closeBtn = document.getElementById('closeAuditModal');
+  var form     = document.getElementById('auditForm');
+  var errEl    = document.getElementById('auditError');
+  var formWrap = document.getElementById('modalFormWrap');
+  var success  = document.getElementById('modalSuccess');
+
+  function openModal() {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { form.querySelector('input:not([type=hidden])').focus(); }, 250);
+  }
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-audit-modal').forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.modal-submit');
+    var origTxt = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    errEl.hidden = true;
+    try {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
+        method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        formWrap.hidden = true; success.hidden = false;
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'audit-modal', page: location.pathname });
+        if (typeof fbq  === 'function') fbq('track', 'Lead');
+      }
+      else { throw new Error(); }
+    } catch (_) {
+      errEl.textContent = 'Something went wrong. Email jd@jdaitken.ca directly.';
+      errEl.hidden = false; btn.disabled = false; btn.textContent = origTxt;
+    }
+  });
+})();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item.is-open').forEach(open => {
+          open.classList.remove('is-open');
+          open.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
