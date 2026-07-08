@@ -851,6 +851,15 @@
          "description": "Custom 5-page website, mobile-first design, hosting and SSL, on-page
          SEO setup, 1 content update per month. 12-month minimum, then the custom site is yours
          to keep." } -->
+  <!-- aggregateRating + review removed from LocalBusiness: Google ignores self-serving review
+       markup on a business's own site (2019 update) and treats it as spammy structured data.
+       The reviews stay visible as HTML cards below. Preserved here per no-delete rule:
+       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "4",
+         "bestRating": "5", "worstRating": "1" },
+       "review": [ Patrick Damiani 5/5, Legendary Landscaping 5/5, Renee G 5/5, Arlene 5/5 —
+         full reviewBody text lives in the visible .reviews-section cards on this page ] -->
+  <!-- TODO: add the Google Business Profile / Maps share URL to "sameAs" once pulled from the
+       GBP dashboard — it's the strongest entity link for local SEO. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -887,6 +896,12 @@
           { "@type": "City", "name": "Gloucester" },
           { "@type": "AdministrativeArea", "name": "Ontario" }
         ],
+        "image": "https://jdaitken.ca/images/og-image.png",
+        "logo": "https://jdaitken.ca/images/logos/jd-media-logo.svg",
+        "priceRange": "$500-$900/mo",
+        "sameAs": [
+          "https://greatworkguild.com/listings/jd-media"
+        ],
         "openingHours": ["Mo-Fr 09:00-17:00"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -908,39 +923,6 @@
             }
           ]
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "4",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "review": [
-          {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "Patrick Damiani" },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "reviewBody": "JD Media is the kind of web partner you want in your corner. JD handled the technical stuff end-to-end and explained things in plain English, so I could stay focused on running my business. Fast, reliable, and the site looks great. I highly recommend JD Media!"
-          },
-          {
-            "@type": "Review",
-            "author": { "@type": "Organization", "name": "Legendary Landscaping" },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "reviewBody": "JD Media built our website for Legendary Landscaping and we couldn't be happier with how it turned out. The site looks sharp, loads fast, and actually shows off our work the way we wanted. JD made the whole process easy — he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out. If you're a local trades or landscaping business looking to level up your website, I'd highly recommend giving JD Media a call."
-          },
-          {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "Renee G" },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "reviewBody": "JD built our family member's website and has been incredibly dedicated to growing his business. He's professional, hardworking, and genuinely cares about getting results for his clients. Highly recommend!"
-          },
-          {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "Arlene" },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "reviewBody": "JD media was super helpful with my website launch! They were very attentive to what I wanted and delivered faster than expected. Modifications I asked for were completed the next day and the whole process was smooth, fast and easy. Highly recommend!"
-          }
-        ],
         "founder": {
           "@type": "Person",
           "@id": "https://jdaitken.ca/about#jd",
@@ -1397,10 +1379,14 @@
       <p class="modal-subhead">Drop your details and I'll reply within 1 business day. No pitch. Just an honest look at what's possible.</p>
       <form id="auditForm" novalidate>
         <div class="modal-form-grid">
-          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     autocomplete="name"  required>
-          <input type="email" name="email" class="modal-input" placeholder="Email address" autocomplete="email" required>
-          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" autocomplete="tel" required>
-          <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
+          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     aria-label="Your name"     autocomplete="name"  required>
+          <input type="email" name="email" class="modal-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" required>
+          <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" aria-label="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
+        </div>
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label for="audit-gotcha">Leave this field empty</label>
+          <input id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
         <p class="modal-error" id="auditError" hidden></p>
         <div class="modal-form-footer">
