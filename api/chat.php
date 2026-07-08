@@ -1,7 +1,8 @@
 <?php
 // Lightweight PHP proxy for OpenAI Responses API with basic abuse controls.
 declare(strict_types=1);
-const CHAT_API_ENABLED = true;
+const CHAT_API_ENABLED = false; // Disabled: chat.js isn't loaded on any page, so this was an
+                                // open OpenAI cost surface. Re-enable when the widget ships.
 
 // Security headers
 header('Content-Type: application/json; charset=utf-8');

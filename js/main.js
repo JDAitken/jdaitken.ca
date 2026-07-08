@@ -144,6 +144,9 @@
     Navigation.bind();
     Navigation.setActiveLink();
     ContactForm.init();
+    /* Dead code: #hero-website / [data-hero-form] / #website no longer exist on any page,
+       and the redirect target /contact.html 404s in the directory-based structure
+       (would need /contact/). Kept per no-delete rule; delete when confident.
     (() => {
       const normalizeUrl = (value) => {
         const v = (value || '').trim();
@@ -201,5 +204,6 @@
         }
       }
     })();
+    */
   });
 })();
