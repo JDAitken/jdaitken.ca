@@ -1,5 +1,14 @@
 <IfModule mod_headers.c>
-  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-  Header set Pragma "no-cache"
-  Header set Expires "0"
+  # Static assets: cache for 30 days (filenames change rarely; bump query string to bust)
+  <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|gif|ico|woff|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # HTML/PHP: always revalidate so content and pricing changes show immediately
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
 </IfModule>
+
+# /blog/ has no listing page yet (single post — see ops/content/blog/PUBLISH.md);
+# temporary redirect until a second post justifies an index. Remove when blog/index.html exists.
+RedirectMatch 302 ^/blog/?$ https://jdaitken.ca/blog/website-that-generates-calls-local-trades/
