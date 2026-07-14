@@ -475,20 +475,7 @@
       });
 
       if (res.ok) {
-        if (typeof fbq === 'function') fbq('track', 'Lead');
-        // event_callback + timeout fallback so the GA hit isn't lost to the navigation
-        var redirected = false;
-        var goThanks = function () {
-          if (redirected) return;
-          redirected = true;
-          window.location.href = '/thanks/';
-        };
-        if (typeof gtag === 'function') {
-          gtag('event', 'generate_lead', { form: 'contact-page', page: location.pathname, event_callback: goThanks });
-          setTimeout(goThanks, 800);
-        } else {
-          goThanks();
-        }
+        window.location.href = '/thanks/';
       } else {
         const data = await res.json();
         throw new Error(data.errors?.map(e => e.message).join(', ') || 'Submission failed');

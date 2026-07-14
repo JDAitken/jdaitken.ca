@@ -1451,10 +1451,7 @@
         headers: { Accept: 'application/json' }
       });
       if (res.ok) {
-        formWrap.hidden = true;
-        success.hidden  = false;
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'audit-modal', page: location.pathname });
-        if (typeof fbq  === 'function') fbq('track', 'Lead');
+        window.location.href = '/thanks/';
       } else {
         errEl.textContent = 'Something went wrong \u2014 email jd@jdaitken.ca directly.';
         errEl.hidden      = false;
