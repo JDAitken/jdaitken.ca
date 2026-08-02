@@ -2,7 +2,7 @@
 
 **Positioning:** JD Media builds and runs the websites Ottawa trades businesses get their calls from. One specialist who does the work himself — pro-grade sites, plain answers, results measured in calls and quote requests. And when you're ready to decide, a guarantee stands behind all of it.
 
-**"Calls" vs "leads":** "Calls" is the flagship brand word — concrete, trades-native, and it's the identity ("the guy who gets me calls"). But results include form fills, so supporting copy says "calls and quote requests." Never say "leads" in client-facing copy — it's the churn-shop word.
+**"Calls" vs "leads":** "Calls" is the flagship brand word — concrete, trades-native, and it's the identity ("the guy who gets me calls"). But results include form fills, so supporting copy says "calls and quote requests." "Leads" is fine in client-facing copy now (2026-07 call) — the old "never say 'leads'" rule is retired; it's just no longer the *only* word used to describe results.
 
 **Internal shorthand:** *Pro-grade gear for getting calls.* A Milwaukee tool presented with Stripe's restraint.
 
