@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Ottawa Web Design That Gets You More Calls | JD Media</title>
+  <meta name="description" content="A fully managed website built to turn Google and Facebook searches into phone calls for your Ottawa trade business. Free audit, no setup fees, 90-day guarantee.">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== LP shell: no nav, single exit ===== */
+    .lp-header {
+      padding: var(--space-lg) 0;
+    }
+    .lp-header .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md);
+    }
+    @media (min-width: 768px) { .lp-header .header-inner { padding: 0 var(--space-xl); } }
+    .lp-header .nav-phone { font-size: var(--text-base); }
+
+    /* ===== Hero ===== */
+    .lp-hero { padding: var(--space-xl) 0 var(--space-2xl); }
+    @media (min-width: 768px) { .lp-hero { padding: var(--space-2xl) 0 var(--space-3xl); } }
+    .lp-hero .container { max-width: 760px; text-align: center; }
+    .lp-hero h1 { margin-bottom: var(--space-md); }
+    .lp-hero p.lp-subtitle {
+      color: var(--color-text-secondary); font-size: var(--text-lg);
+      max-width: 560px; margin: 0 auto var(--space-xl);
+    }
+    .lp-hero-actions { display: flex; flex-direction: column; align-items: center; gap: var(--space-md); }
+
+    /* Proof bar: signature element — a single dated before/after strip, not a generic stat grid */
+    .lp-proof-bar {
+      display: inline-flex; align-items: center; gap: var(--space-md);
+      margin-top: var(--space-xl); padding: var(--space-sm) var(--space-lg);
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+    }
+    .lp-proof-bar .lp-proof-num {
+      font-family: var(--font-display); font-weight: var(--font-bold);
+      font-size: var(--text-xl); color: var(--color-text);
+    }
+    .lp-proof-bar .lp-proof-arrow { color: var(--color-text-muted); }
+    .lp-proof-bar .lp-proof-num.is-accent { color: var(--color-accent); }
+    .lp-proof-bar .lp-proof-label {
+      font-size: var(--text-sm); color: var(--color-text-secondary);
+      border-left: 1px solid var(--color-border); padding-left: var(--space-md);
+    }
+    @media (max-width: 500px) {
+      .lp-proof-bar { flex-wrap: wrap; justify-content: center; text-align: center; border-radius: var(--card-radius); }
+      .lp-proof-bar .lp-proof-label { border-left: none; padding-left: 0; width: 100%; }
+    }
+
+    /* ===== What you get ===== */
+    .lp-offer { padding: var(--space-2xl) 0; background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .lp-offer .container { max-width: 760px; }
+    .lp-offer h2 { text-align: center; margin-bottom: var(--space-xl); }
+    .lp-offer-grid { display: grid; gap: var(--space-lg); }
+    @media (min-width: 640px) { .lp-offer-grid { grid-template-columns: 1fr 1fr; } }
+    .lp-offer-item { display: flex; gap: var(--space-md); align-items: flex-start; }
+    .lp-offer-item svg { flex-shrink: 0; margin-top: 3px; color: var(--color-success); }
+    .lp-offer-item p { margin: 0; color: var(--color-text-secondary); font-size: var(--text-sm); }
+    .lp-offer-item strong { display: block; color: var(--color-text); font-weight: var(--font-semibold); margin-bottom: 2px; }
+
+    /* ===== Case study reuse ===== */
+    .lp-case { padding: var(--space-2xl) 0; }
+    .lp-case .container { max-width: 640px; }
+
+    /* ===== Form + guarantee ===== */
+    .lp-form-section { padding: var(--space-2xl) 0 var(--space-3xl); background: var(--color-surface); border-top: 1px solid var(--color-border); }
+    .lp-form-section .container { max-width: 560px; }
+    .lp-form-card {
+      background: var(--color-bg); border: 1px solid var(--color-border);
+      border-radius: var(--card-radius); padding: var(--space-2xl);
+    }
+    .lp-form-card h2 { font-size: var(--text-xl); margin-bottom: var(--space-xs); }
+    .lp-form-card > p { color: var(--color-text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-xl); }
+    .lp-form-card form { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .honeypot { position: absolute; left: -9999px; }
+    .form-status { margin-top: var(--space-md); font-size: var(--text-sm); display: none; }
+    .form-status.is-visible { display: block; }
+    .form-status.is-error { color: var(--color-error); }
+
+    .lp-secondary-cta {
+      text-align: center; margin-top: var(--space-lg); padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+    }
+    .lp-secondary-cta p { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+
+    .lp-guarantee {
+      display: flex; align-items: flex-start; gap: var(--space-md);
+      margin-top: var(--space-xl); padding: var(--space-lg);
+      background: var(--color-text); border-radius: var(--card-radius);
+    }
+    .lp-guarantee-check {
+      flex-shrink: 0; width: 40px; height: 40px; background: var(--color-accent);
+      border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;
+      font-weight: var(--font-bold); color: #fff; line-height: 1;
+    }
+    .lp-guarantee strong { display: block; color: var(--color-surface); font-family: var(--font-display); margin-bottom: var(--space-xs); }
+    .lp-guarantee span { font-size: var(--text-sm); color: rgba(255,255,255,0.7); }
+
+    /* ===== Minimal footer: no page links, disclosure only ===== */
+    .lp-footer { padding: var(--space-xl) 0; }
+    .lp-footer .container { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
+    .lp-footer p { font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; }
+    .lp-footer a { color: var(--color-text-muted); }
+  </style>
+
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
+  /></noscript>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="lp-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="JD Media home">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
+    </a>
+    <a href="tel:3435030123" class="nav-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      343-503-0123
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="lp-hero">
+    <div class="container">
+      <span class="kicker">Ottawa web design &middot; local SEO</span>
+      <h1>Websites that get you more&nbsp;calls.</h1>
+      <p class="lp-subtitle">A fully managed website for Ottawa trades &mdash; built for speed and local search, so a Google search turns into a phone call. No setup fees.</p>
+      <div class="lp-hero-actions">
+        <a href="#lp-form" class="btn btn-primary">Get My Free Site Audit</a>
+      </div>
+      <div class="lp-proof-bar">
+        <span class="lp-proof-num">0</span>
+        <span class="lp-proof-arrow">&rarr;</span>
+        <span class="lp-proof-num is-accent">17</span>
+        <span class="lp-proof-label">Quote requests a month, Legendary Landscaping &mdash; July 2026, their best month yet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="lp-offer">
+    <div class="container">
+      <h2>What you get</h2>
+      <div class="lp-offer-grid">
+        <div class="lp-offer-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Custom site, live in about a week.</strong> Not a template with your logo dropped in &mdash; built for your services and service area.</p>
+        </div>
+        <div class="lp-offer-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Managed Google Business Profile.</strong> So you show up on the map when Ottawa homeowners search for what you do.</p>
+        </div>
+        <div class="lp-offer-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>One flat monthly fee.</strong> Hosting, updates, and reporting included. No setup fees, no surprise invoices.</p>
+        </div>
+        <div class="lp-offer-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>One person, full accountability.</strong> I design, build, and maintain the site myself &mdash; no handoffs, nothing falls through the cracks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof -->
+  <section class="lp-case">
+    <div class="container">
+      <div class="case-study-card">
+        <div class="case-study-image">
+          <picture>
+            <source type="image/webp"
+              srcset="/images/projects/legendary-landscaping-update-1200.webp 1200w, /images/projects/legendary-landscaping-update-1900.webp 1900w"
+              sizes="(max-width: 768px) 92vw, 520px">
+            <img
+              src="/images/projects/legendary-landscaping-update-1200.png"
+              srcset="/images/projects/legendary-landscaping-update-1200.png 1200w, /images/projects/legendary-landscaping-update-1900.png 1900w"
+              sizes="(max-width: 768px) 92vw, 520px"
+              alt="Legendary Landscaping website redesign showing service pages"
+              loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="case-study-content">
+          <span class="badge badge-accent">Landscaping</span>
+          <h3>Legendary Landscaping</h3>
+          <p>17 quote requests in July 2026 &mdash; the best month yet, with $294 in Google Ads bringing in 7 of them at about $42 each. I rebuilt the site for speed and local search and optimized their Google Business Profile.</p>
+          <div class="case-study-metrics">
+            <div class="metric">
+              <div class="metric-value">17</div>
+              <div class="metric-label">Quote requests in July 2026</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">11</div>
+              <div class="metric-label">In June 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + guarantee -->
+  <section class="lp-form-section" id="lp-form">
+    <div class="container">
+      <div class="lp-form-card">
+        <h2>Get your free site audit</h2>
+        <p>I'll look at your current site (or lack of one) and tell you exactly what's holding it back from generating calls. No pitch.</p>
+
+        <form action="https://formspree.io/f/xaqjbayd" method="POST" data-lp-form>
+          <input type="hidden" name="_subject" value="New site audit request — jdaitken.ca/lp">
+          <div class="honeypot" aria-hidden="true">
+            <label for="lp-gotcha">Leave this field empty</label>
+            <input id="lp-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lp-name">Name</label>
+            <input class="input" id="lp-name" type="text" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lp-email">Email</label>
+            <input class="input" id="lp-email" type="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lp-phone">Phone</label>
+            <input class="input" id="lp-phone" type="tel" name="phone" autocomplete="tel" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lp-message">Your business, and what you're looking for <span style="color: var(--color-text-muted); font-weight: var(--font-normal);">(optional)</span></label>
+            <textarea class="textarea" id="lp-message" name="message" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Get My Free Site Audit</button>
+
+          <div class="form-status" role="status" aria-live="polite" data-form-status></div>
+        </form>
+
+        <div class="lp-secondary-cta">
+          <p>Prefer to talk first?</p>
+          <a href="https://cal.com/jd-media/quick-fit" target="_blank" rel="noopener" class="btn btn-secondary btn-full">Book a 15-Minute Call</a>
+        </div>
+
+        <div class="lp-guarantee">
+          <div class="lp-guarantee-check" aria-hidden="true">&#10003;</div>
+          <div>
+            <strong>The 90-day money-back guarantee</strong>
+            <span>Stay 90 days. If you're not showing up higher in Google local search than when you started, I'll refund your management fees for those three months.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="lp-footer">
+  <div class="container">
+    <p>&copy; 2026 JD Media &middot; Ottawa, ON &middot; <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a> &middot; <a href="tel:3435030123">343-503-0123</a> &middot; <a href="/privacy">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+  var form = document.querySelector('[data-lp-form]');
+  var status = document.querySelector('[data-form-status]');
+  var submitBtn = form.querySelector('[type="submit"]');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    status.className = 'form-status';
+    status.textContent = '';
+
+    try {
+      var res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        sessionStorage.setItem('jd_lead', 'lp');
+        window.location.href = '/thanks/';
+      } else {
+        var data = await res.json();
+        throw new Error((data.errors && data.errors.map(function(e){return e.message;}).join(', ')) || 'Submission failed');
+      }
+    } catch (err) {
+      status.textContent = 'Something went wrong. Please try again or email jd@jdaitken.ca directly.';
+      status.className = 'form-status is-visible is-error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get My Free Site Audit';
+    }
+  });
+</script>
+</body>
+</html>

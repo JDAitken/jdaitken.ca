@@ -128,9 +128,9 @@ fine print, no risk.
 ## Pricing rationale (internal — do not publish verbatim)
 
 - **Current prices ($500 Growth / $900 Pro) are a deliberate hold, not a ceiling.** The value
-  math clears the bar easily: Legendary Landscaping got 13 quote requests in a month from the
-  Growth-tier engine — at $800/job that's roughly $10,000 in pipeline from a $500/month plan.
-  There is real room to charge more.
+  math clears the bar easily: Legendary Landscaping got 17 quote requests in July 2026 (their
+  best month yet) from the Growth-tier engine — at $800/job that's roughly $13,600 in pipeline
+  from a $500/month plan. There is real room to charge more.
 - **The $375/month family rate (GBP SEO + Google Ads) is a discounted favor, not a market
   benchmark.** It should never anchor pricing decisions — it's below Growth for work that's
   closer to Pro in scope.

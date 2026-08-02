@@ -241,31 +241,11 @@
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9Q56QL24ES');
-  </script>
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1285414636910501');
-  fbq('track', 'PageView');
-  </script>
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel -->
 </head>
 
 <body>
@@ -382,7 +362,7 @@
         </div>
         <div class="skill-card">
           <h3>Designed to get the phone ringing.</h3>
-          <p>Every layout decision is made with one goal: get visitors to call or reach out. Legendary Landscaping went from 3 quote requests a month to 13. That&rsquo;s the standard every site is built to.</p>
+          <p>Every layout decision is made with one goal: get visitors to call or reach out. Legendary Landscaping went from zero quote requests a month to 17 in July 2026. That&rsquo;s the standard every site is built to.</p>
         </div>
         <div class="skill-card">
           <h3>90 days, or your money back.</h3>
@@ -515,6 +495,7 @@
           <li><a href="tel:3435030123">343-503-0123</a></li>
           <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
           <li><a href="/contact">Get a Quote</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
@@ -542,6 +523,7 @@
           <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" required>
           <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" aria-label="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
         </div>
+        <input type="hidden" name="_subject" value="New site audit request — jdaitken.ca">
         <div style="position:absolute;left:-9999px;" aria-hidden="true">
           <label for="audit-gotcha">Leave this field empty</label>
           <input id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -595,10 +577,11 @@
     btn.textContent = 'Sending…';
     errEl.hidden = true;
     try {
-      var res = await fetch('https://usebasin.com/f/6e59bfed53d8', {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
         method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
       });
       if (res.ok) {
+        sessionStorage.setItem('jd_lead', 'audit');
         window.location.href = '/thanks/';
       }
       else { throw new Error(); }

@@ -316,31 +316,11 @@
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9Q56QL24ES');
-  </script>
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1285414636910501');
-  fbq('track', 'PageView');
-  </script>
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel -->
 </head>
 
 <body>
@@ -403,7 +383,7 @@
       <h1>Ottawa web design built to get contractors more&nbsp;calls.</h1>
       <p class="odw-hero-subtitle">Custom web design and development for Ottawa trades and service businesses &mdash; mobile-first, fast, and built to turn Google searches into phone calls. Managed monthly. No setup fees.</p>
       <button type="button" class="btn btn-primary open-audit-modal">Get My Free Site Audit</button>
-      <p class="odw-hero-proof">13 quote requests in one month, up from zero. Legendary Landscaping, Ottawa.</p>
+      <p class="odw-hero-proof">17 quote requests in July 2026 &mdash; the best month yet. Legendary Landscaping, Ottawa.</p>
     </div>
   </section>
 
@@ -503,15 +483,15 @@
           <div class="case-study-content">
             <span class="badge badge-accent">Landscaping</span>
             <h3>Legendary Landscaping</h3>
-            <p>13 quote requests in their first 30 days &mdash; up from zero before the rebuild. I rebuilt the site for speed and local search and optimized their Google Business Profile.</p>
+            <p>17 quote requests in July 2026 &mdash; the best month yet, with $294 in Google Ads bringing in 7 of them at about $42 each. I rebuilt the site for speed and local search and optimized their Google Business Profile.</p>
             <div class="case-study-metrics">
               <div class="metric">
-                <div class="metric-value">13</div>
-                <div class="metric-label">Quote requests in 30 days</div>
+                <div class="metric-value">17</div>
+                <div class="metric-label">Quote requests in July 2026</div>
               </div>
               <div class="metric">
-                <div class="metric-value">0</div>
-                <div class="metric-label">In the 30 days before</div>
+                <div class="metric-value">11</div>
+                <div class="metric-label">In June 2026</div>
               </div>
             </div>
             <a href="https://legendarylandscaping.ca" target="_blank" rel="noopener" class="view-site-link">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -537,7 +517,7 @@
           <div class="case-study-content">
             <span class="badge badge-accent">Renovation</span>
             <h3>J&amp;J Remodeling</h3>
-            <p>Ottawa renovation specialists with no web presence at all. I built the site, set up their Google Business Profile, and had them live in a week &mdash; on Google Maps from day one.</p>
+            <p>Ottawa renovation specialists with no web presence at all. I built the site, set up their Google Business Profile, and had them live in a week &mdash; on Google Maps from day one. July 2026 brought their first quote request through the site.</p>
             <div class="case-study-metrics">
               <div class="metric">
                 <div class="metric-value">1 wk</div>
@@ -686,6 +666,7 @@
           <li><a href="tel:3435030123">343-503-0123</a></li>
           <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
           <li><a href="/contact">Get a Quote</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
@@ -713,6 +694,7 @@
           <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" required>
           <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" aria-label="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
         </div>
+        <input type="hidden" name="_subject" value="New site audit request — jdaitken.ca">
         <div style="position:absolute;left:-9999px;" aria-hidden="true">
           <label for="audit-gotcha">Leave this field empty</label>
           <input id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -766,10 +748,11 @@
     btn.textContent = 'Sending…';
     errEl.hidden = true;
     try {
-      var res = await fetch('https://usebasin.com/f/6e59bfed53d8', {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
         method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
       });
       if (res.ok) {
+        sessionStorage.setItem('jd_lead', 'audit');
         window.location.href = '/thanks/';
       }
       else { throw new Error(); }

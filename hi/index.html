@@ -237,31 +237,11 @@
     .hi-footer a:hover { color: var(--color-text-secondary); }
   </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9Q56QL24ES');
-  </script>
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1285414636910501');
-  fbq('track', 'PageView');
-  </script>
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel -->
 </head>
 
 <body>
@@ -305,6 +285,7 @@
 
   <div id="hiFormWrap">
     <form id="hiForm" class="hi-form" novalidate>
+      <input type="hidden" name="_subject" value="New outreach form submission — jdaitken.ca/hi">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="form-group">
@@ -345,7 +326,7 @@
 
   <!-- Footer -->
   <footer class="hi-footer">
-    &copy; 2026 JD Media &middot; <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+    &copy; 2026 JD Media &middot; <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a> &middot; <a href="/privacy">Privacy Policy</a>
   </footer>
 
 </div>
@@ -367,12 +348,13 @@
     btn.textContent = 'Sending…';
 
     try {
-      var res = await fetch('https://usebasin.com/f/6e59bfed53d8', {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' }
       });
       if (res.ok) {
+        sessionStorage.setItem('jd_lead', 'hi');
         window.location.href = '/thanks/';
       } else {
         throw new Error();

@@ -48,36 +48,23 @@
     .footer-bottom { font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
   </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9Q56QL24ES');
-  </script>
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1285414636910501');
-  fbq('track', 'PageView');
-  </script>
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel -->
 
-  <!-- Lead conversion: all lead forms (contact, audit modals, hi) redirect here on success -->
+  <!-- Lead conversion: fires only when a form set jd_lead in sessionStorage right before
+       redirecting here (contact, audit modals, hi, lp). Prevents refreshes, direct hits, and
+       back-button visits from inflating conversion counts / training Smart Bidding on noise. -->
   <script>
-    gtag('event', 'generate_lead', { form: 'lead-form', page: '/thanks/' });
-    fbq('track', 'Lead');
+    (function () {
+      var source = sessionStorage.getItem('jd_lead');
+      if (source) {
+        sessionStorage.removeItem('jd_lead');
+        window.jdTrackLead(source);
+      }
+    })();
   </script>
 </head>
 
@@ -98,11 +85,12 @@
     <div class="container">
       <div class="thanks-content">
         <h1>Thanks — I'll reply soon.</h1>
-        <p>I typically respond within 1 business day. If your request is urgent, feel free to call or email directly.</p>
+        <p>I typically respond within 1 business day. Want to talk sooner? Book a 15-minute call and skip the wait.</p>
         <div class="thanks-actions">
-          <a href="/" class="btn btn-primary">Back to Home</a>
-          <a href="mailto:jd@jdaitken.ca" class="btn btn-secondary">Email Me Directly</a>
+          <a href="https://cal.com/jd-media/quick-fit" target="_blank" rel="noopener" class="btn btn-primary">Book a 15-Minute Call</a>
+          <a href="/" class="btn btn-secondary">Back to Home</a>
         </div>
+        <p style="margin-top: var(--space-lg); font-size: var(--text-sm);"><a href="mailto:jd@jdaitken.ca">Or email me directly</a></p>
       </div>
     </div>
   </section>
@@ -111,7 +99,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
+      <p>&copy; 2026 JD Media. Websites that get you more calls. &middot; <a href="/privacy">Privacy Policy</a></p>
       <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
         <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
       </a>

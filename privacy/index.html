@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Contact JD Media Ottawa: Free Website Audit</title>
-  <meta name="description" content="Questions about plans or ready to get started? Get in touch with JD Media. Free website audit available. Reply within 1 business day.">
+  <title>Privacy Policy | JD Media Ottawa</title>
+  <meta name="description" content="How JD Media collects and uses information from jdaitken.ca visitors and form submissions.">
 
   <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
@@ -48,7 +48,6 @@
     }
     @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
 
-
     .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
     @media (min-width: 768px) { .nav-desktop { display: flex; } }
     .nav-desktop a {
@@ -56,13 +55,10 @@
       color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base);
     }
     .nav-desktop a:hover { color: var(--color-text); }
-    .nav-desktop a.active { color: var(--color-accent); }
 
     .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
     .header-cta { display: none; }
     @media (min-width: 768px) { .header-cta { display: inline-flex; } }
-    .btn-nav-outline { background: transparent; border: 1.5px solid var(--color-text); color: var(--color-text); }
-    .btn-nav-outline:hover { background: var(--color-text); color: var(--color-surface); }
 
     .menu-toggle {
       display: inline-flex; align-items: center; justify-content: center;
@@ -107,64 +103,23 @@
     .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
     .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
-    /* Contact page specific */
-    .contact-hero { padding: var(--space-xl) 0 var(--space-lg); }
-    @media (min-width: 768px) { .contact-hero { padding: var(--space-2xl) 0 var(--space-xl); } }
+    /* Privacy page specific */
+    .legal-hero { padding: var(--space-xl) 0 var(--space-lg); }
+    @media (min-width: 768px) { .legal-hero { padding: var(--space-2xl) 0 var(--space-xl); } }
+    .legal-hero p { color: var(--color-text-secondary); font-size: var(--text-base); margin-top: var(--space-sm); }
 
-    .contact-trust { background: var(--color-text); padding: var(--space-xl) 0; }
-    .contact-trust-inner { display: flex; align-items: center; gap: var(--space-lg); max-width: 640px; margin: 0 auto; }
-    .contact-trust-check { flex-shrink: 0; width: 44px; height: 44px; background: var(--color-accent); border-radius: var(--radius-sm); /* v2: radius-full */ display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: var(--font-bold); color: var(--color-surface); /* v2: color-text */ line-height: 1; }
-    .contact-trust-text strong { display: block; font-size: var(--text-base); font-weight: var(--font-bold); color: var(--color-surface); margin-bottom: var(--space-xs); font-family: var(--font-display); }
-    .contact-trust-text span { font-size: var(--text-sm); color: rgba(255,255,255,0.65); }
-    .contact-hero h1 { margin-bottom: var(--space-sm); }
-    .contact-hero p { color: var(--color-text-secondary); font-size: var(--text-lg); max-width: 520px; }
-
-    .contact-grid { display: grid; gap: var(--space-xl); }
-    @media (max-width: 767px) { .contact-sidebar { order: -1; } }
-    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1.5fr 1fr; } }
-
-    .form-card {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--card-radius); /* v2: radius-lg */ padding: var(--space-2xl);
-    }
-    .form-card h2 {
+    .legal-body { padding-bottom: var(--space-2xl); }
+    .legal-body .container { max-width: 720px; }
+    .legal-body h2 {
       font-size: var(--text-xl); font-weight: var(--font-bold);
-      color: var(--color-text); margin-bottom: var(--space-xl);
+      margin-top: var(--space-2xl); margin-bottom: var(--space-md);
     }
-    .form-card form {
-      display: flex; flex-direction: column; gap: var(--space-lg);
-    }
-
-    .contact-sidebar { display: flex; flex-direction: column; gap: var(--space-xl); }
-
-    .contact-method h3 {
-      font-size: var(--text-base); font-weight: var(--font-semibold);
-      margin-bottom: var(--space-sm);
-    }
-    .contact-method a {
-      color: var(--color-accent); font-weight: var(--font-medium);
-      font-size: var(--text-lg);
-    }
-    .contact-method p {
-      font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-xs);
-    }
-
-    .contact-promise {
-      /* v2: success-light tinted bg, radius-lg */
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-left: 3px solid var(--color-success); border-radius: var(--card-radius);
-      padding: var(--space-lg);
-    }
-    .contact-promise p {
-      color: var(--color-text); /* v2: success-dark */ font-weight: var(--font-medium);
-      font-size: var(--text-sm); margin: 0;
-    }
-
-    .honeypot { position: absolute; left: -9999px; }
-
-    .form-status { margin-top: var(--space-md); font-size: var(--text-sm); display: none; }
-    .form-status.is-visible { display: block; }
-    .form-status.is-error { color: var(--color-error); }
+    .legal-body h2:first-child { margin-top: 0; }
+    .legal-body p { color: var(--color-text-secondary); margin-bottom: var(--space-md); }
+    .legal-body ul { color: var(--color-text-secondary); margin: 0 0 var(--space-md); padding-left: var(--space-lg); }
+    .legal-body li { margin-bottom: var(--space-xs); }
+    .legal-body a { color: var(--color-accent); }
+    .legal-updated { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-xl); }
 
     .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
     .footer-inner { display: grid; gap: var(--space-xl); }
@@ -178,17 +133,14 @@
   </style>
 
   <!-- Canonical & Open Graph -->
-  <link rel="canonical" href="https://jdaitken.ca/contact/">
+  <link rel="canonical" href="https://jdaitken.ca/privacy/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jdaitken.ca/contact/">
-  <meta property="og:title" content="Contact JD Media Ottawa: Free Website Audit">
-  <meta property="og:description" content="Questions about plans or ready to get started? Get in touch with JD Media in Ottawa. Free website audit included. Reply within 1 business day.">
+  <meta property="og:url" content="https://jdaitken.ca/privacy/">
+  <meta property="og:title" content="Privacy Policy | JD Media Ottawa">
+  <meta property="og:description" content="How JD Media collects and uses information from jdaitken.ca visitors and form submissions.">
   <meta property="og:image" content="https://jdaitken.ca/images/og-image.png">
   <meta property="og:site_name" content="JD Media">
   <meta property="og:locale" content="en_CA">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact JD Media: Get in Touch">
-  <meta name="twitter:description" content="Questions about plans or ready to get started? Reply within 1 business day.">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -199,44 +151,14 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
-          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://jdaitken.ca/contact/" }
+          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://jdaitken.ca/privacy/" }
         ]
       },
       {
-        "@type": "ContactPage",
-        "name": "Contact JD Media",
-        "description": "Request a free website audit for your Ottawa local service business. No obligation, reply within 1 business day.",
-        "url": "https://jdaitken.ca/contact",
-        "mainEntity": {
-          "@id": "https://jdaitken.ca/#business"
-        }
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://jdaitken.ca/#business",
-        "name": "JD Media",
-        "url": "https://jdaitken.ca/",
-        "telephone": "+13435030123",
-        "email": "jd@jdaitken.ca",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ottawa",
-          "addressRegion": "ON",
-          "addressCountry": "CA"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+13435030123",
-          "email": "jd@jdaitken.ca",
-          "contactType": "customer service",
-          "areaServed": "CA-ON",
-          "availableLanguage": "English",
-          "hoursAvailable": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-            "description": "Reply within 1 business day"
-          }
-        }
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "url": "https://jdaitken.ca/privacy/",
+        "isPartOf": { "@id": "https://jdaitken.ca/#business" }
       }
     ]
   }
@@ -262,11 +184,10 @@
     </a>
     <nav class="nav-desktop" aria-label="Main">
       <a href="/work">Work</a>
-
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
       <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
-      <a href="/contact" class="active">Contact</a>
+      <a href="/contact">Contact</a>
     </nav>
     <div class="header-actions">
       <a href="tel:3435030123" class="nav-phone header-cta">
@@ -290,7 +211,6 @@
     </div>
     <nav class="mobile-menu-nav" aria-label="Mobile">
       <a href="/work">Work</a>
-
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
       <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
@@ -305,92 +225,47 @@
 
 <main id="main">
 
-  <section class="contact-hero">
+  <section class="legal-hero">
     <div class="container">
-      <h1>Get in touch.</h1>
-      <p>Questions about plans, or ready to get started? Fill this out and I&rsquo;ll be in touch within 1 business day. Free website audit included if you want one.</p>
+      <h1>Privacy Policy</h1>
+      <p>What JD Media collects from visitors to jdaitken.ca, and why.</p>
     </div>
   </section>
 
-  <section>
+  <section class="legal-body">
     <div class="container">
-      <div class="contact-grid">
+      <p class="legal-updated">Last updated: August 2026</p>
 
-        <div class="form-card">
-          <h2>Send a message</h2>
-          <form action="https://formspree.io/f/xaqjbayd" method="POST" data-contact-form>
-            <input type="hidden" name="_subject" value="New contact form submission — jdaitken.ca">
-            <div class="honeypot" aria-hidden="true">
-              <label for="contact-gotcha">Leave this field empty</label>
-              <input id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-            </div>
+      <h2>Who this covers</h2>
+      <p>This policy covers jdaitken.ca, operated by JD Media (JD Aitken, sole proprietor, Ottawa, Ontario). It doesn't cover client websites JD Media builds and manages &mdash; each of those has its own privacy policy.</p>
 
-            <div class="form-group">
-              <label class="form-label" for="contact-name">Name</label>
-              <input class="input" id="contact-name" type="text" name="name" autocomplete="name" required>
-            </div>
+      <h2>What's collected</h2>
+      <p>Two kinds of information: what you submit through a form, and what your browser sends automatically while you're on the site.</p>
+      <ul>
+        <li><strong>Form submissions.</strong> Name, email, phone number, and any message you type into the contact form, the site audit request, or the outreach form. These are sent to Formspree, a third-party form processing service, and delivered to jd@jdaitken.ca. Formspree's own privacy policy is at <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</li>
+        <li><strong>Analytics.</strong> Google Analytics (GA4) records page views, general location (city-level), device type, and how you arrived at the site (e.g. search, a link, an ad).</li>
+        <li><strong>Advertising.</strong> If you arrive from a Google or Meta (Facebook/Instagram) ad, or if a page includes their tracking pixels, Google Ads and the Meta Pixel record that visit so ad performance can be measured and, for past visitors, so ads can be shown again elsewhere (retargeting).</li>
+      </ul>
 
-            <div class="form-group">
-              <label class="form-label" for="contact-email">Email</label>
-              <input class="input" id="contact-email" type="email" name="email" autocomplete="email" required>
-            </div>
+      <h2>Why it's collected</h2>
+      <p>To reply to your message, to understand which pages and ads are working, and to spend ad budget on what actually brings in real inquiries rather than guessing.</p>
 
-            <div class="form-group">
-              <label class="form-label" for="contact-phone">Phone</label>
-              <input class="input" id="contact-phone" type="tel" name="phone" autocomplete="tel" required>
-            </div>
+      <h2>Who it's shared with</h2>
+      <p>Form data goes to Formspree (processing) and then to JD directly by email &mdash; it isn't sold or shared with anyone else. Analytics and advertising data is shared with Google (GA4, Google Ads) and Meta (Meta Pixel) under their own privacy terms, which JD Media doesn't control.</p>
 
-            <div class="form-group">
-              <label class="form-label" for="contact-message">Anything you want me to know? <span style="color: var(--color-text-muted); font-weight: var(--font-normal);">(optional)</span></label>
-              <textarea class="textarea" id="contact-message" name="message" rows="3" placeholder="Your business, what you're looking for, or nothing at all. I'll ask on the call."></textarea>
-            </div>
+      <h2>Your choices</h2>
+      <p>You can block analytics and ad tracking in your browser (most browsers have a "block third-party cookies" or "do not track" setting, and ad blockers work too). You can also manage how Google and Meta use your data directly:</p>
+      <ul>
+        <li>Google: <a href="https://myadcenter.google.com" target="_blank" rel="noopener">myadcenter.google.com</a></li>
+        <li>Meta: <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">facebook.com/adpreferences</a></li>
+      </ul>
+      <p>Declining tracking doesn't affect your ability to use the site or submit a form &mdash; it only affects how your visit is measured.</p>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-sm);">Send Message</button>
+      <h2>Data retention</h2>
+      <p>Form submissions are kept as long as needed to respond to you and for basic business recordkeeping, then deleted. Analytics and ad platform data retention is set by Google and Meta under their own policies.</p>
 
-            <div class="form-status" role="status" aria-live="polite" data-form-status></div>
-          </form>
-        </div>
-
-        <div class="contact-sidebar">
-          <div class="contact-method">
-            <h3>Prefer a call?</h3>
-            <a href="tel:3435030123">343-503-0123</a>
-            <p>Available Mon-Fri, 9am-5pm ET</p>
-          </div>
-
-          <div class="contact-method">
-            <h3>Prefer email?</h3>
-            <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
-          </div>
-
-          <div class="contact-method">
-            <h3>Location</h3>
-            <p style="color: var(--color-text-secondary); font-size: var(--text-base);">Based in Ottawa, serving businesses across Ontario.</p>
-          </div>
-
-          <div class="contact-method">
-            <h3>Recent result</h3>
-            <p style="color: var(--color-text-secondary); font-size: var(--text-base);">Legendary Landscaping: 17 quote requests in July 2026, their best month yet.</p>
-          </div>
-
-          <div class="contact-promise">
-            <p>I reply within 1 business day.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-trust">
-    <div class="container">
-      <div class="contact-trust-inner">
-        <div class="contact-trust-check" aria-hidden="true">&#10003;</div>
-        <div class="contact-trust-text">
-          <strong>The 90-day money-back guarantee</strong>
-          <span>Stay 90 days. If you&rsquo;re not showing up higher in Google local search than when you started, I&rsquo;ll refund your management fees for those three months. No fine print, no risk.</span>
-        </div>
-      </div>
+      <h2>Contact</h2>
+      <p>Questions about this policy or a request to have your form submission deleted: email <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a> or call <a href="tel:3435030123">343-503-0123</a>.</p>
     </div>
   </section>
 
@@ -410,7 +285,6 @@
         <h4>Pages</h4>
         <ul>
           <li><a href="/work">Work</a></li>
-
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/blog/website-that-generates-calls-local-trades/">Blog</a></li>
@@ -437,39 +311,5 @@
 </footer>
 
 <script src="/js/main.js" defer></script>
-<script>
-  const form = document.querySelector('[data-contact-form]');
-  const status = document.querySelector('[data-form-status]');
-  const submitBtn = form.querySelector('[type="submit"]');
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    status.className = 'form-status';
-    status.textContent = '';
-
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        sessionStorage.setItem('jd_lead', 'contact');
-        window.location.href = '/thanks/';
-      } else {
-        const data = await res.json();
-        throw new Error(data.errors?.map(e => e.message).join(', ') || 'Submission failed');
-      }
-    } catch (err) {
-      status.textContent = 'Something went wrong. Please try again or email jd@jdaitken.ca directly.';
-      status.className = 'form-status is-visible is-error';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    }
-  });
-</script>
 </body>
 </html>

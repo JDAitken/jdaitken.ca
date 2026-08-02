@@ -140,37 +140,17 @@
       { "@type": "Question", "name": "How much should a small trade business website cost?", "acceptedAnswer": { "@type": "Answer", "text": "For an Ottawa trade business, a properly built site with hosting, local SEO setup, and ongoing updates typically runs a few hundred dollars a month rather than a one-time few-thousand-dollar build that gets ignored after launch. The ongoing part matters more than the sticker price, since a site that never gets updated slowly drops out of search results." } },
       { "@type": "Question", "name": "Do I need to run Google Ads to get found?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Two of my clients ranked in the top 3 for their core service terms in Ottawa without spending a cent on ads, purely from local SEO and Google Business Profile work. Ads can speed things up, but they're not a substitute for a site built to rank organically." } },
       { "@type": "Question", "name": "What's the single biggest mistake trade business websites make?", "acceptedAnswer": { "@type": "Answer", "text": "Treating the website as a digital business card instead of a call-generation tool. A page with your logo, a phone number, and a paragraph about \"quality service\" doesn't answer what a homeowner is actually searching for, so it doesn't rank and it doesn't convert." } },
-      { "@type": "Question", "name": "How long does it take to see results from a new website?", "acceptedAnswer": { "@type": "Answer", "text": "One client saw 13 quote requests in the first month after a rebuild. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly." } },
+      { "@type": "Question", "name": "How long does it take to see results from a new website?", "acceptedAnswer": { "@type": "Answer", "text": "One client, Legendary Landscaping, hit 17 quote requests in July 2026, their best month yet. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly." } },
       { "@type": "Question", "name": "Do I need a blog if I'm just a local plumber or landscaper?", "acceptedAnswer": { "@type": "Answer", "text": "Not a general blog, but you do need pages that answer the specific questions your customers are typing into Google, like cost guides and seasonal service pages. That content is what shows up in search when someone in your city is actually looking to hire." } }
     ]
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q56QL24ES"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9Q56QL24ES');
-  </script>
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1285414636910501');
-  fbq('track', 'PageView');
-  </script>
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel -->
 </head>
 
 <body>
@@ -310,7 +290,7 @@
         </div>
         <div class="post-faq-item">
           <h3>How long does it take to see results from a new website?</h3>
-          <p>One client saw 13 quote requests in the first month after a rebuild. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly.</p>
+          <p>One client, Legendary Landscaping, hit 17 quote requests in July 2026, their best month yet. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly.</p>
         </div>
         <div class="post-faq-item">
           <h3>Do I need a blog if I'm just a local plumber or landscaper?</h3>
@@ -349,6 +329,7 @@
           <li><a href="tel:3435030123">343-503-0123</a></li>
           <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
           <li><a href="/contact">Get a Quote</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
