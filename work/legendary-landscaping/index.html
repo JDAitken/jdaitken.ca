@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Legendary Landscaping Case Study | 17 Quote Requests in a Month | JD Media</title>
+  <meta name="description" content="How an Ottawa landscaping company went from a slow month of quote requests to 17 in July 2026 — a rebuilt site, four months of local SEO, and a Google Ads campaign at $42 per lead.">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .tap-to-call { display: none; }
+    @media (max-width: 767px) {
+      .tap-to-call {
+        display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
+        position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1);
+        background: var(--color-accent); color: var(--color-text);
+        padding: var(--space-sm) var(--space-md); font-size: var(--text-sm);
+        font-weight: var(--font-semibold); text-decoration: none; min-height: 44px;
+        letter-spacing: var(--tracking-wide);
+      }
+      .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
+    }
+
+    .site-header {
+      position: sticky; top: 0; z-index: var(--z-sticky);
+      background: var(--color-surface); border-bottom: 1px solid var(--color-border);
+      height: var(--header-height-mobile); display: flex; align-items: center;
+    }
+    @media (max-width: 767px) { .site-header { top: 44px; } }
+    @media (min-width: 768px) { .site-header { height: var(--header-height); } }
+
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md);
+    }
+    @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
+
+    .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
+    @media (min-width: 768px) { .nav-desktop { display: flex; } }
+    .nav-desktop a { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base); }
+    .nav-desktop a:hover { color: var(--color-text); }
+    .nav-desktop a.active { color: var(--color-accent); }
+
+    .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
+    .header-cta { display: none; }
+    @media (min-width: 768px) { .header-cta { display: inline-flex; } }
+    .btn-nav-outline { background: transparent; border: 1.5px solid var(--color-text); color: var(--color-text); }
+    .btn-nav-outline:hover { background: var(--color-text); color: var(--color-surface); }
+
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base); }
+    .menu-toggle:hover { border-color: var(--color-text-muted); }
+    @media (min-width: 768px) { .menu-toggle { display: none; } }
+
+    .menu-icon { position: relative; width: 18px; height: 12px; }
+    .menu-icon::before, .menu-icon::after, .menu-icon span { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; border-radius: 1px; }
+    .menu-icon::before { top: 0; } .menu-icon span { top: 5px; } .menu-icon::after { bottom: 0; }
+
+    .mobile-menu { position: fixed; inset: 0; background: var(--color-overlay); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--transition-slow); z-index: var(--z-modal); }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .mobile-menu-panel { width: 100%; height: 100%; background: var(--color-surface); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xl); transform: translateY(8px); transition: transform var(--transition-slow); }
+    .mobile-menu.is-open .mobile-menu-panel { transform: translateY(0); }
+    .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; }
+    .mobile-menu-close { width: 44px; height: 44px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: transparent; color: var(--color-text); font-size: var(--text-xl); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .mobile-menu-nav { display: flex; flex-direction: column; gap: var(--space-lg); flex: 1; }
+    .mobile-menu-nav a { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); text-decoration: none; }
+    .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
+    .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
+
+    /* Case study page */
+    .breadcrumb-row { padding: var(--space-lg) 0 0; }
+    .breadcrumb-nav { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); color: var(--color-text-muted); }
+    .breadcrumb-nav a { color: var(--color-text-muted); text-decoration: none; }
+    .breadcrumb-nav a:hover { color: var(--color-accent); }
+
+    .cs-hero { padding: var(--space-xl) 0 var(--space-2xl); }
+    @media (min-width: 768px) { .cs-hero { padding: var(--space-2xl) 0 var(--space-3xl); } }
+    .cs-hero-meta { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+    .cs-hero h1 { margin-bottom: var(--space-md); max-width: 720px; }
+    .cs-hero .subtitle { font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 620px; line-height: var(--leading-relaxed); margin-bottom: var(--space-xl); }
+    @media (min-width: 768px) { .cs-hero .subtitle { font-size: var(--text-xl); } }
+
+    .cs-hero-image { border-radius: var(--card-radius); overflow: hidden; border: 1px solid var(--color-border); margin-top: var(--space-xl); }
+    .cs-hero-image img { width: 100%; height: auto; display: block; }
+
+    .cs-headline-stat { display: flex; align-items: baseline; gap: var(--space-md); flex-wrap: wrap; padding: var(--space-lg) 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); margin-top: var(--space-xl); }
+    .cs-headline-stat .stat-value { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 4.5rem); font-weight: var(--font-bold); color: var(--color-text); line-height: 1; }
+    .cs-headline-stat .stat-copy { max-width: 380px; }
+    .cs-headline-stat .stat-copy strong { display: block; font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); }
+    .cs-headline-stat .stat-copy span { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    /* Situation */
+    .cs-situation { background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+    .cs-situation-content { max-width: 680px; margin: 0 auto; }
+    .cs-situation-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); }
+    .cs-situation-content p { margin-bottom: var(--space-md); line-height: var(--leading-relaxed); color: var(--color-text-secondary); }
+    .cs-situation-content p:last-child { margin-bottom: 0; }
+
+    /* Timeline — the signature element: four calendar months, in order, each with what changed and what moved */
+    .cs-timeline-section { }
+    .cs-timeline-section .section-header { max-width: 620px; margin: 0 auto var(--space-2xl); text-align: center; }
+    .cs-timeline-section .section-header h2 { margin-bottom: var(--space-sm); }
+    .cs-timeline-section .section-header p { color: var(--color-text-secondary); font-size: var(--text-lg); }
+
+    .cs-timeline { position: relative; max-width: 760px; margin: 0 auto; }
+    .cs-timeline::before {
+      content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px;
+      background: var(--color-border);
+    }
+    @media (min-width: 768px) { .cs-timeline::before { left: 15px; } }
+
+    .cs-month { position: relative; padding: 0 0 var(--space-2xl) var(--space-2xl); }
+    @media (min-width: 768px) { .cs-month { padding-left: var(--space-3xl); } }
+    .cs-month:last-child { padding-bottom: 0; }
+    .cs-month::before {
+      content: ""; position: absolute; left: 4px; top: 4px; width: 16px; height: 16px;
+      border-radius: var(--radius-full); background: var(--color-surface); border: 3px solid var(--color-border);
+    }
+    @media (min-width: 768px) { .cs-month::before { left: 8px; width: 16px; height: 16px; } }
+    .cs-month.is-turn::before { border-color: var(--color-accent); }
+
+    .cs-month-label { font-family: var(--font-display); font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-text-muted); margin-bottom: var(--space-xs); }
+    .cs-month h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
+    .cs-month p { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-md); }
+    .cs-month p:last-of-type { margin-bottom: 0; }
+
+    .cs-month-metrics { display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-md); }
+    .cs-month-metric { }
+    .cs-month-metric .m-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: var(--font-bold); color: var(--color-text); line-height: 1; }
+    .cs-month-metric .m-label { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+
+    /* Ads efficiency comparison */
+    .cs-ads-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .cs-ads-section .section-header { max-width: 620px; margin: 0 auto var(--space-2xl); text-align: center; }
+    .cs-ads-section .section-header h2 { margin-bottom: var(--space-sm); }
+    .cs-ads-section .section-header p { color: var(--color-text-secondary); font-size: var(--text-lg); }
+    .cs-ads-compare { display: grid; gap: var(--space-lg); max-width: 620px; margin: 0 auto; }
+    @media (min-width: 640px) { .cs-ads-compare { grid-template-columns: 1fr auto 1fr; align-items: center; } }
+    .cs-ads-col { text-align: center; padding: var(--space-xl); border: 1px solid var(--color-border); border-radius: var(--card-radius); }
+    .cs-ads-col.is-current { border-color: var(--color-accent); border-width: 2px; }
+    .cs-ads-col .a-month { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin-bottom: var(--space-sm); }
+    .cs-ads-col .a-value { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-text); line-height: 1; margin-bottom: var(--space-xs); }
+    .cs-ads-col .a-label { font-size: var(--text-sm); color: var(--color-text-secondary); }
+    .cs-ads-arrow { display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); transform: rotate(90deg); }
+    @media (min-width: 640px) { .cs-ads-arrow { transform: none; } }
+    .cs-ads-note { text-align: center; font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-lg); max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* Testimonial */
+    .cs-testimonial-section { text-align: center; }
+    .cs-testimonial-section blockquote { max-width: 640px; margin: 0 auto; text-align: left; border-left: 3px solid var(--color-text); padding-left: var(--space-lg); }
+    .cs-testimonial-section p { font-size: var(--text-lg); color: var(--color-text-secondary); line-height: var(--leading-relaxed); font-style: normal; margin-bottom: var(--space-md); }
+    .cs-testimonial-section cite { font-size: var(--text-sm); color: var(--color-text-muted); font-style: normal; }
+
+    .cs-figures-note { text-align: center; font-size: var(--text-xs); color: var(--color-text-muted); padding-top: 0; }
+
+    .final-cta { background: var(--color-text); color: var(--color-bg); text-align: center; }
+    .final-cta h2 { color: var(--color-bg); margin-bottom: var(--space-sm); }
+    .final-cta p { color: var(--color-text-on-navy); font-size: var(--text-lg); margin-bottom: var(--space-xl); max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final-cta .btn-primary { background: var(--color-accent); color: var(--color-text); }
+    .final-cta .btn-primary:hover { background: var(--color-accent-hover); }
+
+    .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
+    .footer-inner { display: grid; gap: var(--space-xl); }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .footer-links h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-md); color: var(--color-text); }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .footer-links a { font-size: var(--text-sm); color: var(--color-text-secondary); }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
+
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(2px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-md); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .modal-panel { background: var(--color-surface); border-radius: var(--radius-xl); padding: 3rem 3.5rem 2.5rem; width: 100%; max-width: 700px; position: relative; transform: translateY(12px) scale(0.97); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; box-shadow: 0 32px 80px rgba(0,0,0,0.18); }
+    .modal-overlay.is-open .modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+    .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; cursor: pointer; color: var(--color-text-muted); padding: var(--space-xs); line-height: 1; font-size: 1.5rem; transition: color 0.15s ease; border-radius: var(--radius-sm); }
+    .modal-close:hover { color: var(--color-text); }
+    .modal-heading { font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-sm); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); text-align: center; }
+    .modal-subhead { font-size: var(--text-base); color: var(--color-text-secondary); margin-bottom: var(--space-2xl); text-align: center; line-height: var(--leading-normal); }
+    .modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md); }
+    .modal-input-full { grid-column: 1 / -1; }
+    .modal-input { width: 100%; padding: 1rem 1.125rem; border: 1.5px solid transparent; border-radius: var(--btn-radius); font-family: var(--font-ui); font-size: var(--text-base); color: var(--color-text); background: #f0f2f5; outline: none; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; min-height: 56px; box-sizing: border-box; }
+    .modal-input:focus { background: var(--color-surface); border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
+    .modal-input::placeholder { color: var(--color-text-muted); }
+    .modal-form-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); margin-top: var(--space-md); }
+    .modal-note { font-size: 0.75rem; color: var(--color-text-muted); margin: 0; line-height: 1.5; }
+    .modal-submit { flex-shrink: 0; white-space: nowrap; }
+    .modal-error { font-size: var(--text-sm); color: var(--color-accent-dark); text-align: center; margin-top: var(--space-xs); margin-bottom: 0; }
+    .modal-success { text-align: center; padding: var(--space-xl) 0 var(--space-md); }
+    .modal-success-icon { font-size: 2.5rem; margin-bottom: var(--space-sm); }
+    .modal-success-heading { font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .modal-success-sub { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: 0; }
+    @media (max-width: 600px) { .modal-panel { padding: var(--space-xl) var(--space-lg) var(--space-lg); } .modal-form-grid { grid-template-columns: 1fr; } .modal-form-footer { flex-direction: column; align-items: flex-start; } .modal-submit { width: 100%; } }
+  </style>
+
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://jdaitken.ca/work/legendary-landscaping/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jdaitken.ca/work/legendary-landscaping/">
+  <meta property="og:title" content="Legendary Landscaping Case Study | 17 Quote Requests in a Month">
+  <meta property="og:description" content="How an Ottawa landscaping company went from a slow month to 17 quote requests — a rebuilt site, four months of local SEO, and Google Ads at $42 per lead.">
+  <meta property="og:image" content="https://jdaitken.ca/images/projects/legendary-landscaping-og.jpg">
+  <meta property="og:site_name" content="JD Media">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legendary Landscaping Case Study | JD Media">
+  <meta name="twitter:description" content="17 quote requests in a month for an Ottawa landscaping company. The rebuild, the SEO work, and the ads campaign, month by month.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://jdaitken.ca/work/" },
+          { "@type": "ListItem", "position": 3, "name": "Legendary Landscaping", "item": "https://jdaitken.ca/work/legendary-landscaping/" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Legendary Landscaping Website — Case Study",
+        "description": "Website rebuild, local SEO, and Google Ads for an Ottawa landscaping company. Quote requests went from 11 in June 2026 to 17 in July 2026, with Google Ads cost per lead dropping from about $159 to about $42 over the same period.",
+        "url": "https://jdaitken.ca/work/legendary-landscaping/",
+        "datePublished": "2026-08-03",
+        "creator": { "@id": "https://jdaitken.ca/#business" },
+        "about": {
+          "@type": "LocalBusiness",
+          "name": "Legendary Landscaping",
+          "url": "https://legendarylandscaping.ca",
+          "address": { "@type": "PostalAddress", "addressLocality": "Ottawa", "addressRegion": "ON", "addressCountry": "CA" }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tracking: GA4 + Google Ads + Meta Pixel, centralized in /js/tracking.js -->
+  <script src="/js/tracking.js"></script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1285414636910501&ev=PageView&noscript=1"
+  /></noscript>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<a href="tel:3435030123" class="tap-to-call" aria-label="Call JD Media">Call Now: 343-503-0123</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link">
+      <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="/work" class="active">Work</a>
+
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:3435030123" class="nav-phone header-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        343-503-0123
+      </a>
+      <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>
+        <span class="menu-icon" aria-hidden="true"><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+  <div class="mobile-menu-panel" data-menu-panel>
+    <div class="mobile-menu-top">
+      <a href="/" class="logo-link">
+        <img src="/images/logos/jd-media-logo.svg" alt="JD Media - Ottawa Web Design" class="logo-img">
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="Mobile">
+      <a href="/work">Work</a>
+
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog/website-that-generates-calls-local-trades/">Blog</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:3435030123">343-503-0123</a>
+      <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <div class="breadcrumb-row">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/work">Work</a>
+        <span aria-hidden="true">/</span>
+        <span>Legendary Landscaping</span>
+      </nav>
+    </div>
+  </div>
+
+  <section class="cs-hero">
+    <div class="container">
+      <div class="cs-hero-meta">
+        <span class="badge badge-accent">Landscaping</span>
+        <span class="badge">Ottawa, ON</span>
+        <span class="badge">Website + Local SEO + Google Ads</span>
+      </div>
+      <h1>From a quiet spring to 17 quote requests in a month</h1>
+      <p class="subtitle">Legendary Landscaping builds interlock patios, retaining walls, and hardscape across Ottawa. I rebuilt their site, took over local SEO and their Google Business Profile, then layered in a focused Google Ads campaign. Here's what happened, month by month, from the site relaunch through July 2026.</p>
+
+      <div class="cs-hero-image">
+        <picture>
+          <source type="image/webp"
+            srcset="/images/projects/legendary-landscaping-update-1200.webp 1200w, /images/projects/legendary-landscaping-update-1900.webp 1900w"
+            sizes="(max-width: 768px) 92vw, 900px">
+          <img
+            src="/images/projects/legendary-landscaping-update-1200.png"
+            srcset="/images/projects/legendary-landscaping-update-1200.png 1200w, /images/projects/legendary-landscaping-update-1900.png 1900w"
+            sizes="(max-width: 768px) 92vw, 900px"
+            alt="Legendary Landscaping website redesign showing service pages"
+            loading="eager" decoding="async">
+        </picture>
+      </div>
+
+      <div class="cs-headline-stat">
+        <span class="stat-value">17</span>
+        <span class="stat-copy"><strong>Quote requests in July 2026</strong> <span>Best month since the rebuild. Up from 11 in June and a slow start in April.</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-situation">
+    <div class="container">
+      <div class="cs-situation-content">
+        <h2>The situation</h2>
+        <p>Bradley Laplante built Legendary Landscaping on the strength of the work itself &mdash; interlock, retaining walls, hardscape that holds up through Ottawa winters. What the business didn't have was a reliable way for people searching for that work to find it. The old site wasn't built for local search, the Google Business Profile was under-optimized, and there was no paid channel bringing in demand on its own terms.</p>
+        <p>The goal wasn't a redesign for its own sake. It was quote requests &mdash; people who'd already decided they wanted a quote, filling out the form or picking up the phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-timeline-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Four months, in order</h2>
+        <p>No single tactic did this. Each month built on the last.</p>
+      </div>
+
+      <div class="cs-timeline">
+
+        <div class="cs-month">
+          <div class="cs-month-label">April 2026</div>
+          <h3>Site rebuild goes live</h3>
+          <p>New site launched, built for speed and structured for local search from the start. Early days &mdash; the SEO groundwork hadn't had time to show up in rankings yet.</p>
+          <div class="cs-month-metrics">
+            <div class="cs-month-metric"><div class="m-value">15</div><div class="m-label">Google reviews</div></div>
+            <div class="cs-month-metric"><div class="m-value">4.7</div><div class="m-label">Rating</div></div>
+          </div>
+        </div>
+
+        <div class="cs-month">
+          <div class="cs-month-label">May 2026</div>
+          <h3>The SEO pass</h3>
+          <p>Titles, headings, and canonical tags fixed sitewide. Star-rating schema and alt text added across every service page. Sitemap resubmitted. Review generation became a habit, not an afterthought &mdash; eight new reviews landed in a single month.</p>
+          <div class="cs-month-metrics">
+            <div class="cs-month-metric"><div class="m-value">23</div><div class="m-label">Google reviews, up from 15</div></div>
+            <div class="cs-month-metric"><div class="m-value">4.8</div><div class="m-label">Rating</div></div>
+          </div>
+        </div>
+
+        <div class="cs-month is-turn">
+          <div class="cs-month-label">June 2026</div>
+          <h3>Google Ads launches &mdash; and the first month is honest</h3>
+          <p>Ads went live June 15, narrowed to interlock and hardscape only, with three landing pages built specifically for those searches, sitewide conversion tracking, and a rebuilt free-quote form. The first two weeks brought $159 in spend and one lead &mdash; a normal cost for a campaign still calibrating. Organic search impressions were already climbing in the background, more than doubling from May.</p>
+          <div class="cs-month-metrics">
+            <div class="cs-month-metric"><div class="m-value">11</div><div class="m-label">Quote requests</div></div>
+            <div class="cs-month-metric"><div class="m-value">~$159</div><div class="m-label">Cost per ad lead</div></div>
+          </div>
+        </div>
+
+        <div class="cs-month is-turn">
+          <div class="cs-month-label">July 2026</div>
+          <h3>It compounds</h3>
+          <p>Quality Score tuning on the landing pages, duplicate service pages consolidated, the quote form hardened against drop-off. Ad spend nearly doubled to $294 &mdash; and cost per lead fell to roughly a quarter of June's, at about $42. Search impressions kept climbing, now over four times May's level, as the site earned visibility for a wider spread of searches.</p>
+          <div class="cs-month-metrics">
+            <div class="cs-month-metric"><div class="m-value">17</div><div class="m-label">Quote requests, best month yet</div></div>
+            <div class="cs-month-metric"><div class="m-value">~$42</div><div class="m-label">Cost per ad lead</div></div>
+            <div class="cs-month-metric"><div class="m-value">24</div><div class="m-label">Google reviews, 4.8 rating</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-ads-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What a month of tuning did to ad costs</h2>
+        <p>Same channel, same budget range, one month apart.</p>
+      </div>
+      <div class="cs-ads-compare">
+        <div class="cs-ads-col">
+          <div class="a-month">June 2026</div>
+          <div class="a-value">~$159</div>
+          <div class="a-label">Per lead &mdash; campaign's first two weeks, still calibrating</div>
+        </div>
+        <div class="cs-ads-arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="cs-ads-col is-current">
+          <div class="a-month">July 2026</div>
+          <div class="a-value">~$42</div>
+          <div class="a-label">Per lead &mdash; after Quality Score work and a hardened quote form</div>
+        </div>
+      </div>
+      <p class="cs-ads-note">Both figures are total ad spend divided by leads attributed to Google Ads for the calendar month. Organic quote requests (phone calls and form fills without an ad click) are separate and counted in the monthly totals above.</p>
+    </div>
+  </section>
+
+  <section class="cs-testimonial-section">
+    <div class="container">
+      <blockquote>
+        <p>&ldquo;JD Media built our website for Legendary Landscaping and we couldn&rsquo;t be happier with how it turned out. The site looks sharp, loads fast, and actually shows off our work the way we wanted. JD made the whole process easy &mdash; he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out. If you&rsquo;re a local trades or landscaping business looking to level up your website, I&rsquo;d highly recommend giving JD Media a call.&rdquo;</p>
+        <cite>&mdash; Legendary Landscaping, Ottawa</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="cs-figures-note">
+    <div class="container">
+      <p>Figures as of July 2026, from Legendary Landscaping's Google Search Console, Google Business Profile, and Google Ads accounts.</p>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container text-center">
+      <h2>Want a month-by-month breakdown like this for your business?</h2>
+      <p>Get a free audit and see exactly how your site can generate more calls.</p>
+      <a href="#" class="btn btn-primary open-audit-modal">Get My Free Site Audit</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/logos/jd-media-logo.svg" alt="JD Media" class="logo-img">
+        </a>
+        <p>Websites Ottawa trades businesses get their calls from.</p>
+        <p>Ottawa, ON</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/work">Work</a></li>
+
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog/website-that-generates-calls-local-trades/">Blog</a></li>
+          <li><a href="/ottawa-web-design/">Ottawa Web Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3435030123">343-503-0123</a></li>
+          <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
+          <li><a href="/contact">Get a Quote</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
+      <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
+        <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+
+<div class="modal-overlay" id="auditModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal-panel" id="auditModalPanel">
+    <button class="modal-close" id="closeAuditModal" aria-label="Close">&times;</button>
+    <div id="modalFormWrap">
+      <h2 class="modal-heading" id="modalHeading">Let's see what your site is costing you.</h2>
+      <p class="modal-subhead">Drop your details and I'll reply within 1 business day. No pitch. Just an honest look at what's possible.</p>
+      <form id="auditForm" novalidate>
+        <div class="modal-form-grid">
+          <input type="text"  name="name"  class="modal-input" placeholder="Your name"     aria-label="Your name"     autocomplete="name"  required>
+          <input type="email" name="email" class="modal-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="tel"   name="phone" class="modal-input modal-input-full" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" required>
+          <textarea name="message" class="modal-input modal-input-full" placeholder="Anything you want me to know? (optional)" aria-label="Anything you want me to know? (optional)" rows="2" style="min-height:unset;resize:none"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New site audit request — jdaitken.ca">
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label for="audit-gotcha">Leave this field empty</label>
+          <input id="audit-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="modal-error" id="auditError" hidden></p>
+        <div class="modal-form-footer">
+          <p class="modal-note">Replies within 1 business day &middot; No obligation.</p>
+          <button type="submit" class="btn btn-primary modal-submit">Get in Touch</button>
+        </div>
+      </form>
+    </div>
+    <div id="modalSuccess" class="modal-success" hidden>
+      <div class="modal-success-icon">✓</div>
+      <h3 class="modal-success-heading">Got it. I'll be in touch soon.</h3>
+      <p class="modal-success-sub">I'll reply within 1 business day.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay  = document.getElementById('auditModal');
+  var closeBtn = document.getElementById('closeAuditModal');
+  var form     = document.getElementById('auditForm');
+  var errEl    = document.getElementById('auditError');
+  var formWrap = document.getElementById('modalFormWrap');
+  var success  = document.getElementById('modalSuccess');
+
+  function openModal() {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { form.querySelector('input:not([type=hidden])').focus(); }, 250);
+  }
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-audit-modal').forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.modal-submit');
+    var origTxt = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    errEl.hidden = true;
+    try {
+      var res = await fetch('https://formspree.io/f/xaqjbayd', {
+        method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        sessionStorage.setItem('jd_lead', 'audit');
+        window.location.href = '/thanks/';
+      }
+      else { throw new Error(); }
+    } catch (_) {
+      errEl.textContent = 'Something went wrong. Email jd@jdaitken.ca directly.';
+      errEl.hidden = false; btn.disabled = false; btn.textContent = origTxt;
+    }
+  });
+})();
+</script>
+</body>
+</html>
