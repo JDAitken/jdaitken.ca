@@ -9,9 +9,8 @@ gtag('js', new Date());
 // GA4
 gtag('config', 'G-9Q56QL24ES');
 
-// Google Ads conversion tracking — replace AW-PLACEHOLDER with the real ID from
-// Google Ads > Goals > Conversions > New conversion action > Website.
-gtag('config', 'AW-PLACEHOLDER');
+// Google Ads conversion tracking
+gtag('config', 'AW-18367499421');
 
 (function loadGtagJs() {
   var s = document.createElement('script');
@@ -36,7 +35,10 @@ fbq('track', 'PageView');
 // source: a short label ('contact', 'audit', 'hi', 'lp') for per-channel attribution.
 window.jdTrackLead = function (source) {
   gtag('event', 'generate_lead', { form: source || 'lead-form', page: window.location.pathname });
-  // Replace AW-PLACEHOLDER/LABEL with the real send-to label once the conversion action exists.
-  gtag('event', 'conversion', { send_to: 'AW-PLACEHOLDER/LABEL' });
+  gtag('event', 'conversion', {
+    send_to: 'AW-18367499421/UiqYCPup49ocEJ2Zp7ZE',
+    value: 1.0,
+    currency: 'CAD'
+  });
   fbq('track', 'Lead');
 };
