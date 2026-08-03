@@ -161,7 +161,10 @@
     .cs-testimonial-section { text-align: center; }
     .cs-testimonial-section blockquote { max-width: 640px; margin: 0 auto; text-align: left; border-left: 3px solid var(--color-text); padding-left: var(--space-lg); }
     .cs-testimonial-section p { font-size: var(--text-lg); color: var(--color-text-secondary); line-height: var(--leading-relaxed); font-style: normal; margin-bottom: var(--space-md); }
-    .cs-testimonial-section cite { font-size: var(--text-sm); color: var(--color-text-muted); font-style: normal; }
+    .cs-testimonial-section cite { font-size: var(--text-sm); color: var(--color-text-muted); font-style: normal; display: block; }
+    .cs-clutch-link { display: inline-flex; align-items: center; gap: 0.4em; margin-top: var(--space-xs); font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-accent); text-decoration: none; transition: gap var(--transition-base); }
+    .cs-clutch-link:hover { gap: 0.6em; }
+    .cs-testimonial-section .cs-clutch-note { max-width: 640px; margin: var(--space-lg) auto 0; padding-left: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-muted); text-align: left; }
 
     .cs-figures-note { text-align: center; font-size: var(--text-xs); color: var(--color-text-muted); padding-top: 0; }
 
@@ -444,10 +447,23 @@
 
   <section class="cs-testimonial-section">
     <div class="container">
+      <!-- Website testimonial (company-attributed, kept live in the reviews sections on
+           /work, /, and /pricing) — superseded here by the named, verified Clutch review.
       <blockquote>
         <p>&ldquo;JD Media built our website for Legendary Landscaping and we couldn&rsquo;t be happier with how it turned out. The site looks sharp, loads fast, and actually shows off our work the way we wanted. JD made the whole process easy &mdash; he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out. If you&rsquo;re a local trades or landscaping business looking to level up your website, I&rsquo;d highly recommend giving JD Media a call.&rdquo;</p>
         <cite>&mdash; Legendary Landscaping, Ottawa</cite>
       </blockquote>
+      -->
+      <blockquote>
+        <p>&ldquo;JD Media&rsquo;s ideas on what we can do next to bring in more business are impressive.&rdquo;</p>
+        <cite>&mdash; Bradley Laplante, Owner, Legendary Landscaping<br>
+          <a href="https://clutch.co/profile/jd-media#reviews" target="_blank" rel="noopener" class="cs-clutch-link">
+            5.0 on Clutch &middot; Verified review
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </cite>
+      </blockquote>
+      <p class="cs-clutch-note">In his verified Clutch review, Bradley reported a 35% increase in calls and website contact forms.</p>
     </div>
   </section>
 
