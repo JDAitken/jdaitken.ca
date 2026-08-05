@@ -118,12 +118,12 @@
     .legal-body p { color: var(--color-text-secondary); margin-bottom: var(--space-md); }
     .legal-body ul { color: var(--color-text-secondary); margin: 0 0 var(--space-md); padding-left: var(--space-lg); }
     .legal-body li { margin-bottom: var(--space-xs); }
-    .legal-body a { color: var(--color-accent); }
+    .legal-body a { color: var(--color-accent-text); }
     .legal-updated { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-xl); }
 
     .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
     .footer-inner { display: grid; gap: var(--space-xl); }
-    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr 1fr; } }
     .footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); }
     .footer-links h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-md); color: var(--color-text); }
     .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
@@ -155,10 +155,56 @@
         ]
       },
       {
+        "@type": "WebSite",
+        "@id": "https://jdaitken.ca/#website",
+        "url": "https://jdaitken.ca/",
+        "name": "JD Media",
+        "description": "Fast, conversion-first websites for local service businesses in Ottawa, Ontario.",
+        "publisher": { "@id": "https://jdaitken.ca/#business" }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://jdaitken.ca/#business",
+        "name": "JD Media",
+        "alternateName": "JD Media Ottawa",
+        "description": "Ottawa web design agency building fast websites that get local service businesses more calls from Google, including HVAC, plumbing, landscaping, and home services companies.",
+        "url": "https://jdaitken.ca/",
+        "telephone": "+13435030123",
+        "email": "jd@jdaitken.ca",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Ottawa", "sameAs": "https://en.wikipedia.org/wiki/Ottawa" },
+          { "@type": "City", "name": "Kanata" },
+          { "@type": "City", "name": "Nepean" },
+          { "@type": "City", "name": "Barrhaven" },
+          { "@type": "City", "name": "Orléans" },
+          { "@type": "City", "name": "Gloucester" },
+          { "@type": "AdministrativeArea", "name": "Ontario" }
+        ],
+        "image": "https://jdaitken.ca/images/og-image.png",
+        "logo": "https://jdaitken.ca/images/logos/jd-media-logo.svg",
+        "priceRange": "$500-$900/mo",
+        "sameAs": [
+          "https://maps.app.goo.gl/VfX5TZv4sw8MnzpP8",
+          "https://www.linkedin.com/company/jd-media-ottawa",
+          "https://www.facebook.com/jdmediahq",
+          "https://www.instagram.com/jdmediahq/",
+          "https://clutch.co/profile/jd-media",
+          "https://greatworkguild.com/listings/jd-media"
+        ],
+        "openingHours": ["Mo-Fr 09:00-17:00"],
+        "founder": { "@id": "https://jdaitken.ca/about#jd" }
+      },
+      {
         "@type": "WebPage",
         "name": "Privacy Policy",
         "url": "https://jdaitken.ca/privacy/",
-        "isPartOf": { "@id": "https://jdaitken.ca/#business" }
+        "isPartOf": { "@id": "https://jdaitken.ca/#website" }
       }
     ]
   }
@@ -298,6 +344,16 @@
           <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
           <li><a href="/contact">Get a Quote</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/VfX5TZv4sw8MnzpP8" target="_blank" rel="noopener">Google Business Profile</a></li>
+          <li><a href="https://www.linkedin.com/company/jd-media-ottawa" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/jdmediahq" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/jdmediahq/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://clutch.co/profile/jd-media" target="_blank" rel="noopener">Clutch</a></li>
         </ul>
       </div>
     </div>

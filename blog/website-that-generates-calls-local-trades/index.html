@@ -92,7 +92,7 @@
 
     .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
     .footer-inner { display: grid; gap: var(--space-xl); }
-    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr 1fr; } }
     .footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); }
     .footer-links h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-md); color: var(--color-text); }
     .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
@@ -117,31 +117,73 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "What a Local Trade Business Website Needs to Generate Calls",
-    "description": "Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.",
-    "datePublished": "2026-07-01",
-    "dateModified": "2026-07-03",
-    "author": { "@type": "Person", "name": "JD Aitken", "url": "https://jdaitken.ca/about" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "JD Media",
-      "logo": { "@type": "ImageObject", "url": "https://jdaitken.ca/images/logos/jd-media-logo.svg" }
-    },
-    "image": "https://jdaitken.ca/images/blog/local-business-owner-phone-call.jpg",
-    "url": "https://jdaitken.ca/blog/website-that-generates-calls-local-trades/"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "How much should a small trade business website cost?", "acceptedAnswer": { "@type": "Answer", "text": "For an Ottawa trade business, a properly built site with hosting, local SEO setup, and ongoing updates typically runs a few hundred dollars a month rather than a one-time few-thousand-dollar build that gets ignored after launch. The ongoing part matters more than the sticker price, since a site that never gets updated slowly drops out of search results." } },
-      { "@type": "Question", "name": "Do I need to run Google Ads to get found?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Two of my clients ranked in the top 3 for their core service terms in Ottawa without spending a cent on ads, purely from local SEO and Google Business Profile work. Ads can speed things up, but they're not a substitute for a site built to rank organically." } },
-      { "@type": "Question", "name": "What's the single biggest mistake trade business websites make?", "acceptedAnswer": { "@type": "Answer", "text": "Treating the website as a digital business card instead of a call-generation tool. A page with your logo, a phone number, and a paragraph about \"quality service\" doesn't answer what a homeowner is actually searching for, so it doesn't rank and it doesn't convert." } },
-      { "@type": "Question", "name": "How long does it take to see results from a new website?", "acceptedAnswer": { "@type": "Answer", "text": "One client, Legendary Landscaping, hit 17 quote requests in July 2026, their best month yet. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly." } },
-      { "@type": "Question", "name": "Do I need a blog if I'm just a local plumber or landscaper?", "acceptedAnswer": { "@type": "Answer", "text": "Not a general blog, but you do need pages that answer the specific questions your customers are typing into Google, like cost guides and seasonal service pages. That content is what shows up in search when someone in your city is actually looking to hire." } }
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jdaitken.ca/blog/website-that-generates-calls-local-trades/" }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://jdaitken.ca/#business",
+        "name": "JD Media",
+        "alternateName": "JD Media Ottawa",
+        "description": "Ottawa web design agency building fast websites that get local service businesses more calls from Google, including HVAC, plumbing, landscaping, and home services companies.",
+        "url": "https://jdaitken.ca/",
+        "telephone": "+13435030123",
+        "email": "jd@jdaitken.ca",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Ottawa", "sameAs": "https://en.wikipedia.org/wiki/Ottawa" },
+          { "@type": "City", "name": "Kanata" },
+          { "@type": "City", "name": "Nepean" },
+          { "@type": "City", "name": "Barrhaven" },
+          { "@type": "City", "name": "Orléans" },
+          { "@type": "City", "name": "Gloucester" },
+          { "@type": "AdministrativeArea", "name": "Ontario" }
+        ],
+        "image": "https://jdaitken.ca/images/og-image.png",
+        "logo": "https://jdaitken.ca/images/logos/jd-media-logo.svg",
+        "priceRange": "$500-$900/mo",
+        "sameAs": [
+          "https://maps.app.goo.gl/VfX5TZv4sw8MnzpP8",
+          "https://www.linkedin.com/company/jd-media-ottawa",
+          "https://www.facebook.com/jdmediahq",
+          "https://www.instagram.com/jdmediahq/",
+          "https://clutch.co/profile/jd-media",
+          "https://greatworkguild.com/listings/jd-media"
+        ],
+        "openingHours": ["Mo-Fr 09:00-17:00"],
+        "founder": { "@id": "https://jdaitken.ca/about#jd" }
+      },
+      {
+        "@type": "Article",
+        "headline": "What a Local Trade Business Website Needs to Generate Calls",
+        "description": "Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.",
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-03",
+        "author": { "@id": "https://jdaitken.ca/about#jd" },
+        "publisher": { "@id": "https://jdaitken.ca/#business" },
+        "image": "https://jdaitken.ca/images/blog/local-business-owner-phone-call.jpg",
+        "url": "https://jdaitken.ca/blog/website-that-generates-calls-local-trades/"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much should a small trade business website cost?", "acceptedAnswer": { "@type": "Answer", "text": "For an Ottawa trade business, a properly built site with hosting, local SEO setup, and ongoing updates typically runs a few hundred dollars a month rather than a one-time few-thousand-dollar build that gets ignored after launch. The ongoing part matters more than the sticker price, since a site that never gets updated slowly drops out of search results." } },
+          { "@type": "Question", "name": "Do I need to run Google Ads to get found?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Two of my clients ranked in the top 3 for their core service terms in Ottawa without spending a cent on ads, purely from local SEO and Google Business Profile work. Ads can speed things up, but they're not a substitute for a site built to rank organically." } },
+          { "@type": "Question", "name": "What's the single biggest mistake trade business websites make?", "acceptedAnswer": { "@type": "Answer", "text": "Treating the website as a digital business card instead of a call-generation tool. A page with your logo, a phone number, and a paragraph about \"quality service\" doesn't answer what a homeowner is actually searching for, so it doesn't rank and it doesn't convert." } },
+          { "@type": "Question", "name": "How long does it take to see results from a new website?", "acceptedAnswer": { "@type": "Answer", "text": "One client, Legendary Landscaping, hit 17 quote requests in July 2026, their best month yet. Others take longer, especially in competitive categories, but real movement in search rankings usually shows up within the first two to three months if the on-page SEO and Google Business Profile are both handled properly." } },
+          { "@type": "Question", "name": "Do I need a blog if I'm just a local plumber or landscaper?", "acceptedAnswer": { "@type": "Answer", "text": "Not a general blog, but you do need pages that answer the specific questions your customers are typing into Google, like cost guides and seasonal service pages. That content is what shows up in search when someone in your city is actually looking to hire." } }
+        ]
+      }
     ]
   }
   </script>
@@ -330,6 +372,16 @@
           <li><a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a></li>
           <li><a href="/contact">Get a Quote</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/VfX5TZv4sw8MnzpP8" target="_blank" rel="noopener">Google Business Profile</a></li>
+          <li><a href="https://www.linkedin.com/company/jd-media-ottawa" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/jdmediahq" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/jdmediahq/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://clutch.co/profile/jd-media" target="_blank" rel="noopener">Clutch</a></li>
         </ul>
       </div>
     </div>

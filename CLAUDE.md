@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**JD Media** is a portfolio and business website for a web design agency serving local service businesses. The site showcases work, pricing, process, and includes an AI-powered chat assistant.
+**JD Media** is a portfolio and business website for a web design agency serving local service businesses. The site showcases work, pricing, and case studies, and handles leads through Formspree-backed forms.
 
 **Technology Stack:**
 - Static HTML/CSS/JavaScript (no build process)
@@ -43,14 +43,18 @@ const p = require('puppeteer');
 Pages live as `index.html` inside named subdirectories — **not** flat `.html` files in root:
 
 ```
-index.html          ← Homepage
+index.html                          ← Homepage
 about/index.html
 work/index.html
+work/legendary-landscaping/index.html  ← Case study detail page
 pricing/index.html
-process/index.html
+ottawa-web-design/index.html        ← SEO/service landing page
+lp/index.html                       ← Paid-ads landing page, no nav
+blog/website-that-generates-calls-local-trades/index.html
 contact/index.html
 thanks/index.html   ← Post-form submission confirmation
 hi/index.html       ← noindex landing page (outreach/cold leads)
+privacy/index.html
 arlene/index.html   ← noindex personal mini-app (not part of main site)
 ```
 
@@ -66,17 +70,18 @@ Load in this order — all three are required on every page:
 
 ### JavaScript
 
-- `js/main.js` — Navigation, mobile menu, smooth scrolling
-- `js/chat.js` — AI chat widget (proxied through `api/chat.php`)
+- `js/main.js` — Navigation, mobile menu, contact-form submit handling
+- `js/tracking.js` — GA4, Google Ads, and Meta Pixel; loaded in `<head>` on every page
+- `js/chat.js` — **Dead code.** Not loaded by any page; kept per the no-delete rule. Its backing
+  endpoint (`api/chat.php`) was disabled in commit `bac6bf7`.
 
 ### PHP API Endpoints
 
-All live in `/api/`:
-- `contact.php` — Contact form handler with rate limiting and spam protection
-- `chat.php` — OpenAI chat proxy; reads knowledge base from `api/jdmedia_knowledge.txt`
-- `audit.php` — SEO audit request form handler with rate limiting
+All live in `/api/`. **Every live form on the site now posts to Formspree, not these endpoints:**
+- `contact.php`, `audit.php` — No longer wired to any form; nothing references them.
+- `chat.php` — Disabled (see above).
 
-`api/jdmedia_knowledge.txt` — Plain-text knowledge base fed to the AI chat (pricing, services, contact info). Keep in sync with live pricing.
+`api/jdmedia_knowledge.txt` — Was the AI chat's knowledge base; orphaned along with `chat.php`.
 
 `api/tmp/` — Rate-limit state files; gitignored.
 
