@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Privacy Policy | JD Media Ottawa</title>
-  <meta name="description" content="How JD Media collects and uses information from jdaitken.ca visitors and form submissions.">
+  <title>Blog | JD Media</title>
+  <meta name="description" content="Straight answers on websites, local SEO, and Google Business Profile for Ottawa trade and local service businesses, from real client results.">
 
   <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
@@ -23,103 +23,54 @@
   <style>
     .tap-to-call { display: none; }
     @media (max-width: 767px) {
-      .tap-to-call {
-        display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
-        position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1);
-        background: var(--color-accent); color: var(--color-text);
-        padding: var(--space-sm) var(--space-md); font-size: var(--text-sm);
-        font-weight: var(--font-semibold); text-decoration: none; min-height: 44px;
-        letter-spacing: var(--tracking-wide);
-      }
+      .tap-to-call { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); position: sticky; top: 0; z-index: calc(var(--z-sticky) + 1); background: var(--color-accent); color: var(--color-surface); padding: var(--space-sm) var(--space-md); font-size: var(--text-sm); font-weight: var(--font-semibold); text-decoration: none; min-height: 44px; letter-spacing: var(--tracking-wide); }
       .tap-to-call:hover { background: var(--color-accent-hover); color: var(--color-surface); }
     }
-
-    .site-header {
-      position: sticky; top: 0; z-index: var(--z-sticky);
-      background: var(--color-surface); border-bottom: 1px solid var(--color-border);
-      height: var(--header-height-mobile); display: flex; align-items: center;
-    }
+    .site-header { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--color-surface); border-bottom: 1px solid var(--color-border); height: var(--header-height-mobile); display: flex; align-items: center; }
     @media (max-width: 767px) { .site-header { top: 44px; } }
     @media (min-width: 768px) { .site-header { height: var(--header-height); } }
-
-    .header-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md);
-    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-md); }
     @media (min-width: 768px) { .header-inner { padding: 0 var(--space-xl); } }
-
     .nav-desktop { display: none; align-items: center; gap: var(--space-xl); }
     @media (min-width: 768px) { .nav-desktop { display: flex; } }
-    .nav-desktop a {
-      font-size: var(--text-sm); font-weight: var(--font-medium);
-      color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base);
-    }
+    .nav-desktop a { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base); }
     .nav-desktop a:hover { color: var(--color-text); }
-
     .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
     .header-cta { display: none; }
     @media (min-width: 768px) { .header-cta { display: inline-flex; } }
-
-    .menu-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; border-radius: var(--radius-md);
-      border: 1px solid var(--color-border); background: var(--color-surface);
-      color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base);
-    }
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; transition: border-color var(--transition-base); }
     .menu-toggle:hover { border-color: var(--color-text-muted); }
     @media (min-width: 768px) { .menu-toggle { display: none; } }
-
     .menu-icon { position: relative; width: 18px; height: 12px; }
-    .menu-icon::before, .menu-icon::after, .menu-icon span {
-      content: ""; position: absolute; left: 0; right: 0; height: 2px;
-      background: currentColor; border-radius: 1px;
-    }
+    .menu-icon::before, .menu-icon::after, .menu-icon span { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; border-radius: 1px; }
     .menu-icon::before { top: 0; } .menu-icon span { top: 5px; } .menu-icon::after { bottom: 0; }
-
-    .mobile-menu {
-      position: fixed; inset: 0; background: var(--color-overlay);
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity var(--transition-slow); z-index: var(--z-modal);
-    }
+    .mobile-menu { position: fixed; inset: 0; background: var(--color-overlay); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--transition-slow); z-index: var(--z-modal); }
     .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
-    .mobile-menu-panel {
-      width: 100%; height: 100%; background: var(--color-surface);
-      padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xl);
-      transform: translateY(8px); transition: transform var(--transition-slow);
-    }
+    .mobile-menu-panel { width: 100%; height: 100%; background: var(--color-surface); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xl); transform: translateY(8px); transition: transform var(--transition-slow); }
     .mobile-menu.is-open .mobile-menu-panel { transform: translateY(0); }
     .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; }
-    .mobile-menu-close {
-      width: 44px; height: 44px; border-radius: var(--radius-full);
-      border: 1px solid var(--color-border); background: transparent;
-      color: var(--color-text); font-size: var(--text-xl); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .mobile-menu-close { width: 44px; height: 44px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: transparent; color: var(--color-text); font-size: var(--text-xl); cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .mobile-menu-nav { display: flex; flex-direction: column; gap: var(--space-lg); flex: 1; }
-    .mobile-menu-nav a {
-      font-family: var(--font-display); font-size: var(--text-3xl);
-      font-weight: var(--font-bold); color: var(--color-text); text-decoration: none;
-    }
+    .mobile-menu-nav a { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-text); text-decoration: none; }
     .mobile-menu-footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-md); }
     .mobile-menu-footer a { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
-    /* Privacy page specific */
-    .legal-hero { padding: var(--space-xl) 0 var(--space-lg); }
-    @media (min-width: 768px) { .legal-hero { padding: var(--space-2xl) 0 var(--space-xl); } }
-    .legal-hero p { color: var(--color-text-secondary); font-size: var(--text-base); margin-top: var(--space-sm); }
+    /* Blog index */
+    .blog-hero { padding: var(--space-2xl) 0 var(--space-lg); }
+    .blog-hero h1 { max-width: 20ch; margin-bottom: var(--space-sm); }
+    .blog-hero p { max-width: 60ch; color: var(--color-text-secondary); font-size: var(--text-lg); }
 
-    .legal-body { padding-bottom: var(--space-2xl); }
-    .legal-body .container { max-width: 720px; }
-    .legal-body h2 {
-      font-size: var(--text-xl); font-weight: var(--font-bold);
-      margin-top: var(--space-2xl); margin-bottom: var(--space-md);
-    }
-    .legal-body h2:first-child { margin-top: 0; }
-    .legal-body p { color: var(--color-text-secondary); margin-bottom: var(--space-md); }
-    .legal-body ul { color: var(--color-text-secondary); margin: 0 0 var(--space-md); padding-left: var(--space-lg); }
-    .legal-body li { margin-bottom: var(--space-xs); }
-    .legal-body a { color: var(--color-accent-text); }
-    .legal-updated { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-xl); }
+    .blog-list { padding: var(--space-lg) 0 var(--space-3xl); }
+    .blog-grid { display: grid; gap: var(--space-xl); grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .post-card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; }
+    .post-card-image { display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--card-radius); margin: calc(var(--card-padding) * -1) calc(var(--card-padding) * -1) var(--space-lg); }
+    .post-card-image img { width: 100%; height: 100%; object-fit: cover; }
+    .post-card .tag { display: inline-block; align-self: flex-start; font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-accent); border: 1px solid var(--color-accent); border-radius: var(--radius-full); padding: 4px 12px; margin-bottom: var(--space-md); }
+    .post-card h2 { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .post-card p { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: var(--leading-relaxed); margin-bottom: var(--space-md); }
+    .post-card .post-card-meta { margin-top: auto; font-size: var(--text-xs); color: var(--color-text-muted); }
 
     .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-2xl) 0; }
     .footer-inner { display: grid; gap: var(--space-xl); }
@@ -132,17 +83,19 @@
     .footer-bottom { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
   </style>
 
-  <!-- Canonical & Open Graph -->
-  <link rel="canonical" href="https://jdaitken.ca/privacy/">
+  <link rel="canonical" href="https://jdaitken.ca/blog/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jdaitken.ca/privacy/">
-  <meta property="og:title" content="Privacy Policy | JD Media Ottawa">
-  <meta property="og:description" content="How JD Media collects and uses information from jdaitken.ca visitors and form submissions.">
+  <meta property="og:url" content="https://jdaitken.ca/blog/">
+  <meta property="og:title" content="Blog | JD Media">
+  <meta property="og:description" content="Straight answers on websites, local SEO, and Google Business Profile for Ottawa trade and local service businesses, from real client results.">
   <meta property="og:image" content="https://jdaitken.ca/images/og-image.png">
   <meta property="og:site_name" content="JD Media">
   <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog | JD Media">
+  <meta name="twitter:description" content="Straight answers on websites, local SEO, and Google Business Profile for Ottawa trade and local service businesses, from real client results.">
+  <meta name="twitter:image" content="https://jdaitken.ca/images/og-image.png">
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -151,16 +104,8 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jdaitken.ca/" },
-          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://jdaitken.ca/privacy/" }
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jdaitken.ca/blog/" }
         ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://jdaitken.ca/#website",
-        "url": "https://jdaitken.ca/",
-        "name": "JD Media",
-        "description": "Fast, conversion-first websites for local service businesses in Ottawa, Ontario.",
-        "publisher": { "@id": "https://jdaitken.ca/#business" }
       },
       {
         "@type": "LocalBusiness",
@@ -199,12 +144,6 @@
         ],
         "openingHours": ["Mo-Fr 09:00-17:00"],
         "founder": { "@id": "https://jdaitken.ca/about#jd" }
-      },
-      {
-        "@type": "WebPage",
-        "name": "Privacy Policy",
-        "url": "https://jdaitken.ca/privacy/",
-        "isPartOf": { "@id": "https://jdaitken.ca/#website" }
       }
     ]
   }
@@ -232,7 +171,7 @@
       <a href="/work">Work</a>
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
-      <a href="/blog/">Blog</a>
+      <a href="/blog/" class="active">Blog</a>
       <a href="/contact">Contact</a>
     </nav>
     <div class="header-actions">
@@ -259,7 +198,7 @@
       <a href="/work">Work</a>
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
-      <a href="/blog/">Blog</a>
+      <a href="/blog/" class="active">Blog</a>
       <a href="/contact">Contact</a>
     </nav>
     <div class="mobile-menu-footer">
@@ -271,47 +210,42 @@
 
 <main id="main">
 
-  <section class="legal-hero">
+  <header class="blog-hero">
     <div class="container">
-      <h1>Privacy Policy</h1>
-      <p>What JD Media collects from visitors to jdaitken.ca, and why.</p>
+      <h1>Blog</h1>
+      <p>Straight answers on websites, local SEO, and Google Business Profile for Ottawa trades and local service businesses, from real client results.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="legal-body">
+  <section class="blog-list">
     <div class="container">
-      <p class="legal-updated">Last updated: August 2026</p>
+      <div class="blog-grid">
 
-      <h2>Who this covers</h2>
-      <p>This policy covers jdaitken.ca, operated by JD Media (JD Aitken, sole proprietor, Ottawa, Ontario). It doesn't cover client websites JD Media builds and manages &mdash; each of those has its own privacy policy.</p>
+        <a href="/blog/google-business-profile-ottawa-contractors/" class="post-card card">
+          <div class="post-card-image">
+            <img src="/images/blog/google-business-profile-ottawa-contractors.jpg" alt="Contractor talking on the phone outdoors" width="1200" height="627" loading="lazy">
+          </div>
+          <span class="tag">Google Business Profile</span>
+          <h2>How Ottawa Contractors Get Found on Google Business Profile</h2>
+          <p>Google Business Profile is why some Ottawa contractors show up in the map pack and others don't. Here's what moves the needle, with real client numbers.</p>
+          <div class="post-card-meta">
+            <time datetime="2026-08-05">August 5, 2026</time>
+          </div>
+        </a>
 
-      <h2>What's collected</h2>
-      <p>Two kinds of information: what you submit through a form, and what your browser sends automatically while you're on the site.</p>
-      <ul>
-        <li><strong>Form submissions.</strong> Name, email, phone number, and any message you type into the contact form, the site audit request, or the outreach form. These are sent to Formspree, a third-party form processing service, and delivered to jd@jdaitken.ca. Formspree's own privacy policy is at <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</li>
-        <li><strong>Analytics.</strong> Google Analytics (GA4) records page views, general location (city-level), device type, and how you arrived at the site (e.g. search, a link, an ad).</li>
-        <li><strong>Advertising.</strong> If you arrive from a Google or Meta (Facebook/Instagram) ad, or if a page includes their tracking pixels, Google Ads and the Meta Pixel record that visit so ad performance can be measured and, for past visitors, so ads can be shown again elsewhere (retargeting).</li>
-      </ul>
+        <a href="/blog/website-that-generates-calls-local-trades/" class="post-card card">
+          <div class="post-card-image">
+            <img src="/images/blog/local-business-owner-phone-call.jpg" alt="Small business owner smiling while taking a customer call" width="940" height="627" loading="lazy">
+          </div>
+          <span class="tag">Local SEO</span>
+          <h2>What a Local Trade Business Website Needs to Generate Calls</h2>
+          <p>Most trade business websites look fine and generate nothing. Here's what actually turns visitors into phone calls, based on real Ottawa client results.</p>
+          <div class="post-card-meta">
+            <time datetime="2026-07-01">July 1, 2026</time>
+          </div>
+        </a>
 
-      <h2>Why it's collected</h2>
-      <p>To reply to your message, to understand which pages and ads are working, and to spend ad budget on what actually brings in real inquiries rather than guessing.</p>
-
-      <h2>Who it's shared with</h2>
-      <p>Form data goes to Formspree (processing) and then to JD directly by email &mdash; it isn't sold or shared with anyone else. Analytics and advertising data is shared with Google (GA4, Google Ads) and Meta (Meta Pixel) under their own privacy terms, which JD Media doesn't control.</p>
-
-      <h2>Your choices</h2>
-      <p>You can block analytics and ad tracking in your browser (most browsers have a "block third-party cookies" or "do not track" setting, and ad blockers work too). You can also manage how Google and Meta use your data directly:</p>
-      <ul>
-        <li>Google: <a href="https://myadcenter.google.com" target="_blank" rel="noopener">myadcenter.google.com</a></li>
-        <li>Meta: <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">facebook.com/adpreferences</a></li>
-      </ul>
-      <p>Declining tracking doesn't affect your ability to use the site or submit a form &mdash; it only affects how your visit is measured.</p>
-
-      <h2>Data retention</h2>
-      <p>Form submissions are kept as long as needed to respond to you and for basic business recordkeeping, then deleted. Analytics and ad platform data retention is set by Google and Meta under their own policies.</p>
-
-      <h2>Contact</h2>
-      <p>Questions about this policy or a request to have your form submission deleted: email <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a> or call <a href="tel:3435030123">343-503-0123</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -359,13 +293,11 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 JD Media. Websites that get you more calls.</p>
-      <a href="https://greatworkguild.com/listings/jd-media" target="_blank" rel="noopener">
-        <img src="https://greatworkguild.com/api/badges/c8027941-1e2a-4dce-9ee0-57e1d3871107/verified" alt="Featured Agency – Great Work Guild" width="80" height="69" loading="lazy" />
-      </a>
     </div>
   </div>
 </footer>
 
 <script src="/js/main.js" defer></script>
+
 </body>
 </html>
