@@ -9,6 +9,5 @@
   </FilesMatch>
 </IfModule>
 
-# /blog/ has no listing page yet (single post — see ops/content/blog/PUBLISH.md);
-# temporary redirect until a second post justifies an index. Remove when blog/index.html exists.
-RedirectMatch 302 ^/blog/?$ https://jdaitken.ca/blog/website-that-generates-calls-local-trades/
+# Superseded 2026-08-09: blog/index.html now exists, so /blog/ serves the catalog directly.
+# RedirectMatch 302 ^/blog/?$ https://jdaitken.ca/blog/website-that-generates-calls-local-trades/

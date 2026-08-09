@@ -50,7 +50,9 @@ work/legendary-landscaping/index.html  ← Case study detail page
 pricing/index.html
 ottawa-web-design/index.html        ← SEO/service landing page
 lp/index.html                       ← Paid-ads landing page, no nav
+blog/index.html                     ← Blog catalog/listing page
 blog/website-that-generates-calls-local-trades/index.html
+blog/google-business-profile-ottawa-contractors/index.html
 contact/index.html
 thanks/index.html   ← Post-form submission confirmation
 hi/index.html       ← noindex landing page (outreach/cold leads)
