@@ -8,8 +8,11 @@ appears is *derived* from this file and must be kept in sync with it:
 - `llms.txt` — AI-search summary (brand guide: "keep positioning in sync")
 - `ops/content/clients/jdmedia/business-context.md` — content-generation source facts
 - `about/index.html` — mentions the guarantee, not full pricing; spot-check if the guarantee wording changes
+- `index.html` — home page hero, meta descriptions, and pricing note
+- `ottawa-web-design/index.html` — service page hero, pricing teaser, and meta description
+- `lp/index.html` — landing page subtitle, offer list, and meta description
 
-When pricing, tiers, or terms change, update this file first, then propagate to the four above.
+When pricing, tiers, or terms change, update this file first, then propagate to the seven above.
 
 ---
 
