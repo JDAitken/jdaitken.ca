@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wyman Contracting — What I'd Change</title>
+  <meta name="description" content="Google Business Profile and website audit for Wyman Contracting, prepared by JD Media.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: var(--color-bg);
+    }
+
+    .wy-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* Header */
+    .wy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-lg) 0;
+    }
+    .wy-header img { height: 28px; width: auto; display: block; }
+    .wy-header-label {
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    /* Hero */
+    .wy-hero {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      margin: var(--space-sm) 0 var(--space-2xl);
+      background: var(--color-text);
+    }
+    .wy-hero img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.55;
+    }
+    .wy-hero-copy {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    .wy-hero-copy .kicker { color: rgba(255,255,255,0.75); margin-bottom: var(--space-sm); }
+    .wy-hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: #fff;
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      margin: 0;
+    }
+    @media (min-width: 600px) {
+      .wy-hero img { height: 320px; }
+      .wy-hero-copy h1 { font-size: var(--text-4xl); }
+    }
+
+    .wy-intro {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-3xl);
+    }
+    .wy-intro strong { color: var(--color-text); }
+
+    /* Section */
+    .wy-section {
+      margin-bottom: var(--space-3xl);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--color-border);
+    }
+    .wy-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .wy-section-num {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      color: var(--color-accent);
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    .wy-section h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-md);
+    }
+    @media (min-width: 600px) {
+      .wy-section h2 { font-size: var(--text-3xl); }
+    }
+    .wy-section p {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-md);
+    }
+    .wy-section p:last-child { margin-bottom: 0; }
+
+    /* Rating chart */
+    .wy-chart {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+    }
+    .wy-chart-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+    }
+    .wy-chart-row + .wy-chart-row { border-top: 1px solid var(--color-border); }
+    .wy-chart-name {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+    .wy-chart-row.is-you .wy-chart-name { color: var(--color-accent-dark); }
+    .wy-chart-bar-track {
+      background: var(--color-bg);
+      border-radius: var(--radius-full);
+      height: 8px;
+      overflow: hidden;
+    }
+    .wy-chart-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--color-text-muted);
+    }
+    .wy-chart-row.is-you .wy-chart-bar-fill { background: var(--color-accent); }
+    .wy-chart-meta {
+      text-align: right;
+      white-space: nowrap;
+      font-family: var(--font-display);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+    .wy-chart-meta span {
+      display: block;
+      font-family: var(--font-ui);
+      font-weight: var(--font-normal);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Review quotes */
+    .wy-quotes { display: flex; flex-direction: column; gap: var(--space-md); margin: var(--space-lg) 0; }
+    .wy-quote {
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+    }
+    .wy-quote.is-good { background: var(--color-success-light); border-color: transparent; }
+    .wy-quote.is-bad { background: var(--color-error-light); border-color: transparent; }
+    .wy-quote-tag {
+      display: inline-block;
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+    .wy-quote.is-good .wy-quote-tag { color: var(--color-success-dark); }
+    .wy-quote.is-bad .wy-quote-tag { color: var(--color-error); }
+    .wy-quote p {
+      font-size: var(--text-base);
+      color: var(--color-text);
+      font-style: italic;
+      line-height: var(--leading-normal);
+      margin: 0;
+    }
+
+    .wy-callout {
+      background: var(--color-text);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+    }
+    .wy-callout p {
+      color: var(--color-text-on-navy);
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+    .wy-callout strong { color: #fff; }
+
+    /* Evidence screenshot */
+    .wy-evidence {
+      margin: var(--space-lg) 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+    .wy-evidence img { width: 100%; display: block; }
+    .wy-evidence-caption {
+      background: var(--color-text);
+      color: var(--color-text-on-navy);
+      font-size: var(--text-xs);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+    }
+
+    /* Browser tab mock */
+    .wy-tab-mock {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin: var(--space-lg) 0;
+      font-family: var(--font-ui);
+    }
+    .wy-tab-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      font-size: var(--text-sm);
+    }
+    .wy-tab-row + .wy-tab-row { border-top: 1px solid var(--color-border); }
+    .wy-tab-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .wy-tab-row.is-now .wy-tab-dot { background: var(--color-error); }
+    .wy-tab-row.is-fix .wy-tab-dot { background: var(--color-success); }
+    .wy-tab-row.is-now span { color: var(--color-text-muted); }
+    .wy-tab-row.is-fix span { color: var(--color-text); font-weight: var(--font-medium); }
+
+    /* Fix list */
+    .wy-fixlist { list-style: none; margin: var(--space-lg) 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-md); }
+    .wy-fixlist li {
+      display: flex;
+      gap: var(--space-md);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+    .wy-fix-num {
+      font-family: var(--font-display);
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      color: var(--color-accent);
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .wy-fix-body h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+      margin: 0 0 4px;
+    }
+    .wy-fix-body p { margin: 0; font-size: var(--text-sm); color: var(--color-text-secondary); }
+    .wy-fix-body .badge { margin-top: var(--space-sm); }
+
+    /* Offer band */
+    .wy-offer {
+      background: var(--color-text);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl) var(--space-lg);
+      text-align: center;
+    }
+    .wy-offer .kicker { color: rgba(255,255,255,0.6); }
+    .wy-offer h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: #fff;
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+    .wy-offer p {
+      color: var(--color-text-on-navy);
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      max-width: 480px;
+      margin: 0 auto var(--space-lg);
+    }
+    .wy-offer .wy-guarantee {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.6);
+      margin-top: var(--space-md);
+    }
+    .wy-offer-price {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      color: #fff;
+      margin-bottom: var(--space-xs);
+    }
+    .wy-offer-price span { font-size: var(--text-lg); font-weight: var(--font-medium); color: rgba(255,255,255,0.6); }
+
+    .wy-call-strip {
+      text-align: center;
+      padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+    .wy-call-strip p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-md);
+    }
+
+    .wy-footer {
+      text-align: center;
+      padding: var(--space-xl) 0 var(--space-3xl);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+    .wy-footer a { color: var(--color-text-muted); }
+
+    /* Mockup preview card */
+    .wy-preview {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      background: var(--color-text);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      text-decoration: none;
+    }
+    .wy-preview img {
+      width: 84px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: block;
+      flex-shrink: 0;
+    }
+    .wy-preview-copy .kicker { color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+    .wy-preview-copy p {
+      color: #fff;
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      margin: 0 0 4px;
+    }
+    .wy-preview-copy span.wy-preview-link {
+      color: var(--color-accent);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+  </style>
+
+  <script src="/js/tracking.js"></script>
+</head>
+
+<body>
+
+<div class="wy-wrap">
+
+  <!-- Header -->
+  <div class="wy-header">
+    <a href="/"><img src="/images/logos/jd-media-logo.svg" alt="JD Media"></a>
+    <div class="wy-header-label">Prepared for<br>Wyman Contracting</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="wy-hero">
+    <img src="/images/wyman/hero-roof-pool.jpg" alt="A Wyman Contracting roof installation">
+    <div class="wy-hero-copy">
+      <span class="kicker">Google Business Profile + Website Audit</span>
+      <h1>What I'd change, and why.</h1>
+    </div>
+  </div>
+
+  <p class="wy-intro">
+    Sean, this is everything I found looking at your Google listing and your website
+    this week. <strong>No fluff, nothing you have to look up.</strong> One thing matters
+    more than the rest — that's first.
+  </p>
+
+  <!-- Section 1: Reviews -->
+  <div class="wy-section">
+    <span class="wy-section-num">01 — The biggest thing</span>
+    <h2>Your rating is lower than every roofer around you.</h2>
+    <p>
+      I checked the roofing companies that show up first when someone searches
+      "roofing Ottawa." Here's where you sit next to them:
+    </p>
+
+    <div class="wy-chart">
+      <div class="wy-chart-row is-you">
+        <div>
+          <div class="wy-chart-name">Wyman Contracting</div>
+          <div class="wy-chart-bar-track"><div class="wy-chart-bar-fill" style="width:88%"></div></div>
+        </div>
+        <div class="wy-chart-meta">4.4<span>33 reviews</span></div>
+      </div>
+      <div class="wy-chart-row">
+        <div>
+          <div class="wy-chart-name">Wolfenburg Roofing</div>
+          <div class="wy-chart-bar-track"><div class="wy-chart-bar-fill" style="width:98%"></div></div>
+        </div>
+        <div class="wy-chart-meta">4.9<span>281 reviews</span></div>
+      </div>
+      <div class="wy-chart-row">
+        <div>
+          <div class="wy-chart-name">Vanity Roofing</div>
+          <div class="wy-chart-bar-track"><div class="wy-chart-bar-fill" style="width:96%"></div></div>
+        </div>
+        <div class="wy-chart-meta">4.8<span>270 reviews</span></div>
+      </div>
+      <div class="wy-chart-row">
+        <div>
+          <div class="wy-chart-name">Rainbow Roofing</div>
+          <div class="wy-chart-bar-track"><div class="wy-chart-bar-fill" style="width:96%"></div></div>
+        </div>
+        <div class="wy-chart-meta">4.8<span>376 reviews</span></div>
+      </div>
+      <div class="wy-chart-row">
+        <div>
+          <div class="wy-chart-name">Tailored Home Improvements</div>
+          <div class="wy-chart-bar-track"><div class="wy-chart-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="wy-chart-meta">5.0<span>317 reviews</span></div>
+      </div>
+    </div>
+
+    <p>I read every one of your 33 reviews. Here's the actual pattern:</p>
+
+    <div class="wy-quotes">
+      <div class="wy-quote is-good">
+        <span class="wy-quote-tag">5 stars &middot; roofing job</span>
+        <p>"Really happy with work done&hellip; work was done promptly and looks amazing."</p>
+      </div>
+      <div class="wy-quote is-bad">
+        <span class="wy-quote-tag">1 star &middot; seasonal snow removal</span>
+        <p>"He did not show up multiple times&hellip; I paid $375 upfront."</p>
+      </div>
+    </div>
+
+    <div class="wy-callout">
+      <p>
+        <strong>Every roofing review you have is 4 or 5 stars.</strong> The two 1-star
+        reviews dragging your average down are both about snow removal contracts, not
+        roofing. Your core business is doing fine on Google &mdash; it's getting pulled
+        down by a side service.
+      </p>
+    </div>
+
+    <p>
+      I'll say this straight because you asked me not to waste your time: I can't fix
+      this by building you a better website. This is a business decision &mdash; keep
+      snow removal and get ahead of it, or drop it and let the rating climb back to
+      where your roofing work actually sits. Either way, it's the first thing worth
+      deciding, before anything else on this page.
+    </p>
+  </div>
+
+  <!-- Section 2: Website homepage -->
+  <div class="wy-section">
+    <span class="wy-section-num">02 — Your website</span>
+    <h2>Your homepage sells lawn care before it sells roofing.</h2>
+    <p>
+      Your site says "roofing services" at the top. Scroll one section down, and
+      here's what's actually listed first:
+    </p>
+
+    <div class="wy-evidence">
+      <img src="/images/wyman/evidence-services.png" alt="Screenshot of wymancontracting.com showing Lawn Care listed as the first service, before Landscaping and Siding">
+      <div class="wy-evidence-caption">Your site, today &mdash; "Our Roofing Services" section</div>
+    </div>
+
+    <p>
+      Roof replacement &mdash; your highest-value job &mdash; isn't even one of the
+      cards shown. Someone searching for a roofer lands here and the first thing they
+      read about is lawn mowing. That's not what you do most, and it's not what pays
+      the most.
+    </p>
+
+    <a href="/wyman/preview/" class="wy-preview">
+      <img src="/images/wyman/preview-thumb.png" alt="Preview of a rebuilt homepage for Wyman Contracting">
+      <div class="wy-preview-copy">
+        <span class="kicker">See it on your phone</span>
+        <p>I built a mockup of what this could look like.</p>
+        <span class="wy-preview-link">Open the preview &rarr;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 3: Page titles -->
+  <div class="wy-section">
+    <span class="wy-section-num">03 — Why Google skips you</span>
+    <h2>Google can't tell your pages apart from a demo site.</h2>
+    <p>
+      Your site was built on a template called "Roofing X." Most of your pages never
+      had the placeholder name replaced &mdash; including the roof replacement page
+      itself:
+    </p>
+
+    <div class="wy-tab-mock">
+      <div class="wy-tab-row is-now">
+        <div class="wy-tab-dot"></div>
+        <span>Roof Replacements &ndash; Roofing X Webflow Ecommerce website template</span>
+      </div>
+      <div class="wy-tab-row is-fix">
+        <div class="wy-tab-dot"></div>
+        <span>Roof Replacement in Ottawa &ndash; Wyman Contracting</span>
+      </div>
+    </div>
+
+    <p>
+      That's the title Google shows in search results, word for word. Seven of your
+      nine service pages have this problem. Google reads that as an unfinished
+      template, not a real roofing company &mdash; which is a big part of why eight
+      other Ottawa roofers show up before you do.
+    </p>
+  </div>
+
+  <!-- Section 4: What I'd do -->
+  <div class="wy-section">
+    <span class="wy-section-num">04 — What I'd do, in order</span>
+    <h2>Here's the priority list.</h2>
+
+    <ul class="wy-fixlist">
+      <li>
+        <span class="wy-fix-num">1</span>
+        <div class="wy-fix-body">
+          <h3>Decide on snow removal</h3>
+          <p>Your call, not mine &mdash; but it's the one thing worth deciding first. Everything below helps more once this is settled.</p>
+          <span class="badge badge-default">Your decision</span>
+        </div>
+      </li>
+      <li>
+        <span class="wy-fix-num">2</span>
+        <div class="wy-fix-body">
+          <h3>Add your business hours to Google</h3>
+          <p>Your listing doesn't have any hours set. It's free to fix and it's one of the first things people check before calling.</p>
+          <span class="badge badge-success">Free, 10 minutes</span>
+        </div>
+      </li>
+      <li>
+        <span class="wy-fix-num">3</span>
+        <div class="wy-fix-body">
+          <h3>Rebuild the homepage around roofing</h3>
+          <p>Roof replacement and repair first. Steel roofing given its own section, since you told me that's where you want to grow.</p>
+          <span class="badge badge-accent">The build</span>
+        </div>
+      </li>
+      <li>
+        <span class="wy-fix-num">4</span>
+        <div class="wy-fix-body">
+          <h3>Fix every page title</h3>
+          <p>Nine pages, real names, what you actually do. This alone is what gets you back into the search results you're missing from.</p>
+          <span class="badge badge-accent">The build</span>
+        </div>
+      </li>
+      <li>
+        <span class="wy-fix-num">5</span>
+        <div class="wy-fix-body">
+          <h3>Add more job photos</h3>
+          <p>You have 10 photos on your Google listing. The roofers ranking above you have 50 to 200+. More real jobs, more trust.</p>
+          <span class="badge badge-default">Ongoing</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Offer -->
+  <div class="wy-section" style="border-top:none;">
+    <div class="wy-offer">
+      <span class="kicker">The offer, same as I told you on the phone</span>
+      <div class="wy-offer-price">$500<span>&nbsp;/ month</span></div>
+      <p>
+        Nothing up front. Covers the new site, your Google listing, monthly content,
+        and hosting. The $1,500 build fee is waived if you stay 12 months. You deal
+        with me directly &mdash; not an account manager.
+      </p>
+      <a href="tel:6139793189" class="btn btn-primary">Call me before Wednesday &rarr;</a>
+      <p class="wy-guarantee">Backed by the 90-day guarantee &mdash; if it's not working, you don't keep paying for it.</p>
+    </div>
+  </div>
+
+  <!-- Call reminder -->
+  <div class="wy-call-strip">
+    <span class="kicker">Next</span>
+    <p style="font-size:var(--text-base); color:var(--color-text-secondary); margin-top:var(--space-sm);">
+      I'll call you <strong style="color:var(--color-text);">Wednesday at 5pm</strong> to walk
+      through this. Nothing owed either way &mdash; if it's not worth acting on, I'll tell you that too.
+    </p>
+  </div>
+
+  <footer class="wy-footer">
+    JD Media &middot; <a href="mailto:jd@jdaitken.ca">jd@jdaitken.ca</a> &middot; <a href="tel:3435030123">343-503-0123</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

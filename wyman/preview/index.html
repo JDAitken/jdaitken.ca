@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wyman Contracting — Homepage Mockup</title>
+  <meta name="description" content="A mockup of what Wyman Contracting's homepage could look like, prepared by JD Media.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/x-icon" href="/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/styles/tokens-v2.css">
+  <link rel="stylesheet" href="/styles/base-v2.css">
+  <link rel="stylesheet" href="/styles/components-v2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body { background: var(--color-surface); }
+
+    /* Mockup ribbon */
+    .wm-ribbon {
+      background: var(--color-text);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      padding: var(--space-sm) var(--space-md);
+    }
+    .wm-ribbon a { color: #fff; text-decoration: underline; }
+
+    .wm-container { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-lg); }
+
+    /* Nav */
+    .wm-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .wm-nav-logo {
+      font-family: var(--font-display);
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      color: var(--color-text);
+      letter-spacing: var(--tracking-tight);
+    }
+    .wm-nav-logo span { color: var(--color-accent); }
+    .wm-nav-links { display: none; gap: var(--space-xl); list-style: none; }
+    .wm-nav-links a { color: var(--color-text-secondary); font-size: var(--text-sm); font-weight: var(--font-medium); text-decoration: none; }
+    .wm-nav-links a:hover { color: var(--color-text); }
+    @media (min-width: 800px) { .wm-nav-links { display: flex; } }
+    .wm-nav-phone { display: flex; align-items: center; gap: var(--space-sm); }
+    .wm-nav-phone a.nav-phone { display: none; }
+    @media (min-width: 560px) { .wm-nav-phone a.nav-phone { display: inline-flex; } }
+
+    /* Hero */
+    .wm-hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      background: var(--color-text);
+      overflow: hidden;
+    }
+    .wm-hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .wm-hero-inner {
+      position: relative;
+      padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+      max-width: 640px;
+    }
+    .wm-hero .badge { background: var(--color-accent); color: #fff; margin-bottom: var(--space-md); }
+    .wm-hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      color: #fff;
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-md);
+    }
+    @media (min-width: 700px) { .wm-hero h1 { font-size: var(--text-6xl); } }
+    .wm-hero p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-lg);
+      line-height: var(--leading-normal);
+      margin-bottom: var(--space-xl);
+      max-width: 520px;
+    }
+    .wm-hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+    .wm-hero-rating {
+      display: flex; align-items: center; gap: var(--space-sm);
+      margin-top: var(--space-xl);
+      color: rgba(255,255,255,0.75);
+      font-size: var(--text-sm);
+    }
+    .wm-stars { color: #F5A623; letter-spacing: 1px; }
+
+    /* Section */
+    .wm-section { padding: var(--space-3xl) 0; }
+    .wm-section-alt { background: var(--color-bg); }
+    .wm-section .kicker { text-align: center; }
+    .wm-section h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--color-text);
+      text-align: center;
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* Service cards */
+    .wm-services { display: grid; gap: var(--space-lg); grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .wm-services { grid-template-columns: repeat(3, 1fr); } }
+    .wm-service-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+    }
+    .wm-service-card.is-featured {
+      background: var(--color-text);
+      border-color: var(--color-text);
+    }
+    .wm-service-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+    }
+    .wm-service-card.is-featured h3 { color: #fff; }
+    .wm-service-card p { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: var(--leading-normal); margin: 0; }
+    .wm-service-card.is-featured p { color: var(--color-text-on-navy); }
+
+    /* Steel roofing spotlight */
+    .wm-spotlight {
+      display: grid;
+      gap: var(--space-2xl);
+      align-items: center;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 800px) { .wm-spotlight { grid-template-columns: 1fr 1fr; } }
+    .wm-spotlight img { width: 100%; border-radius: var(--radius-lg); display: block; }
+    .wm-spotlight .kicker { text-align: left; }
+    .wm-spotlight h2 { text-align: left; margin-bottom: var(--space-md); }
+    .wm-spotlight p { color: var(--color-text-secondary); font-size: var(--text-base); line-height: var(--leading-relaxed); margin-bottom: var(--space-lg); }
+
+    /* Reviews */
+    .wm-reviews { display: grid; gap: var(--space-lg); grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .wm-reviews { grid-template-columns: repeat(3, 1fr); } }
+    .wm-review-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+    .wm-review-card .wm-stars { display: block; margin-bottom: var(--space-sm); }
+    .wm-review-card p { font-size: var(--text-sm); color: var(--color-text); font-style: italic; line-height: var(--leading-normal); margin-bottom: var(--space-md); }
+    .wm-review-card .wm-review-name { font-size: var(--text-xs); color: var(--color-text-muted); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+
+    /* CTA band */
+    .wm-cta {
+      background: var(--color-accent);
+      text-align: center;
+      padding: var(--space-3xl) var(--space-lg);
+    }
+    .wm-cta h2 { color: #fff; font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--font-bold); margin-bottom: var(--space-md); }
+    .wm-cta p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-xl); font-size: var(--text-base); }
+    .wm-cta .btn-secondary { border-color: #fff; color: #fff; }
+    .wm-cta .btn-secondary:hover { background: #fff; color: var(--color-accent); }
+
+    /* Footer */
+    .wm-footer {
+      background: var(--color-text);
+      color: var(--color-text-on-navy);
+      text-align: center;
+      padding: var(--space-xl) var(--space-lg);
+      font-size: var(--text-sm);
+    }
+    .wm-footer a { color: #fff; }
+  </style>
+</head>
+
+<body>
+
+<div class="wm-ribbon">
+  Mockup only &mdash; not the live site &middot; <a href="/wyman/">Back to the audit</a>
+</div>
+
+<div class="wm-container">
+  <nav class="wm-nav">
+    <div class="wm-nav-logo">Wyman<span>.</span> Contracting</div>
+    <ul class="wm-nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#steel">Steel Roofing</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="wm-nav-phone">
+      <a class="nav-phone" href="tel:6139793189">📞 (613) 979-3189</a>
+      <a href="#quote" class="btn btn-primary" style="padding:var(--space-sm) var(--space-md); min-height:auto;">Get a Quote</a>
+    </div>
+  </nav>
+</div>
+
+<!-- Hero -->
+<div class="wm-hero">
+  <img src="/images/wyman/hero-roof-pool.jpg" alt="A roof replacement completed by Wyman Contracting">
+  <div class="wm-hero-inner">
+    <span class="badge">Barrhaven &amp; Ottawa &middot; 13+ Years</span>
+    <h1>Roofing done right, the first time.</h1>
+    <p>Asphalt, metal, and steel roofing for Ottawa homeowners &mdash; family-owned, fully insured, and built to last.</p>
+    <div class="wm-hero-ctas">
+      <a href="#quote" class="btn btn-primary">Get a free quote &rarr;</a>
+      <a href="tel:6139793189" class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.5);">Call (613) 979-3189</a>
+    </div>
+    <div class="wm-hero-rating">
+      <span class="wm-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+      <span>4.4 on Google &middot; 33 reviews</span>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="wm-section" id="services">
+  <div class="wm-container">
+    <span class="kicker">What we do</span>
+    <h2>Roofing first &mdash; that's the job.</h2>
+    <div class="wm-services">
+      <div class="wm-service-card is-featured">
+        <h3>Roof Replacement</h3>
+        <p>Full tear-off and replacement, asphalt or metal, with a written workmanship warranty.</p>
+      </div>
+      <div class="wm-service-card">
+        <h3>Roof Repair</h3>
+        <p>Leaks, storm damage, and missing shingles &mdash; fixed fast, with photos before and after.</p>
+      </div>
+      <div class="wm-service-card">
+        <h3>Roof Inspections</h3>
+        <p>A straight answer on what your roof needs before you spend a dollar on it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Steel roofing spotlight -->
+<div class="wm-section wm-section-alt" id="steel">
+  <div class="wm-container">
+    <div class="wm-spotlight">
+      <img src="/images/wyman/steel-shingles-wakefield.jpg" alt="Steel shingle roofing installed by Wyman Contracting in Wakefield">
+      <div>
+        <span class="kicker">Where we're headed</span>
+        <h2>Steel roofing, built for Ottawa winters.</h2>
+        <p>
+          A 50-year workmanship warranty, real snow-load performance, and a look that
+          doesn't fade. If you're deciding between another asphalt roof and something
+          that lasts the life of the house, this is the conversation worth having.
+        </p>
+        <a href="#quote" class="btn btn-primary">Ask about steel roofing &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reviews -->
+<div class="wm-section" id="reviews">
+  <div class="wm-container">
+    <span class="kicker">From the job site</span>
+    <h2>What Ottawa homeowners say.</h2>
+    <div class="wm-reviews">
+      <div class="wm-review-card">
+        <span class="wm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>"Great job. Quick response and timely work. Video of the roof before starting and after completion of the work."</p>
+        <div class="wm-review-name">Google review</div>
+      </div>
+      <div class="wm-review-card">
+        <span class="wm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>"Really happy with work done &mdash; such professional service and went beyond to make sure it was done right."</p>
+        <div class="wm-review-name">Google review</div>
+      </div>
+      <div class="wm-review-card">
+        <span class="wm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>"I am very pleased with the two projects that Wyman Contracting recently completed for me."</p>
+        <div class="wm-review-name">Google review</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="wm-cta" id="quote">
+  <h2>Get a straight quote on your roof.</h2>
+  <p>No pressure, no upsell &mdash; just what it needs and what it costs.</p>
+  <a href="tel:6139793189" class="btn btn-secondary">Call (613) 979-3189</a>
+</div>
+
+<footer class="wm-footer">
+  Wyman Contracting &middot; Ottawa &amp; Barrhaven &middot; <a href="tel:6139793189">(613) 979-3189</a>
+  <br><span style="opacity:0.6;font-size:var(--text-xs);">Mockup prepared by JD Media &mdash; not the live site.</span>
+</footer>
+
+</body>
+</html>
