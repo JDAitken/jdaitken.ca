@@ -143,6 +143,15 @@
     .testimonial-quote { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); font-style: normal; margin-bottom: var(--space-lg); }
     .testimonial-author { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--space-xs); }
     .testimonial-location { font-size: var(--text-xs); color: var(--color-text-muted); }
+    .testimonial-clutch-link { display: inline-flex; align-items: center; gap: 0.4em; margin-top: var(--space-sm); font-size: var(--text-xs); font-weight: var(--font-medium); color: var(--color-accent); text-decoration: none; transition: gap var(--transition-base); }
+    .testimonial-clutch-link:hover { gap: 0.6em; }
+
+    .proof-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .proof-list { list-style: none; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-lg); }
+    .proof-list li { padding-left: var(--space-lg); border-left: 3px solid var(--color-border); }
+    .proof-list strong { display: block; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .proof-list span { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+    .proof-list a { color: var(--color-accent); font-weight: var(--font-medium); }
 
     .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(2px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-md); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
     .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
@@ -358,11 +367,24 @@
   <section class="testimonials-section">
     <div class="container">
       <div class="testimonials-grid">
+        <!-- Website testimonial (company-attributed) — superseded by the named, verified
+             Clutch review below. Kept per no-delete rule.
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-quote">&ldquo;JD made the whole process easy &mdash; he asked the right questions upfront and handled everything on the technical side so we could stay focused on our clients. Having a proper online presence has made a real difference in how people find us and reach out.&rdquo;</p>
           <div class="testimonial-author">Legendary Landscaping</div>
           <div class="testimonial-location">Ottawa, ON</div>
+        </div>
+        -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">&ldquo;JD Media&rsquo;s ideas on what we can do next to bring in more business are impressive.&rdquo;</p>
+          <div class="testimonial-author">Bradley Laplante, Owner &mdash; Legendary Landscaping</div>
+          <div class="testimonial-location">Ottawa, ON</div>
+          <a href="https://clutch.co/profile/jd-media#reviews" target="_blank" rel="noopener" class="testimonial-clutch-link">
+            5.0 on Clutch &middot; Verified review
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -479,6 +501,29 @@
           </li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="proof-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Check it yourself</h2>
+        <p>Everything I say about results should be easy to verify independently &mdash; not just claimed on this page.</p>
+      </div>
+      <ul class="proof-list">
+        <li>
+          <strong>Clutch profile:</strong>
+          <span>Third-party, verified reviews you can&rsquo;t fake &mdash; including Bradley Laplante&rsquo;s, quoted above. <a href="https://clutch.co/profile/jd-media#reviews" target="_blank" rel="noopener">clutch.co/profile/jd-media</a></span>
+        </li>
+        <li>
+          <strong>Legendary Landscaping case study:</strong>
+          <span>17 quote requests in July 2026, up from 11 in June, with the month-by-month numbers behind them. <a href="/work/legendary-landscaping/">jdaitken.ca/work/legendary-landscaping</a></span>
+        </li>
+        <li>
+          <strong>Google Business Profile:</strong>
+          <span>My own listing, run the same way I run clients&rsquo;. <a href="https://maps.app.goo.gl/VfX5TZv4sw8MnzpP8" target="_blank" rel="noopener">View on Google Maps</a></span>
+        </li>
+      </ul>
     </div>
   </section>
 
