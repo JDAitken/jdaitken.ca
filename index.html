@@ -728,6 +728,26 @@
     .step h3 { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); }
     .step p { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
 
+    /* FAQ */
+    .faq-section { background: var(--color-surface); border-top: 1px solid var(--color-border); }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--color-border); }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+      width: 100%; padding: var(--space-lg) 0; background: none; border: none;
+      font-family: var(--font-ui); font-size: var(--text-base); font-weight: var(--font-semibold);
+      color: var(--color-text); text-align: left; cursor: pointer;
+    }
+    .faq-question:hover { color: var(--color-accent); }
+    .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform var(--transition-base); }
+    .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: currentColor; border-radius: 1px; }
+    .faq-icon::before { top: 50%; left: 0; right: 0; height: 2px; transform: translateY(-50%); }
+    .faq-icon::after { left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); transition: transform var(--transition-base); }
+    .faq-item.is-open .faq-icon::after { transform: translateX(-50%) scaleY(0); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-slow); }
+    .faq-item.is-open .faq-answer { max-height: 300px; }
+    .faq-answer p { padding-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+
     /* Guarantee band */
     .guarantee-band {
       background: var(--color-text);
@@ -934,6 +954,31 @@
           "email": "jd@jdaitken.ca",
           "jobTitle": "Founder & Web Designer"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a website cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Plans start at $500/month (CAD), which includes the website, hosting, and monthly SEO and Google Business Profile management. The Pro plan at $900/month adds managed Google Ads." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the 90-day guarantee work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Stay 90 days. If you're not showing up higher in Google local search than when you started, I'll refund your management fees for those three months. No fine print, no risk." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to build a website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "About a week for a standard 5-page site, from kickoff call to live site. Rush builds are available in 3-5 days for an additional fee." }
+          },
+          {
+            "@type": "Question",
+            "name": "What areas do you serve?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ottawa and the surrounding region, including Kanata, Nepean, Barrhaven, Orléans, and Gloucester." }
+          }
+        ]
       }
     ]
   }
@@ -1280,6 +1325,58 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How much does a website cost?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Plans start at $500/month (CAD), which includes the website, hosting, and monthly SEO and Google Business Profile management. The Pro plan at $900/month adds managed Google Ads.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How does the 90-day guarantee work?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Stay 90 days. If you&rsquo;re not showing up higher in Google local search than when you started, I&rsquo;ll refund your management fees for those three months. No fine print, no risk.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How long does it take to build a website?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>About a week for a standard 5-page site, from kickoff call to live site. Rush builds are available in 3-5 days for an additional fee.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            What areas do you serve?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Ottawa and the surrounding region, including Kanata, Nepean, Barrhaven, Orl&eacute;ans, and Gloucester.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Guarantee — the closer: last thing before the ask -->
   <section class="guarantee-band">
     <div class="container">
@@ -1467,6 +1564,25 @@
     }
   });
 })();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item.is-open').forEach(open => {
+          open.classList.remove('is-open');
+          open.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>
