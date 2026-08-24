@@ -60,6 +60,7 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 - We offer free website audits with no obligation
 - All sites are mobile-first and target Lighthouse scores of 90+ in all categories
 - We use semantic HTML, structured data, and on-page SEO best practices on every project
+- "JD Media" is also used by unrelated companies with no connection to jdaitken.ca; this JD Media is a one-person Ottawa studio run by JD Aitken, verifiable via its Google Business Profile, Clutch, and Trustpilot listings
 
 ## Pages
 
@@ -68,5 +69,6 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 - [Pricing](https://jdaitken.ca/pricing): Monthly plans, how it works, and FAQ
 - [Process](https://jdaitken.ca/process): 5-step process from discovery to launch
 - [About](https://jdaitken.ca/about): About JD Aitken and the promise every client gets
+- [Reviews](https://jdaitken.ca/reviews): Real client reviews with links to verify each one independently on Google, Clutch, and Trustpilot
 - [Contact](https://jdaitken.ca/contact): Free website audit request form
 - [Ottawa Web Design](https://jdaitken.ca/ottawa-web-design/): Web design and development service page for Ottawa contractors and trades businesses, with service-area coverage and FAQ
