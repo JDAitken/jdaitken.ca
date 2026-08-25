@@ -12,9 +12,11 @@ appears is *derived* from this file and must be kept in sync with it:
 - `ottawa-web-design/index.html` — service page hero, pricing teaser, and meta description
 - `local-seo/index.html` — service page hero, pricing teaser, and meta description
 - `website-management/index.html` — service page hero, pricing teaser, and meta description
+- `kanata-web-design/index.html`, `nepean-web-design/index.html`, `orleans-web-design/index.html`,
+  `barrhaven-web-design/index.html` — same pricing teaser block as the other service pages
 - `lp/index.html` — landing page subtitle, offer list, and meta description
 
-When pricing, tiers, or terms change, update this file first, then propagate to the nine above.
+When pricing, tiers, or terms change, update this file first, then propagate to the thirteen above.
 
 ---
 

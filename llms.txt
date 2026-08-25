@@ -74,3 +74,7 @@ JD Aitken is the founder of JD Media, based in Ottawa, Ontario. He specializes i
 - [Ottawa Web Design](https://jdaitken.ca/ottawa-web-design/): Web design and development service page for Ottawa contractors and trades businesses, with service-area coverage and FAQ
 - [Local SEO](https://jdaitken.ca/local-seo/): Local SEO service page — Google Business Profile management, on-page SEO, citations, and monthly content
 - [Website Management](https://jdaitken.ca/website-management/): Professional website management service page — hosting, SSL, domain, updates, and monthly reporting
+- [Kanata Web Design](https://jdaitken.ca/kanata-web-design/): Web design service page for Kanata and Stittsville businesses
+- [Nepean Web Design](https://jdaitken.ca/nepean-web-design/): Web design service page for Nepean businesses
+- [Orléans Web Design](https://jdaitken.ca/orleans-web-design/): Web design service page for Orléans and Gloucester businesses
+- [Barrhaven Web Design](https://jdaitken.ca/barrhaven-web-design/): Web design service page for Barrhaven businesses
